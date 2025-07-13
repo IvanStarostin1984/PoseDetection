@@ -8,8 +8,9 @@
 ## 0 · Project bootstrap
 - [x] Commit starter governance files (`AGENTS.md`, `TODO.md`, `NOTES.md`,
       minimal CI)
+- [x] Configure `make lint` and `make test` (cover every language tool‑chain)
 - [x] Add `.codex/setup.sh`; ensure it is idempotent and exits 0
-- [ ] Configure `make lint` and `make test` (cover every language tool‑chain)
+
 - [ ] Audit repository & docs; identify the single source of truth
       (spec, assignment …) and reference it in README
 - [ ] Generate initial dependency manifests (`requirements.txt`,

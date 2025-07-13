@@ -25,6 +25,13 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Motivation / Decision**: establish collaboration conventions before code.
 - **Next step**: set up lint/test commands and begin core feature A.
 
+## 2025-07-13  PR #-1
+
+- **Summary**: added Makefile with lint and test tasks; updated docs to pass lint.
+- **Stage**: implementation
+- **Motivation / Decision**: provide initial developer workflow as planned in TODO.
+- **Next step**: create setup script and start implementing core features.
+
 ## 2025-07-13  PR #0
 - **Summary**: added setup script for Python and Node and updated README.
 - **Stage**: implementation
