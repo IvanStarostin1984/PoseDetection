@@ -25,7 +25,6 @@ cd PoseDetection
 make lint
 make test
 ```
-realtime Human Pose Estimation System
 
 ## Development
 Run `make lint` to check documentation style.
