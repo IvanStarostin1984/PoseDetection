@@ -94,3 +94,9 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Stage**: documentation
 - **Motivation / Decision**: keep guide current so contributors know to run local lint.
 - **Next step**: none.
+
+## 2025-07-13  PR #9
+- **Summary**: cleaned TODO headings and spacing to pass markdownlint.
+- **Stage**: documentation
+- **Motivation / Decision**: keep TODO readable and linter-compliant.
+- **Next step**: none.
