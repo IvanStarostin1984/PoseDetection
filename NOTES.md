@@ -25,7 +25,14 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Motivation / Decision**: establish collaboration conventions before code.
 - **Next step**: set up lint/test commands and begin core feature A.
 
-## 2025-07-13  PR #draft
+## 2025-07-13  PR #1
+
+- **Summary**: added fail-fast CI workflow replicating template.
+- **Stage**: implementation
+- **Motivation / Decision**: align repo with AGENTS.md CI; ensures docs-only commits run markdown lint while code triggers tests.
+- **Next step**: verify workflow triggers on next push; prepare Makefile.
+
+## 2025-07-13  PR #2
 
 - **Summary**: ticked roadmap item for committing starter governance files.
 - **Stage**: maintenance

@@ -16,7 +16,7 @@
       `package.json`, `pubspec.yaml`, …) with pinned versions
 - [ ] Define ownership of all generated code in `/generated/**` and record the
       regeneration command in `AGENTS.md`
-- [ ] Push the first green CI run (docs‑only + full‑tests job)
+- [x] Push the first green CI run (docs‑only + full‑tests job)
 
 ## 1 · Core functionality  
 *Repeat the five‑bullet block below for every MVP feature A, B, C, …*  
