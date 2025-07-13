@@ -57,3 +57,4 @@
 - [x] Remove duplicate tagline from README
 - [ ] Automate updating the TODO header date whenever tasks change.
 - [x] Document local docs-only linting in AGENTS guide.
+- [x] Fix markdown formatting in NOTES template.
