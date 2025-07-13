@@ -29,7 +29,7 @@
       exits 1 on regression
 
 ## 2 · Documentation & CI
-- [ ] Write README quick‑start (clone → setup → test)
+- [x] Write README quick‑start (clone → setup → test)
 - [ ] Add full doc build (Sphinx / JSDoc / dart‑doc as applicable)
 - [ ] Integrate secret‑detection helper step in CI (`has_token` pattern)
 - [ ] Extend CI matrix for all runtimes (Python, Node, Dart, Rust, …)
