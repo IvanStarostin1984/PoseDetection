@@ -27,7 +27,8 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 ### 2025-06-30  PR #-3
 - **Summary**: README now references docs/tech-challenge.txt as the guiding spec.
 - **Stage**: documentation
-- **Motivation / Decision**: clarify source of truth so future tasks align with the tech challenge.
+- **Motivation / Decision**: clarify source of truth 
+  so future tasks align with the tech challenge.
 - **Next step**: start implementing setup and lint/test commands.
 
 ## 2025-07-13  PR #-2
@@ -51,7 +52,8 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 ## 2025-07-13  PR #1
 - **Summary**: added fail-fast CI workflow replicating template.
 - **Stage**: implementation
-- **Motivation / Decision**: align repo with AGENTS.md CI; ensures docs-only commits run markdown lint while code triggers tests.
+- **Motivation / Decision**: align repo with AGENTS.md CI; ensures 
+  docs-only commits run markdown lint while code triggers tests.
 - **Next step**: verify workflow triggers on next push; prepare Makefile.
 
 ## 2025-07-13  PR #2
@@ -96,6 +98,11 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Next step**: none.
 
 ## 2025-07-13  PR #9
+- **Summary**: cleaned TODO headings and spacing to pass markdownlint.
+- **Stage**: documentation
+- **Motivation / Decision**: keep TODO readable and linter-compliant.
+
+  ## 2025-07-13  PR #10
 - **Summary**: inserted blank line after the Development heading in README.
 - **Stage**: documentation
 - **Motivation / Decision**: follow lint rules; fix markdownlint MD022 error.
