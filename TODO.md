@@ -14,7 +14,7 @@
 - [x] Add `.codex/setup.sh`; ensure it is idempotent and exits 0
 
 
-- [ ] Generate initial dependency manifests (`requirements.txt`,
+- [x] Generate initial dependency manifests (`requirements.txt`,
       `package.json`, `pubspec.yaml`, …) with pinned versions
 - [ ] Define ownership of all generated code in `/generated/**` and record the
       regeneration command in `AGENTS.md`

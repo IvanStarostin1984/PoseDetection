@@ -65,4 +65,16 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Summary**: timestamped TODO roadmap header.
 - **Stage**: documentation
 - **Motivation / Decision**: keep roadmap current.
+
+### 2025-07-13  PR #4
+- **Summary**: added placeholder tests to keep CI green.
+- **Stage**: implementation
+- **Motivation / Decision**: needed a simple test so CI
+  succeeds before features exist.
+- **Next step**: prepare feature A implementation.
+
+## 2025-07-13  PR #5
+- **Summary**: added pinned dependency manifests for Python and Node.
+- **Stage**: implementation
+- **Motivation / Decision**: follow roadmap item for reproducible setups.
 - **Next step**: none.
