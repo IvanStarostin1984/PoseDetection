@@ -60,3 +60,9 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Motivation / Decision**: repo already includes `AGENTS.md`, `TODO.md`,
   `NOTES.md` so the item was marked as done.
 - **Next step**: add setup script and define lint/test commands.
+
+## 2025-07-13  PR #3
+- **Summary**: added pinned dependency manifests for Python and Node.
+- **Stage**: implementation
+- **Motivation / Decision**: follow roadmap item for reproducible setups.
+- **Next step**: none.
