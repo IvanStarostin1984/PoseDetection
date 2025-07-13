@@ -1,4 +1,4 @@
-# Contributor & CI Guide  <!-- AGENTS.md v1.1 -->
+# Contributor & CI Guide  <!-- AGENTS.md v1.2 -->
 
 > **Read this file first** before opening a pull‑request.  
 > It defines the ground rules that keep humans, autonomous agents and CI in‑sync.  
@@ -36,11 +36,12 @@ Maintain and develop the project so that after each new feature user will be abl
 ## 3 · What every contributor must know up‑front
 
 1. **Branch & PR flow** – fork → `feat/<topic>` → PR into `main` (one reviewer required).  
-2. **Pre‑commit commands** (also run by CI):  
+2. **Pre‑commit commands** (also run by CI):
    ```bash
    make lint                  # all format / static‑analysis steps
    make test                  # project’s unit‑/integration tests
    ```
+   - For docs-only changes run `make lint` (or `make lint-docs`) before committing.
 3. **Style rules** – keep code formatted (`black`, `prettier`, `dart format`, etc.) and Markdown lines ≤ 80 chars; exactly **one blank line** separates log entries.  
 4. **Exit‑code conventions** – scripts must exit ≠ 0 on failure so CI catches regressions (e.g. fail fast when quality gates or metric thresholds aren’t met).  
 5. **Version‑pin policy** – pin *major*/*minor* versions for critical runtimes & actions (e.g. `actions/checkout@v4`, `node@20`, `python~=3.11`).  
