@@ -1,4 +1,4 @@
-# TODO – Road‑map  (last updated: YYYY‑MM‑DD)
+# TODO – Road‑map  (last updated: 2025-07-13)
 
 > *Record only high‑level milestones here; break micro‑tasks out into Issues.*  
 > **When you finish a task, tick it and append a short NOTE entry
@@ -14,7 +14,7 @@
 - [x] Add `.codex/setup.sh`; ensure it is idempotent and exits 0
 
 
-- [ ] Generate initial dependency manifests (`requirements.txt`,
+- [x] Generate initial dependency manifests (`requirements.txt`,
       `package.json`, `pubspec.yaml`, …) with pinned versions
 - [ ] Define ownership of all generated code in `/generated/**` and record the
       regeneration command in `AGENTS.md`
@@ -54,3 +54,5 @@
 
 ### Add new items below this line  
 *(append only; keep earlier history intact)*
+- [x] Remove duplicate tagline from README
+- [ ] Automate updating the TODO header date whenever tasks change.
