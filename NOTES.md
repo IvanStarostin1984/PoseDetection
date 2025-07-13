@@ -25,8 +25,23 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Motivation / Decision**: establish collaboration conventions before code.
 - **Next step**: set up lint/test commands and begin core feature A.
 
-## 2025-07-13  PR #draft
+## 2025-07-13  PR #0
 - **Summary**: added setup script for Python and Node and updated README.
 - **Stage**: implementation
 - **Motivation / Decision**: needed bootstrap to install toolchains idempotently.
 - **Next step**: define lint and test commands.
+
+## 2025-07-13  PR #1
+
+- **Summary**: added fail-fast CI workflow replicating template.
+- **Stage**: implementation
+- **Motivation / Decision**: align repo with AGENTS.md CI; ensures docs-only commits run markdown lint while code triggers tests.
+- **Next step**: verify workflow triggers on next push; prepare Makefile.
+
+## 2025-07-13  PR #2
+
+- **Summary**: ticked roadmap item for committing starter governance files.
+- **Stage**: maintenance
+- **Motivation / Decision**: repo already includes `AGENTS.md`, `TODO.md`,
+  `NOTES.md` so the item was marked as done.
+- **Next step**: add setup script and define lint/test commands.
