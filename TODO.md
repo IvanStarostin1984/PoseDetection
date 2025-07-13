@@ -10,7 +10,7 @@
       minimal CI)
 - [ ] Add `.codex/setup.sh`; ensure it is idempotent and exits 0
 - [ ] Configure `make lint` and `make test` (cover every language tool‑chain)
-- [ ] Audit repository & docs; identify the single source of truth
+- [x] Audit repository & docs; identify the single source of truth
       (spec, assignment …) and reference it in README
 - [ ] Generate initial dependency manifests (`requirements.txt`,
       `package.json`, `pubspec.yaml`, …) with pinned versions
