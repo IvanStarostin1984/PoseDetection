@@ -94,3 +94,9 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Stage**: documentation
 - **Motivation / Decision**: keep guide current so contributors know to run local lint.
 - **Next step**: none.
+
+## 2025-07-13  PR #9
+- **Summary**: inserted blank line after the Development heading in README.
+- **Stage**: documentation
+- **Motivation / Decision**: follow lint rules; fix markdownlint MD022 error.
+- **Next step**: none.
