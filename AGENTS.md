@@ -6,7 +6,7 @@
 
 ---
 Always follow single source of truth.
-Always do as specified in signle source of truth.
+Always do as specified in single source of truth.
 If something is not specified in single source of truth - choose simplest safest options.
 Implement project as specified in TODO.md. Reflect on progress in NOTES.md.
 When any issue in codex environment happens, always suggest additions/modifications to this AGENTS.md to prevent such issues in future.
