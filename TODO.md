@@ -54,3 +54,4 @@
 
 ### Add new items below this line  
 *(append only; keep earlier history intact)*
+- [x] Remove duplicate tagline from README
