@@ -6,17 +6,19 @@
 > Keep this list ordered by topic and **never reorder past items**.
 
 ## 0 · Project bootstrap
-- [ ] Commit starter governance files (`AGENTS.md`, `TODO.md`, `NOTES.md`,
+- [x] Commit starter governance files (`AGENTS.md`, `TODO.md`, `NOTES.md`,
       minimal CI)
-- [ ] Add `.codex/setup.sh`; ensure it is idempotent and exits 0
-- [ ] Configure `make lint` and `make test` (cover every language tool‑chain)
 - [x] Audit repository & docs; identify the single source of truth
-      (spec, assignment …) and reference it in README
+(spec, assignment …) and reference it in README
+- [x] Configure `make lint` and `make test` (cover every language tool‑chain)
+- [x] Add `.codex/setup.sh`; ensure it is idempotent and exits 0
+
+
 - [ ] Generate initial dependency manifests (`requirements.txt`,
       `package.json`, `pubspec.yaml`, …) with pinned versions
 - [ ] Define ownership of all generated code in `/generated/**` and record the
       regeneration command in `AGENTS.md`
-- [ ] Push the first green CI run (docs‑only + full‑tests job)
+- [x] Push the first green CI run (docs‑only + full‑tests job)
 
 ## 1 · Core functionality  
 *Repeat the five‑bullet block below for every MVP feature A, B, C, …*  
@@ -28,7 +30,7 @@
       exits 1 on regression
 
 ## 2 · Documentation & CI
-- [ ] Write README quick‑start (clone → setup → test)
+- [x] Write README quick‑start (clone → setup → test)
 - [ ] Add full doc build (Sphinx / JSDoc / dart‑doc as applicable)
 - [ ] Integrate secret‑detection helper step in CI (`has_token` pattern)
 - [ ] Extend CI matrix for all runtimes (Python, Node, Dart, Rust, …)
