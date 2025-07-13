@@ -8,11 +8,12 @@
 ## 0 · Project bootstrap
 - [x] Commit starter governance files (`AGENTS.md`, `TODO.md`, `NOTES.md`,
       minimal CI)
+- [x] Audit repository & docs; identify the single source of truth
+(spec, assignment …) and reference it in README
 - [x] Configure `make lint` and `make test` (cover every language tool‑chain)
 - [x] Add `.codex/setup.sh`; ensure it is idempotent and exits 0
 
-- [ ] Audit repository & docs; identify the single source of truth
-      (spec, assignment …) and reference it in README
+
 - [ ] Generate initial dependency manifests (`requirements.txt`,
       `package.json`, `pubspec.yaml`, …) with pinned versions
 - [ ] Define ownership of all generated code in `/generated/**` and record the

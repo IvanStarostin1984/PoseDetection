@@ -17,15 +17,18 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 
 ---
 
-## 2025‑01‑01  PR #0  🌱 _file created_
-
+## 2025‑01‑01  PR #-4
 - **Summary**: Seeded repository with starter templates (`AGENTS.md`, `TODO.md`,
   `NOTES.md`) and minimal CI workflow.
 - **Stage**: planning
 - **Motivation / Decision**: establish collaboration conventions before code.
 - **Next step**: set up lint/test commands and begin core feature A.
 
----
+### 2025-06-30  PR #-3
+- **Summary**: README now references docs/tech-challenge.txt as the guiding spec.
+- **Stage**: documentation
+- **Motivation / Decision**: clarify source of truth so future tasks align with the tech challenge.
+- **Next step**: start implementing setup and lint/test commands.
 
 ## 2025-07-13  PR #-2
 - **Summary**: added project overview and setup steps to README files.
