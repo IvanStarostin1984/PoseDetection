@@ -6,17 +6,18 @@
 > Keep this list ordered by topic and **never reorder past items**.
 
 ## 0 · Project bootstrap
-- [ ] Commit starter governance files (`AGENTS.md`, `TODO.md`, `NOTES.md`,
+- [x] Commit starter governance files (`AGENTS.md`, `TODO.md`, `NOTES.md`,
       minimal CI)
-- [ ] Add `.codex/setup.sh`; ensure it is idempotent and exits 0
 - [x] Configure `make lint` and `make test` (cover every language tool‑chain)
+- [x] Add `.codex/setup.sh`; ensure it is idempotent and exits 0
+
 - [ ] Audit repository & docs; identify the single source of truth
       (spec, assignment …) and reference it in README
 - [ ] Generate initial dependency manifests (`requirements.txt`,
       `package.json`, `pubspec.yaml`, …) with pinned versions
 - [ ] Define ownership of all generated code in `/generated/**` and record the
       regeneration command in `AGENTS.md`
-- [ ] Push the first green CI run (docs‑only + full‑tests job)
+- [x] Push the first green CI run (docs‑only + full‑tests job)
 
 ## 1 · Core functionality  
 *Repeat the five‑bullet block below for every MVP feature A, B, C, …*  
