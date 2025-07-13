@@ -25,3 +25,11 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Motivation / Decision**: establish collaboration conventions before code.
 - **Next step**: set up lint/test commands and begin core feature A.
 
+---
+
+## 2025-07-13  PR #1
+
+- **Summary**: added project overview and setup steps to README files.
+- **Stage**: documentation
+- **Motivation / Decision**: explain quick start and link to tech challenge.
+- **Next step**: none.
