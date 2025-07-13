@@ -122,3 +122,14 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Stage**: documentation
 - **Motivation / Decision**: avoid MD033 and long lines; keep history consistent.
 - **Next step**: none.
+
+## 2025-07-13  PR #9
+- **Summary**: cleaned TODO headings and spacing to pass markdownlint.
+- **Stage**: documentation
+- **Motivation / Decision**: keep TODO readable and linter-compliant.
+
+  ## 2025-07-13  PR #10
+- **Summary**: inserted blank line after the Development heading in README.
+- **Stage**: documentation
+- **Motivation / Decision**: follow lint rules; fix markdownlint MD022 error.
+- **Next step**: none.

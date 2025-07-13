@@ -27,6 +27,7 @@ make test
 ```
 
 ## Development
+
 Run `make lint` to check documentation style.
 Run `make test` to execute the future test-suite.
 
