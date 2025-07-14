@@ -570,11 +570,17 @@ updated requirements and workflow.
 
 ### 2025-07-14  PR #68
 
+- **Summary**: clarified localhost link handling and updated AGENTS guide.
+- **Stage**: documentation
+- **Motivation / Decision**: avoid markdown-link-check failures on local URLs.
+
+### 2025-07-14  PR #69
+
 - **Summary**: fixed quoting in CI secret-check step.
 - **Stage**: maintenance
 - **Motivation / Decision**: ensure variable expansion works in GitHub Actions.
 
-### 2025-07-14  PR #69
+### 2025-07-14  PR #70
 
 - **Summary**: fixed trailing spaces and wrapped long line in NOTES.
 - **Stage**: maintenance
