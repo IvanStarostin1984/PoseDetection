@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.11 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.12 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -66,9 +66,11 @@ Follow the coding rules described in `CODING_RULES.md`.
 
    - For docs-only changes run `make lint` (or `make lint-docs`)
   before committing.
-   - When updating `NOTES.md` or `TODO.md` run `make lint-docs` to
-     catch long-line issues locally.
-   - Always run `make lint-docs` after editing any Markdown file to avoid CI failures.
+  - When updating `NOTES.md` or `TODO.md` run `make lint-docs` to
+    catch long-line issues locally.
+  - After editing `TODO.md` also run `make update-todo-date` to refresh
+    the header date.
+  - Always run `make lint-docs` after editing any Markdown file to avoid CI failures.
 3. **Style rules** – keep code formatted (`black`, `prettier`,
    `dart format`, etc.) and Markdown lines ≤ 80 chars;
    exactly **one blank line** separates log entries.
@@ -77,9 +79,12 @@ Follow the coding rules described in `CODING_RULES.md`.
    (e.g. fail fast when quality gates or metric thresholds aren’t met).
 5. **Version‑pin policy** – pin *major*/*minor* versions for critical runtimes &
    actions (e.g. `actions/checkout@v4`, `node@20`, `python~=3.11`).
-6. **When docs change, update them everywhere** – if ambiguity arises,
+6. **Confirm pinned packages exist** – verify each version listed in
+   `requirements.txt`, `package.json` or other manifests is available on
+   its package registry before committing.
+7. **When docs change, update them everywhere** – if ambiguity arises,
    `/docs` overrides this file.
-7. **Log discipline** – when a TODO item is ticked you **must** add the matching
+8. **Log discipline** – when a TODO item is ticked you **must** add the matching
    section in `NOTES.md` *in the same PR*; this keeps roadmap and log in‑sync.
 
 ---

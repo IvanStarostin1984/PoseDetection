@@ -61,7 +61,7 @@
  (append only; keep earlier history intact)
 
 - [x] Remove duplicate tagline from README
-- [ ] Automate updating the TODO header date whenever tasks change.
+- [x] Automate updating the TODO header date whenever tasks change.
 - [x] Document local docs-only linting in AGENTS guide.
 - [x] Fix markdown formatting in NOTES template.
 - [x] Note that conflict-marker quoting is documented in AGENTS guide.
@@ -72,5 +72,6 @@
 - [x] Remind to run `make lint-docs` after editing NOTES or TODO.
 - [x] Emphasise linting all Markdown files in AGENTS guide.
 - [x] Mention CODING_RULES doc link in AGENTS guide.
-
 - [ ] Regularly verify dependency versions for compatibility issues.
+- [ ] Provide script to check pinned package versions exist.
+- [x] Update TypeScript to 5.5.4 in package.json.
