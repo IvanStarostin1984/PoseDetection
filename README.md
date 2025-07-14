@@ -25,6 +25,8 @@ cd PoseDetection
 make lint
 make test
 ```
+The Python dependencies install `mediapipe==0.10.13` which supports
+`numpy>=2`.
 
 ## Development
 
