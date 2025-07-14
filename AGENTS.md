@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.19 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.20 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -140,6 +140,23 @@ jobs:
           npx --yes markdownlint-cli '**/*.md'
           grep -R --line-number -E '<{7}|={7}|>{7}' --exclude=ci.yml . && exit 1 || echo "No conflict markers"
 
+  markdown-link-check:
+    needs: [changes]
+    if: needs.changes.outputs.md_only == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: lycheeverse/lychee-action@v2.4.1
+        with:
+          args: --no-progress --verbose '**/*.md'
+
+  actionlint:
+    needs: [changes]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: rhysd/actionlint@v1.7.7
+
   test:
     needs: [changes]
     if: needs.changes.outputs.md_only != 'true'
@@ -153,10 +170,10 @@ jobs:
 ```
 <!-- markdownlint-enable MD013 -->
 
-- **Docs‑only changes** run in seconds (`lint-docs`).
-- **Code changes** run full lint + tests (`test`).
-- Add job matrices (multi‑language), action‑lint, or deployment later—
-  guardrails above already catch the 90 % most common issues.
+- **Docs‑only changes** run in seconds (`lint-docs` + `markdown-link-check`).
+- **Code changes** run full lint + tests (`test`) and `actionlint`.
+- Add job matrices or deployments later—guardrails above already catch the 90 %
+  most common issues.
 
 ---
 

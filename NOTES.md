@@ -544,3 +544,10 @@ updated requirements and workflow.
 - **Motivation / Decision**: feature request to distinguish standing vs sitting
   using hip and knee angles.
 - **Next step**: none.
+
+### 2025-07-14  PR #64
+
+- **Summary**: added actionlint and markdown link check jobs in CI.
+- **Stage**: maintenance
+- **Motivation / Decision**: fulfill TODO item for workflow validation and link checking.
+- **Next step**: none.
