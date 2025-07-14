@@ -5,10 +5,28 @@ from pathlib import Path
 
 
 def update_todo_date(todo_path: Path) -> int:
-    """Update the date in the TODO header.
+    """Refresh the date in the TODO header.
 
-    The first line must look like
-    '# TODO – Road‑map (last updated: YYYY-MM-DD)'.
+    Purpose
+    -------
+    Ensure the first line of ``TODO.md`` reflects today's date. The expected
+    format is ``# TODO – Road‑map (last updated: YYYY-MM-DD)``.
+
+    Parameters
+    ----------
+    todo_path : Path
+        Location of the TODO file to update.
+
+    Returns
+    -------
+    int
+        ``0`` when the date is current or was updated, ``1`` on errors.
+
+    Raises
+    ------
+    ValueError
+        If the header line does not match the expected pattern. File related
+        issues are caught and converted into the return code.
     """
     try:
         lines = todo_path.read_text().splitlines()
