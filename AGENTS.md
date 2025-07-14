@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.21 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.22 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -174,7 +174,8 @@ jobs:
 
 - **Docs‑only changes** run in seconds (`lint-docs` + `markdown-link-check`).
 - Use `<!-- lychee skip -->` after local URLs (e.g. `http://localhost:`)
-  so lychee doesn’t fail.
+  so lychee doesn’t fail. Localhost patterns are also
+  ignored via `.lycheeignore`.
 - **Code changes** run full lint + tests (`test`) and `actionlint`.
 - Add job matrices or deployments later—guardrails above already catch the 90 %
   most common issues.
