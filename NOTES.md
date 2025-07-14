@@ -171,3 +171,10 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Motivation / Decision**: avoid grep failures
   when mentioning markers in docs.
 - **Next step**: none.
+
+## 2025-07-14  PR #15
+
+- **Summary**: added .gitignore and updated guides and roadmap.
+- **Stage**: documentation
+- **Motivation / Decision**: enforce ignoring build paths and track the rule in docs.
+- **Next step**: none.
