@@ -468,10 +468,10 @@ keep TODO aligned.
 
 ### 2025-07-14  PR #54
 
-- **Summary**: added `main` function in backend server 
+- **Summary**: added `main` function in backend server, 
   to start uvicorn and wrote a startup test.
 - **Stage**: implementation
-- **Motivation / Decision**: run the API with 
+- **Motivation / Decision**: run the API with, 
   `python -m backend.server`; ticked roadmap entrypoint task.
 - **Next step**: none.
 
