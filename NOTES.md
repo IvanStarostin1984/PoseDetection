@@ -250,4 +250,10 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Summary**: added script to update TODO header date with make target and tests.
 - **Stage**: implementation
 - **Motivation / Decision**: automate roadmap timestamp per roadmap item.
+
+## 2025-07-14  PR #26
+
+- **Summary**: updated TypeScript dev dependency to 5.5.4.
+- **Stage**: maintenance
+- **Motivation / Decision**: keep tooling current for bug fixes.
 - **Next step**: none.
