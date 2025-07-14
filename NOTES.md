@@ -322,7 +322,9 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 
 ### 2025-07-16  PR #35
 
-- **Summary**: added markdown blank line rule to AGENTS and fixed Makefile lint command.
+- **Summary**: added markdown blank line rule to AGENTS
+and fixed Makefile lint command.
 - **Stage**: documentation
-- **Motivation / Decision**: keep contributor guide accurate and ensure ruff works with current version.
+- **Motivation / Decision**: keep contributor guide accurate
+and ensure ruff works with current version.
 - **Next step**: none.
