@@ -58,7 +58,7 @@
 
 ### Add new items below this line
 
-*(append only; keep earlier history intact)*
+ (append only; keep earlier history intact)
 
 - [x] Remove duplicate tagline from README
 - [ ] Automate updating the TODO header date whenever tasks change.
