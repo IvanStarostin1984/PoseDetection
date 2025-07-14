@@ -244,3 +244,10 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Stage**: documentation
 - **Motivation / Decision**: follow newly added coding rules doc.
 - **Next step**: none.
+
+## 2025-07-14  PR #25
+
+- **Summary**: updated TypeScript dev dependency to 5.5.4.
+- **Stage**: maintenance
+- **Motivation / Decision**: keep tooling current for bug fixes.
+- **Next step**: none.
