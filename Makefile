@@ -8,12 +8,12 @@ lint-docs: lint
 
 test:
 	@if [ -d tests ]; then \
-		python -m pytest; \
+	python -m pytest --cov=backend --cov=frontend --cov-config=.coveragerc --cov-fail-under=80; \
 	else \
-		echo "No tests yet"; \
+	echo "No tests yet"; \
 	fi
 	@if [ -d frontend/src/__tests__ ]; then \
-		npx --yes jest; \
+	npx --yes jest; \
 	fi
 
 generate:

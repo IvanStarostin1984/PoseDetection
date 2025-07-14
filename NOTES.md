@@ -438,6 +438,13 @@ keep TODO aligned.
 
 ### 2025-07-14  PR #50
 
+- **Summary**: enforced test coverage via pytest-cov and pinned version.
+- **Stage**: maintenance
+- **Motivation / Decision**: ensure tests check coverage ≥80%; tick roadmap.
+- **Next step**: monitor CI and expand tests.
+
+### 2025-07-14  PR #51
+
 - **Summary**: added Sphinx docs build and make docs command.
 - **Stage**: implementation
 - **Motivation / Decision**: roadmap item for full doc build; need local HTML docs.
