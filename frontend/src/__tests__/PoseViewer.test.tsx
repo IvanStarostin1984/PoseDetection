@@ -1,4 +1,4 @@
-import { render, waitFor } from '@testing-library/react';
+import { render, waitFor, fireEvent } from '@testing-library/react';
 import PoseViewer from '../components/PoseViewer';
 import '@testing-library/jest-dom';
 
@@ -26,4 +26,30 @@ test('assigns webcam stream to video element', async () => {
     expect(video.srcObject).toBe(stream);
   });
   expect(getUserMedia).toHaveBeenCalled();
+});
+
+test('toggle button stops and starts the webcam', async () => {
+  const { stream, getUserMedia } = mockMedia();
+  const { container, getByRole } = render(<PoseViewer />);
+  const button = getByRole('button');
+
+  await waitFor(() => {
+    const video = container.querySelector('video') as HTMLVideoElement;
+    expect(video.srcObject).toBe(stream);
+  });
+  expect(button).toHaveTextContent('Stop Webcam');
+
+  fireEvent.click(button);
+  await waitFor(() => {
+    const video = container.querySelector('video') as HTMLVideoElement;
+    expect(video.srcObject).toBeFalsy();
+  });
+  expect(button).toHaveTextContent('Start Webcam');
+
+  fireEvent.click(button);
+  await waitFor(() => {
+    const video = container.querySelector('video') as HTMLVideoElement;
+    expect(video.srcObject).toBe(stream);
+  });
+  expect(getUserMedia).toHaveBeenCalledTimes(2);
 });

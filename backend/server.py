@@ -16,7 +16,10 @@ mp_pose = mp.solutions.pose.Pose()
 
 
 def build_payload(lms: Dict[str, Dict[str, float]]) -> Dict[str, Any]:
-    """Return WebSocket payload with landmarks list and metrics."""
+    """Return WebSocket payload with landmarks list and metrics.
+
+    The metrics dictionary now includes ``pose_class``.
+    """
     metrics = extract_pose_metrics(lms)
     return {"landmarks": list(lms.values()), "metrics": metrics}
 

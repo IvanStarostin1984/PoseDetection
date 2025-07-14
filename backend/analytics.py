@@ -71,6 +71,36 @@ def balance_score(landmarks: Mapping[str, Point]) -> float:
     return abs(left['x'] - right['x'])
 
 
+def pose_classification(landmarks: Mapping[str, Point]) -> str:
+    """Return 'standing', 'sitting' or 'unknown'."""
+    hip_angle = float('nan')
+    knee_angle = float('nan')
+    for side in ('left', 'right'):
+        try:
+            hip_angle = calculate_angle(
+                landmarks[f"{side}_shoulder"],
+                landmarks[f"{side}_hip"],
+                landmarks[f"{side}_knee"],
+            )
+            knee_angle = calculate_angle(
+                landmarks[f"{side}_hip"],
+                landmarks[f"{side}_knee"],
+                landmarks[f"{side}_ankle"],
+            )
+            break
+        except KeyError:
+            continue
+        except ValueError:
+            hip_angle = float('nan')
+            knee_angle = float('nan')
+            break
+    if hip_angle != hip_angle or knee_angle != knee_angle:
+        return 'unknown'
+    if hip_angle > 150 and knee_angle > 150:
+        return 'standing'
+    return 'sitting'
+
+
 def extract_pose_metrics(landmarks: Mapping[str, Point]) -> Dict[str, float]:
     """Return analytics dictionary from pose landmarks."""
     knee_angle = float("nan")
@@ -91,4 +121,5 @@ def extract_pose_metrics(landmarks: Mapping[str, Point]) -> Dict[str, float]:
         balance = balance_score(landmarks)
     except ValueError:
         balance = float('nan')
-    return {'knee_angle': knee_angle, 'balance': balance}
+    pose = pose_classification(landmarks)
+    return {'knee_angle': knee_angle, 'balance': balance, 'pose_class': pose}
