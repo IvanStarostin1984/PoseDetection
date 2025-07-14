@@ -19,7 +19,7 @@ from backend.analytics import extract_pose_metrics
 metrics = extract_pose_metrics(landmarks)
 ```
 
-Run the server with:
+Start the backend server with:
 
 ```bash
 python -m backend.server

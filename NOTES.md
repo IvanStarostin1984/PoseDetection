@@ -359,3 +359,10 @@ and ensure ruff works with current version.
 - **Motivation / Decision**: integrate backend metrics to follow tech
   challenge.
 - **Next step**: none.
+
+### 2025-07-19  PR #40
+
+- **Summary**: added uvicorn entrypoint for backend server, updated docs and tests.
+- **Stage**: implementation
+- **Motivation / Decision**: allow running `python -m backend.server` and verify startup.
+- **Next step**: none.

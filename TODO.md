@@ -81,3 +81,4 @@
 - [x] Pin `websockets` dependency and update README accordingly.
 - [ ] Basic React frontend with PoseViewer and WebSocket hook.
 - [ ] Add backend analytics module with WebSocket integration.
+- [x] Add server entrypoint and startup test for backend.
