@@ -215,3 +215,10 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Stage**: maintenance
 - **Motivation / Decision**: keep roadmap accurate once task was complete.
 - **Next step**: none.
+
+## 2025-07-14  PR #21
+
+- **Summary**: updated AGENTS guide to v1.9 adding lint-docs reminder for NOTES/TODO.
+- **Stage**: documentation
+- **Motivation / Decision**: ensure log files stay within line length by prompting `make lint-docs`.
+- **Next step**: none.
