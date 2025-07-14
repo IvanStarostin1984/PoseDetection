@@ -599,3 +599,10 @@ updated requirements and workflow.
 - **Stage**: maintenance
 - **Motivation / Decision**: keep markdown link check stable.
 - **Next step**: none.
+
+### 2025-07-14  PR #-5
+
+- **Summary**: setup script now installs `pre-commit` automatically.
+- **Stage**: implementation
+- **Motivation / Decision**: avoid missing hook installation instructions.
+- **Next step**: none.

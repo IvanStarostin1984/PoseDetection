@@ -32,6 +32,7 @@ fi
 PROJECT_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 cd "$PROJECT_ROOT"
 python3 -m pip install -r requirements.txt
+python3 -m pip install pre-commit
 npm install
 
 echo "Setup complete"
