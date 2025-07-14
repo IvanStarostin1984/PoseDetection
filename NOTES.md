@@ -343,3 +343,12 @@ and ensure ruff works with current version.
 - **Stage**: maintenance
 - **Motivation / Decision**: keep roadmap accurate with repository state.
 - **Next step**: none.
+
+### 2025-07-18  PR #38
+
+- **Summary**: added analytics module for angle and balance, WebSocket server and
+  docs.
+- **Stage**: implementation
+- **Motivation / Decision**: integrate backend metrics to follow tech
+  challenge.
+- **Next step**: none.

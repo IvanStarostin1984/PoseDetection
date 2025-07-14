@@ -79,3 +79,4 @@
 - [x] Add MIT license file and reference it in README.
 - [x] Document public functions in scripts for clarity.
 - [x] Pin `websockets` dependency and update README accordingly.
+- [ ] Add backend analytics module with WebSocket integration.
