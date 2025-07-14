@@ -468,10 +468,10 @@ keep TODO aligned.
 
 ### 2025-07-14  PR #54
 
-- **Summary**: added `main` function in backend server, 
+- **Summary**: added `main` function in backend server,
   to start uvicorn and wrote a startup test.
 - **Stage**: implementation
-- **Motivation / Decision**: run the API with, 
+- **Motivation / Decision**: run the API with,
   `python -m backend.server`; ticked roadmap entrypoint task.
 - **Next step**: none.
 
@@ -479,7 +479,7 @@ keep TODO aligned.
 
 - **Summary**: WebSocket payload now returns landmarks list with metrics.
 - **Stage**: implementation
-- **Motivation / Decision**: needed richer message for frontend; 
+- **Motivation / Decision**: needed richer message for frontend;
   updated tests accordingly.
 - **Next step**: none.
 
@@ -529,7 +529,7 @@ keep TODO aligned.
 
 - **Summary**: enforced coverage threshold in Makefile and CI via pytest-cov.
 - **Stage**: maintenance
-- **Motivation / Decision**: ensure tests keep ≥80% coverage; 
+- **Motivation / Decision**: ensure tests keep ≥80% coverage;
 updated requirements and workflow.
 - **Next step**: watch CI stability.
 
@@ -537,7 +537,8 @@ updated requirements and workflow.
 
 - **Summary**: added webcam toggle button with tests.
 - **Stage**: implementation
-- **Motivation / Decision**: allow users to start or stop webcam streaming from the UI.
+- **Motivation / Decision**: allow users to start or stop webcam
+  streaming from the UI.
 
 ### 2025-07-14  PR #64
 
@@ -565,4 +566,11 @@ updated requirements and workflow.
 - **Summary**: updated backend server command to `python -m backend.server` in README.
 - **Stage**: documentation
 - **Motivation / Decision**: keep instructions aligned with server entry point.
+- **Next step**: none.
+
+### 2025-07-14  PR #68
+
+- **Summary**: fixed trailing spaces and wrapped long line in NOTES.
+- **Stage**: maintenance
+- **Motivation / Decision**: keep docs lint-compliant.
 - **Next step**: none.
