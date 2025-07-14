@@ -145,3 +145,11 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Motivation / Decision**: enforce consistent markdown
   and prevent future lint errors.
 - **Next step**: none.
+
+## 2025-07-14  PR #12
+
+- **Summary**: excluded the CI workflow from conflict marker grep check.
+- **Stage**: maintenance
+- **Motivation / Decision**: avoid false positives when linting docs using a
+  regex with `<{7}` style quantifiers.
+- **Next step**: none.
