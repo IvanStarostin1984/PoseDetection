@@ -41,7 +41,8 @@
 
 ## 3 · Quality & automation
 
-- [ ] Add pre-commit hooks (formatters, linters, markdownlint, actionlint)
+- [x] Add pre-commit hooks (formatters, linters, markdownlint, actionlint)
+- [ ] Add actionlint to the pre-commit configuration
 - [x] Enforce coverage threshold (≥ 80 % branch, exclude `/generated/**`)
 - [ ] Add linters for conflict markers, trailing spaces and NOTES ordering
 - [ ] Introduce dependabot / Renovate with the version‑pin policy from
