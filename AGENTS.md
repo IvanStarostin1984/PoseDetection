@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.12 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.13 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -64,13 +64,13 @@ Follow the coding rules described in `CODING_RULES.md`.
    make test                  # project’s unit‑/integration tests
    ```
 
-   - For docs-only changes run `make lint` (or `make lint-docs`)
-  before committing.
-  - When updating `NOTES.md` or `TODO.md` run `make lint-docs` to
-    catch long-line issues locally.
-  - After editing `TODO.md` also run `make update-todo-date` to refresh
-    the header date.
-  - Always run `make lint-docs` after editing any Markdown file to avoid CI failures.
+    - For docs-only changes run `make lint` (or `make lint-docs`) before committing.
+    - When updating `NOTES.md` or `TODO.md` run `make lint-docs` to
+      catch long-line issues locally.
+    - After editing `TODO.md` also run `make update-todo-date` to refresh
+      the header date.
+    - Always run `make lint-docs` after editing any Markdown file to avoid CI failures.
+
 3. **Style rules** – keep code formatted (`black`, `prettier`,
    `dart format`, etc.) and Markdown lines ≤ 80 chars;
    exactly **one blank line** separates log entries.
@@ -164,6 +164,7 @@ jobs:
 - Keep Markdown lines ≤ 80 chars to improve diff readability
    (tables may exceed if unavoidable).
 - Use `-` for bullet lists.
+- Indent nested bullet lists by two spaces relative to their parent item.
 - Use a normal space after `#` in headings.
 - Avoid inline HTML.
 

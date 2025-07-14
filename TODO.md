@@ -75,3 +75,5 @@
 - [ ] Regularly verify dependency versions for compatibility issues.
 - [ ] Provide script to check pinned package versions exist.
 - [x] Update TypeScript to 5.5.4 in package.json.
+
+- [x] Clarify nested bullet indentation rule in AGENTS guide.
