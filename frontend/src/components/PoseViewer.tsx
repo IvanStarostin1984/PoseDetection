@@ -5,7 +5,7 @@ import MetricsPanel from './MetricsPanel';
 
 interface PoseData {
   landmarks: Point[];
-  metrics: Record<string, number>;
+  metrics: Record<string, number | string>;
 }
 
 const PoseViewer: React.FC = () => {
