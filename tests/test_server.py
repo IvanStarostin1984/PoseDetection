@@ -3,6 +3,7 @@ import subprocess
 import sys
 import time
 
+
 def test_build_payload_format():
     lms = {
         'hip': {'x': 0.1, 'y': 0.2},
