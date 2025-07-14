@@ -345,7 +345,21 @@ and ensure ruff works with current version.
 - **Next step**: none.
 
 ### 2025-07-14  PR #38
+
 - **Summary**: implemented MediaPipe pose detector and FastAPI WebSocket server.
 - **Stage**: implementation
 - **Motivation / Decision**: needed backend to stream 17 keypoints per frame.
+
+- **Summary**: added React PoseViewer, WebSocket hook, metrics panel and tests.
+- **Stage**: feature
+- **Motivation / Decision**: implement basic frontend per tech challenge.
+- **Next step**: expand pose metrics and UI features.
+
+### 2025-07-18  PR #39
+
+- **Summary**: added analytics module for angle and balance, WebSocket server and
+  docs.
+- **Stage**: implementation
+- **Motivation / Decision**: integrate backend metrics to follow tech
+  challenge.
 - **Next step**: none.

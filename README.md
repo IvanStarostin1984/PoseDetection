@@ -44,6 +44,15 @@ Run `make test` to execute the future test-suite.
 Run `.codex/setup.sh` after cloning to install Python 3.11, Node 20 and the
 project dependencies. The script is idempotent and exits 0 when finished.
 
+## Frontend
+
+The `frontend` folder contains a small React app. Build it and run its tests:
+
+```bash
+npm run build
+npm test
+```
+
 ## License
 
 PoseDetection is released under the MIT License. See [LICENSE](LICENSE).
