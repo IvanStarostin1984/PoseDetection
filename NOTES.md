@@ -586,3 +586,10 @@ updated requirements and workflow.
 - **Stage**: maintenance
 - **Motivation / Decision**: keep docs lint-compliant.
 - **Next step**: none.
+
+### 2025-07-14  PR #71
+
+- **Summary**: added `.lycheeignore` for localhost links and tweaked CI arguments.
+- **Stage**: maintenance
+- **Motivation / Decision**: keep markdown link check stable.
+- **Next step**: none.
