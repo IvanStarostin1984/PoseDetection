@@ -26,6 +26,8 @@ and run in local IDE to test manually.
 - **Append-only logs** – `TODO.md` & `NOTES.md` are linear logs—never delete or
   reorder entries. Add new items at the end of the file.
 - **Generated-files rule** – Anything under `generated/**` or `openapi/**` is
+  code-generated—never hand-edit; instead rerun the generator.
+- **.gitignore discipline** – Paths listed there must never be committed.
   code-generated. Run `make generate` to recreate them and keep these files
   out of regular commits unless intentionally updating the outputs.
 - **Search for conflict markers before every commit** –
