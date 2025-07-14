@@ -41,6 +41,7 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Motivation / Decision**: explain quick start and link to tech challenge.
 - **Next step**: none.
 
+
 ## 2025-07-13  PR #-1
 
 - **Summary**: added Makefile with lint and test tasks;
@@ -346,6 +347,10 @@ and ensure ruff works with current version.
 
 ### 2025-07-14  PR #38
 
+- **Summary**: implemented MediaPipe pose detector and FastAPI WebSocket server.
+- **Stage**: implementation
+- **Motivation / Decision**: needed backend to stream 17 keypoints per frame.
+
 - **Summary**: added React PoseViewer, WebSocket hook, metrics panel and tests.
 - **Stage**: feature
 - **Motivation / Decision**: implement basic frontend per tech challenge.
@@ -366,3 +371,10 @@ and ensure ruff works with current version.
 - **Stage**: implementation
 - **Motivation / Decision**: ensure analytics support left/right joint names and behave correctly when landmarks are provided or missing.
 - **Next step**: none.
+
+### 2025-07-19  PR #41
+
+- **Summary**: marked PoseViewer and analytics tasks done.
+- **Stage**: maintenance
+- **Motivation / Decision**: keep roadmap accurate now that features exist.
+- **Next step**: verify integration in upcoming releases.
