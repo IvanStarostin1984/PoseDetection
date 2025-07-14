@@ -171,3 +171,11 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Motivation / Decision**: avoid grep failures
   when mentioning markers in docs.
 - **Next step**: none.
+
+## 2025-07-14  PR #15
+
+- **Summary**: setup script now installs requirements and npm packages.
+- **Stage**: implementation
+- **Motivation / Decision**: simplify bootstrap by bundling dependency install
+  with toolchain setup.
+- **Next step**: none.
