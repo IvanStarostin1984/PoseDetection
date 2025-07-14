@@ -177,4 +177,18 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Summary**: added .gitignore and updated guides and roadmap.
 - **Stage**: documentation
 - **Motivation / Decision**: enforce ignoring build paths and track the rule in docs.
+
+## 2025-07-14  PR #16
+
+- **Summary**: added generated/README and updated AGENTS with make generate instructions.
+- **Stage**: documentation
+- **Motivation / Decision**: define ownership of generated files and guide regeneration.
+- **Next step**: implement the generation script.
+
+## 2025-07-14  PR #17
+
+- **Summary**: setup script now installs requirements and npm packages.
+- **Stage**: implementation
+- **Motivation / Decision**: simplify bootstrap by bundling dependency install
+  with toolchain setup.
 - **Next step**: none.

@@ -28,6 +28,8 @@ and run in local IDE to test manually.
 - **Generated-files rule** – Anything under `generated/**` or `openapi/**` is
   code-generated—never hand-edit; instead rerun the generator.
 - **.gitignore discipline** – Paths listed there must never be committed.
+  code-generated. Run `make generate` to recreate them and keep these files
+  out of regular commits unless intentionally updating the outputs.
 - **Search for conflict markers before every commit** –
   `git grep -n -E '<{7}|={7}|>{7}'` must return nothing.
 - **Never include conflict markers verbatim** –
@@ -40,7 +42,7 @@ and run in local IDE to test manually.
 1. Run `.codex/setup.sh` (or `./setup.sh`) once after cloning &
    whenever dependencies change.
    *The script installs language tool‑chains,
-   pins versions and injects secrets.*
+   pins versions, installs dependencies and injects secrets.*
 2. Export **required secrets** (`GIT_TOKEN`, `GH_PAGES_TOKEN`, …)
    in the repository/organisation **Secrets** console.
 3. Verify the **secret‑detection helper step** in
