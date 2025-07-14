@@ -359,3 +359,10 @@ and ensure ruff works with current version.
 - **Motivation / Decision**: integrate backend metrics to follow tech
   challenge.
 - **Next step**: none.
+
+### 2025-07-14  PR #40
+
+- **Summary**: WebSocket payload now includes landmarks list, frontend and tests updated.
+- **Stage**: implementation
+- **Motivation / Decision**: align message structure for pose viewer rendering.
+- **Next step**: none.

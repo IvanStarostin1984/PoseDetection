@@ -5,10 +5,18 @@ import cv2
 import mediapipe as mp
 from fastapi import FastAPI, WebSocket
 
+from typing import Any, Dict
+
 from .analytics import extract_pose_metrics
 
 app = FastAPI()
 mp_pose = mp.solutions.pose.Pose()
+
+
+def build_payload(lms: Dict[str, Dict[str, float]]) -> Dict[str, Any]:
+    """Return WebSocket payload with landmarks list and metrics."""
+    metrics = extract_pose_metrics(lms)
+    return {"landmarks": list(lms.values()), "metrics": metrics}
 
 
 @app.websocket("/pose")
@@ -34,7 +42,7 @@ async def pose_endpoint(ws: WebSocket) -> None:
                 name = mp.solutions.pose.PoseLandmark(idx).name.lower()
                 lms[name] = {"x": landmark.x, "y": landmark.y}
 
-            metrics = extract_pose_metrics(lms)
-            await ws.send_text(json.dumps(metrics))
+            payload = build_payload(lms)
+            await ws.send_text(json.dumps(payload))
     finally:
         cap.release()
