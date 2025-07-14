@@ -247,9 +247,11 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 
 ### 2025-07-14 mediapipe downgrade
 
-- **Summary**: downgraded mediapipe to 0.10.13 so numpy 2 works; added dependency note in README.
+- **Summary**: downgraded mediapipe to 0.10.13 so numpy 2 works;
+   added dependency note in README.
 - **Stage**: maintenance
-- **Motivation / Decision**: mediapipe 0.10.21 required numpy<2; earliest PyPI wheel supporting numpy 2 is 0.10.13.
+- **Motivation / Decision**: mediapipe 0.10.21 required numpy<2;
+  earliest PyPI wheel supporting numpy 2 is 0.10.13.
 - **Next step**: monitor mediapipe releases for numpy 2 default.
 
 ## 2025-07-14  PR #25
@@ -270,4 +272,11 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Summary**: updated TypeScript dev dependency to 5.5.4.
 - **Stage**: maintenance
 - **Motivation / Decision**: keep tooling current for bug fixes.
+- **Next step**: none.
+
+## 2025-07-15  PR #28
+
+- **Summary**: fixed bullet indentation, README spacing and bumped AGENTS to v1.13.
+- **Stage**: documentation
+- **Motivation / Decision**: keep markdownlint green and clarify nested list style.
 - **Next step**: none.
