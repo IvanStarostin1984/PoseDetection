@@ -29,6 +29,11 @@ make test
 The Python dependencies install `mediapipe==0.10.13` and
 `websockets==15.0.1`. Mediapipe 0.10.13 supports `numpy>=2`.
 
+### Backend server
+
+Run `python -m backend.main` to launch the FastAPI server. The `/pose`
+WebSocket streams pose keypoints extracted from each video frame.
+
 ## Development
 
 Run `make lint` to check Markdown and Python code style (ruff).
@@ -62,6 +67,13 @@ python -m http.server --directory frontend/dist 8080
 ```
 Then open http://localhost:8080 in your browser.
 
+## Backend
+
+Start the API server with:
+
+```bash
+python -m backend.server
+```
 
 ## License
 

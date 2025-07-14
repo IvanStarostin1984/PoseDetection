@@ -73,14 +73,20 @@ def balance_score(landmarks: Mapping[str, Point]) -> float:
 
 def extract_pose_metrics(landmarks: Mapping[str, Point]) -> Dict[str, float]:
     """Return analytics dictionary from pose landmarks."""
-    try:
-        knee_angle = calculate_angle(
-            landmarks['hip'], landmarks['knee'], landmarks['ankle']
-        )
-    except KeyError:
-        knee_angle = float('nan')
-    except ValueError:
-        knee_angle = float('nan')
+    knee_angle = float("nan")
+    for side in ("left", "right"):
+        try:
+            knee_angle = calculate_angle(
+                landmarks[f"{side}_hip"],
+                landmarks[f"{side}_knee"],
+                landmarks[f"{side}_ankle"],
+            )
+            break
+        except KeyError:
+            continue
+        except ValueError:
+            knee_angle = float("nan")
+            break
     try:
         balance = balance_score(landmarks)
     except ValueError:
