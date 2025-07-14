@@ -78,6 +78,16 @@ Start the API server with:
 python -m backend.server
 ```
 
+## Building docs
+
+Generate the HTML documentation with:
+
+```bash
+make docs
+```
+
+The output appears in `docs/_build/html`.
+
 ## License
 
 PoseDetection is released under the MIT License. See [LICENSE](LICENSE).
