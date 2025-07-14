@@ -1,4 +1,4 @@
-.PHONY: lint test generate
+.PHONY: lint test generate update-todo-date
 
 lint:
 	npx --yes markdownlint-cli **/*.md
@@ -12,3 +12,6 @@ test:
 
 generate:
 	python scripts/generate.py
+
+update-todo-date:
+	python scripts/update_todo_date.py
