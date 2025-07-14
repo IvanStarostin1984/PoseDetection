@@ -280,3 +280,10 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Stage**: documentation
 - **Motivation / Decision**: keep markdownlint green and clarify nested list style.
 - **Next step**: none.
+
+### 2025-07-15  PR #29
+
+- **Summary**: added ruff lint step and updated docs.
+- **Stage**: implementation
+- **Motivation / Decision**: enforce Python style with ruff to catch errors early.
+- **Next step**: none.

@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.13 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.14 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -70,6 +70,7 @@ Follow the coding rules described in `CODING_RULES.md`.
     - After editing `TODO.md` also run `make update-todo-date` to refresh
       the header date.
     - Always run `make lint-docs` after editing any Markdown file to avoid CI failures.
+    - Python code under `scripts/` and `tests/` is linted with `ruff` via `make lint`.
 
 3. **Style rules** – keep code formatted (`black`, `prettier`,
    `dart format`, etc.) and Markdown lines ≤ 80 chars;
