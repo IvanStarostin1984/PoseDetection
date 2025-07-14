@@ -199,3 +199,10 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Motivation / Decision**: simplify bootstrap by bundling dependency install
   with toolchain setup.
 - **Next step**: none.
+
+## 2025-07-14  PR #19
+
+- **Summary**: added generation script and make target; updated guides and tests.
+- **Stage**: implementation
+- **Motivation / Decision**: needed make generate to create placeholder outputs via scripts/generate.py.
+- **Next step**: none.

@@ -1,4 +1,4 @@
-.PHONY: lint test
+.PHONY: lint test generate
 
 lint:
 	npx --yes markdownlint-cli **/*.md
@@ -9,3 +9,6 @@ test:
 	else \
 		echo "No tests yet"; \
 	fi
+
+generate:
+	python scripts/generate.py
