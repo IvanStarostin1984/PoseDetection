@@ -365,14 +365,21 @@ and ensure ruff works with current version.
   challenge.
 - **Next step**: none.
 
-### 2025-07-18  PR #40
+### 2025-07-14  PR #40
+
+- **Summary**: PoseViewer now requests webcam with cleanup and tests mock the stream.
+- **Stage**: implementation
+- **Motivation / Decision**: completed TODO webcam feature using custom mock as jest-mock-media was unavailable.
+- **Next step**: none.
+
+### 2025-07-18  PR #41
 
 - **Summary**: updated pose metrics extraction to use side-specific landmarks and added tests.
 - **Stage**: implementation
 - **Motivation / Decision**: ensure analytics support left/right joint names and behave correctly when landmarks are provided or missing.
 - **Next step**: none.
 
-### 2025-07-19  PR #41
+### 2025-07-19  PR #42
 
 - **Summary**: marked PoseViewer and analytics tasks done.
 - **Stage**: maintenance
