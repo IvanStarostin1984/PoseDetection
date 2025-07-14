@@ -586,3 +586,10 @@ updated requirements and workflow.
 - **Stage**: maintenance
 - **Motivation / Decision**: keep docs lint-compliant.
 - **Next step**: none.
+
+### 2025-07-14  PR #71
+
+- **Summary**: README link to open frontend now ends with a trailing slash.
+- **Stage**: documentation
+- **Motivation / Decision**: match lychee ignore pattern to avoid link check errors.
+- **Next step**: none.
