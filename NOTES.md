@@ -550,4 +550,10 @@ updated requirements and workflow.
 - **Summary**: added actionlint and markdown link check jobs in CI.
 - **Stage**: maintenance
 - **Motivation / Decision**: fulfill TODO item for workflow validation and link checking.
+
+### 2025-07-14  PR #65
+
+- **Summary**: updated backend server command to `python -m backend.server` in README.
+- **Stage**: documentation
+- **Motivation / Decision**: keep instructions aligned with server entry point.
 - **Next step**: none.
