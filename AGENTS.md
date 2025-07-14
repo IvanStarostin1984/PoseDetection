@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.3 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.4 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -28,7 +28,9 @@ and run in local IDE to test manually.
 - **Generated-files rule** – Anything under `generated/**` or `openapi/**` is
   code-generated—never hand-edit; instead rerun the generator.
 - **Search for conflict markers before every commit** –
-  `git grep -n '<<<<<<<\|=======\|>>>>>>>'` must return nothing.
+`git grep -n '&lt;&lt;&lt;&lt;&lt;&lt;&lt;\|&#61;&#61;&#61;&#61;&#61;&#61;&#61;\|&gt;&gt;&gt;&gt;&gt;&gt;&gt;'` must return nothing.
+- **Escape conflict markers in docs** – write them as
+  `&lt;&lt;&lt;&lt;&lt;&lt;&lt;`, `&#61;&#61;&#61;&#61;&#61;&#61;&#61;`, `&gt;&gt;&gt;&gt;&gt;&gt;&gt;` to avoid false positives.
 
 ---
 
@@ -115,7 +117,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: |
           npx --yes markdownlint-cli '**/*.md'
-          grep -R --line-number -E '<<<<<<<|=======|>>>>>>>' . && exit 1 || echo "No conflict markers"
+        grep -R --line-number -E '&lt;&lt;&lt;&lt;&lt;&lt;&lt;|&#61;&#61;&#61;&#61;&#61;&#61;&#61;|&gt;&gt;&gt;&gt;&gt;&gt;&gt;' . && exit 1 || echo "No conflict markers"
 
   test:
     needs: [changes]
