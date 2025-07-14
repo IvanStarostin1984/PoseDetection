@@ -130,7 +130,7 @@ jobs:
       has_pages_token: ${{ steps.echo.outputs.has_pages }}
     steps:
       - id: echo         # returns 'true' / 'false'
-        run: echo "has_pages=${{ secrets.GH_PAGES_TOKEN != '' }}" >> $GITHUB_OUTPUT
+        run: echo "has_pages=${{ secrets.GH_PAGES_TOKEN != '' }}" >> "$GITHUB_OUTPUT"
 
   lint-docs:
     needs: [changes]
