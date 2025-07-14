@@ -359,3 +359,10 @@ and ensure ruff works with current version.
 - **Motivation / Decision**: integrate backend metrics to follow tech
   challenge.
 - **Next step**: none.
+
+### 2025-07-18  PR #40
+
+- **Summary**: updated pose metrics extraction to use side-specific landmarks and added tests.
+- **Stage**: implementation
+- **Motivation / Decision**: ensure analytics support left/right joint names and behave correctly when landmarks are provided or missing.
+- **Next step**: none.

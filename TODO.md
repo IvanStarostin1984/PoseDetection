@@ -81,3 +81,4 @@
 - [x] Pin `websockets` dependency and update README accordingly.
 - [ ] Basic React frontend with PoseViewer and WebSocket hook.
 - [ ] Add backend analytics module with WebSocket integration.
+- [x] Support side-specific landmarks in `extract_pose_metrics`.
