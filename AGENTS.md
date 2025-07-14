@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.20 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.21 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -173,6 +173,7 @@ jobs:
 <!-- markdownlint-enable MD013 -->
 
 - **Docs‑only changes** run in seconds (`lint-docs` + `markdown-link-check`).
+- Use `<!-- lychee skip -->` after local URLs (e.g. `http://localhost:`) so lychee doesn’t fail.
 - **Code changes** run full lint + tests (`test`) and `actionlint`.
 - Add job matrices or deployments later—guardrails above already catch the 90 %
   most common issues.

@@ -566,3 +566,10 @@ updated requirements and workflow.
 - **Stage**: documentation
 - **Motivation / Decision**: keep instructions aligned with server entry point.
 - **Next step**: none.
+
+### 2025-07-14  PR #68
+
+- **Summary**: clarified localhost link handling and updated AGENTS guide.
+- **Stage**: documentation
+- **Motivation / Decision**: avoid markdown-link-check failures on local URLs.
+- **Next step**: none.
