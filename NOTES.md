@@ -350,3 +350,12 @@ and ensure ruff works with current version.
 - **Stage**: feature
 - **Motivation / Decision**: implement basic frontend per tech challenge.
 - **Next step**: expand pose metrics and UI features.
+
+### 2025-07-18  PR #39
+
+- **Summary**: added analytics module for angle and balance, WebSocket server and
+  docs.
+- **Stage**: implementation
+- **Motivation / Decision**: integrate backend metrics to follow tech
+  challenge.
+- **Next step**: none.
