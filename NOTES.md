@@ -171,3 +171,11 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Motivation / Decision**: avoid grep failures
   when mentioning markers in docs.
 - **Next step**: none.
+
+## 2025-07-14  PR #15
+
+- **Summary**: marked CI secret-check task as done and added note in history.
+- **Stage**: documentation
+- **Motivation / Decision**: CI already runs a `secret-check` job so the TODO
+  item was completed.
+- **Next step**: none.
