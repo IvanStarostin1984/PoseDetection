@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.7 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.8 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -28,8 +28,9 @@ and run in local IDE to test manually.
 - **Generated-files rule** – Anything under `generated/**` or `openapi/**` is
   code-generated—never hand-edit; instead rerun the generator.
 - **.gitignore discipline** – Paths listed there must never be committed.
-  code-generated. Run `make generate` to recreate them and keep these files
-  out of regular commits unless intentionally updating the outputs.
+  code-generated. Run `make generate` (calls `python scripts/generate.py`)
+  to recreate them and keep these files out of regular commits unless
+  intentionally updating the outputs.
 - **Search for conflict markers before every commit** –
   `git grep -n -E '<{7}|={7}|>{7}'` must return nothing.
 - **Never include conflict markers verbatim** –
