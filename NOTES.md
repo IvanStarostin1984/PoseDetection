@@ -359,3 +359,12 @@ and ensure ruff works with current version.
 - **Motivation / Decision**: integrate backend metrics to follow tech
   challenge.
 - **Next step**: none.
+
+## 2025-07-14  PR #40
+
+- **Summary**: added running instructions to README and updated AGENTS with
+  test setup bullet.
+- **Stage**: documentation
+- **Motivation / Decision**: clarify how to start backend and frontend locally
+  and note that tests require dependencies from setup.
+- **Next step**: none.
