@@ -280,3 +280,10 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Stage**: documentation
 - **Motivation / Decision**: keep markdownlint green and clarify nested list style.
 - **Next step**: none.
+
+### 2025-07-16  PR #29
+
+- **Summary**: added negative tests for generation and todo-date scripts.
+- **Stage**: testing
+- **Motivation / Decision**: ensure scripts fail with bad permissions or malformed headers.
+- **Next step**: none.
