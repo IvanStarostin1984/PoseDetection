@@ -40,6 +40,8 @@ payload includes simple analytics like knee angle, balance and a
 
 Run `make lint` to check Markdown and Python code style (ruff).
 Run `make test` to execute the future test-suite.
+CI runs `make check-versions` whenever dependency files change to
+ensure pinned versions are valid.
 Install pre-commit and run `pre-commit install` so ruff, black and
 markdownlint run automatically before each commit.
 

@@ -452,6 +452,13 @@ keep TODO aligned.
 
 ### 2025-07-14  PR #52
 
+- **Summary**: added CI job to check dependency versions.
+- **Stage**: maintenance
+- **Motivation / Decision**: ensure pinned packages exist; tick roadmap item.
+- **Next step**: monitor results and update versions when needed.
+
+### 2025-07-14  PR #52
+
 - **Summary**: added pre-commit config with ruff, black and markdownlint; updated docs.
 - **Stage**: implementation
 - **Motivation / Decision**: automate linting per TODO item; pre-commit runs before each commit.

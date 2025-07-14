@@ -4,3 +4,4 @@ node_modules/
 env/
 docs/_build/
 .coverage
+.python-version

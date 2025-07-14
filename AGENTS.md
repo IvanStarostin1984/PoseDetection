@@ -72,8 +72,9 @@ Follow the coding rules described in `CODING_RULES.md`.
     - After editing `TODO.md` also run `make update-todo-date` to refresh
       the header date.
     - Always run `make lint-docs` after editing any Markdown file to avoid CI failures.
-    - Run `make check-versions` when changing dependencies to
-      verify pinned versions exist.
+     - Run `make check-versions` when changing dependencies to
+       verify pinned versions exist. CI runs this automatically when
+       `requirements.txt`, `package.json` or `package-lock.json` change.
     - Run `make docs` to build the HTML docs into `docs/_build`.
     - Python code under `scripts/` and `tests/` is linted with `ruff` via `make lint`.
     - `make test` expects dependencies from `.codex/setup.sh`.
