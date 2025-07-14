@@ -283,11 +283,17 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 
 ### 2025-07-16  PR #29
 
+- **Summary**: added MIT LICENSE file and updated README with license section.
+- **Stage**: documentation
+- **Motivation / Decision**: clarify project licensing.
+
+### 2025-07-16  PR #30
+
 - **Summary**: added negative tests for generation and todo-date scripts.
 - **Stage**: testing
 - **Motivation / Decision**: ensure scripts fail with bad permissions or malformed headers.
 
-## 2025-07-14  PR #30
+## 2025-07-14  PR #31
 
 - **Summary**: documented script public functions with params, returns and raises.
 - **Stage**: documentation
