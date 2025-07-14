@@ -408,6 +408,13 @@ and ensure ruff works with current version.
 
 ### 2025-07-14  PR #46
 
+- **Summary**: ticked roadmap item documenting how to run backend and frontend.
+- **Stage**: documentation
+- **Motivation / Decision**: README already explains local setup; keep TODO aligned.
+- **Next step**: none.
+
+### 2025-07-14  PR #47
+
 - **Summary**: trimmed blank line and shortened history lines.
 - **Stage**: maintenance
 - **Motivation / Decision**: keep NOTES lint-compliant.
