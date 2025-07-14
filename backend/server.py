@@ -9,6 +9,8 @@ from typing import Any, Dict
 
 from .analytics import extract_pose_metrics
 
+import uvicorn
+
 app = FastAPI()
 mp_pose = mp.solutions.pose.Pose()
 
@@ -46,3 +48,12 @@ async def pose_endpoint(ws: WebSocket) -> None:
             await ws.send_text(json.dumps(payload))
     finally:
         cap.release()
+
+
+def main() -> None:
+    """Launch the FastAPI application using uvicorn."""
+    uvicorn.run(app, host="0.0.0.0", port=8000)
+
+
+if __name__ == "__main__":
+    main()
