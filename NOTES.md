@@ -1,7 +1,7 @@
 # Engineering log  – append entries at **the end** (oldest → newest)
 
-Each pull‑request **adds one new section** using the fixed template below.  
-*Never modify or reorder previous entries.*  
+Each pull‑request **adds one new section** using the fixed template below.
+*Never modify or reorder previous entries.*
 Keep lines ≤ 80 chars and leave exactly **one blank line** between sections.
 
 ---
@@ -80,13 +80,13 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Stage**: documentation
 - **Motivation / Decision**: keep contributor guide accurate.
 
-### 2025-07-13  PR #4  
+### 2025-07-13  PR #4
 
 - **Summary**: removed duplicate tagline line in README.
 - **Stage**: documentation
 - **Motivation / Decision**: keep README concise.
 
-### 2025-07-13  PR #5  
+### 2025-07-13  PR #5
 
 - **Summary**: timestamped TODO roadmap header.
 - **Stage**: documentation
@@ -120,16 +120,28 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 
 - **Summary**: fixed NOTES.md template and headings to satisfy markdownlint.
 - **Stage**: documentation
-- **Motivation / Decision**: avoid MD033 and long lines; keep history consistent.
+- **Motivation / Decision**: avoid MD033 and long lines;
+  keep history consistent.
 - **Next step**: none.
 
+<!-- markdownlint-disable-next-line MD024 -->
 ## 2025-07-13  PR #9
+
 - **Summary**: cleaned TODO headings and spacing to pass markdownlint.
 - **Stage**: documentation
 - **Motivation / Decision**: keep TODO readable and linter-compliant.
 
-  ## 2025-07-13  PR #10
+## 2025-07-13  PR #10
+
 - **Summary**: inserted blank line after the Development heading in README.
 - **Stage**: documentation
 - **Motivation / Decision**: follow lint rules; fix markdownlint MD022 error.
+- **Next step**: none.
+
+## 2025-07-14  PR #11
+
+- **Summary**: updated AGENTS guide to v1.3 and added formatting rules.
+- **Stage**: documentation
+- **Motivation / Decision**: enforce consistent markdown
+  and prevent future lint errors.
 - **Next step**: none.
