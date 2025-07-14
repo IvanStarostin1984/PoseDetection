@@ -162,3 +162,12 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Motivation / Decision**: keep contributor rules clear so docs never
   trigger the grep check.
 - **Next step**: none.
+
+## 2025-07-14  PR #14
+
+- **Summary**: updated AGENTS guide to v1.6 and explained using `<{7}` style
+  placeholders for conflict markers.
+- **Stage**: documentation
+- **Motivation / Decision**: avoid grep failures
+  when mentioning markers in docs.
+- **Next step**: none.

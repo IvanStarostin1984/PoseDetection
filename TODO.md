@@ -64,4 +64,4 @@
 - [ ] Automate updating the TODO header date whenever tasks change.
 - [x] Document local docs-only linting in AGENTS guide.
 - [x] Fix markdown formatting in NOTES template.
-- [ ] Note that conflict-marker quoting is documented in AGENTS guide.
+- [x] Note that conflict-marker quoting is documented in AGENTS guide.

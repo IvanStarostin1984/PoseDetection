@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.5 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.6 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -29,9 +29,8 @@ and run in local IDE to test manually.
   code-generated—never hand-edit; instead rerun the generator.
 - **Search for conflict markers before every commit** –
   `git grep -n -E '<{7}|={7}|>{7}'` must return nothing.
-- **Never include literal conflict markers in docs** –
-  use the `<{7}` notation (and similar) when referencing
-  `<<<<<<<`, `=======` or `>>>>>>>` to avoid grep failures.
+- **Never include conflict markers verbatim** –
+  mention them as `<{7}`, `={7}` or `>{7}` to keep grep quiet.
 
 ---
 
