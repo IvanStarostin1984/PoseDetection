@@ -153,3 +153,12 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Motivation / Decision**: avoid false positives when linting docs using a
   regex with `<{7}` style quantifiers.
 - **Next step**: none.
+
+## 2025-07-14  PR #13
+
+- **Summary**: updated AGENTS guide to v1.5 and clarified how to quote
+  conflict markers in docs.
+- **Stage**: documentation
+- **Motivation / Decision**: keep contributor rules clear so docs never
+  trigger the grep check.
+- **Next step**: none.
