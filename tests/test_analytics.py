@@ -27,3 +27,27 @@ def test_extract_pose_metrics_missing_landmarks():
     metrics = extract_pose_metrics({})
     assert math.isnan(metrics['knee_angle'])
     assert math.isnan(metrics['balance'])
+
+
+def test_extract_pose_metrics_left_side():
+    lms = {
+        'left_hip': {'x': 0.0, 'y': 0.0},
+        'left_knee': {'x': 0.0, 'y': 1.0},
+        'left_ankle': {'x': 1.0, 'y': 1.0},
+        'right_hip': {'x': 1.0, 'y': 0.0},
+    }
+    metrics = extract_pose_metrics(lms)
+    assert not math.isnan(metrics['knee_angle'])
+    assert not math.isnan(metrics['balance'])
+
+
+def test_extract_pose_metrics_right_side():
+    lms = {
+        'right_hip': {'x': 1.0, 'y': 0.0},
+        'right_knee': {'x': 1.0, 'y': 1.0},
+        'right_ankle': {'x': 0.0, 'y': 1.0},
+        'left_hip': {'x': 0.0, 'y': 0.0},
+    }
+    metrics = extract_pose_metrics(lms)
+    assert not math.isnan(metrics['knee_angle'])
+    assert not math.isnan(metrics['balance'])

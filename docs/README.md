@@ -15,7 +15,7 @@ with MediaPipe and streams pose metrics as JSON. The metrics are calculated in
 ```python
 from backend.analytics import extract_pose_metrics
 
-# landmarks is a dict like {'hip': {'x': 0.5, 'y': 0.5}, ...}
+# landmarks is a dict like {'left_hip': {'x': 0.5, 'y': 0.5}, ...}
 metrics = extract_pose_metrics(landmarks)
 ```
 

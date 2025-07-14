@@ -84,3 +84,4 @@
 - [x] Add MediaPipe pose detector and FastAPI server with `/pose` WebSocket.
 - [ ] Basic React frontend with PoseViewer and WebSocket hook.
 - [ ] Add backend analytics module with WebSocket integration.
+- [x] Support side-specific landmarks in `extract_pose_metrics`.
