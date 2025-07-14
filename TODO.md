@@ -33,7 +33,7 @@
 ## 2 · Documentation & CI
 
 - [x] Write README quick‑start (clone → setup → test)
-- [ ] Add full doc build (Sphinx / JSDoc / dart‑doc as applicable)
+- [x] Add full doc build (Sphinx / JSDoc / dart‑doc as applicable)
 - [x] Integrate secret‑detection helper step in CI (`has_token` pattern)
 - [ ] Extend CI matrix for all runtimes (Python, Node, Dart, Rust, …)
 - [ ] Add Actionlint + markdown‑link‑check jobs and pin their versions

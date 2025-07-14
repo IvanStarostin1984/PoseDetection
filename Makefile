@@ -1,4 +1,4 @@
-.PHONY: lint lint-docs test generate
+.PHONY: lint lint-docs test generate docs
 
 lint:
 	npx --yes markdownlint-cli **/*.md
@@ -24,3 +24,6 @@ update-todo-date:
 
 check-versions:
 	python scripts/check_versions.py
+
+docs:
+	$(MAKE) -C docs html
