@@ -205,4 +205,10 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Summary**: added generation script and make target; updated guides and tests.
 - **Stage**: implementation
 - **Motivation / Decision**: needed make generate to create placeholder outputs via scripts/generate.py.
+
+## 2025-07-14  PR #20
+
+- **Summary**: ticked TODO for .gitignore after verifying file exists.
+- **Stage**: maintenance
+- **Motivation / Decision**: keep roadmap accurate once task was complete.
 - **Next step**: none.
