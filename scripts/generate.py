@@ -3,7 +3,26 @@ from pathlib import Path
 
 
 def generate() -> int:
-    """Write placeholder output under generated/example.txt."""
+    """Create the example file used in tests.
+
+    Purpose
+    -------
+    Write ``placeholder output`` to ``generated/example.txt`` so unit
+    tests have a known artefact to check.
+
+    Parameters
+    ----------
+    None
+
+    Returns
+    -------
+    int
+        ``0`` on success, ``1`` when a filesystem error occurs.
+
+    Raises
+    ------
+    None: all exceptions are caught and converted into the return code.
+    """
     try:
         out_path = Path(__file__).resolve().parents[1] / "generated" / "example.txt"
         out_path.parent.mkdir(parents=True, exist_ok=True)
