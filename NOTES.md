@@ -199,3 +199,10 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Motivation / Decision**: simplify bootstrap by bundling dependency install
   with toolchain setup.
 - **Next step**: none.
+
+## 2025-07-14  PR #19
+
+- **Summary**: ticked TODO for .gitignore after verifying file exists.
+- **Stage**: maintenance
+- **Motivation / Decision**: keep roadmap accurate once task was complete.
+- **Next step**: none.
