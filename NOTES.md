@@ -343,3 +343,10 @@ and ensure ruff works with current version.
 - **Stage**: maintenance
 - **Motivation / Decision**: keep roadmap accurate with repository state.
 - **Next step**: none.
+
+### 2025-07-19  PR #38
+
+- **Summary**: CI now runs Node and Python tests with coverage.
+- **Stage**: implementation
+- **Motivation / Decision**: extend workflow for frontend tests and exclude generated code from reports.
+- **Next step**: monitor coverage thresholds.

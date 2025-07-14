@@ -44,3 +44,4 @@ jobs:
         run: ./.codex/setup.sh
       - run: make lint
       - run: make test
+      - run: npm test

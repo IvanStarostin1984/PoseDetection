@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.15 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.16 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -61,7 +61,8 @@ Follow the coding rules described in `CODING_RULES.md`.
 
    ```bash
    make lint                  # all format / static‑analysis steps
-   make test                  # project’s unit‑/integration tests
+   make test                  # backend Python tests
+   npm test                   # frontend Node tests
    ```
 
     - For docs-only changes run `make lint` (or `make lint-docs`) before committing.
@@ -73,6 +74,7 @@ Follow the coding rules described in `CODING_RULES.md`.
     - Run `make check-versions` when changing dependencies to
       verify pinned versions exist.
     - Python code under `scripts/` and `tests/` is linted with `ruff` via `make lint`.
+    - Node tests reside under `frontend/` and run with `npm test`.
 
 3. **Style rules** – keep code formatted (`black`, `prettier`,
    `dart format`, etc.) and Markdown lines ≤ 80 chars;

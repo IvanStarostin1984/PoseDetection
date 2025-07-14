@@ -7,6 +7,10 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "typescript": "5.5.4"
+    "typescript": "5.5.4",
+    "jest": "29.7.0"
+  },
+  "scripts": {
+    "test": "jest"
   }
 }
