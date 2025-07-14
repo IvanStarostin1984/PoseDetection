@@ -15,7 +15,7 @@
 - [x] Add `.codex/setup.sh`; ensure it is idempotent and exits 0
 - [x] Generate initial dependency manifests (`requirements.txt`,
         `package.json`, `pubspec.yaml`, …) with pinned versions
-- [ ] Define ownership of all generated code in `/generated/**` and record the
+- [x] Define ownership of all generated code in `/generated/**` and record the
       regeneration command in `AGENTS.md`
 - [x] Push the first green CI run (docs‑only + full‑tests job)
 
@@ -65,3 +65,4 @@
 - [x] Document local docs-only linting in AGENTS guide.
 - [x] Fix markdown formatting in NOTES template.
 - [x] Note that conflict-marker quoting is documented in AGENTS guide.
+- [ ] Implement generation script to support `make generate`.

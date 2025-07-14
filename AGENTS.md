@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.6 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.7 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -26,7 +26,8 @@ and run in local IDE to test manually.
 - **Append-only logs** – `TODO.md` & `NOTES.md` are linear logs—never delete or
   reorder entries. Add new items at the end of the file.
 - **Generated-files rule** – Anything under `generated/**` or `openapi/**` is
-  code-generated—never hand-edit; instead rerun the generator.
+  code-generated. Run `make generate` to recreate them and keep these files
+  out of regular commits unless intentionally updating the outputs.
 - **Search for conflict markers before every commit** –
   `git grep -n -E '<{7}|={7}|>{7}'` must return nothing.
 - **Never include conflict markers verbatim** –
