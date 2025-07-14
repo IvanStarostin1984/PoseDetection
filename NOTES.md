@@ -244,3 +244,10 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Stage**: documentation
 - **Motivation / Decision**: follow newly added coding rules doc.
 - **Next step**: none.
+
+### 2025-07-14  PR #25
+
+- **Summary**: added script to update TODO header date with make target and tests.
+- **Stage**: implementation
+- **Motivation / Decision**: automate roadmap timestamp per roadmap item.
+- **Next step**: none.
