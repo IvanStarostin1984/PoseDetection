@@ -449,3 +449,11 @@ keep TODO aligned.
 - **Stage**: implementation
 - **Motivation / Decision**: roadmap item for full doc build; need local HTML docs.
 - **Next step**: none.
+
+### 2025-07-14  PR #52
+
+- **Summary**: added pose classification metric and updated server, UI and docs.
+- **Stage**: implementation
+- **Motivation / Decision**: feature request to distinguish standing vs sitting
+  using hip and knee angles.
+- **Next step**: none.
