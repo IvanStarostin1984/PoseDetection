@@ -12,6 +12,9 @@ test:
 	else \
 		echo "No tests yet"; \
 	fi
+	@if [ -d frontend/src/__tests__ ]; then \
+		npx --yes jest; \
+	fi
 
 generate:
 	python scripts/generate.py

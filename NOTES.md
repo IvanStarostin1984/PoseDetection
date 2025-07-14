@@ -344,7 +344,14 @@ and ensure ruff works with current version.
 - **Motivation / Decision**: keep roadmap accurate with repository state.
 - **Next step**: none.
 
-### 2025-07-18  PR #38
+### 2025-07-14  PR #38
+
+- **Summary**: added React PoseViewer, WebSocket hook, metrics panel and tests.
+- **Stage**: feature
+- **Motivation / Decision**: implement basic frontend per tech challenge.
+- **Next step**: expand pose metrics and UI features.
+
+### 2025-07-18  PR #39
 
 - **Summary**: added analytics module for angle and balance, WebSocket server and
   docs.
