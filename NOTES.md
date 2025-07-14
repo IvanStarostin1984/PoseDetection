@@ -304,7 +304,8 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 
 - **Summary**: added negative tests for generation and todo-date scripts.
 - **Stage**: testing
-- **Motivation / Decision**: ensure scripts fail with bad permissions or malformed headers.
+- **Motivation / Decision**: ensure scripts fail with bad permissions or
+  malformed headers.
 
 ## 2025-07-14  PR #33
 
@@ -313,7 +314,13 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Motivation / Decision**: follow CODING_RULES rule 18 to improve clarity.
 - **Next step**: none.
 
-### 2025-07-16  PR #34
+### 2025-07-17  PR #34
+
+- **Summary**: fixed markdownlint issues in AGENTS and NOTES.
+- **Stage**: documentation
+- **Motivation / Decision**: keep docs lint-clean with wrapped lines.
+
+### 2025-07-16  PR #35
 
 - **Summary**: added markdown blank line rule to AGENTS and fixed Makefile lint command.
 - **Stage**: documentation
