@@ -90,3 +90,4 @@
 - [x] Support side-specific landmarks in `extract_pose_metrics`.
 - [x] Add pose classification metric and expose it in server and UI.
 - [x] Quote `$GITHUB_OUTPUT` in secret-check step of CI workflow.
+- [x] Setup script installs `pre-commit` automatically.
