@@ -65,3 +65,4 @@
 - [x] Document local docs-only linting in AGENTS guide.
 - [x] Fix markdown formatting in NOTES template.
 - [x] Note that conflict-marker quoting is documented in AGENTS guide.
+- [x] Extend setup script to install dependencies automatically.

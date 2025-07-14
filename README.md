@@ -15,8 +15,8 @@ keypoints from a webcam and serves them through a small web app. See
 
 ## Quick start
 
-Clone the repository, run `.codex/setup.sh` to install tooling, then check the
-code:
+Clone the repository, run `.codex/setup.sh` to install tooling and
+dependencies, then check the code:
 
 ```bash
 git clone <repo-url>
@@ -33,5 +33,5 @@ Run `make test` to execute the future test-suite.
 
 ## Setup
 
-Run `.codex/setup.sh` after cloning to install Python 3.11 and Node 20.
-The script is idempotent and exits 0 when finished.
+Run `.codex/setup.sh` after cloning to install Python 3.11, Node 20 and the
+project dependencies. The script is idempotent and exits 0 when finished.
