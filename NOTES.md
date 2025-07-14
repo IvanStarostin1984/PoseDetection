@@ -544,3 +544,10 @@ updated requirements and workflow.
 - **Motivation / Decision**: feature request to distinguish standing vs sitting
   using hip and knee angles.
 - **Next step**: none.
+
+### 2025-07-14  PR #64
+
+- **Summary**: added actionlint hook in pre-commit and documented it.
+- **Stage**: maintenance
+- **Motivation / Decision**: enforce GitHub Actions linting consistently.
+- **Next step**: monitor CI for actionlint findings.
