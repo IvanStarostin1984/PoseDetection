@@ -3,7 +3,7 @@ interface MetricsPanelProps {
 }
 
 const MetricsPanel: React.FC<MetricsPanelProps> = ({ data }) => {
-  const balance = data?.balance_score ?? 0;
+  const balance = data?.balance ?? 0;
   return (
     <div className="metrics-panel">Balance: {balance.toFixed(2)}</div>
   );

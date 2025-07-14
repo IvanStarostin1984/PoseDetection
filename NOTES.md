@@ -365,28 +365,35 @@ and ensure ruff works with current version.
   challenge.
 - **Next step**: none.
 
-### 2025-07-19  PR #40
+### 2025-07-14  PR #40
+
+- **Summary**: WebSocket payload now includes landmarks list, frontend and tests updated.
+- **Stage**: implementation
+- **Motivation / Decision**: align message structure for pose viewer rendering.
+- **Next step**: none.
+
+### 2025-07-19  PR #41
 
 - **Summary**: added uvicorn entrypoint for backend server, updated docs and tests.
 - **Stage**: implementation
 - **Motivation / Decision**: allow running `python -m backend.server` and verify startup.
 - **Next step**: none.
 
-### 2025-07-14  PR #41
+### 2025-07-14  PR #42
 
 - **Summary**: PoseViewer now requests webcam with cleanup and tests mock the stream.
 - **Stage**: implementation
 - **Motivation / Decision**: completed TODO webcam feature using custom mock as jest-mock-media was unavailable.
 - **Next step**: none.
 
-### 2025-07-18  PR #42
+### 2025-07-18  PR #43
 
 - **Summary**: updated pose metrics extraction to use side-specific landmarks and added tests.
 - **Stage**: implementation
 - **Motivation / Decision**: ensure analytics support left/right joint names and behave correctly when landmarks are provided or missing.
 - **Next step**: none.
 
-### 2025-07-19  PR #43
+### 2025-07-19  PR #44
 
 - **Summary**: marked PoseViewer and analytics tasks done.
 - **Stage**: maintenance
