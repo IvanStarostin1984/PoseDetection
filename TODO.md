@@ -77,3 +77,4 @@
 - [x] Update TypeScript to 5.5.4 in package.json.
 
 - [x] Clarify nested bullet indentation rule in AGENTS guide.
+- [x] Document public functions in scripts for clarity.
