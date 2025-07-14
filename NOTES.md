@@ -589,6 +589,12 @@ updated requirements and workflow.
 
 ### 2025-07-14  PR #71
 
+- **Summary**: README link to open frontend now ends with a trailing slash.
+- **Stage**: documentation
+- **Motivation / Decision**: match lychee ignore pattern to avoid link check errors.
+
+### 2025-07-14  PR #72
+
 - **Summary**: added `.lycheeignore` for localhost links and tweaked CI arguments.
 - **Stage**: maintenance
 - **Motivation / Decision**: keep markdown link check stable.

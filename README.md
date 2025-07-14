@@ -77,7 +77,7 @@ npm run build
 python -m http.server --directory frontend/dist 8080
 ```
 
-Then open [http://localhost:8080](http://localhost:8080) <!-- lychee skip -->
+Then open [http://localhost:8080/](http://localhost:8080/) <!-- lychee skip -->
 in your browser.
 
 ## Backend
