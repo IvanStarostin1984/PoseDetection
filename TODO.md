@@ -70,3 +70,4 @@
 - [x] Extend setup script to install dependencies automatically.
 
 - [x] Remind to run `make lint-docs` after editing NOTES or TODO.
+- [x] Emphasise linting all Markdown files in AGENTS guide.

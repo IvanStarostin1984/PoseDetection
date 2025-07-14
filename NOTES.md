@@ -220,11 +220,20 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 
 - **Summary**: updated AGENTS guide to v1.9 adding lint-docs reminder for NOTES/TODO.
 - **Stage**: documentation
-- **Motivation / Decision**: ensure log files stay within line length by prompting `make lint-docs`.
+- **Motivation / Decision**: ensure log files stay within line length
+  by prompting `make lint-docs`.
 
 ## 2025-07-14  PR #22
 
 - **Summary**: fixed long lines in NOTES so markdownlint passes.
 - **Stage**: maintenance
 - **Motivation / Decision**: keep history linter-compliant.
+- **Next step**: none.
+
+## 2025-07-14  PR #23
+
+- **Summary**: fixed markdownlint failures and updated AGENTS
+  to remind linting all docs.
+- **Stage**: maintenance
+- **Motivation / Decision**: keep CI green by enforcing doc linting.
 - **Next step**: none.

@@ -1,4 +1,5 @@
 # Coding‑Guard
+
 1  One source file ⇢ one domain concept
 2  External imports ≤3 and never cyclic
 3  DRY: extract any ≥3‑line repetition into a helper

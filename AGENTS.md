@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.9 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.10 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -67,6 +67,7 @@ and run in local IDE to test manually.
   before committing.
    - When updating `NOTES.md` or `TODO.md` run `make lint-docs` to
      catch long-line issues locally.
+   - Always run `make lint-docs` after editing any Markdown file to avoid CI failures.
 3. **Style rules** – keep code formatted (`black`, `prettier`,
    `dart format`, etc.) and Markdown lines ≤ 80 chars;
    exactly **one blank line** separates log entries.
