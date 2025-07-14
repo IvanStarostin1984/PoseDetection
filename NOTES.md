@@ -183,7 +183,7 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 
 - **Summary**: added .gitignore and updated guides and roadmap.
 - **Stage**: documentation
-- **Motivation / Decision**: enforce ignoring build paths and track the rule in docs.
+- **Motivation / Decision**: enforce ignoring build paths; document the rule.
 
 ## 2025-07-14  PR #17
 
@@ -204,7 +204,7 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 
 ## 2025-07-14  PR #19
 
-- **Summary**: added generation script and make target; updated guides and tests.
+- **Summary**: added generation script and make target; updated guides/tests.
 - **Stage**: implementation
 - **Motivation / Decision**: needed make generate to
   create placeholder outputs via scripts/generate.py.
@@ -214,4 +214,11 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Summary**: ticked TODO for .gitignore after verifying file exists.
 - **Stage**: maintenance
 - **Motivation / Decision**: keep roadmap accurate once task was complete.
+- **Next step**: none.
+
+## 2025-07-14  PR #21
+
+- **Summary**: fixed long lines in NOTES so markdownlint passes.
+- **Stage**: maintenance
+- **Motivation / Decision**: keep history linter-compliant.
 - **Next step**: none.
