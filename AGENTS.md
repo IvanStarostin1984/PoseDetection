@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.10 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.11 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -17,6 +17,7 @@ to prevent such issues in future.
 Maintain and develop the project
  so that after each new feature user will be able to download github repo
 and run in local IDE to test manually.
+Follow the coding rules described in `CODING_RULES.md`.
 
 ## 1 · File-ownership & merge-conflict safety
 

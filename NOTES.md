@@ -237,3 +237,10 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Stage**: maintenance
 - **Motivation / Decision**: keep CI green by enforcing doc linting.
 - **Next step**: none.
+
+### 2025-07-14  PR #24
+
+- **Summary**: AGENTS guide now points to CODING_RULES and version bumped.
+- **Stage**: documentation
+- **Motivation / Decision**: follow newly added coding rules doc.
+- **Next step**: none.
