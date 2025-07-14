@@ -79,5 +79,6 @@
 - [x] Add MIT license file and reference it in README.
 - [x] Document public functions in scripts for clarity.
 - [x] Pin `websockets` dependency and update README accordingly.
+- [x] Add MediaPipe pose detector and FastAPI server with `/pose` WebSocket.
 - [ ] Basic React frontend with PoseViewer and WebSocket hook.
 - [ ] Add backend analytics module with WebSocket integration.
