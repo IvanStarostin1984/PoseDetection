@@ -2,7 +2,7 @@
 
 lint:
 	npx --yes markdownlint-cli **/*.md
-	ruff scripts tests
+	ruff check scripts tests
 
 lint-docs: lint
 
