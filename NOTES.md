@@ -280,3 +280,11 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Stage**: documentation
 - **Motivation / Decision**: keep markdownlint green and clarify nested list style.
 - **Next step**: none.
+
+## 2025-07-14  PR #29
+
+- **Summary**: added script to verify pinned dependency versions with make target.
+- **Stage**: implementation
+- **Motivation / Decision**: automate version checks to enforce pin policy.
+- **Next step**: watch for version conflicts in future updates.
+

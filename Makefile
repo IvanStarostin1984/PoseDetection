@@ -17,3 +17,6 @@ generate:
 
 update-todo-date:
 	python scripts/update_todo_date.py
+
+check-versions:
+	python scripts/check_versions.py
