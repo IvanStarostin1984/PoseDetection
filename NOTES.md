@@ -544,3 +544,10 @@ updated requirements and workflow.
 - **Motivation / Decision**: feature request to distinguish standing vs sitting
   using hip and knee angles.
 - **Next step**: none.
+
+### 2025-07-14  PR #64
+
+- **Summary**: updated backend server command to `python -m backend.server` in README.
+- **Stage**: documentation
+- **Motivation / Decision**: keep instructions aligned with server entry point.
+- **Next step**: none.
