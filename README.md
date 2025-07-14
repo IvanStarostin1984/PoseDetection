@@ -53,6 +53,9 @@ npm run build
 npm test
 ```
 
+The PoseViewer component shows the live webcam feed. Use the **Start Webcam**
+button to toggle the stream.
+
 ## Running locally
 
 Start the backend with:

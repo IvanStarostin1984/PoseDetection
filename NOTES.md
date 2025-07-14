@@ -449,3 +449,10 @@ keep TODO aligned.
 - **Stage**: implementation
 - **Motivation / Decision**: roadmap item for full doc build; need local HTML docs.
 - **Next step**: none.
+
+### 2025-07-14  PR #52
+
+- **Summary**: added webcam toggle button with tests.
+- **Stage**: implementation
+- **Motivation / Decision**: allow users to start or stop webcam streaming from the UI.
+- **Next step**: none.
