@@ -457,14 +457,14 @@ keep TODO aligned.
 - **Motivation / Decision**: ensure pinned packages exist; tick roadmap item.
 - **Next step**: monitor results and update versions when needed.
 
-### 2025-07-14  PR #52
+### 2025-07-14  PR #53
 
 - **Summary**: added pre-commit config with ruff, black and markdownlint; updated docs.
 - **Stage**: implementation
 - **Motivation / Decision**: automate linting per TODO item; pre-commit runs before each commit.
 - **Next step**: integrate actionlint hook.
 
-### 2025-07-14  PR #53
+### 2025-07-14  PR #54
 
 - **Summary**: added `main` function in backend server 
 to start uvicorn and wrote a startup test.
@@ -473,7 +473,7 @@ to start uvicorn and wrote a startup test.
 `python -m backend.server`; ticked roadmap entrypoint task.
 - **Next step**: none.
 
-### 2025-07-14  PR #54
+### 2025-07-14  PR #55
 
 - **Summary**: WebSocket payload now returns landmarks list with metrics.
 - **Stage**: implementation
@@ -481,49 +481,49 @@ to start uvicorn and wrote a startup test.
 updated tests accordingly.
 - **Next step**: none.
 
-### 2025-07-14  PR #55
+### 2025-07-14  PR #56
 
 - **Summary**: README gained "Running locally" section and TODO item for docs.
 - **Stage**: documentation
 - **Motivation / Decision**: show how to start backend and frontend together.
 - **Next step**: mark task done when verified.
 
-### 2025-07-14  PR #56
+### 2025-07-14  PR #57
 
 - **Summary**: cleaned NOTES formatting so headers follow lint rules.
 - **Stage**: maintenance
 - **Motivation / Decision**: remove stray blank line before header.
 - **Next step**: none.
 
-### 2025-07-14  PR #57
+### 2025-07-14  PR #58
 
 - **Summary**: marked local run docs TODO as complete and adjusted test imports.
 - **Stage**: maintenance
 - **Motivation / Decision**: keep roadmap accurate and satisfy ruff.
 - **Next step**: none.
 
-### 2025-07-14  PR #58
+### 2025-07-14  PR #59
 
 - **Summary**: improved code block spacing in README for markdownlint.
 - **Stage**: documentation
 - **Motivation / Decision**: keep README lint‑compliant after adding run guide.
 - **Next step**: none.
 
-### 2025-07-14  PR #59
+### 2025-07-14  PR #60
 
 - **Summary**: bumped AGENTS guide to v1.17 and added MD031 and MD034 style notes.
 - **Stage**: documentation
 - **Motivation / Decision**: document fenced block spacing and avoid bare URLs.
 - **Next step**: none.
 
-### 2025-07-14  PR #60
+### 2025-07-14  PR #61
 
 - **Summary**: introduced Sphinx docs build and added make docs target.
 - **Stage**: implementation
 - **Motivation / Decision**: roadmap item for full documentation build.
 - **Next step**: none.
 
-### 2025-07-14  PR #61
+### 2025-07-14  PR #62
 
 - **Summary**: enforced coverage threshold in Makefile and CI via pytest-cov.
 - **Stage**: maintenance
@@ -531,13 +531,13 @@ updated tests accordingly.
 updated requirements and workflow.
 - **Next step**: watch CI stability.
 
-### 2025-07-14  PR #62
+### 2025-07-14  PR #63
 
 - **Summary**: added webcam toggle button with tests.
 - **Stage**: implementation
 - **Motivation / Decision**: allow users to start or stop webcam streaming from the UI.
 
-### 2025-07-14  PR #63
+### 2025-07-14  PR #64
 
 - **Summary**: added pose classification metric and updated server, UI and docs.
 - **Stage**: implementation
@@ -545,13 +545,20 @@ updated requirements and workflow.
   using hip and knee angles.
 - **Next step**: none.
 
-### 2025-07-14  PR #64
+### 2025-07-14  PR #65
+
+- **Summary**: added actionlint hook in pre-commit and documented it.
+- **Stage**: maintenance
+- **Motivation / Decision**: enforce GitHub Actions linting consistently.
+- **Next step**: monitor CI for actionlint findings.
+
+### 2025-07-14  PR #66
 
 - **Summary**: added actionlint and markdown link check jobs in CI.
 - **Stage**: maintenance
 - **Motivation / Decision**: fulfill TODO item for workflow validation and link checking.
 
-### 2025-07-14  PR #65
+### 2025-07-14  PR #67
 
 - **Summary**: updated backend server command to `python -m backend.server` in README.
 - **Stage**: documentation
