@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       md_only: ${{ steps.filter.outputs.md_only }}
+      deps: ${{ steps.filter.outputs.deps }}
     steps:
       - uses: actions/checkout@v4
       - id: filter
@@ -15,6 +16,10 @@ jobs:
           filters: |
             md_only:
               - '**/*.md'
+            deps:
+              - 'requirements.txt'
+              - 'package.json'
+              - 'package-lock.json'
 
   secret-check:
     runs-on: ubuntu-latest
@@ -33,6 +38,14 @@ jobs:
       - run: |
           npx --yes markdownlint-cli '**/*.md'
           grep -R --line-number -E '<{7}|={7}|>{7}' --exclude=ci.yml . && exit 1 || echo "No conflict markers"
+
+  check-versions:
+    needs: [changes]
+    if: needs.changes.outputs.deps == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: make check-versions
 
   test:
     needs: [changes]

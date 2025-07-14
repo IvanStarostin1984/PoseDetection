@@ -38,6 +38,8 @@ WebSocket streams pose keypoints extracted from each video frame.
 
 Run `make lint` to check Markdown and Python code style (ruff).
 Run `make test` to execute the future test-suite.
+CI runs `make check-versions` whenever dependency files change to
+ensure pinned versions are valid.
 
 ## Setup
 

@@ -449,3 +449,9 @@ keep TODO aligned.
 - **Stage**: implementation
 - **Motivation / Decision**: roadmap item for full doc build; need local HTML docs.
 - **Next step**: none.
+### 2025-07-14  PR #52
+
+- **Summary**: added CI job to check dependency versions.
+- **Stage**: maintenance
+- **Motivation / Decision**: ensure pinned packages exist; tick roadmap item.
+- **Next step**: monitor results and update versions when needed.
