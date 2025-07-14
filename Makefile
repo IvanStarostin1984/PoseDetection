@@ -14,3 +14,6 @@ test:
 
 generate:
 	python scripts/generate.py
+
+update-todo-date:
+	python scripts/update_todo_date.py
