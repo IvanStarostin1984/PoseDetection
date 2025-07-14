@@ -81,3 +81,6 @@
 - [x] Pin `websockets` dependency and update README accordingly.
  - [x] Basic React frontend with PoseViewer and WebSocket hook.
  - [x] Add backend analytics module with WebSocket integration.
+- [x] Add MediaPipe pose detector and FastAPI server with `/pose` WebSocket.
+- [ ] Basic React frontend with PoseViewer and WebSocket hook.
+- [ ] Add backend analytics module with WebSocket integration.
