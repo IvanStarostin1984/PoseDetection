@@ -281,25 +281,32 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Motivation / Decision**: keep markdownlint green and clarify nested list style.
 - **Next step**: none.
 
-### 2025-07-15  PR #29
+## 2025-07-14  PR #29
+
+- **Summary**: added script to verify pinned dependency versions with make target.
+- **Stage**: implementation
+- **Motivation / Decision**: automate version checks to enforce pin policy.
+- **Next step**: watch for version conflicts in future updates.
+
+### 2025-07-15  PR #30
 
 - **Summary**: added ruff lint step and updated docs.
 - **Stage**: implementation
 - **Motivation / Decision**: enforce Python style with ruff to catch errors early.
 
-### 2025-07-16  PR #30
+### 2025-07-16  PR #31
 
 - **Summary**: added MIT LICENSE file and updated README with license section.
 - **Stage**: documentation
 - **Motivation / Decision**: clarify project licensing.
 
-### 2025-07-16  PR #31
+### 2025-07-16  PR #32
 
 - **Summary**: added negative tests for generation and todo-date scripts.
 - **Stage**: testing
 - **Motivation / Decision**: ensure scripts fail with bad permissions or malformed headers.
 
-## 2025-07-14  PR #32
+## 2025-07-14  PR #33
 
 - **Summary**: documented script public functions with params, returns and raises.
 - **Stage**: documentation

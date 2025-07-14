@@ -72,7 +72,7 @@
 - [x] Emphasise linting all Markdown files in AGENTS guide.
 - [x] Mention CODING_RULES doc link in AGENTS guide.
 - [ ] Regularly verify dependency versions for compatibility issues.
-- [ ] Provide script to check pinned package versions exist.
+- [x] Provide script to check pinned package versions exist.
 - [x] Update TypeScript to 5.5.4 in package.json.
 - [x] Clarify nested bullet indentation rule in AGENTS guide.
 - [x] Add Python linter (`ruff`) and update docs to mention new lint step.
