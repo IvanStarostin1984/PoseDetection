@@ -435,3 +435,10 @@ keep TODO aligned.
 - **Stage**: maintenance
 - **Motivation / Decision**: keep NOTES lint-compliant.
 - **Next step**: none.
+
+### 2025-07-14  PR #50
+
+- **Summary**: added Sphinx docs build and make docs command.
+- **Stage**: implementation
+- **Motivation / Decision**: roadmap item for full doc build; need local HTML docs.
+- **Next step**: none.

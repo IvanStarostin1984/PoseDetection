@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.17 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.18 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -72,6 +72,7 @@ Follow the coding rules described in `CODING_RULES.md`.
     - Always run `make lint-docs` after editing any Markdown file to avoid CI failures.
     - Run `make check-versions` when changing dependencies to
       verify pinned versions exist.
+    - Run `make docs` to build the HTML docs into `docs/_build`.
     - Python code under `scripts/` and `tests/` is linted with `ruff` via `make lint`.
     - `make test` expects dependencies from `.codex/setup.sh`.
 3. **Style rules** – keep code formatted (`black`, `prettier`,
