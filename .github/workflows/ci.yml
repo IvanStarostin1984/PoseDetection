@@ -39,6 +39,16 @@ jobs:
           npx --yes markdownlint-cli '**/*.md'
           grep -R --line-number -E '<{7}|={7}|>{7}' --exclude=ci.yml . && exit 1 || echo "No conflict markers"
 
+  markdown-link-check:
+    needs: [changes]
+    if: needs.changes.outputs.md_only == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: lycheeverse/lychee-action@v2.4.1
+        with:
+          args: --no-progress --verbose '**/*.md'
+
   check-versions:
     needs: [changes]
     if: needs.changes.outputs.deps == 'true'
@@ -46,6 +56,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: make check-versions
+
+  actionlint:
+    needs: [changes]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: rhysd/actionlint@v1.7.7
 
   test:
     needs: [changes]
