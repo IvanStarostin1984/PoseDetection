@@ -406,21 +406,27 @@ and ensure ruff works with current version.
 - **Motivation / Decision**: keep roadmap accurate now that features exist.
 - **Next step**: verify integration in upcoming releases.
 
-### 2025-07-20  PR #46
+### 2025-07-19  PR #46
+
+- **Summary**: bumped AGENTS guide to v1.17 with MD031 and MD034 notes.
+- **Stage**: documentation
+- **Motivation / Decision**: keep coding style rules accurate.
+
+### 2025-07-20  PR #47
 
 - **Summary**: improved README formatting around local run instructions and fixed ruff import order.
 - **Stage**: maintenance
 - **Motivation / Decision**: docs needed spacing tweaks and lint failed; moved imports to top.
 - **Next step**: none.
 
-### 2025-07-14  PR #47
+### 2025-07-14  PR #48
 
 - **Summary**: ticked roadmap item documenting how to run backend and frontend.
 - **Stage**: documentation
 - **Motivation / Decision**: README already explains local setup; keep TODO aligned.
 - **Next step**: none.
 
-### 2025-07-14  PR #48
+### 2025-07-14  PR #49
 
 - **Summary**: trimmed blank line and shortened history lines.
 - **Stage**: maintenance
