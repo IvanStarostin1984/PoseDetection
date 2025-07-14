@@ -53,6 +53,14 @@ npm run build
 npm test
 ```
 
+## Backend
+
+Start the API server with:
+
+```bash
+python -m backend.server
+```
+
 ## License
 
 PoseDetection is released under the MIT License. See [LICENSE](LICENSE).
