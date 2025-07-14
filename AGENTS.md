@@ -40,7 +40,7 @@ and run in local IDE to test manually.
 1. Run `.codex/setup.sh` (or `./setup.sh`) once after cloning &
    whenever dependencies change.
    *The script installs language tool‑chains,
-   pins versions and injects secrets.*
+   pins versions, installs dependencies and injects secrets.*
 2. Export **required secrets** (`GIT_TOKEN`, `GH_PAGES_TOKEN`, …)
    in the repository/organisation **Secrets** console.
 3. Verify the **secret‑detection helper step** in

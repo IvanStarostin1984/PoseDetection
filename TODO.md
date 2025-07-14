@@ -66,3 +66,4 @@
 - [x] Fix markdown formatting in NOTES template.
 - [x] Note that conflict-marker quoting is documented in AGENTS guide.
 - [ ] Implement generation script to support `make generate`.
+- [x] Extend setup script to install dependencies automatically.

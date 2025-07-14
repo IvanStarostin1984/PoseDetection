@@ -178,3 +178,11 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Stage**: documentation
 - **Motivation / Decision**: define ownership of generated files and guide regeneration.
 - **Next step**: implement the generation script.
+
+## 2025-07-14  PR #16
+
+- **Summary**: setup script now installs requirements and npm packages.
+- **Stage**: implementation
+- **Motivation / Decision**: simplify bootstrap by bundling dependency install
+  with toolchain setup.
+- **Next step**: none.
