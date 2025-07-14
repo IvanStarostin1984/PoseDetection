@@ -281,7 +281,14 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Motivation / Decision**: keep markdownlint green and clarify nested list style.
 - **Next step**: none.
 
-## 2025-07-14  PR #29
+### 2025-07-16  PR #29
+
+- **Summary**: added negative tests for generation and todo-date scripts.
+- **Stage**: testing
+- **Motivation / Decision**: ensure scripts fail with bad permissions or malformed headers.
+
+## 2025-07-14  PR #30
+
 - **Summary**: documented script public functions with params, returns and raises.
 - **Stage**: documentation
 - **Motivation / Decision**: follow CODING_RULES rule 18 to improve clarity.
