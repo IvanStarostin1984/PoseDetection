@@ -79,7 +79,7 @@
 - [x] Add MIT license file and reference it in README.
 - [x] Document public functions in scripts for clarity.
 - [x] Pin `websockets` dependency and update README accordingly.
-- [ ] Document how to run the backend and frontend locally.
+- [x] Document how to run the backend and frontend locally.
 - [x] Add server entrypoint and startup test for backend.
 - [x] Basic React frontend with PoseViewer and WebSocket hook.
 - [x] Add backend analytics module with WebSocket integration.

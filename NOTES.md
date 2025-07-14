@@ -408,3 +408,11 @@ and ensure ruff works with current version.
 - **Stage**: maintenance
 - **Motivation / Decision**: keep roadmap accurate now that features exist.
 - **Next step**: verify integration in upcoming releases.
+
+### 2025-07-20  PR #46
+
+- **Summary**: improved README formatting around local run instructions and fixed ruff import order.
+- **Stage**: maintenance
+- **Motivation / Decision**: docs needed spacing tweaks and lint failed; moved imports to top.
+- **Next step**: none.
+
