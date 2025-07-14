@@ -449,3 +449,10 @@ keep TODO aligned.
 - **Stage**: implementation
 - **Motivation / Decision**: roadmap item for full doc build; need local HTML docs.
 - **Next step**: none.
+
+### 2025-07-14  PR #52
+
+- **Summary**: added pre-commit config with ruff, black and markdownlint; updated docs.
+- **Stage**: implementation
+- **Motivation / Decision**: automate linting per TODO item; pre-commit runs before each commit.
+- **Next step**: integrate actionlint hook.

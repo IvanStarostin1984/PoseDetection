@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.18 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.19 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -50,6 +50,7 @@ Follow the coding rules described in `CODING_RULES.md`.
 3. Verify the **secret‑detection helper step** in
     `.github/workflows/ci.yml` (see § 4) so forks without secrets still pass.
 4. On the first PR, update README badges to point at your fork (owner/repo).
+5. Install `pre-commit` and run `pre-commit install` to enable the git hook.
 
 ---
 
@@ -62,6 +63,7 @@ Follow the coding rules described in `CODING_RULES.md`.
    ```bash
    make lint                  # all format / static‑analysis steps
    make test                  # unit/integration tests with coverage ≥80%
+   pre-commit run --files <changed>
    ```
 
     - For docs-only changes run `make lint` (or `make lint-docs`) before committing.

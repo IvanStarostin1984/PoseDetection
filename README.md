@@ -38,6 +38,8 @@ WebSocket streams pose keypoints extracted from each video frame.
 
 Run `make lint` to check Markdown and Python code style (ruff).
 Run `make test` to execute the future test-suite.
+Install pre-commit and run `pre-commit install` so ruff, black and
+markdownlint run automatically before each commit.
 
 ## Setup
 
