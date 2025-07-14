@@ -78,3 +78,4 @@
 - [x] Add Python linter (`ruff`) and update docs to mention new lint step.
 - [x] Add MIT license file and reference it in README.
 - [x] Document public functions in scripts for clarity.
+- [ ] Pin `websockets` dependency and update README accordingly.

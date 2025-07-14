@@ -328,3 +328,10 @@ and fixed Makefile lint command.
 - **Motivation / Decision**: keep contributor guide accurate
 and ensure ruff works with current version.
 - **Next step**: none.
+
+### 2025-07-17  PR #36
+
+- **Summary**: pinned websockets and updated README and TODO.
+- **Stage**: maintenance
+- **Motivation / Decision**: prepare for upcoming WebSocket features.
+- **Next step**: none.
