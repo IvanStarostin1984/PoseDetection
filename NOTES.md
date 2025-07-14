@@ -414,16 +414,19 @@ and ensure ruff works with current version.
 
 ### 2025-07-20  PR #47
 
-- **Summary**: improved README formatting around local run instructions and fixed ruff import order.
+- **Summary**: improved README formatting around
+local run instructions and fixed ruff import order.
 - **Stage**: maintenance
-- **Motivation / Decision**: docs needed spacing tweaks and lint failed; moved imports to top.
+- **Motivation / Decision**: docs needed spacing tweaks
+and lint failed; moved imports to top.
 - **Next step**: none.
 
 ### 2025-07-14  PR #48
 
 - **Summary**: ticked roadmap item documenting how to run backend and frontend.
 - **Stage**: documentation
-- **Motivation / Decision**: README already explains local setup; keep TODO aligned.
+- **Motivation / Decision**: README already explains local setup;
+keep TODO aligned.
 - **Next step**: none.
 
 ### 2025-07-14  PR #49
