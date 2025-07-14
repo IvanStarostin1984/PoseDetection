@@ -1,7 +1,9 @@
-.PHONY: lint test generate
+.PHONY: lint lint-docs test generate
 
 lint:
 	npx --yes markdownlint-cli **/*.md
+
+lint-docs: lint
 
 test:
 	@if [ -d tests ]; then \

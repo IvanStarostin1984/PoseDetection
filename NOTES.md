@@ -244,3 +244,10 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Stage**: documentation
 - **Motivation / Decision**: follow newly added coding rules doc.
 - **Next step**: none.
+
+## 2025-07-14  PR #25
+
+- **Summary**: AGENTS v1.12 instructs verifying pinned package versions exist.
+- **Stage**: documentation
+- **Motivation / Decision**: ensure pinned dependencies point to real versions.
+- **Next step**: add tooling to automate the check.

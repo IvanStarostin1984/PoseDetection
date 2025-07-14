@@ -72,3 +72,4 @@
 - [x] Remind to run `make lint-docs` after editing NOTES or TODO.
 - [x] Emphasise linting all Markdown files in AGENTS guide.
 - [x] Mention CODING_RULES doc link in AGENTS guide.
+- [ ] Provide script to check pinned package versions exist.
