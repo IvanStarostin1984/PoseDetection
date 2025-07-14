@@ -41,7 +41,6 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Motivation / Decision**: explain quick start and link to tech challenge.
 - **Next step**: none.
 
-
 ## 2025-07-13  PR #-1
 
 - **Summary**: added Makefile with lint and test tasks;
@@ -374,32 +373,30 @@ and ensure ruff works with current version.
   and note that tests require dependencies from setup.
 - **Next step**: none.
 
-### 2025-07-14  PR #41
-
-- **Summary**: WebSocket payload now includes landmarks list, frontend and tests updated.
+- **Summary**: Payload now includes landmarks; updated frontend and tests.
 - **Stage**: implementation
 - **Motivation / Decision**: align message structure for pose viewer rendering.
 - **Next step**: none.
 
 ### 2025-07-19  PR #42
 
-- **Summary**: added uvicorn entrypoint for backend server, updated docs and tests.
+- **Summary**: added uvicorn entrypoint; updated docs and tests.
 - **Stage**: implementation
-- **Motivation / Decision**: allow running `python -m backend.server` and verify startup.
+- **Motivation / Decision**: allow `python -m backend.server` and check startup.
 - **Next step**: none.
 
 ### 2025-07-14  PR #43
 
-- **Summary**: PoseViewer now requests webcam with cleanup and tests mock the stream.
+- **Summary**: PoseViewer requests webcam with cleanup; tests mock the stream.
 - **Stage**: implementation
-- **Motivation / Decision**: completed TODO webcam feature using custom mock as jest-mock-media was unavailable.
+- **Motivation / Decision**: used webcam mock; jest-mock-media unavailable.
 - **Next step**: none.
 
 ### 2025-07-18  PR #44
 
-- **Summary**: updated pose metrics extraction to use side-specific landmarks and added tests.
+- **Summary**: updated metrics to use side-specific landmarks and added tests.
 - **Stage**: implementation
-- **Motivation / Decision**: ensure analytics support left/right joint names and behave correctly when landmarks are provided or missing.
+- **Motivation / Decision**: analytics handle side names and missing points.
 - **Next step**: none.
 
 ### 2025-07-19  PR #45
@@ -408,3 +405,10 @@ and ensure ruff works with current version.
 - **Stage**: maintenance
 - **Motivation / Decision**: keep roadmap accurate now that features exist.
 - **Next step**: verify integration in upcoming releases.
+
+### 2025-07-14  PR #46
+
+- **Summary**: trimmed blank line and shortened history lines.
+- **Stage**: maintenance
+- **Motivation / Decision**: keep NOTES lint-compliant.
+- **Next step**: none.
