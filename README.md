@@ -56,16 +56,19 @@ npm test
 ## Running locally
 
 Start the backend with:
+
 ```bash
 python -m backend.server
 ```
 
 Build and serve the frontend in another terminal:
+
 ```bash
 npm run build
 python -m http.server --directory frontend/dist 8080
 ```
-Then open http://localhost:8080 in your browser.
+
+Then open [http://localhost:8080](http://localhost:8080) in your browser.
 
 ## Backend
 
