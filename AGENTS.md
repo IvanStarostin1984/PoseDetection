@@ -79,9 +79,12 @@ Follow the coding rules described in `CODING_RULES.md`.
    (e.g. fail fast when quality gates or metric thresholds aren’t met).
 5. **Version‑pin policy** – pin *major*/*minor* versions for critical runtimes &
    actions (e.g. `actions/checkout@v4`, `node@20`, `python~=3.11`).
-6. **When docs change, update them everywhere** – if ambiguity arises,
+6. **Confirm pinned packages exist** – verify each version listed in
+   `requirements.txt`, `package.json` or other manifests is available on
+   its package registry before committing.
+7. **When docs change, update them everywhere** – if ambiguity arises,
    `/docs` overrides this file.
-7. **Log discipline** – when a TODO item is ticked you **must** add the matching
+8. **Log discipline** – when a TODO item is ticked you **must** add the matching
    section in `NOTES.md` *in the same PR*; this keeps roadmap and log in‑sync.
 
 ---

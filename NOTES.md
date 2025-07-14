@@ -245,13 +245,20 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Motivation / Decision**: follow newly added coding rules doc.
 - **Next step**: none.
 
-### 2025-07-14  PR #25
+## 2025-07-14  PR #25
+
+- **Summary**: AGENTS v1.12 instructs verifying pinned package versions exist.
+- **Stage**: documentation
+- **Motivation / Decision**: ensure pinned dependencies point to real versions.
+- **Next step**: add tooling to automate the check.
+
+### 2025-07-14  PR #26
 
 - **Summary**: added script to update TODO header date with make target and tests.
 - **Stage**: implementation
 - **Motivation / Decision**: automate roadmap timestamp per roadmap item.
 
-## 2025-07-14  PR #26
+## 2025-07-14  PR #27
 
 - **Summary**: updated TypeScript dev dependency to 5.5.4.
 - **Stage**: maintenance
