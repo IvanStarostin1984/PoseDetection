@@ -335,3 +335,11 @@ and ensure ruff works with current version.
 - **Stage**: maintenance
 - **Motivation / Decision**: prepare for upcoming WebSocket features.
 - **Next step**: none.
+
+### 2025-07-18  PR #37
+
+- **Summary**: ticked TODO item for websockets pin after confirming README and
+  requirements list version 15.0.1.
+- **Stage**: maintenance
+- **Motivation / Decision**: keep roadmap accurate with repository state.
+- **Next step**: none.
