@@ -32,7 +32,9 @@ The Python dependencies install `mediapipe==0.10.13` and
 ### Backend server
 
 Run `python -m backend.main` to launch the FastAPI server. The `/pose`
-WebSocket streams pose keypoints extracted from each video frame.
+WebSocket streams pose keypoints extracted from each video frame. The
+payload includes simple analytics like knee angle, balance and a
+``pose_class`` field indicating ``standing`` or ``sitting``.
 
 ## Development
 
@@ -52,6 +54,9 @@ The `frontend` folder contains a small React app. Build it and run its tests:
 npm run build
 npm test
 ```
+
+The PoseViewer component shows the live webcam feed. Use the **Start Webcam**
+button to toggle the stream.
 
 ## Running locally
 

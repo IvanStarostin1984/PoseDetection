@@ -16,7 +16,7 @@ def test_build_payload_format():
     assert isinstance(payload['landmarks'], list)
     assert payload['landmarks'][0] == {'x': 0.1, 'y': 0.2}
     metrics = payload['metrics']
-    assert {'knee_angle', 'balance'} <= metrics.keys()
+    assert {'knee_angle', 'balance', 'pose_class'} <= metrics.keys()
 
 
 def test_server_starts():

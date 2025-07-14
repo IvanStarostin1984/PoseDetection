@@ -1,7 +1,12 @@
 import math
 import pytest
 
-from backend.analytics import calculate_angle, balance_score, extract_pose_metrics
+from backend.analytics import (
+    calculate_angle,
+    balance_score,
+    extract_pose_metrics,
+    pose_classification,
+)
 
 
 def test_calculate_angle_basic():
@@ -27,6 +32,7 @@ def test_extract_pose_metrics_missing_landmarks():
     metrics = extract_pose_metrics({})
     assert math.isnan(metrics['knee_angle'])
     assert math.isnan(metrics['balance'])
+    assert metrics['pose_class'] == 'unknown'
 
 
 def test_extract_pose_metrics_left_side():
@@ -39,6 +45,7 @@ def test_extract_pose_metrics_left_side():
     metrics = extract_pose_metrics(lms)
     assert not math.isnan(metrics['knee_angle'])
     assert not math.isnan(metrics['balance'])
+    assert metrics['pose_class'] in {'standing', 'sitting', 'unknown'}
 
 
 def test_extract_pose_metrics_right_side():
@@ -51,3 +58,16 @@ def test_extract_pose_metrics_right_side():
     metrics = extract_pose_metrics(lms)
     assert not math.isnan(metrics['knee_angle'])
     assert not math.isnan(metrics['balance'])
+    assert metrics['pose_class'] in {'standing', 'sitting', 'unknown'}
+
+
+def test_pose_classification():
+    lms = {
+        'left_shoulder': {'x': 0.0, 'y': 0.0},
+        'left_hip': {'x': 0.0, 'y': 1.0},
+        'left_knee': {'x': 0.0, 'y': 2.0},
+        'left_ankle': {'x': 0.0, 'y': 3.0},
+    }
+    assert pose_classification(lms) == 'standing'
+    lms['left_knee']['x'] = 1.0
+    assert pose_classification(lms) == 'sitting'
