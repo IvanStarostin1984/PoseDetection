@@ -41,6 +41,7 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Motivation / Decision**: explain quick start and link to tech challenge.
 - **Next step**: none.
 
+
 ## 2025-07-13  PR #-1
 
 - **Summary**: added Makefile with lint and test tasks;
@@ -363,3 +364,10 @@ and ensure ruff works with current version.
 - **Motivation / Decision**: integrate backend metrics to follow tech
   challenge.
 - **Next step**: none.
+
+### 2025-07-19  PR #40
+
+- **Summary**: marked PoseViewer and analytics tasks done.
+- **Stage**: maintenance
+- **Motivation / Decision**: keep roadmap accurate now that features exist.
+- **Next step**: verify integration in upcoming releases.
