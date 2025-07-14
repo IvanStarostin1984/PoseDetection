@@ -183,7 +183,7 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 
 - **Summary**: added .gitignore and updated guides and roadmap.
 - **Stage**: documentation
-- **Motivation / Decision**: enforce ignoring build paths and track the rule in docs.
+- **Motivation / Decision**: enforce ignoring build paths; document the rule.
 
 ## 2025-07-14  PR #17
 
@@ -204,7 +204,7 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 
 ## 2025-07-14  PR #19
 
-- **Summary**: added generation script and make target; updated guides and tests.
+- **Summary**: added generation script and make target; updated guides/tests.
 - **Stage**: implementation
 - **Motivation / Decision**: needed make generate to
   create placeholder outputs via scripts/generate.py.
@@ -221,4 +221,10 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Summary**: updated AGENTS guide to v1.9 adding lint-docs reminder for NOTES/TODO.
 - **Stage**: documentation
 - **Motivation / Decision**: ensure log files stay within line length by prompting `make lint-docs`.
+
+## 2025-07-14  PR #22
+
+- **Summary**: fixed long lines in NOTES so markdownlint passes.
+- **Stage**: maintenance
+- **Motivation / Decision**: keep history linter-compliant.
 - **Next step**: none.
