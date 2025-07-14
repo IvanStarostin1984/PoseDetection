@@ -566,3 +566,10 @@ updated requirements and workflow.
 - **Stage**: documentation
 - **Motivation / Decision**: keep instructions aligned with server entry point.
 - **Next step**: none.
+
+### 2025-07-14  PR #68
+
+- **Summary**: fixed quoting in CI secret-check step.
+- **Stage**: maintenance
+- **Motivation / Decision**: ensure variable expansion works in GitHub Actions.
+- **Next step**: none.

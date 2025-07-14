@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.20 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.21 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -130,7 +130,7 @@ jobs:
       has_pages_token: ${{ steps.echo.outputs.has_pages }}
     steps:
       - id: echo         # returns 'true' / 'false'
-        run: echo "has_pages=${{ secrets.GH_PAGES_TOKEN != '' }}" >> $GITHUB_OUTPUT
+        run: echo "has_pages=${{ secrets.GH_PAGES_TOKEN != '' }}" >> "$GITHUB_OUTPUT"
 
   lint-docs:
     needs: [changes]
