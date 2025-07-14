@@ -19,6 +19,10 @@ from backend.analytics import extract_pose_metrics
 metrics = extract_pose_metrics(landmarks)
 ```
 
+The returned dictionary contains ``knee_angle`` in degrees,
+``balance`` between the hips and ``pose_class`` which is either
+``"standing"`` or ``"sitting"`` when the angles can be computed.
+
 Start the backend server with:
 
 ```bash

@@ -41,7 +41,8 @@
 
 ## 3 · Quality & automation
 
-- [ ] Add pre-commit hooks (formatters, linters, markdownlint, actionlint)
+- [x] Add pre-commit hooks (formatters, linters, markdownlint, actionlint)
+- [ ] Add actionlint to the pre-commit configuration
 - [x] Enforce coverage threshold (≥ 80 % branch, exclude `/generated/**`)
 - [ ] Add linters for conflict markers, trailing spaces and NOTES ordering
 - [ ] Introduce dependabot / Renovate with the version‑pin policy from
@@ -87,3 +88,4 @@
 - [x] Add backend analytics module with WebSocket integration.
 - [x] Add MediaPipe pose detector and FastAPI server with `/pose` WebSocket.
 - [x] Support side-specific landmarks in `extract_pose_metrics`.
+- [x] Add pose classification metric and expose it in server and UI.

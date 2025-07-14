@@ -1,40 +1,52 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useWebSocket from '../hooks/useWebSocket';
 import { drawSkeleton, Point } from '../utils/poseDrawing';
 import MetricsPanel from './MetricsPanel';
 
 interface PoseData {
   landmarks: Point[];
-  metrics: Record<string, number>;
+  metrics: Record<string, number | string>;
 }
 
 const PoseViewer: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { poseData } = useWebSocket<PoseData>('/pose');
+  const [streaming, setStreaming] = useState(true);
+  const streamRef = useRef<MediaStream | null>(null);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-    let active = true;
-    navigator.mediaDevices
-      .getUserMedia({ video: true })
-      .then((stream) => {
-        if (active) {
+    let cancel = false;
+    if (streaming) {
+      navigator.mediaDevices
+        .getUserMedia({ video: true })
+        .then((stream) => {
+          if (cancel) {
+            stream.getTracks().forEach((t) => t.stop());
+            return;
+          }
           video.srcObject = stream;
-        }
-      })
-      .catch(() => {
-        // ignore failure to access webcam
-      });
+          streamRef.current = stream;
+        })
+        .catch(() => {
+          // ignore failure to access webcam
+        });
+    } else if (streamRef.current) {
+      streamRef.current.getTracks().forEach((t) => t.stop());
+      streamRef.current = null;
+      video.srcObject = null;
+    }
     return () => {
-      active = false;
-      const src = video.srcObject as MediaStream | null;
-      if (src) {
-        for (const t of src.getTracks()) t.stop();
+      cancel = true;
+      if (streamRef.current) {
+        streamRef.current.getTracks().forEach((t) => t.stop());
+        video.srcObject = null;
+        streamRef.current = null;
       }
     };
-  }, []);
+  }, [streaming]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -49,6 +61,9 @@ const PoseViewer: React.FC = () => {
       <video ref={videoRef} autoPlay muted />
       <canvas ref={canvasRef} width={640} height={480} />
       <MetricsPanel data={poseData?.metrics} />
+      <button onClick={() => setStreaming((s) => !s)}>
+        {streaming ? 'Stop Webcam' : 'Start Webcam'}
+      </button>
     </div>
   );
 };

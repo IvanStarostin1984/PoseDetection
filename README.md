@@ -32,7 +32,9 @@ The Python dependencies install `mediapipe==0.10.13` and
 ### Backend server
 
 Run `python -m backend.main` to launch the FastAPI server. The `/pose`
-WebSocket streams pose keypoints extracted from each video frame.
+WebSocket streams pose keypoints extracted from each video frame. The
+payload includes simple analytics like knee angle, balance and a
+``pose_class`` field indicating ``standing`` or ``sitting``.
 
 ## Development
 
@@ -40,6 +42,8 @@ Run `make lint` to check Markdown and Python code style (ruff).
 Run `make test` to execute the future test-suite.
 CI runs `make check-versions` whenever dependency files change to
 ensure pinned versions are valid.
+Install pre-commit and run `pre-commit install` so ruff, black and
+markdownlint run automatically before each commit.
 
 ## Setup
 
@@ -54,6 +58,9 @@ The `frontend` folder contains a small React app. Build it and run its tests:
 npm run build
 npm test
 ```
+
+The PoseViewer component shows the live webcam feed. Use the **Start Webcam**
+button to toggle the stream.
 
 ## Running locally
 
