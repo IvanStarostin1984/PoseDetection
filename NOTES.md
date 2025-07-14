@@ -244,3 +244,10 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Stage**: documentation
 - **Motivation / Decision**: follow newly added coding rules doc.
 - **Next step**: none.
+
+### 2025-07-14 mediapipe downgrade
+
+- **Summary**: downgraded mediapipe to 0.10.13 so numpy 2 works; added dependency note in README.
+- **Stage**: maintenance
+- **Motivation / Decision**: mediapipe 0.10.21 required numpy<2; earliest PyPI wheel supporting numpy 2 is 0.10.13.
+- **Next step**: monitor mediapipe releases for numpy 2 default.
