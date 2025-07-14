@@ -452,6 +452,12 @@ keep TODO aligned.
 
 ### 2025-07-14  PR #52
 
+- **Summary**: added webcam toggle button with tests.
+- **Stage**: implementation
+- **Motivation / Decision**: allow users to start or stop webcam streaming from the UI.
+
+### 2025-07-14  PR #53
+
 - **Summary**: added pose classification metric and updated server, UI and docs.
 - **Stage**: implementation
 - **Motivation / Decision**: feature request to distinguish standing vs sitting
