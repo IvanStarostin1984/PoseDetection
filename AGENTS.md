@@ -173,7 +173,8 @@ jobs:
 <!-- markdownlint-enable MD013 -->
 
 - **Docs‑only changes** run in seconds (`lint-docs` + `markdown-link-check`).
-- Use `<!-- lychee skip -->` after local URLs (e.g. `http://localhost:`) so lychee doesn’t fail.
+- Use `<!-- lychee skip -->` after local URLs (e.g. `http://localhost:`)
+  so lychee doesn’t fail.
 - **Code changes** run full lint + tests (`test`) and `actionlint`.
 - Add job matrices or deployments later—guardrails above already catch the 90 %
   most common issues.
