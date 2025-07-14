@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.16 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.17 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -162,6 +162,7 @@ jobs:
 - ≤ 20 logical LOC per function, ≤ 2 nesting levels.
 - Surround headings / lists / fenced code with a blank line
   (markdownlint MD022, MD032).
+- Surround fenced code blocks with a blank line (markdownlint MD031).
 - **No trailing spaces.** Run `git diff --check` or `make lint-docs`.
 - Wrap identifiers like `__init__` in back‑ticks to avoid MD050.
 - Each public API carries a short doc‑comment.
@@ -170,6 +171,7 @@ jobs:
 - Use `-` for bullet lists.
 - Indent nested bullet lists by two spaces relative to their parent item.
 - Use a normal space after `#` in headings.
+- Avoid bare URLs; format them as Markdown links (MD034).
 - Avoid inline HTML.
 
 ---

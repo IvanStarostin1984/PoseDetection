@@ -1,4 +1,7 @@
 from backend.server import build_payload
+import sys
+import subprocess
+import time
 
 
 def test_build_payload_format():
@@ -14,10 +17,6 @@ def test_build_payload_format():
     assert payload['landmarks'][0] == {'x': 0.1, 'y': 0.2}
     metrics = payload['metrics']
     assert {'knee_angle', 'balance'} <= metrics.keys()
-
-import sys
-import subprocess
-import time
 
 
 def test_server_starts():

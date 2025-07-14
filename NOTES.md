@@ -408,3 +408,10 @@ and ensure ruff works with current version.
 - **Stage**: maintenance
 - **Motivation / Decision**: keep roadmap accurate now that features exist.
 - **Next step**: verify integration in upcoming releases.
+
+### 2025-07-19  PR #draft
+
+- **Summary**: bumped AGENTS guide to v1.17 with MD031 and MD034 notes.
+- **Stage**: documentation
+- **Motivation / Decision**: keep coding style rules accurate.
+- **Next step**: none.
