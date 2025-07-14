@@ -435,3 +435,10 @@ keep TODO aligned.
 - **Stage**: maintenance
 - **Motivation / Decision**: keep NOTES lint-compliant.
 - **Next step**: none.
+
+### 2025-07-14  PR #50
+
+- **Summary**: enforced test coverage via pytest-cov and pinned version.
+- **Stage**: maintenance
+- **Motivation / Decision**: ensure tests check coverage ≥80%; tick roadmap.
+- **Next step**: monitor CI and expand tests.

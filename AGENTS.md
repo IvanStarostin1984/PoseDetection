@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.17 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.18 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -61,7 +61,7 @@ Follow the coding rules described in `CODING_RULES.md`.
 
    ```bash
    make lint                  # all format / static‑analysis steps
-   make test                  # project’s unit‑/integration tests
+   make test                  # unit/integration tests with coverage ≥80%
    ```
 
     - For docs-only changes run `make lint` (or `make lint-docs`) before committing.
