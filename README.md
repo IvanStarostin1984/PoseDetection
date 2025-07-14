@@ -31,7 +31,7 @@ The Python dependencies install `mediapipe==0.10.13` which supports
 
 ## Development
 
-Run `make lint` to check documentation style.
+Run `make lint` to check Markdown and Python code style (ruff).
 Run `make test` to execute the future test-suite.
 
 ## Setup
