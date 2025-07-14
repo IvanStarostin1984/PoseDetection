@@ -408,3 +408,10 @@ and ensure ruff works with current version.
 - **Stage**: maintenance
 - **Motivation / Decision**: keep roadmap accurate now that features exist.
 - **Next step**: verify integration in upcoming releases.
+### 2025-07-14  PR #46
+
+- **Summary**: ticked roadmap item documenting how to run backend and frontend.
+- **Stage**: documentation
+- **Motivation / Decision**: README already explains local setup; keep TODO aligned.
+- **Next step**: none.
+
