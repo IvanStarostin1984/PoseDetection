@@ -459,18 +459,20 @@ keep TODO aligned.
 
 ### 2025-07-14  PR #53
 
-- **Summary**: added pre-commit config with ruff, black and markdownlint; updated docs.
+- **Summary**: added pre-commit config with ruff,
+  black and markdownlint; updated docs.
 - **Stage**: implementation
-- **Motivation / Decision**: automate linting per TODO item; pre-commit runs before each commit.
+- **Motivation / Decision**: automate linting per TODO item;
+  pre-commit runs before each commit.
 - **Next step**: integrate actionlint hook.
 
 ### 2025-07-14  PR #54
 
 - **Summary**: added `main` function in backend server 
-to start uvicorn and wrote a startup test.
+  to start uvicorn and wrote a startup test.
 - **Stage**: implementation
 - **Motivation / Decision**: run the API with 
-`python -m backend.server`; ticked roadmap entrypoint task.
+  `python -m backend.server`; ticked roadmap entrypoint task.
 - **Next step**: none.
 
 ### 2025-07-14  PR #55
@@ -478,7 +480,7 @@ to start uvicorn and wrote a startup test.
 - **Summary**: WebSocket payload now returns landmarks list with metrics.
 - **Stage**: implementation
 - **Motivation / Decision**: needed richer message for frontend; 
-updated tests accordingly.
+  updated tests accordingly.
 - **Next step**: none.
 
 ### 2025-07-14  PR #56
