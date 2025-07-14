@@ -148,7 +148,8 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 
 ## 2025-07-14  PR #12
 
-- **Summary**: bumped AGENTS to v1.4, escaped conflict markers and updated CI.
-- **Stage**: documentation
-- **Motivation / Decision**: avoid false positives from grep rule.
+- **Summary**: excluded the CI workflow from conflict marker grep check.
+- **Stage**: maintenance
+- **Motivation / Decision**: avoid false positives when linting docs using a
+  regex with `<{7}` style quantifiers.
 - **Next step**: none.

@@ -28,9 +28,7 @@ and run in local IDE to test manually.
 - **Generated-files rule** – Anything under `generated/**` or `openapi/**` is
   code-generated—never hand-edit; instead rerun the generator.
 - **Search for conflict markers before every commit** –
-`git grep -n '&lt;&lt;&lt;&lt;&lt;&lt;&lt;\|&#61;&#61;&#61;&#61;&#61;&#61;&#61;\|&gt;&gt;&gt;&gt;&gt;&gt;&gt;'` must return nothing.
-- **Escape conflict markers in docs** – write them as
-  `&lt;&lt;&lt;&lt;&lt;&lt;&lt;`, `&#61;&#61;&#61;&#61;&#61;&#61;&#61;`, `&gt;&gt;&gt;&gt;&gt;&gt;&gt;` to avoid false positives.
+  `git grep -n -E '<{7}|={7}|>{7}'` must return nothing.
 
 ---
 
@@ -117,7 +115,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: |
           npx --yes markdownlint-cli '**/*.md'
-        grep -R --line-number -E '&lt;&lt;&lt;&lt;&lt;&lt;&lt;|&#61;&#61;&#61;&#61;&#61;&#61;&#61;|&gt;&gt;&gt;&gt;&gt;&gt;&gt;' . && exit 1 || echo "No conflict markers"
+          grep -R --line-number -E '<{7}|={7}|>{7}' --exclude=ci.yml . && exit 1 || echo "No conflict markers"
 
   test:
     needs: [changes]
