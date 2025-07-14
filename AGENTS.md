@@ -70,7 +70,7 @@ Follow the coding rules described in `CODING_RULES.md`.
     - When updating `NOTES.md` or `TODO.md` run `make lint-docs` to
       catch long-line issues locally.
     - After editing `TODO.md` also run `make update-todo-date` to refresh
-      the header date.
+   the header date.
     - Always run `make lint-docs` after editing any Markdown file to avoid CI failures.
      - Run `make check-versions` when changing dependencies to
        verify pinned versions exist. CI runs this automatically when
