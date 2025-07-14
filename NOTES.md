@@ -570,6 +570,12 @@ updated requirements and workflow.
 
 ### 2025-07-14  PR #68
 
+- **Summary**: fixed quoting in CI secret-check step.
+- **Stage**: maintenance
+- **Motivation / Decision**: ensure variable expansion works in GitHub Actions.
+
+### 2025-07-14  PR #69
+
 - **Summary**: fixed trailing spaces and wrapped long line in NOTES.
 - **Stage**: maintenance
 - **Motivation / Decision**: keep docs lint-compliant.
