@@ -343,3 +343,9 @@ and ensure ruff works with current version.
 - **Stage**: maintenance
 - **Motivation / Decision**: keep roadmap accurate with repository state.
 - **Next step**: none.
+
+### 2025-07-14  PR #38
+- **Summary**: implemented MediaPipe pose detector and FastAPI WebSocket server.
+- **Stage**: implementation
+- **Motivation / Decision**: needed backend to stream 17 keypoints per frame.
+- **Next step**: none.
