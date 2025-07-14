@@ -14,6 +14,29 @@ const PoseViewer: React.FC = () => {
   const { poseData } = useWebSocket<PoseData>('/pose');
 
   useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    let active = true;
+    navigator.mediaDevices
+      .getUserMedia({ video: true })
+      .then((stream) => {
+        if (active) {
+          video.srcObject = stream;
+        }
+      })
+      .catch(() => {
+        // ignore failure to access webcam
+      });
+    return () => {
+      active = false;
+      const src = video.srcObject as MediaStream | null;
+      if (src) {
+        for (const t of src.getTracks()) t.stop();
+      }
+    };
+  }, []);
+
+  useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas || !poseData) return;
     const ctx = canvas.getContext('2d');

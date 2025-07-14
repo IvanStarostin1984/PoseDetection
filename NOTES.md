@@ -359,3 +359,10 @@ and ensure ruff works with current version.
 - **Motivation / Decision**: integrate backend metrics to follow tech
   challenge.
 - **Next step**: none.
+
+### 2025-07-14  PR #40
+
+- **Summary**: PoseViewer now requests webcam with cleanup and tests mock the stream.
+- **Stage**: implementation
+- **Motivation / Decision**: completed TODO webcam feature using custom mock as jest-mock-media was unavailable.
+- **Next step**: none.
