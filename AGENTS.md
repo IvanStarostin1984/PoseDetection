@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.14 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.15 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -75,6 +75,7 @@ Follow the coding rules described in `CODING_RULES.md`.
 
 3. **Style rules** – keep code formatted (`black`, `prettier`,
    `dart format`, etc.) and Markdown lines ≤ 80 chars;
+   avoid multiple consecutive blank lines (markdownlint MD012);
    exactly **one blank line** separates log entries.
 4. **Exit‑code conventions** – scripts must exit ≠ 0 on failure so
    CI catches regressions

@@ -1,5 +1,4 @@
 import json
-from pathlib import Path
 
 import scripts.check_versions as cv
 
