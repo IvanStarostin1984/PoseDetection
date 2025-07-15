@@ -6,13 +6,16 @@ import mediapipe as mp
 
 class FakePose:
     def __init__(self, *args, **kwargs):
-        pass
+        self.closed = False
 
     def process(self, frame):
         lm = types.SimpleNamespace(x=1.0, y=2.0, visibility=0.5)
         return types.SimpleNamespace(
             pose_landmarks=types.SimpleNamespace(landmark=[lm] * 33)
         )
+
+    def close(self):
+        self.closed = True
 
 
 def test_process_success(monkeypatch):
@@ -32,3 +35,11 @@ def test_process_none():
         pass
     else:
         assert False
+
+
+def test_close(monkeypatch):
+    fake = FakePose()
+    monkeypatch.setattr(mp.solutions.pose, "Pose", lambda *a, **k: fake)
+    det = pd.PoseDetector()
+    det.close()
+    assert getattr(fake, "closed", False) is True
