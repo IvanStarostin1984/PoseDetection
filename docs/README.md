@@ -28,3 +28,12 @@ Start the backend server with:
 ```bash
 python -m backend.server
 ```
+
+## Frontend metrics panel
+
+The React frontend displays these metrics below the video feed. When
+connected you might see text like:
+
+```text
+Balance: 0.85 Pose: standing Knee Angle: 160.00°
+```

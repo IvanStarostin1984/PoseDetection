@@ -850,3 +850,9 @@ by reinitialising the pose detector per connection.
 - **Motivation / Decision**: ensure stable WebSocket handling and guide
   contributors to run setup so tests pass.
 - **Next step**: none.
+### 2025-07-16  PR #106
+
+- **Summary**: metrics panel now shows knee angle with tests and docs example.
+- **Stage**: implementation
+- **Motivation / Decision**: display full analytics to users per feature request.
+- **Next step**: none.
