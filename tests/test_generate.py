@@ -19,6 +19,7 @@ def test_generate_script_unwritable(tmp_path, monkeypatch):
     scripts_dir = repo_root / "scripts"
     scripts_dir.mkdir()
     from scripts import generate
+
     monkeypatch.setattr(generate, "__file__", str(scripts_dir / "generate.py"))
 
     gen_dir = repo_root / "generated"

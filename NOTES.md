@@ -730,3 +730,10 @@ with `.gitkeep` to remove Sphinx warning.
 - **Motivation / Decision**: remove ts-jest deprecation warning during
   `npm test`.
 - **Next step**: none.
+
+### 2025-07-15  PR #90
+
+- **Summary**: added black to lint step and formatted Python files.
+- **Stage**: implementation
+- **Motivation / Decision**: enforce consistent style using black in CI; updated docs.
+- **Next step**: none.
