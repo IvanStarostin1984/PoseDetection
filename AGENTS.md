@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.27 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.28 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -44,6 +44,7 @@ document information in code files.
 ---
 
 ## Shared environment
+
 shell: |
   export PRE_COMMIT_HOME="$WORKSPACE/.pre-commit-cache"
 
@@ -60,7 +61,8 @@ shell: |
 4. On the first PR, update README badges to point at your fork (owner/repo).
 5. `.codex/setup.sh` installs `pre-commit` and sets up the hooks automatically
    on the first run.
-   Set `SKIP_PRECOMMIT=1` to bypass this when offline.
+   Set `SKIP_PRECOMMIT=1` to bypass this when offline. The CI workflow passes
+   this flag because the runners have restricted network access.
 
 ---
 

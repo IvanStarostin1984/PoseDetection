@@ -699,3 +699,12 @@ in `.pre-commit-cache`
 - **Stage**: documentation
 - **Motivation / Decision**: keep roadmap in sync with completed work.
 - **Next step**: none.
+
+### 2025-07-15  PR #86
+
+- **Summary**: CI now skips pre-commit hook installation using `SKIP_PRECOMMIT=1`;
+  fixed AGENTS markdown formatting.
+- **Stage**: maintenance
+- **Motivation / Decision**: pre-commit fetch failed in CI without network;
+  add note in guide and update workflow.
+- **Next step**: none.

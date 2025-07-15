@@ -95,3 +95,4 @@
 - [x] Add SKIP_PRECOMMIT option in setup script to skip hook installation when offline.
 - [x] Store pre-commit hooks in `.pre-commit-cache` for offline reuse.
 - [x] Add index.tsx entrypoint and bundler script for frontend.
+- [x] Configure CI to pass `SKIP_PRECOMMIT=1` when running setup.
