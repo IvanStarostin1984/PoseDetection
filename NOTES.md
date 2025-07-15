@@ -660,3 +660,10 @@ automatically and docs updated.
 - **Stage**: implementation
 - **Motivation / Decision**: follow pin policy and automate updates.
 - **Next step**: monitor upcoming dependency PRs.
+
+### 2025-07-15  PR #81
+
+- **Summary**: WebSocket URLs now accept custom host/port with default 8000; README documents example. Setup script can skip pre-commit.
+- **Stage**: implementation
+- **Motivation / Decision**: allow connecting to remote backends and avoid setup failures in offline environments.
+- **Next step**: none.
