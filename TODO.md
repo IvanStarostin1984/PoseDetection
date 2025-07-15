@@ -92,3 +92,4 @@
 - [x] Add pose classification metric and expose it in server and UI.
 - [x] Quote `$GITHUB_OUTPUT` in secret-check step of CI workflow.
 - [x] Setup script installs `pre-commit` automatically.
+- [x] Setup script installs pre-commit hooks and runs them once.
