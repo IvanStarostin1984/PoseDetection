@@ -663,6 +663,13 @@ automatically and docs updated.
 
 ### 2025-07-15  PR #81
 
+- **Summary**: added frontend entrypoint with `index.tsx`,
+bundle script using esbuild and minimal `index.html`.
+- **Stage**: implementation
+- **Motivation / Decision**: needed standalone bundle to serve PoseViewer easily.
+
+### 2025-07-15  PR #82
+
 - **Summary**: removed duplicate PoseViewer and analytics tasks from TODO.
 - **Stage**: maintenance
 - **Motivation / Decision**: keep roadmap concise and avoid repetition.
