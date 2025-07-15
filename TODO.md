@@ -105,4 +105,4 @@
 - [x] Mention SKIP_PRECOMMIT usage in README quick-start instructions.
 - [x] Lint backend with ruff in Makefile.
 - [ ] Add robustness tests for repeated WebSocket connections to /pose.
-- [ ] Emphasise running `./.codex/setup.sh` before tests in README.
+- [x] Emphasise running `./.codex/setup.sh` before tests in README.
