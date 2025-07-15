@@ -1,16 +1,20 @@
 from fastapi import FastAPI, WebSocket
 import cv2
+from contextlib import asynccontextmanager
 
 from .pose_detector import PoseDetector
 
-app = FastAPI()
-_detector = PoseDetector()
 _capture = cv2.VideoCapture(0)
+_detector = PoseDetector()
 
 
-@app.on_event("shutdown")
-def _cleanup() -> None:
+@asynccontextmanager
+async def lifespan(_: FastAPI):
+    yield
     _capture.release()
+
+
+app = FastAPI(lifespan=lifespan)
 
 
 @app.websocket("/pose")

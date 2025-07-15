@@ -6,10 +6,14 @@ import backend.main as main
 class FakeCapture:
     def __init__(self, ret=True):
         self._ret = ret
+        self.closed = False
         self.frame = np.zeros((1, 1, 3), dtype=np.uint8)
 
     def read(self):
         return self._ret, self.frame
+
+    def release(self):
+        self.closed = True
 
 
 class FakeDetector:
@@ -18,19 +22,23 @@ class FakeDetector:
 
 
 def test_pose_stream_success(monkeypatch):
-    monkeypatch.setattr(main, "_capture", FakeCapture())
+    cap = FakeCapture()
+    monkeypatch.setattr(main, "_capture", cap)
     monkeypatch.setattr(main, "_detector", FakeDetector())
-    client = TestClient(main.app)
-    with client.websocket_connect("/pose") as ws:
-        data = ws.receive_json()
-        assert "keypoints" in data
-        assert data["keypoints"][0]["visibility"] == 1.0
+    with TestClient(main.app) as client:
+        with client.websocket_connect("/pose") as ws:
+            data = ws.receive_json()
+            assert "keypoints" in data
+            assert data["keypoints"][0]["visibility"] == 1.0
+    assert cap.closed
 
 
 def test_pose_stream_capture_fail(monkeypatch):
-    monkeypatch.setattr(main, "_capture", FakeCapture(ret=False))
+    cap = FakeCapture(ret=False)
+    monkeypatch.setattr(main, "_capture", cap)
     monkeypatch.setattr(main, "_detector", FakeDetector())
-    client = TestClient(main.app)
-    with client.websocket_connect("/pose") as ws:
-        data = ws.receive_json()
-        assert data == {"error": "capture failed"}
+    with TestClient(main.app) as client:
+        with client.websocket_connect("/pose") as ws:
+            data = ws.receive_json()
+            assert data == {"error": "capture failed"}
+    assert cap.closed

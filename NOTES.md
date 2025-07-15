@@ -708,3 +708,12 @@ in `.pre-commit-cache`
 - **Motivation / Decision**: pre-commit fetch failed in CI without network;
   add note in guide and update workflow.
 - **Next step**: none.
+
+### 2025-07-15  PR #87
+
+- **Summary**: FastAPI app now uses lifespan to release video capture and tests
+  close the fake device.
+- **Stage**: implementation
+- **Motivation / Decision**: replace deprecated shutdown event and avoid
+  warnings during tests.
+- **Next step**: none.
