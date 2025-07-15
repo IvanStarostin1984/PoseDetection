@@ -8,3 +8,6 @@ docs/_build/
 frontend/dist/bundle.js
 frontend/dist/bundle.js.map
 .pre-commit-cache/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/

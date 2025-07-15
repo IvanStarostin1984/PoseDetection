@@ -766,3 +766,10 @@ updated docs.
 - **Stage**: implementation
 - **Motivation / Decision**: release resources properly after streaming.
 - **Next step**: none.
+
+### 2025-07-15  PR #92
+
+- **Summary**: ignored mypy, pytest and ruff caches in `.gitignore`.
+- **Stage**: maintenance
+- **Motivation / Decision**: keep temporary caches out of version control.
+- **Next step**: none.
