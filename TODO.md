@@ -103,5 +103,6 @@
 - [x] Close MediaPipe pose detector after releasing camera in server.
 - [x] Setup script respects existing PRE_COMMIT_HOME variable.
 - [x] Mention SKIP_PRECOMMIT usage in README quick-start instructions.
+- [x] Lint backend with ruff in Makefile.
 - [ ] Add robustness tests for repeated WebSocket connections to /pose.
 - [ ] Emphasise running `./.codex/setup.sh` before tests in README.
