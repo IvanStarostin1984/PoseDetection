@@ -683,3 +683,10 @@ PoseViewer easily.
 - **Stage**: maintenance
 - **Motivation / Decision**: keep roadmap concise and avoid repetition.
 - **Next step**: none.
+
+### 2025-07-15  PR #84
+
+- **Summary**: marked TODO for index.tsx entrypoint as done and refreshed date.
+- **Stage**: documentation
+- **Motivation / Decision**: keep roadmap in sync with completed work.
+- **Next step**: none.
