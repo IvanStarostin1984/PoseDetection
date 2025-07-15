@@ -74,6 +74,7 @@ shell: |
 
    ```bash
    make lint                  # all format / static‑analysis steps
+   make typecheck             # mypy static type checking
    make test                  # unit/integration tests with coverage ≥80%
    pre-commit run --files <changed>
    ```
@@ -88,6 +89,8 @@ shell: |
       verify pinned versions exist. CI runs this automatically when
       `requirements.txt`, `package.json` or `package-lock.json` change.
     - Run `make docs` to build the HTML docs into `docs/_build`.
+    - Python code under `scripts/` and `tests/` is linted with `ruff` via `make lint`.
+    - Static type checking uses mypy via `make typecheck`.
     - Python code in `backend/`, `scripts/` and `tests/` is formatted with `black`
       and linted with `ruff` via `make lint`.
     - GitHub Actions workflows are linted with
@@ -183,6 +186,7 @@ jobs:
       - name: Bootstrap
         run: ./.codex/setup.sh   # idempotent; safe when absent
       - run: make lint
+      - run: make typecheck
       - run: make test
 ```
 <!-- markdownlint-enable MD013 -->

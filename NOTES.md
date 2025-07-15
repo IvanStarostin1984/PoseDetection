@@ -733,6 +733,12 @@ with `.gitkeep` to remove Sphinx warning.
 
 ### 2025-07-15  PR #90
 
+- **Summary**: added mypy type-checking step and improved analytics typing.
+- **Stage**: implementation
+- **Motivation / Decision**: enforce rule 16 via CI type checks.
+
+### 2025-07-15  PR #91
+
 - **Summary**: added black to lint step and formatted Python files.
 - **Stage**: implementation
 - **Motivation / Decision**: enforce consistent style using black in CI; updated docs.
