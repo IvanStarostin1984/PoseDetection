@@ -27,4 +27,9 @@ Start the backend server with:
 
 ```bash
 python -m backend.server
+
 ```
+
+It listens on port 8000 by default, so the frontend must connect to
+`ws://localhost:8000/pose`. Use the `--port` option from issue #1 to change
+the port if needed.
