@@ -835,7 +835,14 @@ by reinitialising the pose detector per connection.
   `make test` fail, so the docs now highlight this requirement.
 - **Next step**: none.
 
-### 2025-07-15
+### 2025-07-15  PR #104
+
+- **Summary**: pinned pytest to 8.2.0 to keep tests stable.
+- **Stage**: maintenance
+- **Motivation / Decision**: ensures CI uses known version.
+- **Next step**: none.
+
+### 2025-07-15  PR #105
 
 - **Summary**: robustness tests confirm multiple `/pose` connections work
   reliably and README highlights running `./.codex/setup.sh` before tests.
