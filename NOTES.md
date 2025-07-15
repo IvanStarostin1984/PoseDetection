@@ -609,6 +609,12 @@ updated requirements and workflow.
 
 ### 2025-07-14  PR #73
 
+- **Summary**: removed "future" from README test instruction.
+- **Stage**: documentation
+- **Motivation / Decision**: clarify that tests already exist.
+
+### 2025-07-14  PR #74
+
 - **Summary**: updated README to note existing FastAPI server and React app.
 - **Stage**: documentation
 - **Motivation / Decision**: remove outdated sentence to reflect repo status.
