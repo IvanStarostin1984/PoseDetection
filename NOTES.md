@@ -625,3 +625,10 @@ updated requirements and workflow.
 - **Stage**: documentation
 - **Motivation / Decision**: remove outdated sentence to reflect repo status.
 - **Next step**: none.
+
+### 2025-07-15  PR #77
+
+- **Summary**: setup script now installs pre-commit hooks automatically and docs updated.
+- **Stage**: documentation
+- **Motivation / Decision**: remove manual step from contributor guide and README.
+- **Next step**: none.
