@@ -100,3 +100,4 @@
 - [x] Integrate mypy type checking with Makefile target and CI.
 - [x] Run black formatting via Makefile lint
 - [x] Ignore mypy, pytest and ruff caches in .gitignore.
+- [x] Close MediaPipe pose detector after releasing camera in server.

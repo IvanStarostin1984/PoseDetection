@@ -51,6 +51,7 @@ async def pose_endpoint(ws: WebSocket) -> None:
             await ws.send_text(json.dumps(payload))
     finally:
         cap.release()
+        mp_pose.close()
 
 
 def main() -> None:
