@@ -1,7 +1,10 @@
+from typing import Any
 from backend.server import build_payload
 import sys
 import subprocess
 import time
+import asyncio
+from types import SimpleNamespace
 
 
 def test_build_payload_format():
@@ -31,3 +34,50 @@ def test_server_starts():
     finally:
         proc.terminate()
         proc.wait(timeout=5)
+
+
+class DummyWS:
+    def __init__(self):
+        self.accepted = False
+        self.sent: list[str] = []
+
+    async def accept(self) -> None:
+        self.accepted = True
+
+    async def send_text(self, text: str) -> None:
+        self.sent.append(text)
+
+
+class DummyPose:
+    def __init__(self) -> None:
+        self.closed = False
+
+    def process(self, image: Any) -> SimpleNamespace:
+        return SimpleNamespace(pose_landmarks=None)
+
+    def close(self) -> None:
+        self.closed = True
+
+
+class DummyCap:
+    def __init__(self) -> None:
+        self.released = False
+
+    def read(self) -> tuple[bool, None]:
+        return False, None
+
+    def release(self) -> None:
+        self.released = True
+
+
+def test_pose_endpoint_closes_pose(monkeypatch):
+    import backend.server as server
+
+    pose = DummyPose()
+    cap = DummyCap()
+    monkeypatch.setattr(server, "mp_pose", pose)
+    monkeypatch.setattr(server.cv2, "VideoCapture", lambda *_args, **_kw: cap)
+    ws = DummyWS()
+    asyncio.run(server.pose_endpoint(ws))
+    assert cap.released is True
+    assert pose.closed is True
