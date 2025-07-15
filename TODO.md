@@ -93,4 +93,5 @@
 - [x] Setup script installs pre-commit hooks and runs them once.
 - [x] Allow customizing WebSocket host and port; default 8000 in `resolveUrl`.
 - [x] Add SKIP_PRECOMMIT option in setup script to skip hook installation when offline.
+- [x] Store pre-commit hooks in `.pre-commit-cache` for offline reuse.
 - [x] Add index.tsx entrypoint and bundler script for frontend.
