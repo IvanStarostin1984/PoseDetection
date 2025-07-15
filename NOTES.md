@@ -711,6 +711,12 @@ in `.pre-commit-cache`
 
 ### 2025-07-15  PR #87
 
+- **Summary**: removed deprecated backend main entrypoint and related tests.
+- **Stage**: cleanup
+- **Motivation / Decision**: unify backend launch through `backend.server`.
+
+### 2025-07-15  PR #88
+
 - **Summary**: replaced deprecated `globals` config in `jest.config.js` with a
   `transform` entry and reran tests.
 - **Stage**: maintenance
