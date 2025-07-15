@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.29 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.30 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -46,7 +46,7 @@ document information in code files.
 ## Shared environment
 
 shell: |
-  export PRE_COMMIT_HOME="$WORKSPACE/.pre-commit-cache"
+  export PRE_COMMIT_HOME="${PRE_COMMIT_HOME:-$WORKSPACE/.pre-commit-cache}"
 
 ## 2 · Bootstrap (first-run) checklist
 

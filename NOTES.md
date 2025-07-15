@@ -781,3 +781,10 @@ updated docs.
 - **Motivation / Decision**: align package.json
 style with other entries and keep lock file in sync.
 - **Next step**: none.
+
+### 2025-07-15  PR #97
+
+- **Summary**: setup script uses existing PRE_COMMIT_HOME if provided and guide updated.
+- **Stage**: maintenance
+- **Motivation / Decision**: permit custom pre-commit cache locations without override.
+- **Next step**: none.
