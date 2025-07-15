@@ -852,6 +852,15 @@ by reinitialising the pose detector per connection.
 - **Next step**: none.
 
 ### 2025-07-15  PR #106
+
+- **Summary**: skeleton overlay connects landmarks with predefined edges and
+  tests verify line drawing. README mentions the new overlay.
+- **Stage**: feature
+- **Motivation / Decision**: show pose structure on video and guard against
+  regressions.
+
+### 2025-07-15  PR #107
+
 - **Summary**: server now sends 17 keypoints using `PoseDetector.process` and
   closes the detector after streaming. Payload building and tests were updated to
   expect exactly 17 points.
@@ -859,7 +868,7 @@ by reinitialising the pose detector per connection.
 - **Motivation / Decision**: align streamed data with 17-point skeleton per
   tech challenge, ensure resources released properly.
 
-### 2025-07-16  PR #107
+### 2025-07-16  PR #108
 
 - **Summary**: metrics panel now shows knee angle with tests and docs example.
 - **Stage**: implementation

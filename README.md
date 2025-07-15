@@ -70,7 +70,8 @@ npm test
 ```
 
 The PoseViewer component shows the live webcam feed. Use the **Start Webcam**
-button to toggle the stream.
+button to toggle the stream. A canvas overlay draws lines between keypoints to
+show the pose skeleton.
 
 ## Running locally
 
