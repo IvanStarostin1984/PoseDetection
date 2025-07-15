@@ -628,7 +628,7 @@ updated requirements and workflow.
 
 ### 2025-07-15  PR #77
 
-- **Summary**: setup script now installs pre-commit hooks 
+- **Summary**: setup script now installs pre-commit hooks
 automatically and docs updated.
 - **Stage**: documentation
 - **Motivation / Decision**: remove manual step from contributor guide and README.
@@ -645,4 +645,11 @@ automatically and docs updated.
 - **Summary**: setup script now prefetches pre-commit hooks.
 - **Stage**: maintenance
 - **Motivation / Decision**: fetch hooks during setup so later runs work offline.
+- **Next step**: none.
+
+### 2025-07-15  PR #-0
+
+- **Summary**: trailing space removed from July 15 notes entry to satisfy markdownlint.
+- **Stage**: maintenance
+- **Motivation / Decision**: keep NOTES.md clean and pass markdownlint.
 - **Next step**: none.
