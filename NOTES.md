@@ -600,16 +600,28 @@ updated requirements and workflow.
 - **Motivation / Decision**: keep markdown link check stable.
 - **Next step**: none.
 
-### 2025-07-14  PR #-5
+### 2025-07-14  PR #73
 
 - **Summary**: setup script now installs `pre-commit` automatically.
 - **Stage**: implementation
 - **Motivation / Decision**: avoid missing hook installation instructions.
 - **Next step**: none.
 
-### 2025-07-14  PR #
+### 2025-07-14  PR #74
 
 - **Summary**: lowered branch coverage requirement in CODING_RULES to 80%.
 - **Stage**: documentation
 - **Motivation / Decision**: align coding rules with CI coverage threshold.
+
+### 2025-07-14  PR #75
+
+- **Summary**: removed "future" from README test instruction.
+- **Stage**: documentation
+- **Motivation / Decision**: clarify that tests already exist.
+
+### 2025-07-14  PR #76
+
+- **Summary**: updated README to note existing FastAPI server and React app.
+- **Stage**: documentation
+- **Motivation / Decision**: remove outdated sentence to reflect repo status.
 - **Next step**: none.

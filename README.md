@@ -5,9 +5,8 @@ realtime Human Pose Estimation System
 ## Specification
 
 The project currently follows `docs/tech-challenge.txt`, which describes how
-to build a realtime pose estimation system. Future commits will add data
-processing scripts, model training code and an inference server in line with
-the spec.
+to build a realtime pose estimation system. The repository already includes a
+FastAPI WebSocket server and a basic React frontend.
 
 PoseDetection is a minimal showcase for human pose estimation. It detects body
 keypoints from a webcam and serves them through a small web app. See
@@ -39,7 +38,7 @@ payload includes simple analytics like knee angle, balance and a
 ## Development
 
 Run `make lint` to check Markdown and Python code style (ruff).
-Run `make test` to execute the future test-suite.
+Run `make test` to execute the test-suite.
 CI runs `make check-versions` whenever dependency files change to
 ensure pinned versions are valid.
 Run `pre-commit install` once so ruff, black and markdownlint run
