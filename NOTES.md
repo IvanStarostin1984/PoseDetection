@@ -708,3 +708,12 @@ in `.pre-commit-cache`
 - **Motivation / Decision**: pre-commit fetch failed in CI without network;
   add note in guide and update workflow.
 - **Next step**: none.
+
+### 2025-07-15  PR #87
+
+- **Summary**: replaced deprecated `globals` config in `jest.config.js` with a
+  `transform` entry and reran tests.
+- **Stage**: maintenance
+- **Motivation / Decision**: remove ts-jest deprecation warning during
+  `npm test`.
+- **Next step**: none.
