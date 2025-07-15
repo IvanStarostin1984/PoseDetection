@@ -797,9 +797,11 @@ style with other entries and keep lock file in sync.
 
 ### 2025-07-15  PR #99
 
-- **Summary**: AGENTS guide sets PRE_COMMIT_HOME using git rev-parse and explains hook cache.
+- **Summary**: AGENTS guide sets PRE_COMMIT_HOME
+using git rev-parse and explains hook cache.
 - **Stage**: documentation
-- **Motivation / Decision**: ensure pre-commit cache works in subdirectories and avoid GitHub prompts after running setup.
+- **Motivation / Decision**: ensure pre-commit cache works
+in subdirectories and avoid GitHub prompts after running setup.
 - **Next step**: none.
 
 ### 2025-07-15  PR #100
