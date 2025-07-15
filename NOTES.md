@@ -653,3 +653,10 @@ automatically and docs updated.
 - **Stage**: maintenance
 - **Motivation / Decision**: keep NOTES.md clean and pass markdownlint.
 - **Next step**: none.
+
+### 2025-07-15  PR #80
+
+- **Summary**: added weekly Dependabot config and updated docs.
+- **Stage**: implementation
+- **Motivation / Decision**: follow pin policy and automate updates.
+- **Next step**: monitor upcoming dependency PRs.
