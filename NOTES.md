@@ -834,3 +834,12 @@ by reinitialising the pose detector per connection.
 - **Motivation / Decision**: contributors skipped setup which made
   `make test` fail, so the docs now highlight this requirement.
 - **Next step**: none.
+
+### 2025-07-15
+
+- **Summary**: robustness tests confirm multiple `/pose` connections work
+  reliably and README highlights running `./.codex/setup.sh` before tests.
+- **Stage**: maintenance
+- **Motivation / Decision**: ensure stable WebSocket handling and guide
+  contributors to run setup so tests pass.
+- **Next step**: none.
