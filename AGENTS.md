@@ -18,6 +18,9 @@ Maintain and develop the project
  so that after each new feature user will be able to download github repo
 and run in local IDE to test manually.
 Follow the coding rules described in `CODING_RULES.md`.
+Do not base any decision on .md documentation only,
+if code files are present in repo - always reverify
+document information in code files.
 
 ## 1 · File-ownership & merge-conflict safety
 
