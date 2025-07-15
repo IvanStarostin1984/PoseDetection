@@ -812,6 +812,7 @@ in subdirectories and avoid GitHub prompts after running setup.
 - **Next step**: none.
 
 ### 2025-07-15  PR #101
+
 - **Summary**: ruff now checks backend in Makefile lint.
 - **Stage**: maintenance
 - **Motivation / Decision**: keep Python lint consistent across directories.
