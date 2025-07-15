@@ -39,6 +39,7 @@ python3 -m pip install pre-commit
 
 # install hooks into the shared cache while network is available
 if [ -f .pre-commit-config.yaml ] && [ "${SKIP_PRECOMMIT:-0}" != "1" ]; then
+  pre-commit install --install-hooks --overwrite --config=.pre-commit-config.yaml
   pre-commit install --install-hooks --overwrite
   pre-commit run --all-files || true
 fi

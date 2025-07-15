@@ -801,3 +801,10 @@ style with other entries and keep lock file in sync.
 - **Stage**: documentation
 - **Motivation / Decision**: ensure pre-commit cache works in subdirectories and avoid GitHub prompts after running setup.
 - **Next step**: none.
+
+### 2025-07-15  PR #100
+
+- **Summary**: setup script caches pre-commit hooks with explicit config.
+- **Stage**: maintenance
+- **Motivation / Decision**: ensure hooks are installed before network cut.
+- **Next step**: none.
