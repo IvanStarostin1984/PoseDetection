@@ -714,4 +714,12 @@ in `.pre-commit-cache`
 - **Summary**: removed deprecated backend main entrypoint and related tests.
 - **Stage**: cleanup
 - **Motivation / Decision**: unify backend launch through `backend.server`.
+
+### 2025-07-15  PR #88
+
+- **Summary**: replaced deprecated `globals` config in `jest.config.js` with a
+  `transform` entry and reran tests.
+- **Stage**: maintenance
+- **Motivation / Decision**: remove ts-jest deprecation warning during
+  `npm test`.
 - **Next step**: none.
