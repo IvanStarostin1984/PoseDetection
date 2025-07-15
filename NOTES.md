@@ -708,3 +708,10 @@ in `.pre-commit-cache`
 - **Motivation / Decision**: pre-commit fetch failed in CI without network;
   add note in guide and update workflow.
 - **Next step**: none.
+
+### 2025-07-15
+
+- **Summary**: created `docs/source/_static` directory with `.gitkeep` to remove Sphinx warning.
+- **Stage**: documentation
+- **Motivation / Decision**: ensure `make docs` runs cleanly.
+- **Next step**: none.
