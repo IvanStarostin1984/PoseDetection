@@ -8,10 +8,10 @@ Point = Mapping[str, float]
 
 
 def _validate_point(pt: Mapping[str, float] | None) -> None:
-    if pt is None or 'x' not in pt or 'y' not in pt:
-        raise ValueError('invalid point')
+    if pt is None or "x" not in pt or "y" not in pt:
+        raise ValueError("invalid point")
 
-        
+
 def calculate_angle(a: Point, b: Point, c: Point) -> float:
     """Return the angle ABC in degrees.
 
@@ -70,7 +70,7 @@ def balance_score(landmarks: Mapping[str, Point]) -> float:
     _validate_point(right)
 
     assert left is not None and right is not None
-    return abs(left['x'] - right['x'])
+    return abs(left["x"] - right["x"])
 
 
 def pose_classification(landmarks: Mapping[str, Point]) -> str:
