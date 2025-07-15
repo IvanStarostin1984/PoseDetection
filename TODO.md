@@ -1,4 +1,4 @@
-# TODO – Road‑map (last updated: 2025-07-14)
+# TODO – Road‑map (last updated: 2025-07-15)
 
 > *Record only high‑level milestones here; break micro‑tasks out into Issues.*  
 > **When you finish a task, tick it and append a short NOTE entry
@@ -91,3 +91,4 @@
 - [x] Add pose classification metric and expose it in server and UI.
 - [x] Quote `$GITHUB_OUTPUT` in secret-check step of CI workflow.
 - [x] Setup script installs `pre-commit` automatically.
+- [x] Setup script installs pre-commit hooks and runs them once.

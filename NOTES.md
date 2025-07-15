@@ -625,3 +625,11 @@ updated requirements and workflow.
 - **Stage**: documentation
 - **Motivation / Decision**: remove outdated sentence to reflect repo status.
 - **Next step**: none.
+
+### 2025-07-15  PR #77
+
+- **Summary**: setup script installs pre-commit hooks and runs them once.
+- **Stage**: implementation
+- **Motivation / Decision**: ensure hooks are cached while network is
+  available.
+- **Next step**: none.
