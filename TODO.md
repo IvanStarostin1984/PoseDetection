@@ -102,3 +102,4 @@
 - [x] Ignore mypy, pytest and ruff caches in .gitignore.
 - [x] Close MediaPipe pose detector after releasing camera in server.
 - [x] Setup script respects existing PRE_COMMIT_HOME variable.
+- [x] Mention SKIP_PRECOMMIT usage in README quick-start instructions.

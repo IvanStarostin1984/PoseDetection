@@ -46,7 +46,11 @@ document information in code files.
 ## Shared environment
 
 shell: |
-  export PRE_COMMIT_HOME="${PRE_COMMIT_HOME:-$WORKSPACE/.pre-commit-cache}"
+  REPO_ROOT=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
+  export PRE_COMMIT_HOME="${PRE_COMMIT_HOME:-$REPO_ROOT/.pre-commit-cache}"
+
+Running `.codex/setup.sh` downloads hooks into this directory and
+prevents GitHub prompts.
 
 ## 2 · Bootstrap (first-run) checklist
 
