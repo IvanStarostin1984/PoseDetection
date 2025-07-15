@@ -43,6 +43,8 @@ CI runs `make check-versions` whenever dependency files change to
 ensure pinned versions are valid.
 Pre-commit hooks are installed automatically by `.codex/setup.sh`,
 so ruff, black and markdownlint run before each commit.
+Dependabot reviews `requirements.txt`, `package.json` and
+`package-lock.json` once a week and suggests version bumps.
 
 ## Setup
 

@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.24 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.25 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -97,6 +97,8 @@ Follow the coding rules described in `CODING_RULES.md`.
    `/docs` overrides this file.
 8. **Log discipline** – when a TODO item is ticked you **must** add the matching
    section in `NOTES.md` *in the same PR*; this keeps roadmap and log in‑sync.
+9. **Dependabot** – weekly checks update pinned versions in
+   `requirements.txt`, `package.json` and the CI workflow.
 
 ---
 
