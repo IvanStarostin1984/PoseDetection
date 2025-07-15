@@ -708,3 +708,10 @@ in `.pre-commit-cache`
 - **Motivation / Decision**: pre-commit fetch failed in CI without network;
   add note in guide and update workflow.
 - **Next step**: none.
+
+### 2025-07-15  PR #87
+
+- **Summary**: removed deprecated backend main entrypoint and related tests.
+- **Stage**: cleanup
+- **Motivation / Decision**: unify backend launch through `backend.server`.
+- **Next step**: none.
