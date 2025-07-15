@@ -75,9 +75,36 @@ def test_pose_endpoint_closes_pose(monkeypatch):
 
     pose = DummyPose()
     cap = DummyCap()
-    monkeypatch.setattr(server, "mp_pose", pose)
+    monkeypatch.setattr(server.mp.solutions.pose, "Pose", lambda *_a, **_k: pose)
     monkeypatch.setattr(server.cv2, "VideoCapture", lambda *_args, **_kw: cap)
     ws = DummyWS()
     asyncio.run(server.pose_endpoint(ws))
     assert cap.released is True
     assert pose.closed is True
+
+
+def test_pose_endpoint_allows_second_connection(monkeypatch):
+    import backend.server as server
+
+    poses: list[DummyPose] = [DummyPose(), DummyPose()]
+    first_pose = poses[0]
+    second_pose = poses[1]
+    cap = DummyCap()
+
+    def make_pose(*_a, **_k) -> DummyPose:
+        return poses.pop(0)
+
+    monkeypatch.setattr(server.mp.solutions.pose, "Pose", make_pose)
+    monkeypatch.setattr(server.cv2, "VideoCapture", lambda *_args, **_kw: cap)
+    ws = DummyWS()
+
+    asyncio.run(server.pose_endpoint(ws))
+    assert cap.released is True
+    assert first_pose.closed is True
+
+    cap.released = False
+    ws.sent.clear()
+
+    asyncio.run(server.pose_endpoint(ws))
+    assert cap.released is True
+    assert second_pose.closed is True
