@@ -1,4 +1,4 @@
-.PHONY: lint lint-docs test generate docs
+.PHONY: lint lint-docs test generate docs typecheck
 
 lint:
 	npx --yes markdownlint-cli **/*.md
@@ -16,8 +16,13 @@ test:
 	npx --yes jest; \
 	fi
 
+
 generate:
 	python scripts/generate.py
+
+
+typecheck:
+	mypy backend
 
 update-todo-date:
 	python scripts/update_todo_date.py

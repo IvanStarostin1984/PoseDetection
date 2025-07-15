@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.28 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.29 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -74,6 +74,7 @@ shell: |
 
    ```bash
    make lint                  # all format / static‑analysis steps
+   make typecheck             # mypy static type checking
    make test                  # unit/integration tests with coverage ≥80%
    pre-commit run --files <changed>
    ```
@@ -89,6 +90,7 @@ shell: |
       `requirements.txt`, `package.json` or `package-lock.json` change.
     - Run `make docs` to build the HTML docs into `docs/_build`.
     - Python code under `scripts/` and `tests/` is linted with `ruff` via `make lint`.
+    - Static type checking uses mypy via `make typecheck`.
     - GitHub Actions workflows are linted with
       `actionlint` pinned at v1.7.7 via pre-commit.
     - `make test` expects dependencies from `.codex/setup.sh`.
@@ -182,6 +184,7 @@ jobs:
       - name: Bootstrap
         run: ./.codex/setup.sh   # idempotent; safe when absent
       - run: make lint
+      - run: make typecheck
       - run: make test
 ```
 <!-- markdownlint-enable MD013 -->

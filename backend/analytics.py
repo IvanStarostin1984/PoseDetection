@@ -7,7 +7,7 @@ from typing import Dict, Mapping
 Point = Mapping[str, float]
 
 
-def _validate_point(pt: Point) -> None:
+def _validate_point(pt: Mapping[str, float] | None) -> None:
     if pt is None or 'x' not in pt or 'y' not in pt:
         raise ValueError('invalid point')
 
@@ -68,6 +68,7 @@ def balance_score(landmarks: Mapping[str, Point]) -> float:
     right = landmarks.get('right_hip')
     _validate_point(left)
     _validate_point(right)
+    assert left is not None and right is not None
     return abs(left['x'] - right['x'])
 
 
@@ -101,7 +102,7 @@ def pose_classification(landmarks: Mapping[str, Point]) -> str:
     return 'sitting'
 
 
-def extract_pose_metrics(landmarks: Mapping[str, Point]) -> Dict[str, float]:
+def extract_pose_metrics(landmarks: Mapping[str, Point]) -> Dict[str, float | str]:
     """Return analytics dictionary from pose landmarks."""
     knee_angle = float("nan")
     for side in ("left", "right"):

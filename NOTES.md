@@ -730,3 +730,10 @@ with `.gitkeep` to remove Sphinx warning.
 - **Motivation / Decision**: remove ts-jest deprecation warning during
   `npm test`.
 - **Next step**: none.
+
+### 2025-07-15  PR #90
+
+- **Summary**: added mypy type-checking step and improved analytics typing.
+- **Stage**: implementation
+- **Motivation / Decision**: enforce rule 16 via CI type checks.
+- **Next step**: none.
