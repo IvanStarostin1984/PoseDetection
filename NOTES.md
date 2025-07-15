@@ -773,3 +773,10 @@ updated docs.
 - **Stage**: maintenance
 - **Motivation / Decision**: keep temporary caches out of version control.
 - **Next step**: none.
+
+### 2025-07-15  PR #92
+
+- **Summary**: fixed devDependencies formatting and regenerated lock file.
+- **Stage**: maintenance
+- **Motivation / Decision**: align package.json style with other entries and keep lock file in sync.
+- **Next step**: none.
