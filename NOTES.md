@@ -606,3 +606,10 @@ updated requirements and workflow.
 - **Stage**: implementation
 - **Motivation / Decision**: avoid missing hook installation instructions.
 - **Next step**: none.
+
+### 2025-07-14  PR #73
+
+- **Summary**: updated README to note existing FastAPI server and React app.
+- **Stage**: documentation
+- **Motivation / Decision**: remove outdated sentence to reflect repo status.
+- **Next step**: none.
