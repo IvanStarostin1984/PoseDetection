@@ -3,7 +3,7 @@
 lint:
 	npx --yes markdownlint-cli **/*.md
 	black --check backend scripts tests
-	ruff check scripts tests
+	ruff check backend scripts tests
 
 lint-docs: lint
 
