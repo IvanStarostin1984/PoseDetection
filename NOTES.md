@@ -778,5 +778,6 @@ updated docs.
 
 - **Summary**: fixed devDependencies formatting and regenerated lock file.
 - **Stage**: maintenance
-- **Motivation / Decision**: align package.json style with other entries and keep lock file in sync.
+- **Motivation / Decision**: align package.json
+style with other entries and keep lock file in sync.
 - **Next step**: none.
