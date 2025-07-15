@@ -810,3 +810,12 @@ in subdirectories and avoid GitHub prompts after running setup.
 - **Stage**: maintenance
 - **Motivation / Decision**: ensure hooks are installed before network cut.
 - **Next step**: none.
+
+### 2025-07-15  PR #101
+
+- **Summary**: README and AGENTS guide emphasise running `./.codex/setup.sh`
+  before tests.
+- **Stage**: documentation
+- **Motivation / Decision**: contributors skipped setup which made
+  `make test` fail, so the docs now highlight this requirement.
+- **Next step**: none.
