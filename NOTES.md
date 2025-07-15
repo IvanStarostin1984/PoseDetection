@@ -660,3 +660,10 @@ automatically and docs updated.
 - **Stage**: implementation
 - **Motivation / Decision**: follow pin policy and automate updates.
 - **Next step**: monitor upcoming dependency PRs.
+
+### 2025-07-15  PR #81
+
+- **Summary**: added frontend entrypoint with `index.tsx`, bundle script using esbuild and minimal `index.html`.
+- **Stage**: implementation
+- **Motivation / Decision**: needed standalone bundle to serve PoseViewer easily.
+- **Next step**: none.
