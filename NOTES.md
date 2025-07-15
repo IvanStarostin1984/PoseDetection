@@ -759,7 +759,7 @@ updated docs.
 - **Motivation / Decision**: keep Python code style consistent.
 - **Next step**: none.
 
-### 2025-07-15  PR #92
+### 2025-07-15  PR #94
 
 - **Summary**: pose_endpoint now closes the MediaPipe pose detector and test
   confirms it.
@@ -767,14 +767,14 @@ updated docs.
 - **Motivation / Decision**: release resources properly after streaming.
 - **Next step**: none.
 
-### 2025-07-15  PR #92
+### 2025-07-15  PR #95
 
 - **Summary**: ignored mypy, pytest and ruff caches in `.gitignore`.
 - **Stage**: maintenance
 - **Motivation / Decision**: keep temporary caches out of version control.
 - **Next step**: none.
 
-### 2025-07-15  PR #92
+### 2025-07-15  PR #96
 
 - **Summary**: fixed devDependencies formatting and regenerated lock file.
 - **Stage**: maintenance
