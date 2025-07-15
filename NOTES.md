@@ -812,7 +812,18 @@ in subdirectories and avoid GitHub prompts after running setup.
 - **Next step**: none.
 
 ### 2025-07-15  PR #101
-- **Summary**: pose_endpoint now creates and closes MediaPipe Pose internally; tests handle multiple connections.
+- **Summary**: pose_endpoint now creates and closes MediaPipe
+Pose internally; tests handle multiple connections.
 - **Stage**: implementation
-- **Motivation / Decision**: avoid leaking resources by reinitialising the pose detector per connection.
+- **Motivation / Decision**: avoid leaking resources
+by reinitialising the pose detector per connection.
 - **Next step**: add robustness tests for repeated WebSocket sessions.
+
+### 2025-07-15  PR #102
+
+- **Summary**: README and AGENTS guide emphasise running `./.codex/setup.sh`
+  before tests.
+- **Stage**: documentation
+- **Motivation / Decision**: contributors skipped setup which made
+  `make test` fail, so the docs now highlight this requirement.
+- **Next step**: none.
