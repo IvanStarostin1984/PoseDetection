@@ -686,9 +686,16 @@ PoseViewer easily.
 
 ### 2025-07-16  PR #84
 
-- **Summary**: setup script now caches pre-commit hooks in `.pre-commit-cache`
+- **Summary**: setup script now caches pre-commit hooks
+in `.pre-commit-cache`
   and README notes this for offline reuse.
 - **Stage**: implementation
 - **Motivation / Decision**: speed up hook installs and enable offline
   development.
+
+### 2025-07-15  PR #85
+
+- **Summary**: marked TODO for index.tsx entrypoint as done and refreshed date.
+- **Stage**: documentation
+- **Motivation / Decision**: keep roadmap in sync with completed work.
 - **Next step**: none.
