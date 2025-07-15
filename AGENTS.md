@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.24 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.25 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -78,6 +78,7 @@ Follow the coding rules described in `CODING_RULES.md`.
       `requirements.txt`, `package.json` or `package-lock.json` change.
     - Run `make docs` to build the HTML docs into `docs/_build`.
     - Python code under `scripts/` and `tests/` is linted with `ruff` via `make lint`.
+    - `python scripts/lint_notes.py` enforces notes order and strips spaces.
     - GitHub Actions workflows are linted with
       `actionlint` pinned at v1.7.7 via pre-commit.
     - `make test` expects dependencies from `.codex/setup.sh`.

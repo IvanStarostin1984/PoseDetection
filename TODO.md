@@ -1,8 +1,8 @@
 # TODO – Road‑map (last updated: 2025-07-15)
 
-> *Record only high‑level milestones here; break micro‑tasks out into Issues.*  
+> *Record only high‑level milestones here; break micro‑tasks out into Issues.*
 > **When you finish a task, tick it and append a short NOTE entry
-> (see NOTES.md).**  
+> (see NOTES.md).**
 > Keep this list ordered by topic and **never reorder past items**.
 
 ## 0 · Project bootstrap
@@ -24,9 +24,9 @@
 *Repeat the five-bullet block below for every MVP feature A, B, C, ...*
 
 - [ ] Analyse source-of-truth docs; define acceptance criteria for feature A
-- [ ] Document assumptions / edge‑cases for feature A in `/docs` or README  
-- [ ] Implement feature A  
-- [ ] Add unit / integration tests for feature A  
+- [ ] Document assumptions / edge‑cases for feature A in `/docs` or README
+- [ ] Implement feature A
+- [ ] Add unit / integration tests for feature A
 - [ ] Wire CI quality gate (coverage ≥ 80 %, metric thresholds, etc.) that
       exits 1 on regression
 
@@ -44,7 +44,7 @@
 - [x] Add pre-commit hooks (formatters, linters, markdownlint, actionlint)
 - [x] Add actionlint to the pre-commit configuration
 - [x] Enforce coverage threshold (≥ 80 % branch, exclude `/generated/**`)
-- [ ] Add linters for conflict markers, trailing spaces and NOTES ordering
+- [x] Add linters for conflict markers, trailing spaces and NOTES ordering
 - [ ] Introduce dependabot / Renovate with the version‑pin policy from
       `AGENTS.md`
 - [x] Prefetch pre-commit hooks during setup so offline runs work.

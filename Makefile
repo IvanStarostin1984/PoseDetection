@@ -3,6 +3,7 @@
 lint:
 	npx --yes markdownlint-cli **/*.md
 	ruff check scripts tests
+	python scripts/lint_notes.py
 
 lint-docs: lint
 

@@ -653,3 +653,10 @@ automatically and docs updated.
 - **Stage**: maintenance
 - **Motivation / Decision**: keep NOTES.md clean and pass markdownlint.
 - **Next step**: none.
+
+### 2025-07-15  PR #80
+
+- **Summary**: added lint_notes.py script and integrated into workflow.
+- **Stage**: implementation
+- **Motivation / Decision**: order enforcement and catching spaces/conflicts.
+- **Next step**: none.
