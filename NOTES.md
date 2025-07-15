@@ -628,7 +628,21 @@ updated requirements and workflow.
 
 ### 2025-07-15  PR #77
 
-- **Summary**: setup script now installs pre-commit hooks automatically and docs updated.
+- **Summary**: setup script now installs pre-commit hooks 
+automatically and docs updated.
 - **Stage**: documentation
 - **Motivation / Decision**: remove manual step from contributor guide and README.
+
+### 2025-07-15  PR #78
+
+- **Summary**: setup script installs pre-commit hooks and runs them once.
+- **Stage**: implementation
+- **Motivation / Decision**: ensure hooks are cached while network is
+  available.
+
+### 2025-07-15  PR #79
+
+- **Summary**: setup script now prefetches pre-commit hooks.
+- **Stage**: maintenance
+- **Motivation / Decision**: fetch hooks during setup so later runs work offline.
 - **Next step**: none.

@@ -33,7 +33,13 @@ PROJECT_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 cd "$PROJECT_ROOT"
 python3 -m pip install -r requirements.txt
 python3 -m pip install pre-commit
-python3 -m pre_commit install
+
+# install hooks into the shared cache while network is available
+if [ -f .pre-commit-config.yaml ]; then
+  pre-commit install --install-hooks --overwrite
+  pre-commit run --all-files
+fi
+
 npm install
 
 echo "Setup complete"

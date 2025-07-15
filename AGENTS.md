@@ -50,7 +50,8 @@ Follow the coding rules described in `CODING_RULES.md`.
 3. Verify the **secret‑detection helper step** in
     `.github/workflows/ci.yml` (see § 4) so forks without secrets still pass.
 4. On the first PR, update README badges to point at your fork (owner/repo).
-5. `.codex/setup.sh` installs `pre-commit` and sets up the hooks automatically.
+5. `.codex/setup.sh` installs `pre-commit` and sets up the hooks automatically
+   on the first run.
 
 ---
 
