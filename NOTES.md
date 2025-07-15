@@ -781,3 +781,11 @@ updated docs.
 - **Motivation / Decision**: align package.json
 style with other entries and keep lock file in sync.
 - **Next step**: none.
+
+### 2025-07-15  PR #97
+
+- **Summary**: README quick-start explains pre-commit setup and offline flag.
+- **Stage**: documentation
+- **Motivation / Decision**: guide contributors on fetching hooks and using
+  `SKIP_PRECOMMIT=1` when network is not available.
+- **Next step**: none.

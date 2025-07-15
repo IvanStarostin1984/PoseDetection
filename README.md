@@ -20,10 +20,15 @@ dependencies, then check the code:
 ```bash
 git clone <repo-url>
 cd PoseDetection
+# run once with network access to fetch pre-commit hooks
 .codex/setup.sh
 make lint
 make test
 ```
+
+If the network is unavailable pass `SKIP_PRECOMMIT=1` to the setup script.
+`pre-commit run` will then try to fetch hooks and may ask for GitHub
+credentials.
 
 The Python dependencies install `mediapipe==0.10.13`,
 `websockets==15.0.1` and `numpy==1.26.4`.
