@@ -743,3 +743,10 @@ with `.gitkeep` to remove Sphinx warning.
 - **Stage**: implementation
 - **Motivation / Decision**: enforce consistent style using black in CI; updated docs.
 - **Next step**: none.
+
+### 2025-07-15  PR #92
+
+- **Summary**: ignored mypy, pytest and ruff caches in `.gitignore`.
+- **Stage**: maintenance
+- **Motivation / Decision**: keep temporary caches out of version control.
+- **Next step**: none.
