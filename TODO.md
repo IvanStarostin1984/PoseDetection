@@ -47,6 +47,7 @@
 - [ ] Add linters for conflict markers, trailing spaces and NOTES ordering
 - [ ] Introduce dependabot / Renovate with the version‑pin policy from
       `AGENTS.md`
+- [ ] Prefetch pre-commit hooks during setup so offline runs work.
 
 ## 4 · Stretch goals
 

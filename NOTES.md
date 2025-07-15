@@ -632,4 +632,10 @@ updated requirements and workflow.
 - **Stage**: implementation
 - **Motivation / Decision**: ensure hooks are cached while network is
   available.
+
+### 2025-07-15  PR #78
+
+- **Summary**: setup script now prefetches pre-commit hooks.
+- **Stage**: maintenance
+- **Motivation / Decision**: fetch hooks during setup so later runs work offline.
 - **Next step**: none.
