@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.25 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.26 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -18,6 +18,9 @@ Maintain and develop the project
  so that after each new feature user will be able to download github repo
 and run in local IDE to test manually.
 Follow the coding rules described in `CODING_RULES.md`.
+Do not base any decision on .md documentation only,
+if code files are present in repo - always reverify
+document information in code files.
 
 ## 1 · File-ownership & merge-conflict safety
 
@@ -52,6 +55,7 @@ Follow the coding rules described in `CODING_RULES.md`.
 4. On the first PR, update README badges to point at your fork (owner/repo).
 5. `.codex/setup.sh` installs `pre-commit` and sets up the hooks automatically
    on the first run.
+   Set `SKIP_PRECOMMIT=1` to bypass this when offline.
 
 ---
 
