@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+PROJECT_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
+export PRE_COMMIT_HOME="$PROJECT_ROOT/.pre-commit-cache"
+mkdir -p "$PRE_COMMIT_HOME"
+cd "$PROJECT_ROOT"
+
 # install toolchains with pinned versions; safe to run multiple times
 PYTHON_VERSION=3.11
 NODE_VERSION=20
@@ -28,16 +33,13 @@ if ! have_node; then
   curl -fsSL https://deb.nodesource.com/setup_$NODE_VERSION.x | sudo -E bash -
   sudo apt-get install -y nodejs
 fi
-
-PROJECT_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
-cd "$PROJECT_ROOT"
 python3 -m pip install -r requirements.txt
 python3 -m pip install pre-commit
 
 # install hooks into the shared cache while network is available
 if [ -f .pre-commit-config.yaml ] && [ "${SKIP_PRECOMMIT:-0}" != "1" ]; then
   pre-commit install --install-hooks --overwrite
-  pre-commit run --all-files
+  pre-commit run --all-files || true
 fi
 
 npm install

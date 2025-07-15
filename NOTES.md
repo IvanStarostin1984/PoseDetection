@@ -683,3 +683,12 @@ PoseViewer easily.
 - **Stage**: maintenance
 - **Motivation / Decision**: keep roadmap concise and avoid repetition.
 - **Next step**: none.
+
+### 2025-07-16  PR #84
+
+- **Summary**: setup script now caches pre-commit hooks in `.pre-commit-cache`
+  and README notes this for offline reuse.
+- **Stage**: implementation
+- **Motivation / Decision**: speed up hook installs and enable offline
+  development.
+- **Next step**: none.

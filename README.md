@@ -50,6 +50,8 @@ Dependabot reviews `requirements.txt`, `package.json` and
 
 Run `.codex/setup.sh` after cloning to install Python 3.11, Node 20 and the
 project dependencies. The script is idempotent and exits 0 when finished.
+Pre-commit hooks are stored in `.pre-commit-cache/` so they can be reused
+offline.
 
 ## Frontend
 

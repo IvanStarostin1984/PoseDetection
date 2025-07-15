@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.26 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.27 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -41,6 +41,10 @@ document information in code files.
   mention them as `<{7}`, `={7}` or `>{7}` to keep grep quiet.
 
 ---
+
+## Shared environment
+shell: |
+  export PRE_COMMIT_HOME="$WORKSPACE/.pre-commit-cache"
 
 ## 2 · Bootstrap (first-run) checklist
 
