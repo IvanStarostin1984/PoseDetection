@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.28 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.29 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -88,7 +88,8 @@ shell: |
       verify pinned versions exist. CI runs this automatically when
       `requirements.txt`, `package.json` or `package-lock.json` change.
     - Run `make docs` to build the HTML docs into `docs/_build`.
-    - Python code under `scripts/` and `tests/` is linted with `ruff` via `make lint`.
+    - Python code in `backend/`, `scripts/` and `tests/` is formatted with `black`
+      and linted with `ruff` via `make lint`.
     - GitHub Actions workflows are linted with
       `actionlint` pinned at v1.7.7 via pre-commit.
     - `make test` expects dependencies from `.codex/setup.sh`.
