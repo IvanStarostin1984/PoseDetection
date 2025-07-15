@@ -104,5 +104,5 @@
 - [x] Setup script respects existing PRE_COMMIT_HOME variable.
 - [x] Mention SKIP_PRECOMMIT usage in README quick-start instructions.
 - [x] Lint backend with ruff in Makefile.
-- [ ] Add robustness tests for repeated WebSocket connections to /pose.
+- [x] Add robustness tests for repeated WebSocket connections to /pose.
 - [x] Emphasise running `./.codex/setup.sh` before tests in README.
