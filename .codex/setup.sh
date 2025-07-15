@@ -2,7 +2,8 @@
 set -euo pipefail
 
 PROJECT_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
-export PRE_COMMIT_HOME="$PROJECT_ROOT/.pre-commit-cache"
+PRE_COMMIT_HOME="${PRE_COMMIT_HOME:-$PROJECT_ROOT/.pre-commit-cache}"
+export PRE_COMMIT_HOME
 mkdir -p "$PRE_COMMIT_HOME"
 cd "$PROJECT_ROOT"
 
