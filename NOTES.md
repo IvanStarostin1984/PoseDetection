@@ -810,3 +810,9 @@ in subdirectories and avoid GitHub prompts after running setup.
 - **Stage**: maintenance
 - **Motivation / Decision**: ensure hooks are installed before network cut.
 - **Next step**: none.
+
+### 2025-07-15  PR #101
+- **Summary**: pose_endpoint now creates and closes MediaPipe Pose internally; tests handle multiple connections.
+- **Stage**: implementation
+- **Motivation / Decision**: avoid leaking resources by reinitialising the pose detector per connection.
+- **Next step**: add robustness tests for repeated WebSocket sessions.

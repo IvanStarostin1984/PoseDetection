@@ -12,7 +12,6 @@ from .analytics import extract_pose_metrics
 import uvicorn
 
 app = FastAPI()
-mp_pose = mp.solutions.pose.Pose()
 
 
 def build_payload(lms: Dict[str, Dict[str, float]]) -> Dict[str, Any]:
@@ -29,6 +28,7 @@ async def pose_endpoint(ws: WebSocket) -> None:
     """Stream pose metrics over WebSocket."""
     await ws.accept()
     cap = cv2.VideoCapture(0)
+    mp_pose = mp.solutions.pose.Pose()
     try:
         while True:
             ok, frame = cap.read()
