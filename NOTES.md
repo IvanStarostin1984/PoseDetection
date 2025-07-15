@@ -663,7 +663,23 @@ automatically and docs updated.
 
 ### 2025-07-15  PR #81
 
-- **Summary**: WebSocket URLs now accept custom host/port with default 8000; README documents example. Setup script can skip pre-commit.
+- **Summary**: WebSocket URLs now accept custom host/port with default 8000;
+README documents example. Setup script can skip pre-commit.
 - **Stage**: implementation
-- **Motivation / Decision**: allow connecting to remote backends and avoid setup failures in offline environments.
+- **Motivation / Decision**: allow connecting to remote backends
+and avoid setup failures in offline environments.
+
+### 2025-07-15  PR #82
+
+- **Summary**: added frontend entrypoint with `index.tsx`,
+bundle script using esbuild and minimal `index.html`.
+- **Stage**: implementation
+- **Motivation / Decision**: needed standalone bundle to serve
+PoseViewer easily.
+
+### 2025-07-15  PR #83
+
+- **Summary**: removed duplicate PoseViewer and analytics tasks from TODO.
+- **Stage**: maintenance
+- **Motivation / Decision**: keep roadmap concise and avoid repetition.
 - **Next step**: none.

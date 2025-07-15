@@ -85,8 +85,6 @@
 - [x] Add server entrypoint and startup test for backend.
 - [x] Basic React frontend with PoseViewer and WebSocket hook.
 - [x] Add backend analytics module with WebSocket integration.
-- [x] Basic React frontend with PoseViewer and WebSocket hook.
-- [x] Add backend analytics module with WebSocket integration.
 - [x] Add MediaPipe pose detector and FastAPI server with `/pose` WebSocket.
 - [x] Support side-specific landmarks in `extract_pose_metrics`.
 - [x] Add pose classification metric and expose it in server and UI.
@@ -95,4 +93,4 @@
 - [x] Setup script installs pre-commit hooks and runs them once.
 - [x] Allow customizing WebSocket host and port; default 8000 in `resolveUrl`.
 - [x] Add SKIP_PRECOMMIT option in setup script to skip hook installation when offline.
-
+- [ ] Add index.tsx entrypoint and bundler script for frontend.
