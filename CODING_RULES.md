@@ -13,7 +13,7 @@
 11 Dependency tree must contain 0 critical/high‑CVEs
 12 Run auto‑formatter, linter, and SAST before output
 13 Unit‑test template with ≥1 positive and ≥1 negative case per public API
-14 Achieve ≥90 % branch coverage and cyclomatic complexity ≤15 per file
+14 Achieve ≥80 % branch coverage and cyclomatic complexity ≤15 per file
 15 Emit lightweight performance/log hooks for three actionable metrics
 16 Full static type annotations; type checker passes with 0 errors
 17 Use context‑managed resource handling; 0 leak warnings in SAST

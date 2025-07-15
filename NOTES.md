@@ -606,3 +606,10 @@ updated requirements and workflow.
 - **Stage**: implementation
 - **Motivation / Decision**: avoid missing hook installation instructions.
 - **Next step**: none.
+
+### 2025-07-14  PR #
+
+- **Summary**: lowered branch coverage requirement in CODING_RULES to 80%.
+- **Stage**: documentation
+- **Motivation / Decision**: align coding rules with CI coverage threshold.
+- **Next step**: none.
