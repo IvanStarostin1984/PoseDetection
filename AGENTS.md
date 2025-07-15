@@ -6,6 +6,7 @@ in‑sync.
 > If you change *any* rule below, **bump the version number in this heading**.
 
 ---
+On each request read fully single source of truth.
 Always follow single source of truth.
 Always do as specified in single source of truth.
 If something is not specified in single source of truth -
