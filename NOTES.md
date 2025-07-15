@@ -606,3 +606,10 @@ updated requirements and workflow.
 - **Stage**: implementation
 - **Motivation / Decision**: avoid missing hook installation instructions.
 - **Next step**: none.
+
+### 2025-07-14  PR #73
+
+- **Summary**: removed "future" from README test instruction.
+- **Stage**: documentation
+- **Motivation / Decision**: clarify that tests already exist.
+- **Next step**: none.
