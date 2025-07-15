@@ -1,4 +1,4 @@
-# TODO – Road‑map (last updated: 2025-07-14)
+# TODO – Road‑map (last updated: 2025-07-15)
 
 > *Record only high‑level milestones here; break micro‑tasks out into Issues.*  
 > **When you finish a task, tick it and append a short NOTE entry
@@ -47,6 +47,7 @@
 - [ ] Add linters for conflict markers, trailing spaces and NOTES ordering
 - [ ] Introduce dependabot / Renovate with the version‑pin policy from
       `AGENTS.md`
+- [ ] Prefetch pre-commit hooks during setup so offline runs work.
 
 ## 4 · Stretch goals
 

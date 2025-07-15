@@ -625,3 +625,10 @@ updated requirements and workflow.
 - **Stage**: documentation
 - **Motivation / Decision**: remove outdated sentence to reflect repo status.
 - **Next step**: none.
+
+### 2025-07-15  PR #77
+
+- **Summary**: setup script now prefetches pre-commit hooks.
+- **Stage**: maintenance
+- **Motivation / Decision**: fetch hooks during setup so later runs work offline.
+- **Next step**: none.
