@@ -850,3 +850,12 @@ by reinitialising the pose detector per connection.
 - **Motivation / Decision**: ensure stable WebSocket handling and guide
   contributors to run setup so tests pass.
 - **Next step**: none.
+
+### 2025-07-15  PR #106
+
+- **Summary**: skeleton overlay connects landmarks with predefined edges and
+  tests verify line drawing. README mentions the new overlay.
+- **Stage**: feature
+- **Motivation / Decision**: show pose structure on video and guard against
+  regressions.
+- **Next step**: none.

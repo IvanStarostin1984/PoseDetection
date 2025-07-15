@@ -106,3 +106,4 @@
 - [x] Lint backend with ruff in Makefile.
 - [x] Add robustness tests for repeated WebSocket connections to /pose.
 - [x] Emphasise running `./.codex/setup.sh` before tests in README.
+- [x] Draw skeleton edges in the PoseViewer canvas overlay.
