@@ -743,3 +743,10 @@ with `.gitkeep` to remove Sphinx warning.
 - **Stage**: implementation
 - **Motivation / Decision**: enforce consistent style using black in CI; updated docs.
 - **Next step**: none.
+
+### 2025-07-15  PR #92
+
+- **Summary**: pinned numpy 1.26.4 and updated README quick start.
+- **Stage**: maintenance
+- **Motivation / Decision**: keep dependencies compatible; check-versions passes.
+- **Next step**: none.

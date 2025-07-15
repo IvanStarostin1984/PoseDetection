@@ -25,8 +25,8 @@ make lint
 make test
 ```
 
-The Python dependencies install `mediapipe==0.10.13` and
-`websockets==15.0.1`. Mediapipe 0.10.13 supports `numpy>=2`.
+The Python dependencies install `mediapipe==0.10.13`,
+`websockets==15.0.1` and `numpy==1.26.4`.
 
 ### Backend server
 
