@@ -5,11 +5,7 @@ import subprocess
 
 
 def test_update_todo_date(tmp_path):
-    sample = (
-        "# TODO – Road‑map (last updated: 2000-01-01)\n"
-        "\n"
-        "rest\n"
-    )
+    sample = "# TODO – Road‑map (last updated: 2000-01-01)\n" "\n" "rest\n"
     todo_file = tmp_path / "TODO.md"
     todo_file.write_text(sample)
 

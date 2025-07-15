@@ -97,5 +97,5 @@
 - [x] Add index.tsx entrypoint and bundler script for frontend.
 - [x] Configure CI to pass `SKIP_PRECOMMIT=1` when running setup.
 - [x] Remove deprecated backend main entrypoint and tests.
-
 - [x] Integrate mypy type checking with Makefile target and CI.
+- [x] Run black formatting via Makefile lint

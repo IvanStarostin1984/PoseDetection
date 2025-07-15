@@ -10,7 +10,9 @@ class FakePose:
 
     def process(self, frame):
         lm = types.SimpleNamespace(x=1.0, y=2.0, visibility=0.5)
-        return types.SimpleNamespace(pose_landmarks=types.SimpleNamespace(landmark=[lm] * 33))
+        return types.SimpleNamespace(
+            pose_landmarks=types.SimpleNamespace(landmark=[lm] * 33)
+        )
 
 
 def test_process_success(monkeypatch):

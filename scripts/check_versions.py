@@ -86,5 +86,7 @@ def check_versions(repo_dir: Path) -> int:
 
 
 if __name__ == "__main__":
-    root = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).resolve().parents[1]
+    root = (
+        Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).resolve().parents[1]
+    )
     sys.exit(check_versions(root))

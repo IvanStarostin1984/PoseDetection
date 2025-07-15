@@ -6,10 +6,13 @@ import scripts.check_versions as cv
 def fake_urlopen_success(url):
     class Resp:
         status = 200
+
         def __enter__(self):
             return self
+
         def __exit__(self, exc_type, exc, tb):
             pass
+
     return Resp()
 
 
