@@ -788,4 +788,10 @@ style with other entries and keep lock file in sync.
 - **Stage**: documentation
 - **Motivation / Decision**: guide contributors on fetching hooks and using
   `SKIP_PRECOMMIT=1` when network is not available.
+
+### 2025-07-15  PR #98
+
+- **Summary**: AGENTS guide sets PRE_COMMIT_HOME using git rev-parse and explains hook cache.
+- **Stage**: documentation
+- **Motivation / Decision**: ensure pre-commit cache works in subdirectories and avoid GitHub prompts after running setup.
 - **Next step**: none.
