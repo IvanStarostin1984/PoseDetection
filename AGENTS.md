@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.23 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.24 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI

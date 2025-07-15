@@ -41,8 +41,8 @@ Run `make lint` to check Markdown and Python code style (ruff).
 Run `make test` to execute the test-suite.
 CI runs `make check-versions` whenever dependency files change to
 ensure pinned versions are valid.
-The setup script installs `pre-commit` and its hooks automatically and
-runs them once so ruff, black and markdownlint run before each commit.
+Pre-commit hooks are installed automatically by `.codex/setup.sh`,
+so ruff, black and markdownlint run before each commit.
 
 ## Setup
 
