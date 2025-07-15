@@ -660,3 +660,10 @@ automatically and docs updated.
 - **Stage**: implementation
 - **Motivation / Decision**: follow pin policy and automate updates.
 - **Next step**: monitor upcoming dependency PRs.
+
+### 2025-07-15  PR #81
+
+- **Summary**: documented backend port and WebSocket URL.
+- **Stage**: documentation
+- **Motivation / Decision**: clarify port 8000; mention `--port` (issue #1).
+- **Next step**: none.
