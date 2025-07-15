@@ -36,9 +36,10 @@ The Python dependencies install `mediapipe==0.10.13`,
 ### Backend server
 
 Run `python -m backend.server` to launch the FastAPI server. The `/pose`
-WebSocket streams pose keypoints extracted from each video frame. The
-payload includes simple analytics like knee angle, balance and a
-``pose_class`` field indicating ``standing`` or ``sitting``.
+WebSocket streams 17 keypoints extracted from each video frame. Each point is
+a dictionary with ``x``, ``y`` and ``visibility``. The payload also includes
+simple analytics like knee angle, balance and a ``pose_class`` field
+indicating ``standing`` or ``sitting``.
 
 ## Development
 

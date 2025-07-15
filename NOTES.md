@@ -850,3 +850,11 @@ by reinitialising the pose detector per connection.
 - **Motivation / Decision**: ensure stable WebSocket handling and guide
   contributors to run setup so tests pass.
 - **Next step**: none.
+\n### 2025-07-15  PR #106
+- **Summary**: server now sends 17 keypoints using `PoseDetector.process` and
+  closes the detector after streaming. Payload building and tests were updated to
+  expect exactly 17 points.
+- **Stage**: feature
+- **Motivation / Decision**: align streamed data with 17-point skeleton per
+  tech challenge, ensure resources released properly.
+- **Next step**: none.

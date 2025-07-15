@@ -27,3 +27,7 @@ class PoseDetector:
                 }
             )
         return keypoints
+
+    def close(self) -> None:
+        """Release MediaPipe resources."""
+        self._pose.close()

@@ -4,20 +4,14 @@ import sys
 import subprocess
 import time
 import asyncio
-from types import SimpleNamespace
 
 
 def test_build_payload_format():
-    lms = {
-        "hip": {"x": 0.1, "y": 0.2},
-        "knee": {"x": 0.3, "y": 0.4},
-        "ankle": {"x": 0.5, "y": 0.6},
-        "left_hip": {"x": 0.1, "y": 0.2},
-        "right_hip": {"x": 0.2, "y": 0.2},
-    }
+    lms = [{"x": 0.1, "y": 0.2, "visibility": 0.9}] * 17
     payload = build_payload(lms)
     assert isinstance(payload["landmarks"], list)
-    assert payload["landmarks"][0] == {"x": 0.1, "y": 0.2}
+    assert len(payload["landmarks"]) == 17
+    assert payload["landmarks"][0]["x"] == 0.1
     metrics = payload["metrics"]
     assert {"knee_angle", "balance", "pose_class"} <= metrics.keys()
 
@@ -52,8 +46,8 @@ class DummyPose:
     def __init__(self) -> None:
         self.closed = False
 
-    def process(self, image: Any) -> SimpleNamespace:
-        return SimpleNamespace(pose_landmarks=None)
+    def process(self, image: Any) -> list[Any]:
+        return []
 
     def close(self) -> None:
         self.closed = True
@@ -75,7 +69,7 @@ def test_pose_endpoint_closes_pose(monkeypatch):
 
     pose = DummyPose()
     cap = DummyCap()
-    monkeypatch.setattr(server.mp.solutions.pose, "Pose", lambda *_a, **_k: pose)
+    monkeypatch.setattr(server, "PoseDetector", lambda *_a, **_k: pose)
     monkeypatch.setattr(server.cv2, "VideoCapture", lambda *_args, **_kw: cap)
     ws = DummyWS()
     asyncio.run(server.pose_endpoint(ws))
@@ -94,7 +88,7 @@ def test_pose_endpoint_allows_second_connection(monkeypatch):
     def make_pose(*_a, **_k) -> DummyPose:
         return poses.pop(0)
 
-    monkeypatch.setattr(server.mp.solutions.pose, "Pose", make_pose)
+    monkeypatch.setattr(server, "PoseDetector", make_pose)
     monkeypatch.setattr(server.cv2, "VideoCapture", lambda *_args, **_kw: cap)
     ws = DummyWS()
 
