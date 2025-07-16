@@ -15,7 +15,8 @@ keypoints from a webcam and serves them through a small web app. See
 ## Quick start
 
 Clone the repository and **run `./.codex/setup.sh` first** to install
-Python and Node packages before running any tests. Then check the code:
+Python and Node packages. The project requires Node 20 or newer.
+Then check the code:
 
 ```bash
 git clone <repo-url>
@@ -62,7 +63,8 @@ Run `.codex/setup.sh` after cloning to install Python 3.11, Node 20 and all
 project dependencies. Tests rely on these packages, so always complete this
 step before running `make test`. The script is idempotent and exits 0 when
 finished. Pre-commit hooks are stored in `.pre-commit-cache/` so they can be
-reused offline.
+reused offline. The script then runs `pre-commit run --all-files`, which may
+reformat files, so execute it before making changes.
 
 ## Frontend
 

@@ -113,3 +113,10 @@
 - [x] Use PoseLandmark names for 17 keypoints across backend and frontend.
 - [x] Setup script calls `python3 -m pre_commit` to install hooks.
 - [x] Document optional host and port arguments for `useWebSocket` in README.
+- [x] Simplify `lint-docs` to run markdownlint and conflict marker check only.
+- [x] Add test for resolveUrl custom host and port.
+- [x] Format `docs/source/conf.py` with Black and extend `make lint` to check `docs/`.
+- [x] Add test covering PoseDetector without landmarks to hit 100% coverage.
+- [x] Remove httpx pin from requirements.
+- [x] Add .markdownlintignore and update AGENTS accordingly.
+- [x] Document Node 20 requirement in README and package.json.

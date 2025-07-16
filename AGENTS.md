@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.32 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.33 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -63,11 +63,12 @@ prevents GitHub prompts.
 3. Verify the **secret‑detection helper step** in
     `.github/workflows/ci.yml` (see § 4) so forks without secrets still pass.
 4. On the first PR, update README badges to point at your fork (owner/repo).
-5. `.codex/setup.sh` installs `pre-commit` and sets up the hooks automatically
-   using `python3 -m pre_commit` on the first run. This avoids PATH issues when
-   the command is not yet on `$PATH`.
-   Set `SKIP_PRECOMMIT=1` to bypass this when offline. The CI workflow passes
-   this flag because the runners have restricted network access.
+5. `.codex/setup.sh` installs `pre-commit`, sets up the hooks and then runs
+   `pre-commit run --all-files`. This may reformat files, so run the script
+   before editing anything. Hooks are installed using `python3 -m pre_commit`
+   on the first run to avoid PATH issues. Set `SKIP_PRECOMMIT=1` to bypass this
+   when offline. The CI workflow passes this flag because the runners have
+   restricted network access.
 
 ---
 
@@ -89,15 +90,20 @@ prevents GitHub prompts.
       catch long-line issues locally.
     - After editing `TODO.md` also run `make update-todo-date` to refresh
    the header date.
-    - Always run `make lint-docs` after editing any Markdown file to avoid CI failures.
+    - Always run `make lint-docs` after editing any Markdown file
+      to avoid CI failures.
+    - `make lint-docs` only runs `markdownlint` and a conflict marker check,
+      so it finishes quickly.
     - Run `make check-versions` when changing dependencies to
       verify pinned versions exist. CI runs this automatically when
       `requirements.txt`, `package.json` or `package-lock.json` change.
     - Run `make docs` to build the HTML docs into `docs/_build`.
+    - Markdownlint reads `.markdownlintignore` to skip build and cache dirs.
     - Python code under `scripts/` and `tests/` is linted with `ruff` via `make lint`.
     - Static type checking uses mypy via `make typecheck`.
-    - Python code in `backend/`, `scripts/` and `tests/` is formatted with `black`
-      and linted with `ruff` via `make lint`.
+    - Python code in `backend/`, `scripts/`, `tests/`, and `docs/` is
+      formatted with `black`. `ruff` still checks only `backend/`, `scripts/`
+      and `tests/` via `make lint`.
     - GitHub Actions workflows are linted with
       `actionlint` pinned at v1.7.7 via pre-commit.
     - `make test` expects dependencies from `.codex/setup.sh`.

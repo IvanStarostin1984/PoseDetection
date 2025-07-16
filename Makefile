@@ -1,11 +1,13 @@
 .PHONY: lint lint-docs test generate docs typecheck
 
 lint:
-	npx --yes markdownlint-cli **/*.md
+	npx --yes markdownlint-cli '**/*.md' --ignore node_modules --ignore .pre-commit-cache --ignore frontend/dist --ignore docs/_build
 	black --check backend scripts tests
 	ruff check backend scripts tests
 
-lint-docs: lint
+lint-docs:
+	npx --yes markdownlint-cli '**/*.md'
+	grep -R --line-number -E '<{7}|={7}|>{7}' --exclude=ci.yml . && exit 1 || echo "No conflict markers"
 
 test:
 	@if [ -d tests ]; then \
