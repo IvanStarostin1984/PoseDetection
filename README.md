@@ -78,7 +78,8 @@ button to toggle the stream. A canvas overlay draws lines between keypoints to
 show the pose skeleton.
 The `useWebSocket` hook returns the latest pose data and a connection state
 (`connecting`, `open`, `closed` or `error`). PoseViewer displays this state so
-you know if the backend is reachable.
+you know if the backend is reachable. The hook accepts optional `host` and
+`port` arguments when you need to connect to another server.
 
 ## Running locally
 
@@ -98,7 +99,9 @@ python -m http.server --directory frontend/dist 8080
 
 Then open [http://localhost:8080/](http://localhost:8080/) <!-- lychee skip -->
 in your browser.
-The page connects to `ws://localhost:8000/pose` by default.
+The page connects to `ws://localhost:8000/pose` by default. To reach a remote
+server pass the host and port to `useWebSocket`, for example
+`useWebSocket('/pose', 'example.org', 9001)`.
 
 ## Backend
 

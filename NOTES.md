@@ -898,3 +898,11 @@ backend connectivity; tests cover open and close events.
 - **Stage**: maintenance
 - **Motivation / Decision**: avoid PATH issues when `pre-commit` is not on PATH.
 - **Next step**: none.
+
+### 2025-07-20  PR #112
+
+- **Summary**: README explains optional host and port for `useWebSocket` and
+  shows how to connect to a remote server.
+- **Stage**: documentation
+- **Motivation / Decision**: clarify remote backend usage.
+- **Next step**: none.
