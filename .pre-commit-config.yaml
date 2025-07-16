@@ -8,10 +8,10 @@ repos:
     hooks:
       - id: black
         language_version: python3
-  - repo: https://github.com/pre-commit/mirrors-markdownlint-cli
-    rev: v0.39.0
+  - repo: https://github.com/pre-commit/mirrors-markdownlint
+    rev: v0.38.0
     hooks:
-      - id: markdownlint-cli
+      - id: markdownlint
   - repo: https://github.com/rhysd/actionlint
     rev: v1.7.7
     hooks:
