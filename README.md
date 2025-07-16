@@ -63,7 +63,8 @@ Run `.codex/setup.sh` after cloning to install Python 3.11, Node 20 and all
 project dependencies. Tests rely on these packages, so always complete this
 step before running `make test`. The script is idempotent and exits 0 when
 finished. Pre-commit hooks are stored in `.pre-commit-cache/` so they can be
-reused offline.
+reused offline. The script then runs `pre-commit run --all-files`, which may
+reformat files, so execute it before making changes.
 
 ## Frontend
 

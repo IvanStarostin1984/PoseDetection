@@ -63,11 +63,12 @@ prevents GitHub prompts.
 3. Verify the **secret‑detection helper step** in
     `.github/workflows/ci.yml` (see § 4) so forks without secrets still pass.
 4. On the first PR, update README badges to point at your fork (owner/repo).
-5. `.codex/setup.sh` installs `pre-commit` and sets up the hooks automatically
-   using `python3 -m pre_commit` on the first run. This avoids PATH issues when
-   the command is not yet on `$PATH`.
-   Set `SKIP_PRECOMMIT=1` to bypass this when offline. The CI workflow passes
-   this flag because the runners have restricted network access.
+5. `.codex/setup.sh` installs `pre-commit`, sets up the hooks and then runs
+   `pre-commit run --all-files`. This may reformat files, so run the script
+   before editing anything. Hooks are installed using `python3 -m pre_commit`
+   on the first run to avoid PATH issues. Set `SKIP_PRECOMMIT=1` to bypass this
+   when offline. The CI workflow passes this flag because the runners have
+   restricted network access.
 
 ---
 
