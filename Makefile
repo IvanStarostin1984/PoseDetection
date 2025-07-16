@@ -2,7 +2,7 @@
 
 lint:
 	npx --yes markdownlint-cli **/*.md
-	black --check backend scripts tests
+	black --check backend scripts tests docs
 	ruff check backend scripts tests
 
 lint-docs: lint

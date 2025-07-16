@@ -898,3 +898,12 @@ backend connectivity; tests cover open and close events.
 - **Stage**: maintenance
 - **Motivation / Decision**: avoid PATH issues when `pre-commit` is not on PATH.
 - **Next step**: none.
+
+### 2025-07-20  PR #112
+
+- **Summary**: Formatted Sphinx config with Black and updated Makefile to
+  lint docs.
+- **Stage**: maintenance
+- **Motivation / Decision**: keep documentation Python files consistent and
+  ensure lint checks them.
+- **Next step**: none.
