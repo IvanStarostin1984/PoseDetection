@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.32 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.33 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -89,7 +89,10 @@ prevents GitHub prompts.
       catch long-line issues locally.
     - After editing `TODO.md` also run `make update-todo-date` to refresh
    the header date.
-    - Always run `make lint-docs` after editing any Markdown file to avoid CI failures.
+    - Always run `make lint-docs` after editing any Markdown file
+      to avoid CI failures.
+    - `make lint-docs` only runs `markdownlint` and a conflict marker check,
+      so it finishes quickly.
     - Run `make check-versions` when changing dependencies to
       verify pinned versions exist. CI runs this automatically when
       `requirements.txt`, `package.json` or `package-lock.json` change.

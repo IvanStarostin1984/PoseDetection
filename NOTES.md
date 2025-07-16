@@ -898,3 +898,10 @@ backend connectivity; tests cover open and close events.
 - **Stage**: maintenance
 - **Motivation / Decision**: avoid PATH issues when `pre-commit` is not on PATH.
 - **Next step**: none.
+
+### 2025-07-20  PR #112
+
+- **Summary**: Makefile lint ignores build artefacts; lint-docs is faster.
+- **Stage**: maintenance
+- **Motivation / Decision**: speed up docs-only checks and avoid false positives.
+- **Next step**: none.
