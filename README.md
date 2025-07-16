@@ -15,7 +15,8 @@ keypoints from a webcam and serves them through a small web app. See
 ## Quick start
 
 Clone the repository and **run `./.codex/setup.sh` first** to install
-Python and Node packages before running any tests. Then check the code:
+Python and Node packages. The project requires Node 20 or newer.
+Then check the code:
 
 ```bash
 git clone <repo-url>
