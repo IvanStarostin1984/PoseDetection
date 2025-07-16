@@ -898,3 +898,11 @@ backend connectivity; tests cover open and close events.
 - **Stage**: maintenance
 - **Motivation / Decision**: avoid PATH issues when `pre-commit` is not on PATH.
 - **Next step**: none.
+
+### 2025-07-20  PR #112
+
+- **Summary**: Document that setup script runs pre-commit on all files.
+- **Stage**: documentation
+- **Motivation / Decision**: remind contributors that initial formatting happens
+  automatically.
+- **Next step**: none.
