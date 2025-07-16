@@ -975,18 +975,25 @@ backend connectivity; tests cover open and close events.
 
 ### 2025-07-16  PR #123
 
+- **Summary**: added TypeScript type checking via `make typecheck-ts` and CI step.
+- **Stage**: implementation
+- **Motivation / Decision**: ensure frontend code passes `tsc` before commit.
+- **Next step**: none.
+
+### 2025-07-16  PR #124
+
 - **Summary**: added repo_checks.py for trailing spaces and NOTES order.
 - **Stage**: implementation
 - **Motivation / Decision**: enforce log order and whitespace via pre-commit.
 - **Next step**: none.
 
-### 2025-07-16  PR #124
+### 2025-07-16  PR #125
 
 - **Summary**: Inserted blank line after PR #117 heading for markdownlint.
 - **Stage**: documentation
 - **Motivation / Decision**: maintain consistent log formatting.
 
-### 2025-07-16  PR #125
+### 2025-07-16  PR #126
 
 - **Summary**: restored Black check for docs in Makefile.
 - **Stage**: maintenance
@@ -995,21 +1002,21 @@ backend connectivity; tests cover open and close events.
 but the lint step lost this path.
 - **Next step**: none.
 
-### 2025-07-16  PR #126
+### 2025-07-16  PR #127
 
 - **Summary**: lint-docs grep now skips build and cache dirs; documented in
   AGENTS.
 - **Stage**: maintenance
 - **Motivation / Decision**: avoid false positives from node_modules.
 
-### 2025-07-16  PR #127
+### 2025-07-16  PR #128
 
 - **Summary**: added zero-length vector test for `calculate_angle`.
 - **Stage**: testing
 - **Motivation / Decision**: ensure overlapping points raise `ValueError`.
 - **Next step**: none.
 
-### 2025-07-16  PR #128
+### 2025-07-16  PR #129
 
 - **Summary**: `pose_endpoint` now runs frame capture and pose detection in
   threads and closes the WebSocket on errors. Added a regression test for
