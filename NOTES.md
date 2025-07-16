@@ -898,3 +898,12 @@ backend connectivity; tests cover open and close events.
 - **Stage**: maintenance
 - **Motivation / Decision**: avoid PATH issues when `pre-commit` is not on PATH.
 - **Next step**: none.
+
+### 2025-07-21  PR #112
+
+- **Summary**: package.json enforces Node 20 and README quick-start mentions
+  the requirement.
+- **Stage**: maintenance
+- **Motivation / Decision**: ensure contributors use the same Node version as
+  the setup script and document this prerequisite.
+- **Next step**: none.
