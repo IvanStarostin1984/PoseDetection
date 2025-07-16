@@ -966,7 +966,7 @@ backend connectivity; tests cover open and close events.
 - **Motivation / Decision**: keep roadmap timestamp accurate.
 - **Next step**: none.
 
-### 2025-07-16  PR #116
+### 2025-07-16  PR #122
 
 - **Summary**: README clarifies build only outputs bundle.js.
   `index.html` is already there.
@@ -978,3 +978,35 @@ backend connectivity; tests cover open and close events.
 - **Summary**: Inserted blank line after PR #117 heading for markdownlint.
 - **Stage**: documentation
 - **Motivation / Decision**: maintain consistent log formatting.
+
+### 2025-07-16  PR #123
+
+- **Summary**: restored Black check for docs in Makefile.
+- **Stage**: maintenance
+- **Motivation / Decision**: AGENTS guide
+ states docs Python must be formatted with Black,
+but the lint step lost this path.
+- **Next step**: none.
+
+### 2025-07-16  PR #124
+
+- **Summary**: lint-docs grep now skips build and cache dirs; documented in
+  AGENTS.
+- **Stage**: maintenance
+- **Motivation / Decision**: avoid false positives from node_modules.
+
+### 2025-07-16  PR #125
+
+- **Summary**: added zero-length vector test for `calculate_angle`.
+- **Stage**: testing
+- **Motivation / Decision**: ensure overlapping points raise `ValueError`.
+- **Next step**: none.
+
+### 2025-07-16  PR #126
+
+- **Summary**: `pose_endpoint` now runs frame capture and pose detection in
+  threads and closes the WebSocket on errors. Added a regression test for
+  concurrent clients.
+- **Stage**: maintenance
+- **Motivation / Decision**: prevent event loop blocking when multiple
+  clients connect and ensure graceful shutdown.
