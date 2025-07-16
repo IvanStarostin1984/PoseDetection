@@ -18,6 +18,17 @@ class FakePose:
         self.closed = True
 
 
+class FakePoseNoLandmarks:
+    def __init__(self, *args, **kwargs):
+        pass
+
+    def process(self, frame):
+        return types.SimpleNamespace(pose_landmarks=None)
+
+    def close(self):
+        pass
+
+
 def test_process_success(monkeypatch):
     monkeypatch.setattr(mp.solutions.pose, "Pose", FakePose)
     det = pd.PoseDetector()
@@ -25,6 +36,14 @@ def test_process_success(monkeypatch):
     result = det.process(frame)
     assert len(result) == 17
     assert result[0]["x"] == 1.0
+
+
+def test_process_no_landmarks(monkeypatch):
+    monkeypatch.setattr(mp.solutions.pose, "Pose", FakePoseNoLandmarks)
+    det = pd.PoseDetector()
+    frame = np.zeros((1, 1, 3), dtype=np.uint8)
+    result = det.process(frame)
+    assert result == []
 
 
 def test_landmarks_constant():

@@ -898,3 +898,10 @@ backend connectivity; tests cover open and close events.
 - **Stage**: maintenance
 - **Motivation / Decision**: avoid PATH issues when `pre-commit` is not on PATH.
 - **Next step**: none.
+
+### 2025-07-20  PR #112
+
+- **Summary**: Added edge case test for PoseDetector when no landmarks are found.
+- **Stage**: testing
+- **Motivation / Decision**: reach 100% coverage of pose_detector module.
+- **Next step**: none.
