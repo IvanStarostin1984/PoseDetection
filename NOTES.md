@@ -1024,3 +1024,10 @@ but the lint step lost this path.
 - **Stage**: maintenance
 - **Motivation / Decision**: prevent event loop blocking when multiple
   clients connect and ensure graceful shutdown.
+
+### 2025-07-16  PR #130
+
+- **Summary**: fixed `lint-docs` rule indentation so Makefile executes.
+- **Stage**: maintenance
+- **Motivation / Decision**: Makefile failed due to spaces; used tabs instead.
+- **Next step**: none.
