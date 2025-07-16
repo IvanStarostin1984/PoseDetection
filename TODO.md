@@ -126,3 +126,4 @@
 - [x] Exclude build directories from conflict marker check in `lint-docs`.
 - [x] Add test for zero-length vector in `calculate_angle`.
 - [x] Handle concurrent `/pose` WebSocket clients without blocking.
+- [x] Match CI lint-docs grep excludes with AGENTS guidance.

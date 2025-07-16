@@ -1024,3 +1024,10 @@ but the lint step lost this path.
 - **Stage**: maintenance
 - **Motivation / Decision**: prevent event loop blocking when multiple
   clients connect and ensure graceful shutdown.
+
+### 2025-07-16  PR #130
+
+- **Summary**: lint-docs grep now skips node_modules, .pre-commit-cache,
+  frontend/dist and docs/_build to align with AGENTS.
+- **Stage**: maintenance
+- **Motivation / Decision**: avoid false positives in CI.
