@@ -97,8 +97,9 @@ prevents GitHub prompts.
     - Markdownlint reads `.markdownlintignore` to skip build and cache dirs.
     - Python code under `scripts/` and `tests/` is linted with `ruff` via `make lint`.
     - Static type checking uses mypy via `make typecheck`.
-    - Python code in `backend/`, `scripts/` and `tests/` is formatted with `black`
-      and linted with `ruff` via `make lint`.
+    - Python code in `backend/`, `scripts/`, `tests/`, and `docs/` is
+      formatted with `black`. `ruff` still checks only `backend/`, `scripts/`
+      and `tests/` via `make lint`.
     - GitHub Actions workflows are linted with
       `actionlint` pinned at v1.7.7 via pre-commit.
     - `make test` expects dependencies from `.codex/setup.sh`.

@@ -901,23 +901,30 @@ backend connectivity; tests cover open and close events.
 
 ### 2025-07-20  PR #112
 
+- **Summary**: Formatted Sphinx config with Black and updated Makefile to
+  lint docs.
+- **Stage**: maintenance
+- **Motivation / Decision**: keep documentation Python files consistent and
+  ensure lint checks them.
+
+### 2025-07-20  PR #113
 - **Summary**: Added edge case test for PoseDetector when no landmarks are found.
 - **Stage**: testing
 - **Motivation / Decision**: reach 100% coverage of pose_detector module.
 
-### 2025-07-21  PR #113
+### 2025-07-21  PR #114
 
 - **Summary**: Removed httpx pin from requirements; verified all other pins.
 - **Stage**: maintenance
 - **Motivation / Decision**: dependency unused so cleaned up to reduce overhead.
 
-### 2025-07-20  PR #114
+### 2025-07-20  PR #115
 
 - **Summary**: Added `.markdownlintignore` and mentioned it in `AGENTS.md`.
 - **Stage**: maintenance
 - **Motivation / Decision**: speed up markdown linting by skipping build folders.
 
-### 2025-07-21  PR #115
+### 2025-07-21  PR #116
 
 - **Summary**: package.json enforces Node 20 and README quick-start mentions
   the requirement.
@@ -925,7 +932,7 @@ backend connectivity; tests cover open and close events.
 - **Motivation / Decision**: ensure contributors use the same Node version as
   the setup script and document this prerequisite.
 
-### 2025-07-16  PR #116
+### 2025-07-16  PR #117
 
 - **Summary**: refreshed TODO header date via script.
 - **Stage**: maintenance
