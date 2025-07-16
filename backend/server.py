@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import json
 import cv2
-import mediapipe as mp
 from fastapi import FastAPI, WebSocket
 
 from typing import Any, Dict, List
@@ -14,8 +13,8 @@ import uvicorn
 
 app = FastAPI()
 
-# names for the first 17 MediaPipe landmarks
-_NAMES = [lm.name.lower() for lm in list(mp.solutions.pose.PoseLandmark)[:17]]
+# names for the 17-landmark subset used by PoseDetector
+_NAMES = [lm.name.lower() for lm in PoseDetector.LANDMARKS]
 
 
 def _to_named(points: List[Dict[str, float]]) -> Dict[str, Dict[str, float]]:

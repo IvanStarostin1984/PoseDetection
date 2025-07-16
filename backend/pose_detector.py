@@ -6,6 +6,27 @@ import numpy as np
 class PoseDetector:
     """Extract 17 pose keypoints from a BGR video frame."""
 
+    # Ordered subset of MediaPipe landmarks (COCO layout)
+    LANDMARKS = [
+        mp.solutions.pose.PoseLandmark.NOSE,
+        mp.solutions.pose.PoseLandmark.LEFT_EYE,
+        mp.solutions.pose.PoseLandmark.RIGHT_EYE,
+        mp.solutions.pose.PoseLandmark.LEFT_EAR,
+        mp.solutions.pose.PoseLandmark.RIGHT_EAR,
+        mp.solutions.pose.PoseLandmark.LEFT_SHOULDER,
+        mp.solutions.pose.PoseLandmark.RIGHT_SHOULDER,
+        mp.solutions.pose.PoseLandmark.LEFT_ELBOW,
+        mp.solutions.pose.PoseLandmark.RIGHT_ELBOW,
+        mp.solutions.pose.PoseLandmark.LEFT_WRIST,
+        mp.solutions.pose.PoseLandmark.RIGHT_WRIST,
+        mp.solutions.pose.PoseLandmark.LEFT_HIP,
+        mp.solutions.pose.PoseLandmark.RIGHT_HIP,
+        mp.solutions.pose.PoseLandmark.LEFT_KNEE,
+        mp.solutions.pose.PoseLandmark.RIGHT_KNEE,
+        mp.solutions.pose.PoseLandmark.LEFT_ANKLE,
+        mp.solutions.pose.PoseLandmark.RIGHT_ANKLE,
+    ]
+
     def __init__(self) -> None:
         self._pose = mp.solutions.pose.Pose(model_complexity=1)
 
@@ -18,7 +39,8 @@ class PoseDetector:
         if not results.pose_landmarks:
             return []
         keypoints = []
-        for lm in results.pose_landmarks.landmark[:17]:
+        for lm_index in self.LANDMARKS:
+            lm = results.pose_landmarks.landmark[lm_index.value]
             keypoints.append(
                 {
                     "x": float(lm.x),

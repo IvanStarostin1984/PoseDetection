@@ -6,6 +6,12 @@ full assignment and requirements are listed in
 
 Placeholder for project docs.
 
+The pose detector outputs 17 landmarks in the following order:
+``nose``, ``left_eye``, ``right_eye``, ``left_ear``, ``right_ear``,
+``left_shoulder``, ``right_shoulder``, ``left_elbow``, ``right_elbow``,
+``left_wrist``, ``right_wrist``, ``left_hip``, ``right_hip``, ``left_knee``,
+``right_knee``, ``left_ankle`` and ``right_ankle``.
+
 ## Backend analytics
 
 The backend exposes a WebSocket endpoint at `/pose`. It captures webcam frames
