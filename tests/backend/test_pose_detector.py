@@ -27,6 +27,29 @@ def test_process_success(monkeypatch):
     assert result[0]["x"] == 1.0
 
 
+def test_landmarks_constant():
+    expected = [
+        mp.solutions.pose.PoseLandmark.NOSE,
+        mp.solutions.pose.PoseLandmark.LEFT_EYE,
+        mp.solutions.pose.PoseLandmark.RIGHT_EYE,
+        mp.solutions.pose.PoseLandmark.LEFT_EAR,
+        mp.solutions.pose.PoseLandmark.RIGHT_EAR,
+        mp.solutions.pose.PoseLandmark.LEFT_SHOULDER,
+        mp.solutions.pose.PoseLandmark.RIGHT_SHOULDER,
+        mp.solutions.pose.PoseLandmark.LEFT_ELBOW,
+        mp.solutions.pose.PoseLandmark.RIGHT_ELBOW,
+        mp.solutions.pose.PoseLandmark.LEFT_WRIST,
+        mp.solutions.pose.PoseLandmark.RIGHT_WRIST,
+        mp.solutions.pose.PoseLandmark.LEFT_HIP,
+        mp.solutions.pose.PoseLandmark.RIGHT_HIP,
+        mp.solutions.pose.PoseLandmark.LEFT_KNEE,
+        mp.solutions.pose.PoseLandmark.RIGHT_KNEE,
+        mp.solutions.pose.PoseLandmark.LEFT_ANKLE,
+        mp.solutions.pose.PoseLandmark.RIGHT_ANKLE,
+    ]
+    assert pd.PoseDetector.LANDMARKS == expected
+
+
 def test_process_none():
     det = pd.PoseDetector()
     try:

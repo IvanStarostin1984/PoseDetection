@@ -18,7 +18,7 @@ const makeCtx = () => {
 
 test('drawSkeleton connects edge landmarks', () => {
   const ctx = makeCtx();
-  const landmarks: Point[] = Array.from({ length: 29 }, (_, i) => ({
+  const landmarks: Point[] = Array.from({ length: 17 }, (_, i) => ({
     x: i / 100,
     y: i / 100,
   }));
@@ -34,4 +34,22 @@ test('drawSkeleton connects edge landmarks', () => {
     expect(l[0]).toBeCloseTo(e.x * 100);
     expect(l[1]).toBeCloseTo(e.y * 100);
   });
+});
+
+test('edges list matches 17-point skeleton', () => {
+  const expected: [number, number][] = [
+    [5, 7],
+    [7, 9],
+    [6, 8],
+    [8, 10],
+    [5, 6],
+    [11, 12],
+    [5, 11],
+    [6, 12],
+    [11, 13],
+    [13, 15],
+    [12, 14],
+    [14, 16],
+  ];
+  expect(EDGES).toEqual(expected);
 });

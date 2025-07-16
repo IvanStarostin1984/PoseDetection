@@ -874,3 +874,12 @@ by reinitialising the pose detector per connection.
 - **Stage**: implementation
 - **Motivation / Decision**: display full analytics to users per feature request.
 - **Next step**: none.
+
+### 2025-07-17  PR #109
+
+- **Summary**: Pose detector now selects 17 explicit landmarks; edges and tests
+  updated accordingly.
+- **Stage**: implementation
+- **Motivation / Decision**: align keypoint order with tech challenge and expose
+  named mapping across backend and frontend.
+- **Next step**: none.

@@ -16,6 +16,31 @@ def test_build_payload_format():
     assert {"knee_angle", "balance", "pose_class"} <= metrics.keys()
 
 
+def test_names_match_landmarks():
+    import backend.server as server
+
+    expected = [
+        "nose",
+        "left_eye",
+        "right_eye",
+        "left_ear",
+        "right_ear",
+        "left_shoulder",
+        "right_shoulder",
+        "left_elbow",
+        "right_elbow",
+        "left_wrist",
+        "right_wrist",
+        "left_hip",
+        "right_hip",
+        "left_knee",
+        "right_knee",
+        "left_ankle",
+        "right_ankle",
+    ]
+    assert server._NAMES == expected
+
+
 def test_server_starts():
     proc = subprocess.Popen(
         [sys.executable, "-m", "backend.server"],
