@@ -934,6 +934,7 @@ backend connectivity; tests cover open and close events.
   ensure lint checks them.
 
 ### 2025-07-20  PR #117
+
 - **Summary**: Added edge case test for PoseDetector when no landmarks are found.
 - **Stage**: testing
 - **Motivation / Decision**: reach 100% coverage of pose_detector module.
@@ -971,3 +972,12 @@ backend connectivity; tests cover open and close events.
   `index.html` is already there.
 - **Stage**: documentation
 - **Motivation / Decision**: correct outdated build instructions.
+
+### 2025-07-16
+
+- **Summary**: `pose_endpoint` now runs frame capture and pose detection in
+  threads and closes the WebSocket on errors. Added a regression test for
+  concurrent clients.
+- **Stage**: maintenance
+- **Motivation / Decision**: prevent event loop blocking when multiple
+  clients connect and ensure graceful shutdown.
