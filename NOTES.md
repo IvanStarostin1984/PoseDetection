@@ -898,3 +898,10 @@ backend connectivity; tests cover open and close events.
 - **Stage**: maintenance
 - **Motivation / Decision**: avoid PATH issues when `pre-commit` is not on PATH.
 - **Next step**: none.
+
+### 2025-07-21  PR #112
+
+- **Summary**: Removed httpx pin from requirements; verified all other pins.
+- **Stage**: maintenance
+- **Motivation / Decision**: dependency unused so cleaned up to reduce overhead.
+- **Next step**: none.
