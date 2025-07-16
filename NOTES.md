@@ -1027,6 +1027,13 @@ but the lint step lost this path.
 
 ### 2025-07-16  PR #130
 
+- **Summary**: lint-docs grep now skips node_modules, .pre-commit-cache,
+  frontend/dist and docs/_build to align with AGENTS.
+- **Stage**: maintenance
+- **Motivation / Decision**: avoid false positives in CI.
+
+### 2025-07-16  PR #131
+
 - **Summary**: fixed `lint-docs` rule indentation so Makefile executes.
 - **Stage**: maintenance
 - **Motivation / Decision**: Makefile failed due to spaces; used tabs instead.
