@@ -10,6 +10,20 @@ test('defaults to port 8000 when no protocol is given', () => {
   expect(resolveUrl('/pose')).toBe('ws://example.com:8000/pose');
 });
 
+test('accepts custom host and port', () => {
+  Object.defineProperty(window, 'location', {
+    value: {
+      protocol: 'http:',
+      hostname: 'unused',
+      host: 'unused',
+    },
+    writable: true,
+  });
+  expect(resolveUrl('/pose', 'example.com', 9000)).toBe(
+    'ws://example.com:9000/pose',
+  );
+});
+
 class MockWebSocket {
   onopen: (() => void) | null = null;
   onclose: (() => void) | null = null;
