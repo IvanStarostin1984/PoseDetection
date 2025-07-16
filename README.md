@@ -91,8 +91,9 @@ Start the backend with:
 python -m backend.server
 ```
 
-`npm run build` bundles the app to `frontend/dist/bundle.js` and copies
-`index.html` alongside it. Serve the frontend in another terminal:
+`npm run build` bundles the app to `frontend/dist/bundle.js`. The
+`index.html` file is already present in that directory. Serve the frontend
+in another terminal:
 
 ```bash
 npm run build
