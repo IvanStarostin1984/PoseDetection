@@ -110,3 +110,4 @@
 - [x] Stream 17 keypoints via PoseDetector and close resources.
 - [x] Display knee angle in MetricsPanel with tests.
 - [x] Show WebSocket connection status in the UI.
+- [x] Use PoseLandmark names for 17 keypoints across backend and frontend.
