@@ -906,4 +906,10 @@ backend connectivity; tests cover open and close events.
 - **Stage**: maintenance
 - **Motivation / Decision**: ensure contributors use the same Node version as
   the setup script and document this prerequisite.
+
+### 2025-07-16  PR #113
+
+- **Summary**: refreshed TODO header date via script.
+- **Stage**: maintenance
+- **Motivation / Decision**: keep roadmap timestamp accurate.
 - **Next step**: none.
