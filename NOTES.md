@@ -934,6 +934,7 @@ backend connectivity; tests cover open and close events.
   ensure lint checks them.
 
 ### 2025-07-20  PR #117
+
 - **Summary**: Added edge case test for PoseDetector when no landmarks are found.
 - **Stage**: testing
 - **Motivation / Decision**: reach 100% coverage of pose_detector module.
@@ -971,3 +972,12 @@ backend connectivity; tests cover open and close events.
   `index.html` is already there.
 - **Stage**: documentation
 - **Motivation / Decision**: correct outdated build instructions.
+
+### 2025-07-16  PR #139
+
+- **Summary**: restored Black check for docs in Makefile.
+- **Stage**: maintenance
+- **Motivation / Decision**: AGENTS guide
+ states docs Python must be formatted with Black,
+but the lint step lost this path.
+- **Next step**: none.
