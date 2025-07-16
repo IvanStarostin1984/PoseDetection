@@ -30,6 +30,7 @@ document information in code files.
   `AGENTS.md`, `TODO.md`, `NOTES.md`.
 - **Append-only logs** – `TODO.md` & `NOTES.md` are linear logs—never delete or
   reorder entries. Add new items at the end of the file.
+- `scripts/repo_checks.py` verifies `NOTES.md` dates stay in ascending order.
 - **Generated-files rule** – Anything under `generated/**` or `openapi/**` is
   code-generated—never hand-edit; instead rerun the generator.
 - **.gitignore discipline** – Paths listed there must never be committed.
@@ -225,7 +226,8 @@ jobs:
 - Surround headings / lists / fenced code with a blank line
   (markdownlint MD022, MD032).
 - Surround fenced code blocks with a blank line (markdownlint MD031).
-- **No trailing spaces.** Run `git diff --check` or `make lint-docs`.
+- **No trailing spaces.** `python scripts/repo_checks.py` enforces this via
+  pre-commit and `make lint`.
 - Wrap identifiers like `__init__` in back‑ticks to avoid MD050.
 - Each public API carries a short doc‑comment.
 - Keep Markdown lines ≤ 80 chars to improve diff readability

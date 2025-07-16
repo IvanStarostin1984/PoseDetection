@@ -16,3 +16,10 @@ repos:
     rev: v1.7.7
     hooks:
       - id: actionlint
+  - repo: local
+    hooks:
+      - id: repo-checks
+        name: repo checks
+        entry: python scripts/repo_checks.py
+        language: python
+        pass_filenames: false
