@@ -975,12 +975,19 @@ backend connectivity; tests cover open and close events.
 
 ### 2025-07-16  PR #123
 
+- **Summary**: lint-docs grep now skips build and cache dirs; documented in
+  AGENTS.
+- **Stage**: maintenance
+- **Motivation / Decision**: avoid false positives from node_modules.
+
+### 2025-07-16  PR #124
+
 - **Summary**: added zero-length vector test for `calculate_angle`.
 - **Stage**: testing
 - **Motivation / Decision**: ensure overlapping points raise `ValueError`.
 - **Next step**: none.
 
-### 2025-07-16  PR #124
+### 2025-07-16  PR #125
 
 - **Summary**: `pose_endpoint` now runs frame capture and pose detection in
   threads and closes the WebSocket on errors. Added a regression test for
