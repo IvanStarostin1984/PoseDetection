@@ -30,6 +30,7 @@ document information in code files.
   `AGENTS.md`, `TODO.md`, `NOTES.md`.
 - **Append-only logs** – `TODO.md` & `NOTES.md` are linear logs—never delete or
   reorder entries. Add new items at the end of the file.
+- `scripts/repo_checks.py` verifies `NOTES.md` dates stay in ascending order.
 - **Generated-files rule** – Anything under `generated/**` or `openapi/**` is
   code-generated—never hand-edit; instead rerun the generator.
 - **.gitignore discipline** – Paths listed there must never be committed.
@@ -94,7 +95,10 @@ prevents GitHub prompts.
     - Always run `make lint-docs` after editing any Markdown file
       to avoid CI failures.
     - `make lint-docs` only runs `markdownlint` and a conflict marker check,
-      so it finishes quickly.
+    - If it fails with binary file matches, delete `node_modules/` and
+      `.pre-commit-cache/` before rerunning. The check skips
+      `node_modules`, `.pre-commit-cache`,
+      `frontend/dist` and `docs/_build`.
     - Run `make check-versions` when changing dependencies to
       verify pinned versions exist. CI runs this automatically when
       `requirements.txt`, `package.json` or `package-lock.json` change.
@@ -171,7 +175,10 @@ jobs:
       - uses: actions/checkout@v4
       - run: |
           npx --yes markdownlint-cli '**/*.md'
-          grep -R --line-number -E '<{7}|={7}|>{7}' --exclude=ci.yml . && exit 1 || echo "No conflict markers"
+          grep -R --line-number -E '<{7}|={7}|>{7}' --exclude=ci.yml \
+            --exclude-dir=node_modules --exclude-dir=.pre-commit-cache \
+            --exclude-dir=frontend/dist --exclude-dir=docs/_build . && exit 1 \
+            || echo "No conflict markers"
 
   markdown-link-check:
     needs: [changes]
@@ -221,7 +228,8 @@ jobs:
 - Surround headings / lists / fenced code with a blank line
   (markdownlint MD022, MD032).
 - Surround fenced code blocks with a blank line (markdownlint MD031).
-- **No trailing spaces.** Run `git diff --check` or `make lint-docs`.
+- **No trailing spaces.** `python scripts/repo_checks.py` enforces this via
+  pre-commit and `make lint`.
 - Wrap identifiers like `__init__` in back‑ticks to avoid MD050.
 - Each public API carries a short doc‑comment.
 - Keep Markdown lines ≤ 80 chars to improve diff readability

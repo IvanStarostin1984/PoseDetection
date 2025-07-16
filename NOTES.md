@@ -281,7 +281,7 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Motivation / Decision**: keep markdownlint green and clarify nested list style.
 - **Next step**: none.
 
-## 2025-07-14  PR #29
+## 2025-07-15  PR #29
 
 - **Summary**: added script to verify pinned dependency versions with make target.
 - **Stage**: implementation
@@ -307,7 +307,7 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Motivation / Decision**: ensure scripts fail with bad permissions or
   malformed headers.
 
-## 2025-07-14  PR #33
+## 2025-07-16  PR #33
 
 - **Summary**: documented script public functions with params, returns and raises.
 - **Stage**: documentation
@@ -875,7 +875,7 @@ by reinitialising the pose detector per connection.
 - **Motivation / Decision**: display full analytics to users per feature request.
 - **Next step**: none.
 
-### 2025-07-15  PR #109
+### 2025-07-16  PR #109
 
 - **Summary**: WebSocket hook now exposes connection status
 and PoseViewer displays it.
@@ -883,7 +883,7 @@ and PoseViewer displays it.
 - **Motivation / Decision**: give users feedback on
 backend connectivity; tests cover open and close events.
 
-### 2025-07-17  PR #110
+### 2025-07-16  PR #110
 
 - **Summary**: Pose detector now selects 17 explicit landmarks; edges and tests
   updated accordingly.
@@ -892,40 +892,40 @@ backend connectivity; tests cover open and close events.
   named mapping across backend and frontend.
 - **Next step**: none.
 
-### 2025-07-19  PR #111
+### 2025-07-16  PR #111
 
 - **Summary**: Setup script installs hooks using `python3 -m pre_commit`.
 - **Stage**: maintenance
 - **Motivation / Decision**: avoid PATH issues when `pre-commit` is not on PATH.
 - **Next step**: none.
 
-### 2025-07-20  PR #112
+### 2025-07-16  PR #112
 
 - **Summary**: README explains optional host and port for `useWebSocket` and
   shows how to connect to a remote server.
 - **Stage**: documentation
 - **Motivation / Decision**: clarify remote backend usage.
 
-### 2025-07-20  PR #113
+### 2025-07-16  PR #113
 
 - **Summary**: Document that setup script runs pre-commit on all files.
 - **Stage**: documentation
 - **Motivation / Decision**: remind contributors that initial formatting happens
   automatically.
 
-### 2025-07-20  PR #114
+### 2025-07-16  PR #114
 
 - **Summary**: Makefile lint ignores build artefacts; lint-docs is faster.
 - **Stage**: maintenance
 - **Motivation / Decision**: speed up docs-only checks and avoid false positives.
 
-### 2025-07-20  PR #115
+### 2025-07-16  PR #115
 
 - **Summary**: Add test for resolveUrl custom host and port.
 - **Stage**: testing
 - **Motivation / Decision**: ensure custom host and port work as expected.
 
-### 2025-07-20  PR #116
+### 2025-07-16  PR #116
 
 - **Summary**: Formatted Sphinx config with Black and updated Makefile to
   lint docs.
@@ -933,25 +933,25 @@ backend connectivity; tests cover open and close events.
 - **Motivation / Decision**: keep documentation Python files consistent and
   ensure lint checks them.
 
-### 2025-07-20  PR #117
+### 2025-07-16  PR #117
 
 - **Summary**: Added edge case test for PoseDetector when no landmarks are found.
 - **Stage**: testing
 - **Motivation / Decision**: reach 100% coverage of pose_detector module.
 
-### 2025-07-21  PR #118
+### 2025-07-16  PR #118
 
 - **Summary**: Removed httpx pin from requirements; verified all other pins.
 - **Stage**: maintenance
 - **Motivation / Decision**: dependency unused so cleaned up to reduce overhead.
 
-### 2025-07-20  PR #119
+### 2025-07-16  PR #119
 
 - **Summary**: Added `.markdownlintignore` and mentioned it in `AGENTS.md`.
 - **Stage**: maintenance
 - **Motivation / Decision**: speed up markdown linting by skipping build folders.
 
-### 2025-07-21  PR #120
+### 2025-07-16  PR #120
 
 - **Summary**: package.json enforces Node 20 and README quick-start mentions
   the requirement.
@@ -966,16 +966,61 @@ backend connectivity; tests cover open and close events.
 - **Motivation / Decision**: keep roadmap timestamp accurate.
 - **Next step**: none.
 
-### 2025-07-16  PR #116
+### 2025-07-16  PR #122
 
 - **Summary**: README clarifies build only outputs bundle.js.
   `index.html` is already there.
 - **Stage**: documentation
 - **Motivation / Decision**: correct outdated build instructions.
 
-### 2025-07-16  PR #122
+### 2025-07-16  PR #123
 
 - **Summary**: added TypeScript type checking via `make typecheck-ts` and CI step.
 - **Stage**: implementation
 - **Motivation / Decision**: ensure frontend code passes `tsc` before commit.
 - **Next step**: none.
+
+### 2025-07-16  PR #124
+
+- **Summary**: added repo_checks.py for trailing spaces and NOTES order.
+- **Stage**: implementation
+- **Motivation / Decision**: enforce log order and whitespace via pre-commit.
+- **Next step**: none.
+
+### 2025-07-16  PR #125
+
+- **Summary**: Inserted blank line after PR #117 heading for markdownlint.
+- **Stage**: documentation
+- **Motivation / Decision**: maintain consistent log formatting.
+
+### 2025-07-16  PR #126
+
+- **Summary**: restored Black check for docs in Makefile.
+- **Stage**: maintenance
+- **Motivation / Decision**: AGENTS guide
+ states docs Python must be formatted with Black,
+but the lint step lost this path.
+- **Next step**: none.
+
+### 2025-07-16  PR #127
+
+- **Summary**: lint-docs grep now skips build and cache dirs; documented in
+  AGENTS.
+- **Stage**: maintenance
+- **Motivation / Decision**: avoid false positives from node_modules.
+
+### 2025-07-16  PR #128
+
+- **Summary**: added zero-length vector test for `calculate_angle`.
+- **Stage**: testing
+- **Motivation / Decision**: ensure overlapping points raise `ValueError`.
+- **Next step**: none.
+
+### 2025-07-16  PR #129
+
+- **Summary**: `pose_endpoint` now runs frame capture and pose detection in
+  threads and closes the WebSocket on errors. Added a regression test for
+  concurrent clients.
+- **Stage**: maintenance
+- **Motivation / Decision**: prevent event loop blocking when multiple
+  clients connect and ensure graceful shutdown.

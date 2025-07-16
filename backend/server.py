@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import cv2
 from fastapi import FastAPI, WebSocket
+import asyncio
 
 from typing import Any, Dict, List
 
@@ -32,6 +33,14 @@ def build_payload(points: List[Dict[str, float]]) -> Dict[str, Any]:
     return {"landmarks": points, "metrics": metrics}
 
 
+async def _read_frame(cap: cv2.VideoCapture) -> tuple[bool, Any]:
+    return await asyncio.to_thread(cap.read)
+
+
+async def _process(det: PoseDetector, frame: Any) -> list[dict[str, float]]:
+    return await asyncio.to_thread(det.process, frame)
+
+
 @app.websocket("/pose")
 async def pose_endpoint(ws: WebSocket) -> None:
     """Stream pose metrics over WebSocket."""
@@ -40,18 +49,28 @@ async def pose_endpoint(ws: WebSocket) -> None:
     detector = PoseDetector()
     try:
         while True:
-            ok, frame = cap.read()
+            ok, frame = await _read_frame(cap)
             if not ok:
                 await ws.send_text(json.dumps({"error": "no frame"}))
+                await ws.close()
                 break
 
-            points = detector.process(frame)
+            try:
+                points = await _process(detector, frame)
+            except Exception:
+                await ws.send_text(json.dumps({"error": "process failed"}))
+                await ws.close()
+                break
+
             if not points:
                 await ws.send_text(json.dumps({"error": "no landmarks"}))
                 continue
 
             payload = build_payload(points)
             await ws.send_text(json.dumps(payload))
+    except Exception:
+        await ws.close()
+        raise
     finally:
         cap.release()
         detector.close()
