@@ -1,4 +1,4 @@
-# TODO – Road‑map (last updated: 2025-07-20)
+# TODO – Road‑map (last updated: 2025-07-16)
 
 > *Record only high‑level milestones here; break micro‑tasks out into Issues.*  
 > **When you finish a task, tick it and append a short NOTE entry
@@ -113,3 +113,4 @@
 - [x] Use PoseLandmark names for 17 keypoints across backend and frontend.
 - [x] Setup script calls `python3 -m pre_commit` to install hooks.
 - [x] Add .markdownlintignore and update AGENTS accordingly.
+- [x] Document Node 20 requirement in README and package.json.

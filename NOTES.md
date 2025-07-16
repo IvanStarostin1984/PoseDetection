@@ -904,4 +904,18 @@ backend connectivity; tests cover open and close events.
 - **Summary**: Added `.markdownlintignore` and mentioned it in `AGENTS.md`.
 - **Stage**: maintenance
 - **Motivation / Decision**: speed up markdown linting by skipping build folders.
+
+### 2025-07-21  PR #113
+
+- **Summary**: package.json enforces Node 20 and README quick-start mentions
+  the requirement.
+- **Stage**: maintenance
+- **Motivation / Decision**: ensure contributors use the same Node version as
+  the setup script and document this prerequisite.
+
+### 2025-07-16  PR #114
+
+- **Summary**: refreshed TODO header date via script.
+- **Stage**: maintenance
+- **Motivation / Decision**: keep roadmap timestamp accurate.
 - **Next step**: none.
