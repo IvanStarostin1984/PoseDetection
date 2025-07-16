@@ -94,7 +94,10 @@ prevents GitHub prompts.
     - Always run `make lint-docs` after editing any Markdown file
       to avoid CI failures.
     - `make lint-docs` only runs `markdownlint` and a conflict marker check,
-      so it finishes quickly.
+    - If it fails with binary file matches, delete `node_modules/` and
+      `.pre-commit-cache/` before rerunning. The check skips
+      `node_modules`, `.pre-commit-cache`,
+      `frontend/dist` and `docs/_build`.
     - Run `make check-versions` when changing dependencies to
       verify pinned versions exist. CI runs this automatically when
       `requirements.txt`, `package.json` or `package-lock.json` change.
@@ -170,7 +173,10 @@ jobs:
       - uses: actions/checkout@v4
       - run: |
           npx --yes markdownlint-cli '**/*.md'
-          grep -R --line-number -E '<{7}|={7}|>{7}' --exclude=ci.yml . && exit 1 || echo "No conflict markers"
+          grep -R --line-number -E '<{7}|={7}|>{7}' --exclude=ci.yml \
+            --exclude-dir=node_modules --exclude-dir=.pre-commit-cache \
+            --exclude-dir=frontend/dist --exclude-dir=docs/_build . && exit 1 \
+            || echo "No conflict markers"
 
   markdown-link-check:
     needs: [changes]
