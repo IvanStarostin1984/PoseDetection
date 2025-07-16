@@ -112,5 +112,6 @@
 - [x] Show WebSocket connection status in the UI.
 - [x] Use PoseLandmark names for 17 keypoints across backend and frontend.
 - [x] Setup script calls `python3 -m pre_commit` to install hooks.
+- [x] Remove httpx pin from requirements.
 - [x] Add .markdownlintignore and update AGENTS accordingly.
 - [x] Document Node 20 requirement in README and package.json.
