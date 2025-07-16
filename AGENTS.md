@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.32 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.33 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -94,6 +94,7 @@ prevents GitHub prompts.
       verify pinned versions exist. CI runs this automatically when
       `requirements.txt`, `package.json` or `package-lock.json` change.
     - Run `make docs` to build the HTML docs into `docs/_build`.
+    - Markdownlint reads `.markdownlintignore` to skip build and cache dirs.
     - Python code under `scripts/` and `tests/` is linted with `ruff` via `make lint`.
     - Static type checking uses mypy via `make typecheck`.
     - Python code in `backend/`, `scripts/` and `tests/` is formatted with `black`
