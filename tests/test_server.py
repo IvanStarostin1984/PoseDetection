@@ -59,12 +59,16 @@ class DummyWS:
     def __init__(self):
         self.accepted = False
         self.sent: list[str] = []
+        self.closed = False
 
     async def accept(self) -> None:
         self.accepted = True
 
     async def send_text(self, text: str) -> None:
         self.sent.append(text)
+
+    async def close(self) -> None:
+        self.closed = True
 
 
 class DummyPose:
@@ -127,3 +131,35 @@ def test_pose_endpoint_allows_second_connection(monkeypatch):
     asyncio.run(server.pose_endpoint(ws))
     assert cap.released is True
     assert second_pose.closed is True
+
+
+def test_pose_endpoint_allows_concurrent_connections(monkeypatch):
+    import backend.server as server
+
+    poses = [DummyPose(), DummyPose()]
+    caps = [DummyCap(), DummyCap()]
+    first_pose, second_pose = poses
+    first_cap, second_cap = caps
+
+    def make_pose(*_a, **_k) -> DummyPose:
+        return poses.pop(0)
+
+    def make_cap(*_a, **_k) -> DummyCap:
+        return caps.pop(0)
+
+    monkeypatch.setattr(server, "PoseDetector", make_pose)
+    monkeypatch.setattr(server.cv2, "VideoCapture", make_cap)
+
+    ws1 = DummyWS()
+    ws2 = DummyWS()
+
+    async def run() -> None:
+        await asyncio.wait_for(
+            asyncio.gather(server.pose_endpoint(ws1), server.pose_endpoint(ws2)),
+            timeout=1,
+        )
+
+    asyncio.run(run())
+    assert first_cap.released and second_cap.released
+    assert first_pose.closed and second_pose.closed
+    assert ws1.sent and ws2.sent

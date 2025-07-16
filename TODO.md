@@ -122,3 +122,6 @@
 - [x] Document Node 20 requirement in README and package.json.
 - [x] Clarify `npm run build` output in README; index.html already provided.
 - [x] Restored black formatting for docs in Makefile.
+- [x] Exclude build directories from conflict marker check in `lint-docs`.
+- [x] Add test for zero-length vector in `calculate_angle`.
+- [x] Handle concurrent `/pose` WebSocket clients without blocking.
