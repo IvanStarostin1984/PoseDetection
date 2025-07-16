@@ -281,7 +281,7 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Motivation / Decision**: keep markdownlint green and clarify nested list style.
 - **Next step**: none.
 
-## 2025-07-14  PR #29
+## 2025-07-15  PR #29
 
 - **Summary**: added script to verify pinned dependency versions with make target.
 - **Stage**: implementation
@@ -307,7 +307,7 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Motivation / Decision**: ensure scripts fail with bad permissions or
   malformed headers.
 
-## 2025-07-14  PR #33
+## 2025-07-16  PR #33
 
 - **Summary**: documented script public functions with params, returns and raises.
 - **Stage**: documentation
@@ -934,6 +934,7 @@ backend connectivity; tests cover open and close events.
   ensure lint checks them.
 
 ### 2025-07-20  PR #117
+
 - **Summary**: Added edge case test for PoseDetector when no landmarks are found.
 - **Stage**: testing
 - **Motivation / Decision**: reach 100% coverage of pose_detector module.
@@ -958,16 +959,23 @@ backend connectivity; tests cover open and close events.
 - **Motivation / Decision**: ensure contributors use the same Node version as
   the setup script and document this prerequisite.
 
-### 2025-07-16  PR #121
+### 2025-07-22  PR #121
 
 - **Summary**: refreshed TODO header date via script.
 - **Stage**: maintenance
 - **Motivation / Decision**: keep roadmap timestamp accurate.
 - **Next step**: none.
 
-### 2025-07-16  PR #116
+### 2025-07-22  PR #116
 
 - **Summary**: README clarifies build only outputs bundle.js.
   `index.html` is already there.
 - **Stage**: documentation
 - **Motivation / Decision**: correct outdated build instructions.
+
+### 2025-07-22  PR #122
+
+- **Summary**: added repo_checks.py for trailing spaces and NOTES order.
+- **Stage**: implementation
+- **Motivation / Decision**: enforce log order and whitespace via pre-commit.
+- **Next step**: none.

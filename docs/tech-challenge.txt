@@ -1,20 +1,20 @@
 tech-challenge.md 2025-06-30
 1 / 6
 Human Pose Estimation Tech Challenge
-Realtime Körperhaltungs-Analyse System
+Realtime Krperhaltungs-Analyse System
 
 Challenge Overview
-Entwickle ein realtime Human Pose Estimation System, das Körperhaltungen erkennt und analysiert.
+Entwickle ein realtime Human Pose Estimation System, das Krperhaltungen erkennt und analysiert.
 Zeitlimit: 4 Stunden
 
 Epic Definition
 Als Benutzer der Motion Tracking Software
-möchte ich meine Körperhaltung in Echtzeit analysieren lassen
-damit ich Feedback zu meiner Pose und Bewegungsqualität erhalten kann
+mchte ich meine Krperhaltung in Echtzeit analysieren lassen
+damit ich Feedback zu meiner Pose und Bewegungsqualitt erhalten kann
 
 Core Requirements (4 Stunden Scope)
 Minimum Viable Product
-Pose Detection: Erkennung von 17 Körper-Keypoints (Schultern, Ellbogen, Hüfte, Knie, etc.)
+Pose Detection: Erkennung von 17 Krper-Keypoints (Schultern, Ellbogen, Hfte, Knie, etc.)
 Live Visualization: Realtime Skelett-Overlay auf Video Feed
 Basic Analytics: Einfache Pose-Metriken (Haltungswinkel, Balance-Score)
 Web Interface: React Frontend mit Live-Camera Integration
@@ -29,12 +29,12 @@ Technische Spezifikation
 Tech Stack (Empfohlen)
 Backend: Python + FastAPI + MediaPipe Pose
 Frontend: React + TypeScript + Canvas API
-Communication: WebSocket für Realtime Data
+Communication: WebSocket fr Realtime Data
 Deployment: Lokale Entwicklung (Docker optional)
 
 Alternative Stack
 Full JavaScript: TensorFlow.js + PoseNet im Browser
-Vorteil: Keine Backend-Infrastruktur nötig
+Vorteil: Keine Backend-Infrastruktur ntig
 Nachteil: Begrenzte Performance
 
 
@@ -88,7 +88,7 @@ Real-time Update Loop
 
 Task 3.3: Analytics Dashboard (15 Min)
 Live Metrics Display
-Simple UI für Pose-Daten
+Simple UI fr Pose-Daten
 Basic Styling
 
 Simplified Architecture
@@ -105,10 +105,10 @@ Simplified Architecture
 
 Deliverables (4 Stunden)
 Critical Features
-• Funktionierender Pose Detection mit 17 Keypoints
-• Live Skelett-Overlay auf Webcam Feed
-• Basic Analytics (mindestens 2 Metriken)
-• Clean UI mit Start/Stop Funktionalität
+ Funktionierender Pose Detection mit 17 Keypoints
+ Live Skelett-Overlay auf Webcam Feed
+ Basic Analytics (mindestens 2 Metriken)
+ Clean UI mit Start/Stop Funktionalitt
 
 Code Structure
 pose-challenge/
@@ -130,22 +130,22 @@ tech-challenge.md 2025-06-30
 
 Bewertungskriterien
 Technical Implementation (50%)
-• Pose Detection Accuracy
-• Real-time Performance
-• Code Quality & Structure
-• Error Handling
+ Pose Detection Accuracy
+ Real-time Performance
+ Code Quality & Structure
+ Error Handling
 
 Computer Vision Expertise (30%)
-• MediaPipe/TensorFlow.js Usage
-• Keypoint Processing Logic
-• Performance Optimization
-• Edge Case Handling
+ MediaPipe/TensorFlow.js Usage
+ Keypoint Processing Logic
+ Performance Optimization
+ Edge Case Handling
 
 Frontend Integration (20%)
-• Canvas Manipulation
-• WebSocket Implementation
-• User Experience
-• Responsive Design
+ Canvas Manipulation
+ WebSocket Implementation
+ User Experience
+ Responsive Design
 
 Starter Code Templates
 
@@ -163,7 +163,7 @@ mp_pose = mp.solutions.pose
 async def pose_endpoint(websocket: WebSocket):
     await websocket.accept()
     # Implement pose detection loop
- 
+
 def extract_pose_metrics(landmarks):
     # Calculate angles, balance, etc.
     return {"balance_score": 0.8, "posture_angle": 15}
@@ -178,11 +178,11 @@ const PoseViewer: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { poseData } = useWebSocket('ws://localhost:8000/pose');
-  
+
   const drawSkeleton = (landmarks: PoseLandmark[]) => {
     // Implement skeleton drawing
   };
-  
+
   return (
     <div className="pose-container">
       <video ref={videoRef} />
@@ -208,23 +208,23 @@ Zeitblock  Task                Deliverable              Priority
 tech-challenge.md 2025-06-30
 6 / 6
 Success Criteria
-Must Have (für Bestehen)
-• Live Pose Detection funktioniert
-• Skeleton wird korrekt dargestellt
-• Mindestens 1 Analyse-Metrik
-• Saubere Code-Struktur
+Must Have (fr Bestehen)
+ Live Pose Detection funktioniert
+ Skeleton wird korrekt dargestellt
+ Mindestens 1 Analyse-Metrik
+ Saubere Code-Struktur
 
-Should Have (für gute Bewertung)
-• Flüssige Performance (>20fps)
-• Multiple Pose Metrics
-• Error Handling
-• Clean UI/UX
+Should Have (fr gute Bewertung)
+ Flssige Performance (>20fps)
+ Multiple Pose Metrics
+ Error Handling
+ Clean UI/UX
 
-Could Have (für Bestnote)
-• Pose Classification (Stehen/Sitzen/etc.)
-• Historical Data Tracking
-• Performance Optimizations
-• Creative Analytics Features
+Could Have (fr Bestnote)
+ Pose Classification (Stehen/Sitzen/etc.)
+ Historical Data Tracking
+ Performance Optimizations
+ Creative Analytics Features
 
 Hilfreiche Resources
 MediaPipe Pose Keypoints
@@ -233,14 +233,14 @@ MediaPipe Pose Keypoints
 11-12: Hips, 13-14: Knees, 15-16: Ankles
 
 Quick Analytics Ideas
-• Posture Score: Schulter-Alignment
-• Balance Ratio: Gewichtsverteilung L/R
-• Activity Level: Movement Intensity
-• Pose Classification: Standing/Sitting Detection
+ Posture Score: Schulter-Alignment
+ Balance Ratio: Gewichtsverteilung L/R
+ Activity Level: Movement Intensity
+ Pose Classification: Standing/Sitting Detection
 
 Time Management Tips
-• Starte mit MediaPipe: Bewährteste Lösung für schnelle Resultate
-• MVP First: Erst basic functionality, dann Features
-• Canvas über komplexe 3D: Einfacher für 4h Timeframe
-• Template nutzen: Create-React-App für schnelles Frontend Setup
-• Testing parallel: Während Development testen, nicht am Ende
+ Starte mit MediaPipe: Bewhrteste Lsung fr schnelle Resultate
+ MVP First: Erst basic functionality, dann Features
+ Canvas ber komplexe 3D: Einfacher fr 4h Timeframe
+ Template nutzen: Create-React-App fr schnelles Frontend Setup
+ Testing parallel: Whrend Development testen, nicht am Ende
