@@ -1,4 +1,4 @@
-.PHONY: lint lint-docs test generate docs typecheck
+.PHONY: lint lint-docs test generate docs typecheck typecheck-ts
 
 lint:
 	npx --yes markdownlint-cli '**/*.md' --ignore node_modules --ignore .pre-commit-cache --ignore frontend/dist --ignore docs/_build
@@ -26,6 +26,9 @@ generate:
 
 typecheck:
 	mypy backend
+
+typecheck-ts:
+	npx --yes tsc --noEmit -p frontend/tsconfig.json
 
 update-todo-date:
 	python scripts/update_todo_date.py

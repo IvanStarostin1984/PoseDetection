@@ -49,6 +49,7 @@ indicating ``standing`` or ``sitting``.
 ## Development
 
 Run `make lint` to check Markdown and Python code style (ruff).
+Run `make typecheck-ts` to compile the frontend TypeScript.
 Run `make test` to execute the test-suite.
 CI runs `make check-versions` whenever dependency files change to
 ensure pinned versions are valid.

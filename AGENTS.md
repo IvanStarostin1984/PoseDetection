@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.33 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.34 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -81,6 +81,7 @@ prevents GitHub prompts.
    ```bash
    make lint                  # all format / static‑analysis steps
    make typecheck             # mypy static type checking
+   make typecheck-ts          # TypeScript compile check
    make test                  # unit/integration tests with coverage ≥80%
    python3 -m pre_commit run --files <changed>
    ```
@@ -101,6 +102,7 @@ prevents GitHub prompts.
     - Markdownlint reads `.markdownlintignore` to skip build and cache dirs.
     - Python code under `scripts/` and `tests/` is linted with `ruff` via `make lint`.
     - Static type checking uses mypy via `make typecheck`.
+    - TypeScript compile checks run via `make typecheck-ts`.
     - Python code in `backend/`, `scripts/`, `tests/`, and `docs/` is
       formatted with `black`. `ruff` still checks only `backend/`, `scripts/`
       and `tests/` via `make lint`.
