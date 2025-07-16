@@ -94,6 +94,8 @@ prevents GitHub prompts.
       to avoid CI failures.
     - `make lint-docs` only runs `markdownlint` and a conflict marker check,
       so it finishes quickly.
+    - If it fails with binary file matches, delete `node_modules/` and
+      `.pre-commit-cache/` before rerunning.
     - Run `make check-versions` when changing dependencies to
       verify pinned versions exist. CI runs this automatically when
       `requirements.txt`, `package.json` or `package-lock.json` change.

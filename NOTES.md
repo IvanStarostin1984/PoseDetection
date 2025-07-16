@@ -934,6 +934,7 @@ backend connectivity; tests cover open and close events.
   ensure lint checks them.
 
 ### 2025-07-20  PR #117
+
 - **Summary**: Added edge case test for PoseDetector when no landmarks are found.
 - **Stage**: testing
 - **Motivation / Decision**: reach 100% coverage of pose_detector module.
@@ -971,3 +972,9 @@ backend connectivity; tests cover open and close events.
   `index.html` is already there.
 - **Stage**: documentation
 - **Motivation / Decision**: correct outdated build instructions.
+
+### 2025-07-22  PR #122
+
+- **Summary**: Inserted blank line after PR #117 heading for markdownlint.
+- **Stage**: documentation
+- **Motivation / Decision**: maintain consistent log formatting.
