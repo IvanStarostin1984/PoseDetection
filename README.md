@@ -76,6 +76,9 @@ npm test
 The PoseViewer component shows the live webcam feed. Use the **Start Webcam**
 button to toggle the stream. A canvas overlay draws lines between keypoints to
 show the pose skeleton.
+The `useWebSocket` hook returns the latest pose data and a connection state
+(`connecting`, `open`, `closed` or `error`). PoseViewer displays this state so
+you know if the backend is reachable.
 
 ## Running locally
 

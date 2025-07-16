@@ -875,7 +875,15 @@ by reinitialising the pose detector per connection.
 - **Motivation / Decision**: display full analytics to users per feature request.
 - **Next step**: none.
 
-### 2025-07-17  PR #109
+### 2025-07-15  PR #109
+
+- **Summary**: WebSocket hook now exposes connection status
+and PoseViewer displays it.
+- **Stage**: implementation
+- **Motivation / Decision**: give users feedback on
+backend connectivity; tests cover open and close events.
+
+### 2025-07-17  PR #110
 
 - **Summary**: Pose detector now selects 17 explicit landmarks; edges and tests
   updated accordingly.
