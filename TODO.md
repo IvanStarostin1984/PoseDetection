@@ -109,3 +109,4 @@
 - [x] Draw skeleton edges in the PoseViewer canvas overlay.
 - [x] Stream 17 keypoints via PoseDetector and close resources.
 - [x] Display knee angle in MetricsPanel with tests.
+- [x] Show WebSocket connection status in the UI.

@@ -17,11 +17,14 @@ export default function useWebSocket<T>(
   port = 8000,
 ) {
   const [poseData, setPoseData] = useState<T | null>(null);
+  const [status, setStatus] = useState<'connecting' | 'open' | 'closed' | 'error'>('connecting');
   const wsRef = useRef<WebSocket>();
 
   useEffect(() => {
     const url = resolveUrl(path, host, port);
     const ws = new WebSocket(url);
+    setStatus('connecting');
+    ws.onopen = () => setStatus('open');
     ws.onmessage = (ev) => {
       try {
         const data = JSON.parse(ev.data);
@@ -30,11 +33,14 @@ export default function useWebSocket<T>(
         // ignore malformed messages
       }
     };
+    ws.onerror = () => setStatus('error');
+    ws.onclose = () => setStatus('closed');
     wsRef.current = ws;
     return () => {
       ws.close();
+      setStatus('closed');
     };
   }, [path, host, port]);
 
-  return { poseData };
+  return { poseData, status };
 }
