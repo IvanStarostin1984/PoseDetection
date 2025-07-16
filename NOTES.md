@@ -973,6 +973,12 @@ backend connectivity; tests cover open and close events.
 - **Stage**: documentation
 - **Motivation / Decision**: correct outdated build instructions.
 
+### 2025-07-22  PR #122
+
+- **Summary**: Inserted blank line after PR #117 heading for markdownlint.
+- **Stage**: documentation
+- **Motivation / Decision**: maintain consistent log formatting.
+
 ### 2025-07-16  PR #123
 
 - **Summary**: restored Black check for docs in Makefile.

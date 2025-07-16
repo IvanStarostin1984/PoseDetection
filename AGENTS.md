@@ -93,7 +93,9 @@ prevents GitHub prompts.
     - Always run `make lint-docs` after editing any Markdown file
       to avoid CI failures.
     - `make lint-docs` only runs `markdownlint` and a conflict marker check,
-      so it finishes quickly. The check skips `node_modules`, `.pre-commit-cache`,
+    - If it fails with binary file matches, delete `node_modules/` and
+      `.pre-commit-cache/` before rerunning. The check skips
+      `node_modules`, `.pre-commit-cache`,
       `frontend/dist` and `docs/_build`.
     - Run `make check-versions` when changing dependencies to
       verify pinned versions exist. CI runs this automatically when
