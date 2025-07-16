@@ -23,6 +23,14 @@ def test_calculate_angle_invalid():
         calculate_angle(a, {"x": 0.0, "y": 0.0}, {"x": 1.0, "y": 0.0})
 
 
+def test_calculate_angle_zero_length():
+    a = {"x": 1.0, "y": 1.0}
+    b = {"x": 1.0, "y": 1.0}
+    c = {"x": 2.0, "y": 2.0}
+    with pytest.raises(ValueError):
+        calculate_angle(a, b, c)
+
+
 def test_balance_score_missing():
     with pytest.raises(ValueError):
         balance_score({})
