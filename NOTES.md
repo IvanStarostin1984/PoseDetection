@@ -901,24 +901,31 @@ backend connectivity; tests cover open and close events.
 
 ### 2025-07-20  PR #112
 
+- **Summary**: README explains optional host and port for `useWebSocket` and
+  shows how to connect to a remote server.
+- **Stage**: documentation
+- **Motivation / Decision**: clarify remote backend usage.
+
+### 2025-07-20  PR #113
+
 - **Summary**: Document that setup script runs pre-commit on all files.
 - **Stage**: documentation
 - **Motivation / Decision**: remind contributors that initial formatting happens
   automatically.
 
-### 2025-07-20  PR #113
+### 2025-07-20  PR #114
 
 - **Summary**: Makefile lint ignores build artefacts; lint-docs is faster.
 - **Stage**: maintenance
 - **Motivation / Decision**: speed up docs-only checks and avoid false positives.
 
-### 2025-07-20  PR #114
+### 2025-07-20  PR #115
 
 - **Summary**: Add test for resolveUrl custom host and port.
 - **Stage**: testing
 - **Motivation / Decision**: ensure custom host and port work as expected.
 
-### 2025-07-20  PR #115
+### 2025-07-20  PR #116
 
 - **Summary**: Formatted Sphinx config with Black and updated Makefile to
   lint docs.
@@ -926,24 +933,24 @@ backend connectivity; tests cover open and close events.
 - **Motivation / Decision**: keep documentation Python files consistent and
   ensure lint checks them.
 
-### 2025-07-20  PR #116
+### 2025-07-20  PR #117
 - **Summary**: Added edge case test for PoseDetector when no landmarks are found.
 - **Stage**: testing
 - **Motivation / Decision**: reach 100% coverage of pose_detector module.
 
-### 2025-07-21  PR #117
+### 2025-07-21  PR #118
 
 - **Summary**: Removed httpx pin from requirements; verified all other pins.
 - **Stage**: maintenance
 - **Motivation / Decision**: dependency unused so cleaned up to reduce overhead.
 
-### 2025-07-20  PR #118
+### 2025-07-20  PR #119
 
 - **Summary**: Added `.markdownlintignore` and mentioned it in `AGENTS.md`.
 - **Stage**: maintenance
 - **Motivation / Decision**: speed up markdown linting by skipping build folders.
 
-### 2025-07-21  PR #119
+### 2025-07-21  PR #120
 
 - **Summary**: package.json enforces Node 20 and README quick-start mentions
   the requirement.
@@ -951,7 +958,7 @@ backend connectivity; tests cover open and close events.
 - **Motivation / Decision**: ensure contributors use the same Node version as
   the setup script and document this prerequisite.
 
-### 2025-07-16  PR #120
+### 2025-07-16  PR #121
 
 - **Summary**: refreshed TODO header date via script.
 - **Stage**: maintenance

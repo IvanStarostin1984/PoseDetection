@@ -112,6 +112,7 @@
 - [x] Show WebSocket connection status in the UI.
 - [x] Use PoseLandmark names for 17 keypoints across backend and frontend.
 - [x] Setup script calls `python3 -m pre_commit` to install hooks.
+- [x] Document optional host and port arguments for `useWebSocket` in README.
 - [x] Simplify `lint-docs` to run markdownlint and conflict marker check only.
 - [x] Add test for resolveUrl custom host and port.
 - [x] Format `docs/source/conf.py` with Black and extend `make lint` to check `docs/`.
