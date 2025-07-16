@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.31 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.32 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -64,7 +64,8 @@ prevents GitHub prompts.
     `.github/workflows/ci.yml` (see § 4) so forks without secrets still pass.
 4. On the first PR, update README badges to point at your fork (owner/repo).
 5. `.codex/setup.sh` installs `pre-commit` and sets up the hooks automatically
-   on the first run.
+   using `python3 -m pre_commit` on the first run. This avoids PATH issues when
+   the command is not yet on `$PATH`.
    Set `SKIP_PRECOMMIT=1` to bypass this when offline. The CI workflow passes
    this flag because the runners have restricted network access.
 
@@ -80,7 +81,7 @@ prevents GitHub prompts.
    make lint                  # all format / static‑analysis steps
    make typecheck             # mypy static type checking
    make test                  # unit/integration tests with coverage ≥80%
-   pre-commit run --files <changed>
+   python3 -m pre_commit run --files <changed>
    ```
 
     - For docs-only changes run `make lint` (or `make lint-docs`) before committing.

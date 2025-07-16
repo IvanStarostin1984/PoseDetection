@@ -891,3 +891,10 @@ backend connectivity; tests cover open and close events.
 - **Motivation / Decision**: align keypoint order with tech challenge and expose
   named mapping across backend and frontend.
 - **Next step**: none.
+
+### 2025-07-19  PR #111
+
+- **Summary**: Setup script installs hooks using `python3 -m pre_commit`.
+- **Stage**: maintenance
+- **Motivation / Decision**: avoid PATH issues when `pre-commit` is not on PATH.
+- **Next step**: none.
