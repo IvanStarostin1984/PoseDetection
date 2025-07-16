@@ -925,3 +925,10 @@ backend connectivity; tests cover open and close events.
 - **Stage**: maintenance
 - **Motivation / Decision**: keep roadmap timestamp accurate.
 - **Next step**: none.
+
+### 2025-07-16  PR #116
+
+- **Summary**: README clarifies build only outputs bundle.js.
+  `index.html` is already there.
+- **Stage**: documentation
+- **Motivation / Decision**: correct outdated build instructions.

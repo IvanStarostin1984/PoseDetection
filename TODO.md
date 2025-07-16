@@ -115,3 +115,4 @@
 - [x] Remove httpx pin from requirements.
 - [x] Add .markdownlintignore and update AGENTS accordingly.
 - [x] Document Node 20 requirement in README and package.json.
+- [x] Clarify `npm run build` output in README; index.html already provided.
