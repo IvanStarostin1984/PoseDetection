@@ -1221,3 +1221,10 @@ errors and maintains coverage.
 - **Stage**: documentation
 - **Motivation / Decision**: help users who lack `make` or run on Windows.
 - **Next step**: none.
+
+### 2025-07-17  PR #158
+
+- **Summary**: fixed setup.ps1 so PowerShell 5.1 accepts parameters.
+- **Stage**: implementation
+- **Motivation / Decision**: PS 5.1 lacks the ternary operator; changed to if/else.
+- **Next step**: none.
