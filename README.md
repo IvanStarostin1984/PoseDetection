@@ -109,9 +109,9 @@ Follow these steps to run the backend from Visual Studio:
 
 Install Node separately to build the React frontend with `npm run build`.
 
-If `make` does not work on your platform you can create npm scripts or a
-small Python wrapper that call `make lint` and `make test`. Windows users may
-prefer running the project in WSL or Docker when shell commands fail.
+If `make` does not work on your platform run `pymake.py <command>` instead.
+It dispatches to the same targets. Windows users may prefer WSL or Docker when
+shell commands fail.
 
 ## Frontend
 
