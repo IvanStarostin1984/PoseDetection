@@ -1,0 +1,41 @@
+name: Pages
+on:
+  push:
+    branches: [main]
+
+jobs:
+  check_token:
+    runs-on: ubuntu-latest
+    outputs:
+      has_token: ${{ steps.token.outputs.present }}
+    steps:
+      - id: token
+        run: echo "present=${{ secrets.GH_PAGES_TOKEN != '' }}" >> "$GITHUB_OUTPUT"
+
+  build:
+    needs: check_token
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup
+        run: ./.codex/setup.sh
+      - run: make docs
+      - uses: actions/upload-pages-artifact@v2
+        with:
+          path: docs/_build/html
+
+  deploy:
+    if: needs.check_token.outputs.has_token == 'true'
+    needs: [build, check_token]
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          token: ${{ secrets.GH_PAGES_TOKEN }}

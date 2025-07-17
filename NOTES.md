@@ -1105,13 +1105,20 @@ errors and maintains coverage.
 
 ### 2025-07-17  PR #141
 
+- **Summary**: added Pages workflow to publish docs when GH_PAGES_TOKEN is set.
+- **Stage**: implementation
+- **Motivation / Decision**: automate deployment to GitHub Pages per TODO.
+- **Next step**: none.
+
+### 2025-07-17  PR #142
+
 - **Summary**: added feature_a documentation and linked it from README.
 - **Stage**: documentation
 - **Motivation / Decision**: capture assumptions and edge cases for the first
   feature as required by TODO.
 - **Next step**: plan implementation and tests for feature A.
 
-### 2025-07-17  PR #142
+### 2025-07-17  PR #143
 
 - **Summary**: CI now tests Python 3.11 and 3.12 via a matrix and setup script
   reads PYTHON_VERSION.
@@ -1120,7 +1127,7 @@ errors and maintains coverage.
   workflow changes.
 - **Next step**: none.
 
-### 2025-07-17  PR #143
+### 2025-07-17  PR #144
 
 - **Summary**: added Dockerfile and container guide to document optional
   container workflow.
