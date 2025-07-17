@@ -21,6 +21,10 @@ export default function useWebSocket<T>(
   const [status, setStatus] = useState<'connecting' | 'open' | 'closed' | 'error'>('connecting');
   const wsRef = useRef<WebSocket>();
 
+  function close() {
+    wsRef.current?.close();
+  }
+
   useEffect(() => {
     const url = resolveUrl(path, host, port);
     const ws = new WebSocket(url);
@@ -52,5 +56,5 @@ export default function useWebSocket<T>(
     };
   }, [path, host, port]);
 
-  return { poseData, status, error: errorMsg };
+  return { poseData, status, error: errorMsg, close };
 }

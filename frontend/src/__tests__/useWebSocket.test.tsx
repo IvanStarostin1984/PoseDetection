@@ -106,3 +106,24 @@ test('valid messages clear previous error', () => {
   window.WebSocket = OriginalWebSocket;
 });
 
+test('close function sets status to closed', () => {
+  const ws = new MockWebSocket('ws://test');
+  const OriginalWebSocket = window.WebSocket;
+  // @ts-ignore
+  window.WebSocket = jest.fn(() => ws);
+
+  const { result } = renderHook(() => useWebSocket('/pose'));
+
+  act(() => {
+    ws.triggerOpen();
+  });
+  expect(result.current.status).toBe('open');
+
+  act(() => {
+    result.current.close();
+  });
+  expect(result.current.status).toBe('closed');
+
+  window.WebSocket = OriginalWebSocket;
+});
+

@@ -30,6 +30,9 @@ cd PoseDetection
 ./.codex/setup.sh   # Windows: scripts/setup.ps1
 make lint
 make test
+# Windows users without make can run:
+#   scripts/windows/lint.ps1
+#   scripts/windows/test.ps1
 ```
 
 If the network is unavailable pass `SKIP_PRECOMMIT=1` to the setup script.
@@ -64,6 +67,7 @@ Run `make typecheck-ts` to compile the frontend TypeScript.
 Run `make test` to execute the test-suite. Performance tests live in
 `tests/performance` and run automatically. Run them on their own with
 `pytest tests/performance`.
+Windows wrappers for these commands live in `scripts/windows/`.
 CI runs `make check-versions` whenever dependency files change to
 ensure pinned versions are valid.
 Pre-commit hooks are installed automatically by `.codex/setup.sh`,
@@ -119,7 +123,8 @@ npm test
 ```
 
 The PoseViewer component shows the live webcam feed. The **Start Webcam**
-button toggles streaming on and off. It calls `setStreaming(!streaming)` in
+button toggles streaming on and off. Stopping the webcam also closes the
+WebSocket connection. It calls `setStreaming(!streaming)` in
 [`PoseViewer.tsx`](frontend/src/components/PoseViewer.tsx). A canvas overlay
 draws lines between keypoints to show the pose skeleton.
 The `useWebSocket` hook returns the latest pose data and a connection state

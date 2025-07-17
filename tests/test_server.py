@@ -246,3 +246,30 @@ def test_pose_endpoint_reports_no_landmarks(monkeypatch):
     assert ws.sent[0] == '{"error": "no landmarks"}'
     assert ws.closed is True
     assert len(ws.sent) == 2
+
+
+def test_pose_endpoint_handles_client_disconnect(monkeypatch):
+    import backend.server as server
+
+    class Pose(DummyPose):
+        def process(self, image: Any) -> list[Any]:
+            return [{"x": 0.0, "y": 0.0}] * 17
+
+    class Cap(DummyCap):
+        def read(self) -> tuple[bool, None]:
+            return True, None
+
+    class DisconnectWS(DummyWS):
+        async def send_text(self, text: str) -> None:
+            raise server.WebSocketDisconnect()
+
+    pose = Pose()
+    cap = Cap()
+    ws = DisconnectWS()
+    monkeypatch.setattr(server, "PoseDetector", lambda *_a, **_k: pose)
+    monkeypatch.setattr(server.cv2, "VideoCapture", lambda *_a, **_k: cap)
+
+    asyncio.run(server.pose_endpoint(ws))
+    assert cap.released is True
+    assert pose.closed is True
+    assert ws.closed is True

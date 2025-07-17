@@ -1,6 +1,13 @@
 import { render, waitFor, fireEvent } from '@testing-library/react';
-import PoseViewer from '../components/PoseViewer';
 import '@testing-library/jest-dom';
+import useWebSocket from '../hooks/useWebSocket';
+
+jest.mock('../hooks/useWebSocket');
+const mockWS = useWebSocket as jest.Mock;
+
+beforeEach(() => {
+  mockWS.mockReturnValue({ poseData: null, status: 'open', error: null, close: jest.fn() });
+});
 
 class FakeStream {
   getTracks() {
@@ -20,6 +27,7 @@ function mockMedia() {
 
 test('assigns webcam stream to video element', async () => {
   const { stream, getUserMedia } = mockMedia();
+  const PoseViewer = require('../components/PoseViewer').default;
   const { container } = render(<PoseViewer />);
   await waitFor(() => {
     const video = container.querySelector('video') as HTMLVideoElement;
@@ -30,6 +38,7 @@ test('assigns webcam stream to video element', async () => {
 
 test('toggle button stops and starts the webcam', async () => {
   const { stream, getUserMedia } = mockMedia();
+  const PoseViewer = require('../components/PoseViewer').default;
   const { container, getByRole } = render(<PoseViewer />);
   const button = getByRole('button');
 
@@ -52,4 +61,25 @@ test('toggle button stops and starts the webcam', async () => {
     expect(video.srcObject).toBe(stream);
   });
   expect(getUserMedia).toHaveBeenCalledTimes(2);
+});
+
+test('stop button closes the WebSocket', async () => {
+  const { stream, getUserMedia } = mockMedia();
+  mockWS.mockImplementation(() => {
+    const [status, setStatus] = require('react').useState('open');
+    return { poseData: null, status: status as 'open' | 'closed', error: null, close: () => setStatus('closed') };
+  });
+  const PoseViewerMod = require('../components/PoseViewer').default;
+  const { getByRole, getByText, container } = render(<PoseViewerMod />);
+  const button = getByRole('button');
+  await waitFor(() => {
+    const video = container.querySelector('video') as HTMLVideoElement;
+    expect(video.srcObject).toBe(stream);
+  });
+  expect(getByText('Connection: open')).toBeInTheDocument();
+  fireEvent.click(button);
+  await waitFor(() => {
+    expect(getByText('Connection: closed')).toBeInTheDocument();
+  });
+  expect(getUserMedia).toHaveBeenCalled();
 });
