@@ -151,4 +151,5 @@
       alternatives.
 - [x] Document alternative wrappers and mention WSL/Docker for Windows users.
 - [x] Fix PowerShell setup script for compatibility with PowerShell 5.1.
+- [x] Provide PowerShell wrappers for Makefile commands.
 - [x] Close WebSocket when stopping the webcam and reopen when restarted.

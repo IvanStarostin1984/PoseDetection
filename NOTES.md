@@ -1231,6 +1231,14 @@ errors and maintains coverage.
 
 ### 2025-07-17  PR #159
 
+
+- **Summary**: added PowerShell wrappers for Makefile commands.
+- **Stage**: implementation
+- **Motivation / Decision**: allow Windows users to run lint, tests and docs
+  without make.
+
+### 2025-07-17  PR #160
+
 - **Summary**: added close() to useWebSocket and tests, stop button now closes
   WebSocket and reconnection works; backend handles disconnect without errors.
 - **Stage**: implementation
