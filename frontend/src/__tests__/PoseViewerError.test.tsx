@@ -23,4 +23,15 @@ test('renders WebSocket error message', () => {
   expect(getByText('Error: failed to parse')).toBeInTheDocument();
 });
 
+test('shows camera error when getUserMedia fails', async () => {
+  const getUserMedia = jest.fn().mockRejectedValue(new Error('denied'));
+  Object.defineProperty(navigator, 'mediaDevices', {
+    value: { getUserMedia },
+    configurable: true,
+  });
+
+  const { findByText } = render(<PoseViewer />);
+  expect(await findByText('Error: Webcam access denied')).toBeInTheDocument();
+});
+
 

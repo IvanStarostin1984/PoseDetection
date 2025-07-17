@@ -1228,3 +1228,12 @@ errors and maintains coverage.
 - **Stage**: implementation
 - **Motivation / Decision**: PS 5.1 lacks the ternary operator; changed to if/else.
 - **Next step**: none.
+
+### 2025-07-17
+
+- **Summary**: PoseViewer now shows "Webcam access denied" if camera
+  permissions fail and the metrics panel is styled vertically.
+- **Stage**: implementation
+- **Motivation / Decision**: improve user feedback when the browser blocks the
+  webcam and make metrics easier to read.
+- **Next step**: none.
