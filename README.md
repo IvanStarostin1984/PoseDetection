@@ -86,6 +86,10 @@ docker build -t posedetect .
 
 See [docs/CONTAINER.md](docs/CONTAINER.md) for details on running the image.
 
+If `make` does not work on your platform you can create npm scripts or a
+small Python wrapper that call `make lint` and `make test`. Windows users may
+prefer running the project in WSL or Docker when shell commands fail.
+
 ## Frontend
 
 The `frontend` folder contains a small React app. Build it and run its tests:

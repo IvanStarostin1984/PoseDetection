@@ -1149,3 +1149,10 @@ errors and maintains coverage.
 - **Motivation / Decision**: ensure `make typecheck` works offline and update
   bootstrap docs.
 - **Next step**: publish Docker image to a registry.
+
+### 2025-07-17  PR #147
+
+- **Summary**: added note about npm or Python wrappers and Windows WSL/Docker hint.
+- **Stage**: documentation
+- **Motivation / Decision**: help users who lack `make` or run on Windows.
+- **Next step**: none.
