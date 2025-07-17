@@ -8,8 +8,8 @@ mkdir -p "$PRE_COMMIT_HOME"
 cd "$PROJECT_ROOT"
 
 # install toolchains with pinned versions; safe to run multiple times
-PYTHON_VERSION=3.11
-NODE_VERSION=20
+PYTHON_VERSION="${PYTHON_VERSION:-3.11}"
+NODE_VERSION="${NODE_VERSION:-20}"
 
 have_python() {
   command -v python3 >/dev/null 2>&1 && python3 -V | grep -q "$PYTHON_VERSION"

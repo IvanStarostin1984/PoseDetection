@@ -1102,3 +1102,12 @@ errors and maintains coverage.
 - **Stage**: documentation
 - **Motivation / Decision**: docs wrongly asked users to add files manually.
 - **Next step**: none.
+
+### 2025-07-17  PR #141
+
+- **Summary**: CI now tests Python 3.11 and 3.12 via a matrix and setup script
+  reads PYTHON_VERSION.
+- **Stage**: maintenance
+- **Motivation / Decision**: verify compatibility across versions with minimal
+  workflow changes.
+- **Next step**: none.
