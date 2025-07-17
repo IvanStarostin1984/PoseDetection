@@ -1074,3 +1074,11 @@ errors and maintains coverage.
 - **Motivation / Decision**: ensure pose_endpoint handles frames at 20 FPS and
   WebSocket latency below 200 ms.
 - **Next step**: none.
+
+### 2025-07-17  PR #137
+
+- **Summary**: pinned black in requirements and updated docs for skipping hooks.
+- **Stage**: maintenance
+- **Motivation / Decision**: ensure `make lint` works when pre-commit hooks are
+  skipped.
+- **Next step**: none.

@@ -3,6 +3,7 @@ uvicorn[standard]==0.35.0
 opencv-python==4.10.0.82
 mediapipe==0.10.13
 ruff==0.4.4
+black==24.4.2
 websockets==15.0.1
 pytest-cov==6.2.1
 pytest==8.2.0

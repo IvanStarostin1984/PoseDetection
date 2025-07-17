@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.35 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.36 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -72,6 +72,8 @@ prevents GitHub prompts.
    on the first run to avoid PATH issues. Set `SKIP_PRECOMMIT=1` to bypass this
    when offline. The CI workflow passes this flag because the runners have
    restricted network access.
+6. `black` is pinned in `requirements.txt` so `make lint` works when
+   pre-commit hooks are skipped.
 
 ---
 
