@@ -1134,3 +1134,11 @@ errors and maintains coverage.
 - **Stage**: tooling
 - **Motivation / Decision**: provide a reproducible dev environment.
 - **Next step**: publish image to a registry.
+
+### 2025-07-17  PR #145
+
+- **Summary**: pinned mypy in requirements and documented the type check step.
+- **Stage**: maintenance
+- **Motivation / Decision**: ensure `make typecheck` works offline and update
+  bootstrap docs.
+- **Next step**: publish Docker image to a registry.
