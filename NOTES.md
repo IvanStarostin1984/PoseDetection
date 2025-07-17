@@ -1149,3 +1149,10 @@ errors and maintains coverage.
 - **Motivation / Decision**: ensure `make typecheck` works offline and update
   bootstrap docs.
 - **Next step**: publish Docker image to a registry.
+
+### 2025-07-17  PR #147
+
+- **Summary**: clarified streaming toggle in README and referenced PoseViewer logic.
+- **Stage**: documentation
+- **Motivation / Decision**: help developers understand the Start Webcam button behavior.
+- **Next step**: none.
