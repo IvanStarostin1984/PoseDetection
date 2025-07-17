@@ -138,4 +138,6 @@
 - [x] Pin mypy version in requirements so `make typecheck` works offline.
 - [ ] Publish Docker image to a registry
 - [x] Upgrade pages workflow to `actions/upload-pages-artifact@v3`.
+- [x] Add PowerShell setup script for Windows and document manual setup
+      alternatives.
 - [x] Document alternative wrappers and mention WSL/Docker for Windows users.
