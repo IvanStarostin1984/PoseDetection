@@ -1085,12 +1085,18 @@ errors and maintains coverage.
 
 ### 2025-07-17  PR #138
 
+- **Summary**: setup script now runs `pyenv rehash` after installing packages.
+- **Stage**: maintenance
+- **Motivation / Decision**: ensure pyenv shims pick up new Python binaries.
+
+### 2025-07-17  PR #139
+
 - **Summary**: skip pose accuracy test when placeholder dataset has no landmarks.
 - **Stage**: testing
 - **Motivation / Decision**: avoid false failures when default samples lack
   landmarks.
 
-### 2025-07-17  PR #139
+### 2025-07-17  PR #140
 
 - **Summary**: clarified placeholder test data in README and AGENTS.
 - **Stage**: documentation

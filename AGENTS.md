@@ -75,6 +75,8 @@ prevents GitHub prompts.
    restricted network access.
 6. `black` is pinned in `requirements.txt` so `make lint` works when
    pre-commit hooks are skipped.
+7. When using pyenv, run `pyenv rehash` after package installs so new
+   shims are picked up.
 
 ---
 

@@ -132,5 +132,6 @@
 - [x] Add tests for pose_endpoint error cases (no frame, process fail, no landmarks).
 - [x] Add performance test for pose_endpoint measuring frame loop time and round-trip.
 - [x] Pin black version in requirements to allow linting without hooks.
+- [x] Call `pyenv rehash` after installing packages in setup script.
 - [x] Skip pose accuracy test when placeholder dataset lacks landmarks.
 - [x] Clarify placeholder images in tests/data and update docs accordingly.

@@ -36,6 +36,9 @@ if ! have_node; then
 fi
 python3 -m pip install -r requirements.txt
 python3 -m pip install pre-commit
+if command -v pyenv >/dev/null 2>&1; then
+  pyenv rehash
+fi
 
 # install hooks into the shared cache while network is available
 if [ -f .pre-commit-config.yaml ] && [ "${SKIP_PRECOMMIT:-0}" != "1" ]; then
