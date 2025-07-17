@@ -1083,10 +1083,16 @@ errors and maintains coverage.
   skipped.
 - **Next step**: none.
 
-### 2025-07-18  PR #-4
+### 2025-07-17  PR #138
 
 - **Summary**: skip pose accuracy test when placeholder dataset has no landmarks.
 - **Stage**: testing
 - **Motivation / Decision**: avoid false failures when default samples lack
   landmarks.
+
+### 2025-07-17  PR #139
+
+- **Summary**: clarified placeholder test data in README and AGENTS.
+- **Stage**: documentation
+- **Motivation / Decision**: docs wrongly asked users to add files manually.
 - **Next step**: none.

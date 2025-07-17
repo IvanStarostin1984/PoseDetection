@@ -1,5 +1,6 @@
 # TODO – Road‑map (last updated: 2025-07-17)
 
+
 > *Record only high‑level milestones here; break micro‑tasks out into Issues.*
 > **When you finish a task, tick it and append a short NOTE entry
 > (see NOTES.md).**
@@ -133,3 +134,4 @@
 - [x] Add performance test for pose_endpoint measuring frame loop time and round-trip.
 - [x] Pin black version in requirements to allow linting without hooks.
 - [x] Skip pose accuracy test when placeholder dataset lacks landmarks.
+- [x] Clarify placeholder images in tests/data and update docs accordingly.
