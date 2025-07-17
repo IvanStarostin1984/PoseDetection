@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.39 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.40 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -59,10 +59,10 @@ prevents GitHub prompts.
 ## 2 · Bootstrap (first-run) checklist
 
 1. Run `.codex/setup.sh` (or `./setup.sh`) once after cloning & whenever
-   dependencies change. *The script installs Python, Node and all packages
-   needed for tests.* Set `PYTHON_VERSION` or `NODE_VERSION` to override the
-   defaults (3.11 and 20). Always complete this step before running any test or
-   build.
+   dependencies change. Windows users can run `scripts/setup.ps1` in
+   PowerShell. *The script installs Python, Node and all packages needed for
+   tests.* Set `PYTHON_VERSION` or `NODE_VERSION` to override the defaults
+   (3.11 and 20). Always complete this step before running any test or build.
 2. Export **required secrets** (`GIT_TOKEN`, `GH_PAGES_TOKEN`, …)
    in the repository/organisation **Secrets** console.
 3. Verify the **secret‑detection helper step** in
