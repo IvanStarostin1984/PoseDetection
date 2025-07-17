@@ -1041,11 +1041,18 @@ but the lint step lost this path.
 
 ### 2025-07-16  PR #132
 
-- **Summary**: added regression tests for pose_endpoint error handling.
+- **Summary**: added integration test for webcam reading at least one frame.
 - **Stage**: testing
-- **Motivation / Decision**: verify WebSocket sends proper errors and maintains coverage.
+- **Motivation / Decision**: test pose_endpoint with a mocked webcam frame.
 
 ### 2025-07-16  PR #133
+
+- **Summary**: added regression tests for pose_endpoint error handling.
+- **Stage**: testing
+- **Motivation / Decision**: verify WebSocket sends proper
+errors and maintains coverage.
+
+### 2025-07-16  PR #134
 
 - **Summary**: added performance test using dummy webcam and detector.
 - **Stage**: testing
