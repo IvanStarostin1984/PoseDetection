@@ -51,7 +51,7 @@
 
 ## 4 · Stretch goals
 
-- [ ] Containerise dev environment (Dockerfile or dev‑container.json)
+- [x] Containerise dev environment (Dockerfile or dev‑container.json)
 - [ ] Auto‑deploy docs & storybooks on each tag
 - [ ] Publish packages (PyPI, npm, pub.dev) via release workflow
 - [ ] Add optional load‑testing / performance CI stage
@@ -135,3 +135,4 @@
 - [x] Call `pyenv rehash` after installing packages in setup script.
 - [x] Skip pose accuracy test when placeholder dataset lacks landmarks.
 - [x] Clarify placeholder images in tests/data and update docs accordingly.
+- [ ] Publish Docker image to a registry

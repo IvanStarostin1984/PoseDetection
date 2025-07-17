@@ -1102,3 +1102,11 @@ errors and maintains coverage.
 - **Stage**: documentation
 - **Motivation / Decision**: docs wrongly asked users to add files manually.
 - **Next step**: none.
+
+### 2025-07-17  PR #141
+
+- **Summary**: added Dockerfile and container guide to document optional
+  container workflow.
+- **Stage**: tooling
+- **Motivation / Decision**: provide a reproducible dev environment.
+- **Next step**: publish image to a registry.
