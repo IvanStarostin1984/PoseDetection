@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.34 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.35 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -79,13 +79,13 @@ prevents GitHub prompts.
    (one reviewer required).
 2. **Pre‑commit commands** (also run by CI):
 
-   ```bash
-   make lint                  # all format / static‑analysis steps
-   make typecheck             # mypy static type checking
-   make typecheck-ts          # TypeScript compile check
-   make test                  # unit/integration tests with coverage ≥80%
-   python3 -m pre_commit run --files <changed>
-   ```
+    ```bash
+    make lint                  # all format / static‑analysis steps
+    make typecheck             # mypy static type checking
+    make typecheck-ts          # TypeScript compile check
+    make test                  # unit/integration + perf tests; coverage ≥80%
+    python3 -m pre_commit run --files <changed>
+    ```
 
     - For docs-only changes run `make lint` (or `make lint-docs`) before committing.
     - When updating `NOTES.md` or `TODO.md` run `make lint-docs` to
@@ -113,6 +113,8 @@ prevents GitHub prompts.
     - GitHub Actions workflows are linted with
       `actionlint` pinned at v1.7.7 via pre-commit.
     - `make test` expects dependencies from `.codex/setup.sh`.
+    - Performance tests reside in `tests/performance` and run as part of
+      `make test`. Execute them alone with `pytest tests/performance`.
 3. **Style rules** – keep code formatted (`black`, `prettier`,
    `dart format`, etc.) and Markdown lines ≤ 80 chars;
    avoid multiple consecutive blank lines (markdownlint MD012);

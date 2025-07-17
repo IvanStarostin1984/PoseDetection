@@ -50,7 +50,9 @@ indicating ``standing`` or ``sitting``.
 
 Run `make lint` to check Markdown and Python code style (ruff).
 Run `make typecheck-ts` to compile the frontend TypeScript.
-Run `make test` to execute the test-suite.
+Run `make test` to execute the test-suite. Performance tests live in
+`tests/performance` and run automatically. Run them on their own with
+`pytest tests/performance`.
 CI runs `make check-versions` whenever dependency files change to
 ensure pinned versions are valid.
 Pre-commit hooks are installed automatically by `.codex/setup.sh`,

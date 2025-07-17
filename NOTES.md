@@ -1038,3 +1038,10 @@ but the lint step lost this path.
 - **Stage**: maintenance
 - **Motivation / Decision**: Makefile failed due to spaces; used tabs instead.
 - **Next step**: none.
+
+### 2025-07-16  PR #132
+
+- **Summary**: documented performance tests in AGENTS and README.
+- **Stage**: maintenance
+- **Motivation / Decision**: keep guides up to date with new test suite.
+- **Next step**: plan CI stage for performance metrics.
