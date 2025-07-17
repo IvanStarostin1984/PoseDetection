@@ -1156,4 +1156,10 @@ errors and maintains coverage.
 - **Stage**: documentation
 - **Motivation / Decision**: help Windows users create a venv.
   Set the server startup file.
+
+### 2025-07-17  PR #148
+
+- **Summary**: added note about npm or Python wrappers and Windows WSL/Docker hint.
+- **Stage**: documentation
+- **Motivation / Decision**: help users who lack `make` or run on Windows.
 - **Next step**: none.
