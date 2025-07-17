@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import cv2
 from fastapi import FastAPI, WebSocket
+from fastapi.staticfiles import StaticFiles
 import asyncio
 
 from typing import Any, Dict, List
@@ -13,6 +14,11 @@ from .pose_detector import PoseDetector
 import uvicorn
 
 app = FastAPI()
+app.mount(
+    "/",
+    StaticFiles(directory="frontend/dist", html=True),
+    name="static",
+)
 
 # names for the 17-landmark subset used by PoseDetector
 _NAMES = [lm.name.lower() for lm in PoseDetector.LANDMARKS]

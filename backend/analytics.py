@@ -106,6 +106,7 @@ def pose_classification(landmarks: Mapping[str, Point]) -> str:
 def extract_pose_metrics(landmarks: Mapping[str, Point]) -> Dict[str, float | str]:
     """Return analytics dictionary from pose landmarks."""
     knee_angle = float("nan")
+    posture_angle = float("nan")
     for side in ("left", "right"):
         try:
             knee_angle = calculate_angle(
@@ -113,15 +114,26 @@ def extract_pose_metrics(landmarks: Mapping[str, Point]) -> Dict[str, float | st
                 landmarks[f"{side}_knee"],
                 landmarks[f"{side}_ankle"],
             )
+            posture_angle = calculate_angle(
+                landmarks[f"{side}_shoulder"],
+                landmarks[f"{side}_hip"],
+                landmarks[f"{side}_knee"],
+            )
             break
         except KeyError:
             continue
         except ValueError:
             knee_angle = float("nan")
+            posture_angle = float("nan")
             break
     try:
         balance = balance_score(landmarks)
     except ValueError:
         balance = float("nan")
     pose = pose_classification(landmarks)
-    return {"knee_angle": knee_angle, "balance": balance, "pose_class": pose}
+    return {
+        "knee_angle": knee_angle,
+        "balance": balance,
+        "pose_class": pose,
+        "posture_angle": posture_angle,
+    }
