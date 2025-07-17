@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.40 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.41 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -247,6 +247,9 @@ jobs:
 - **Code changes** run full lint + tests (`test`) and `actionlint`.
 - Add job matrices or deployments later—guardrails above already catch the 90 %
   most common issues.
+- A Windows job (`test-windows`) runs on `windows-latest` and calls the
+  PowerShell scripts in `scripts/windows` for linting, type checking,
+  testing and docs build.
 
 ---
 

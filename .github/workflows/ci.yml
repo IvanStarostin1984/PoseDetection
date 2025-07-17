@@ -91,3 +91,39 @@ jobs:
       - run: make typecheck
       - run: make typecheck-ts
       - run: make test
+
+  test-windows:
+    needs: [changes]
+    if: needs.changes.outputs.md_only != 'true'
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        python: ['3.11', '3.12']
+        node: ['20']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Bootstrap
+        shell: pwsh
+        run: |
+          $env:PYTHON_VERSION='${{ matrix.python }}'
+          $env:NODE_VERSION='${{ matrix.node }}'
+          $env:SKIP_PRECOMMIT='1'
+          ./scripts/setup.ps1
+      - name: Lint
+        shell: pwsh
+        run: ./scripts/windows/lint.ps1
+      - name: Typecheck
+        shell: pwsh
+        run: ./scripts/windows/typecheck.ps1
+      - name: Test
+        shell: pwsh
+        run: ./scripts/windows/test.ps1
+      - name: Docs
+        shell: pwsh
+        run: ./scripts/windows/docs.ps1

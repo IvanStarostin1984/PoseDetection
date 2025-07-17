@@ -1228,3 +1228,11 @@ errors and maintains coverage.
 - **Stage**: implementation
 - **Motivation / Decision**: PS 5.1 lacks the ternary operator; changed to if/else.
 - **Next step**: none.
+
+### 2025-07-17  PR #159
+
+- **Summary**: added Windows job to CI with PowerShell scripts for linting, type
+  checks, tests and docs.
+- **Stage**: implementation
+- **Motivation / Decision**: ensure cross-platform verification using Windows runners.
+- **Next step**: monitor for CI failures on Windows.
