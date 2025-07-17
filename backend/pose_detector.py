@@ -28,7 +28,7 @@ class PoseDetector:
     ]
 
     def __init__(self) -> None:
-        self._pose = mp.solutions.pose.Pose(model_complexity=1)
+        self._pose = mp.solutions.pose.Pose(model_complexity=1, static_image_mode=True)
 
     def process(self, frame: np.ndarray) -> list[dict[str, float]]:
         """Return 17 keypoints as dicts with x, y and visibility."""

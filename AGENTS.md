@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.36 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.37 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -74,6 +74,8 @@ prevents GitHub prompts.
    restricted network access.
 6. `black` is pinned in `requirements.txt` so `make lint` works when
    pre-commit hooks are skipped.
+7. When using pyenv, run `pyenv rehash` after package installs so new
+   shims are picked up.
 
 ---
 

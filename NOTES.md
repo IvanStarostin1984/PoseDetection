@@ -1082,3 +1082,10 @@ errors and maintains coverage.
 - **Motivation / Decision**: ensure `make lint` works when pre-commit hooks are
   skipped.
 - **Next step**: none.
+
+### 2025-07-17  PR #138
+
+- **Summary**: setup script now runs `pyenv rehash` after installing packages.
+- **Stage**: maintenance
+- **Motivation / Decision**: ensure pyenv shims pick up new Python binaries.
+- **Next step**: none.
