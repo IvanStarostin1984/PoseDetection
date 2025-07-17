@@ -1228,3 +1228,11 @@ errors and maintains coverage.
 - **Stage**: implementation
 - **Motivation / Decision**: PS 5.1 lacks the ternary operator; changed to if/else.
 - **Next step**: none.
+
+### 2025-07-17  PR #159
+
+- **Summary**: added PowerShell wrappers for Makefile commands.
+- **Stage**: implementation
+- **Motivation / Decision**: allow Windows users to run lint, tests and docs
+  without make.
+- **Next step**: none.
