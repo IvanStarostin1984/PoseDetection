@@ -4,7 +4,12 @@
   "private": true,
   "scripts": {
     "test": "jest",
-    "build": "esbuild frontend/src/index.tsx --bundle --outfile=frontend/dist/bundle.js --format=iife --jsx=automatic"
+    "build": "esbuild frontend/src/index.tsx --bundle --outfile=frontend/dist/bundle.js --format=iife --jsx=automatic",
+    "win:lint": "powershell -ExecutionPolicy Bypass -File scripts/lint.ps1",
+    "win:typecheck": "powershell -ExecutionPolicy Bypass -File scripts/typecheck.ps1",
+    "win:typecheck-ts": "powershell -ExecutionPolicy Bypass -File scripts/typecheck-ts.ps1",
+    "win:test": "powershell -ExecutionPolicy Bypass -File scripts/test.ps1",
+    "win:docs": "powershell -ExecutionPolicy Bypass -File scripts/docs.ps1"
   },
   "dependencies": {
     "react": "18.2.0",

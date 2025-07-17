@@ -1228,3 +1228,11 @@ errors and maintains coverage.
 - **Stage**: implementation
 - **Motivation / Decision**: PS 5.1 lacks the ternary operator; changed to if/else.
 - **Next step**: none.
+
+### 2025-07-17
+
+- **Summary**: added PowerShell wrappers and npm scripts for Windows lint/test/docs.
+
+- **Stage**: implementation
+- **Motivation / Decision**: allow running lint, tests and docs without make on Windows.
+- **Next step**: none.

@@ -59,6 +59,8 @@ field indicating ``standing`` or ``sitting``.
 ## Development
 
 Run `make lint` to check Markdown and Python code style (ruff).
+On Windows you can run `npm run win:lint` instead. Similar wrappers exist for
+`typecheck`, `typecheck-ts`, `test` and `docs`.
 Run `make typecheck` to check Python types with mypy.
 Run `make typecheck-ts` to compile the frontend TypeScript.
 Run `make test` to execute the test-suite. Performance tests live in
@@ -105,9 +107,9 @@ Follow these steps to run the backend from Visual Studio:
 
 Install Node separately to build the React frontend with `npm run build`.
 
-If `make` does not work on your platform you can create npm scripts or a
-small Python wrapper that call `make lint` and `make test`. Windows users may
-prefer running the project in WSL or Docker when shell commands fail.
+If `make` does not work on your platform use the provided PowerShell wrappers
+with `npm run win:lint` and `npm run win:test`. Windows users may still prefer
+WSL or Docker when shell commands fail.
 
 ## Frontend
 
