@@ -136,3 +136,4 @@
 - [x] Skip pose accuracy test when placeholder dataset lacks landmarks.
 - [x] Clarify placeholder images in tests/data and update docs accordingly.
 - [ ] Publish Docker image to a registry
+- [x] Upgrade pages workflow to `actions/upload-pages-artifact@v3`.

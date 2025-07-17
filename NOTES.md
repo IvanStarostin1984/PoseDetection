@@ -1134,3 +1134,10 @@ errors and maintains coverage.
 - **Stage**: tooling
 - **Motivation / Decision**: provide a reproducible dev environment.
 - **Next step**: publish image to a registry.
+
+### 2025-07-17  PR #145
+
+- **Summary**: updated Pages workflow to artifact action v3; documented change.
+- **Stage**: maintenance
+- **Motivation / Decision**: keep deployment workflow current and documented.
+- **Next step**: none.
