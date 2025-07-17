@@ -35,6 +35,9 @@ Start the backend server with:
 python -m backend.server
 ```
 
+The pose detector uses `static_image_mode=False` for real-time
+performance with continuous frames.
+
 ## Frontend metrics panel
 
 The React frontend displays these metrics below the video feed. When
