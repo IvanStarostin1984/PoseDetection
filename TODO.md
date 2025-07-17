@@ -138,7 +138,7 @@
 - [x] Pin mypy version in requirements so `make typecheck` works offline.
 - [x] Serve built frontend through backend using `StaticFiles`.
 - [x] Ignore WebSocket messages with `error` key and show the message in PoseViewer.
-- [ ] Publish Docker image to a registry
+- [x] Publish Docker image to a registry
 - [x] Upgrade pages workflow to `actions/upload-pages-artifact@v3`.
 - [x] Remove obsolete Jekyll Pages workflow.
 - [x] Configure Pages before uploading docs

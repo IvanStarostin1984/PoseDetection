@@ -3,6 +3,21 @@
 <head>
   <meta charset="utf-8" />
   <title>Pose Detection</title>
+  <style>
+    .pose-container {
+      position: relative;
+      width: 640px;
+      height: 480px;
+    }
+    .pose-container video,
+    .pose-container canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
 </head>
 <body>
   <div id="root"></div>

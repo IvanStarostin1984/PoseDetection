@@ -1228,3 +1228,10 @@ errors and maintains coverage.
 - **Stage**: implementation
 - **Motivation / Decision**: PS 5.1 lacks the ternary operator; changed to if/else.
 - **Next step**: none.
+
+### 2025-07-17  PR #159
+
+- **Summary**: styled pose container so video and canvas overlap and rebuilt frontend.
+- **Stage**: implementation
+- **Motivation / Decision**: overlaying ensures metrics panel works with video feed.
+- **Next step**: none.
