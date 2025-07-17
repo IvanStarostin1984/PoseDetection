@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 import cv2
-from fastapi import FastAPI, WebSocket
+from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.staticfiles import StaticFiles
 import asyncio
 
@@ -74,6 +74,8 @@ async def pose_endpoint(ws: WebSocket) -> None:
 
             payload = build_payload(points)
             await ws.send_text(json.dumps(payload))
+    except (WebSocketDisconnect, RuntimeError):
+        await ws.close()
     except Exception:
         await ws.close()
         raise

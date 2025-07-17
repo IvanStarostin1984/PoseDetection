@@ -11,7 +11,10 @@ interface PoseData {
 const PoseViewer: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const { poseData, status, error } = useWebSocket<PoseData>('/pose');
+  const [wsKey, setWsKey] = useState(0);
+  const { poseData, status, error, close } = useWebSocket<PoseData>(
+    `/pose?c=${wsKey}`,
+  );
   const [streaming, setStreaming] = useState(true);
   const [cameraError, setCameraError] = useState<string | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
@@ -70,7 +73,17 @@ const PoseViewer: React.FC = () => {
         <div className="camera-error">Error: {cameraError}</div>
       )}
       <div className="connection-status">Connection: {status}</div>
-      <button onClick={() => setStreaming((s) => !s)}>
+      <button
+        onClick={() => {
+          if (streaming) {
+            close();
+            setStreaming(false);
+          } else {
+            setWsKey((k) => k + 1);
+            setStreaming(true);
+          }
+        }}
+      >
         {streaming ? 'Stop Webcam' : 'Start Webcam'}
       </button>
     </div>

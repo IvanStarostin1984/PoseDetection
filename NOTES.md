@@ -1229,11 +1229,40 @@ errors and maintains coverage.
 - **Motivation / Decision**: PS 5.1 lacks the ternary operator; changed to if/else.
 - **Next step**: none.
 
-### 2025-07-17
+### 2025-07-17  PR #159
 
 - **Summary**: PoseViewer now shows "Webcam access denied" if camera
   permissions fail and the metrics panel is styled vertically.
 - **Stage**: implementation
 - **Motivation / Decision**: improve user feedback when the browser blocks the
   webcam and make metrics easier to read.
+
+### 2025-07-17  PR #160
+
+- **Summary**: added PowerShell wrappers and npm scripts for Windows lint/test/docs.
+
+- **Stage**: implementation
+- **Motivation / Decision**: allow running lint, tests and docs without make on Windows.
+
+### 2025-07-17  PR 161
+
+- **Summary**: added `pymake.py` cross-platform wrapper and updated README.
+- **Stage**: implementation
+- **Motivation / Decision**: simplify running Make targets on Windows.
+
+
+### 2025-07-17  PR #162
+
+- **Summary**: added PowerShell wrappers for Makefile commands.
+- **Stage**: implementation
+- **Motivation / Decision**: allow Windows users to run lint, tests and docs
+  without make.
+
+### 2025-07-17  PR #163
+
+- **Summary**: added close() to useWebSocket and tests, stop button now closes
+  WebSocket and reconnection works; backend handles disconnect without errors.
+- **Stage**: implementation
+- **Motivation / Decision**: allow users to stop streaming cleanly and ensure
+  resources release on client disconnect.
 - **Next step**: none.

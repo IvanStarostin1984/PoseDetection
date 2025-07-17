@@ -30,6 +30,9 @@ cd PoseDetection
 ./.codex/setup.sh   # Windows: scripts/setup.ps1
 make lint
 make test
+# Windows users without make can run:
+#   scripts/windows/lint.ps1
+#   scripts/windows/test.ps1
 ```
 
 If the network is unavailable pass `SKIP_PRECOMMIT=1` to the setup script.
@@ -59,11 +62,14 @@ field indicating ``standing`` or ``sitting``.
 ## Development
 
 Run `make lint` to check Markdown and Python code style (ruff).
+On Windows you can run `npm run win:lint` instead. Similar wrappers exist for
+`typecheck`, `typecheck-ts`, `test` and `docs`.
 Run `make typecheck` to check Python types with mypy.
 Run `make typecheck-ts` to compile the frontend TypeScript.
 Run `make test` to execute the test-suite. Performance tests live in
 `tests/performance` and run automatically. Run them on their own with
 `pytest tests/performance`.
+Windows wrappers for these commands live in `scripts/windows/`.
 CI runs `make check-versions` whenever dependency files change to
 ensure pinned versions are valid.
 Pre-commit hooks are installed automatically by `.codex/setup.sh`,
@@ -105,9 +111,14 @@ Follow these steps to run the backend from Visual Studio:
 
 Install Node separately to build the React frontend with `npm run build`.
 
-If `make` does not work on your platform you can create npm scripts or a
-small Python wrapper that call `make lint` and `make test`. Windows users may
-prefer running the project in WSL or Docker when shell commands fail.
+If `make` does not work on your platform use the provided PowerShell wrappers
+with `npm run win:lint` and `npm run win:test`. Windows users may still prefer
+WSL or Docker when shell commands fail.
+
+If `make` does not work on your platform run `pymake.py <command>` instead.
+It dispatches to the same targets. Windows users may prefer WSL or Docker when
+shell commands fail.
+
 
 ## Frontend
 
@@ -119,7 +130,8 @@ npm test
 ```
 
 The PoseViewer component shows the live webcam feed. The **Start Webcam**
-button toggles streaming on and off. It calls `setStreaming(!streaming)` in
+button toggles streaming on and off. Stopping the webcam also closes the
+WebSocket connection. It calls `setStreaming(!streaming)` in
 [`PoseViewer.tsx`](frontend/src/components/PoseViewer.tsx). A canvas overlay
 draws lines between keypoints to show the pose skeleton.
 The `useWebSocket` hook returns the latest pose data and a connection state
