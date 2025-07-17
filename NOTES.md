@@ -1228,3 +1228,10 @@ errors and maintains coverage.
 - **Stage**: implementation
 - **Motivation / Decision**: PS 5.1 lacks the ternary operator; changed to if/else.
 - **Next step**: none.
+
+### 2025-07-17  PR TBD
+
+- **Summary**: added `pymake.py` cross-platform wrapper and updated README.
+- **Stage**: implementation
+- **Motivation / Decision**: simplify running Make targets on Windows.
+- **Next step**: none.
