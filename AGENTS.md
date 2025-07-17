@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.39 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.40 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -59,17 +59,19 @@ prevents GitHub prompts.
 ## 2 · Bootstrap (first-run) checklist
 
 1. Run `.codex/setup.sh` (or `./setup.sh`) once after cloning & whenever
-   dependencies change. *The script installs Python, Node and all packages
-   needed for tests.* Set `PYTHON_VERSION` or `NODE_VERSION` to override the
-   defaults (3.11 and 20). Always complete this step before running any test or
-   build.
+   dependencies change. Windows users can run `scripts/setup.ps1` in
+   PowerShell. *The script installs Python, Node and all packages needed for
+   tests.* Set `PYTHON_VERSION` or `NODE_VERSION` to override the defaults
+   (3.11 and 20). Always complete this step before running any test or build.
 2. Export **required secrets** (`GIT_TOKEN`, `GH_PAGES_TOKEN`, …)
    in the repository/organisation **Secrets** console.
 3. Verify the **secret‑detection helper step** in
     `.github/workflows/ci.yml` (see § 4) so forks without secrets still pass.
 4. Pushes to `main` run `.github/workflows/pages.yml` which builds the Sphinx
    docs, uploads them using `actions/upload-pages-artifact@v3` and deploys them
-   to GitHub Pages when `GH_PAGES_TOKEN` is present.
+   to GitHub Pages when `GH_PAGES_TOKEN` is present. Enable Pages in the repo
+   settings with **GitHub Actions** as the source. `GH_PAGES_TOKEN` requires
+   `pages:write` and repo access.
 5. On the first PR, update README badges to point at your fork (owner/repo).
 6. `.codex/setup.sh` installs `pre-commit`, sets up the hooks and then runs
    `pre-commit run --all-files`. This may reformat files, so run the script

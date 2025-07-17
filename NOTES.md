@@ -1155,4 +1155,69 @@ errors and maintains coverage.
 - **Summary**: removed obsolete Jekyll workflow for old docs.
 - **Stage**: maintenance
 - **Motivation / Decision**: Docs use Sphinx; old Jekyll workflow confused devs.
+
+### 2025-07-17  PR #148
+
+- **Summary**: added `actions/configure-pages@v5` step before building docs.
+- **Stage**: maintenance
+- **Motivation / Decision**: configure Pages before uploading.
+
+### 2025-07-17  PR #149
+
+- **Summary**: clarified streaming toggle in README and referenced PoseViewer logic.
+- **Stage**: documentation
+- **Motivation / Decision**: help developers understand the Start Webcam button behavior.
+
+### 2025-07-17  PR #150
+
+- **Summary**: clarified that Pages must be enabled with GitHub Actions as
+  source and the token needs `pages:write` and repo access.
+- **Stage**: documentation
+- **Motivation / Decision**: ensure maintainers configure Pages before expecting
+  deployments.
+
+### 2025-07-17  PR #151
+
+- **Summary**: backend now serves `frontend/dist` with FastAPI `StaticFiles`.
+- **Stage**: feature
+- **Motivation / Decision**: simplify local usage by mounting built assets at
+  the root path. Still optional for manual hosting.
+
+### 2025-07-17  PR #152
+
+- **Summary**: added posture angle metric across backend and frontend.
+- **Stage**: implementation
+- **Motivation / Decision**: compute torso angle to display posture data.
+
+### 2025-07-17  PR #153
+
+- **Summary**: frontend shows WebSocket errors without overwriting pose data.
+- **Stage**: feature
+- **Motivation / Decision**: handle backend errors without losing pose data.
+
+### 2025-07-17  PR #154
+
+- **Summary**: set PoseDetector to dynamic mode and documented the improvement.
+- **Stage**: implementation
+- **Motivation / Decision**: lower latency using MediaPipe streaming mode.
+
+### 2025-07-17  PR #155
+
+- **Summary**: added PowerShell setup script, updated README and AGENTS.
+- **Stage**: implementation
+- **Motivation / Decision**: give Windows users an equivalent setup path and
+  document manual alternatives for environments without PowerShell.
+
+### 2025-07-18  PR #156
+
+- **Summary**: documented Visual Studio 2022 setup for backend development.
+- **Stage**: documentation
+- **Motivation / Decision**: help Windows users create a venv.
+  Set the server startup file.
+
+### 2025-07-17  PR #157
+
+- **Summary**: added note about npm or Python wrappers and Windows WSL/Docker hint.
+- **Stage**: documentation
+- **Motivation / Decision**: help users who lack `make` or run on Windows.
 - **Next step**: none.

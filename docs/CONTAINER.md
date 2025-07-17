@@ -26,7 +26,8 @@ To serve the frontend build inside the container:
 
 ```bash
 npm run build
-python -m http.server --directory frontend/dist 8080
+python -m backend.server
 ```
 
-Then open <http://localhost:8080/> in your browser.
+Then open <http://localhost:8000/> in your browser. The server only serves the
+files when `frontend/dist` exists.
