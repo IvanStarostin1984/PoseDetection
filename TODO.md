@@ -37,7 +37,7 @@
 - [x] Integrate secret‑detection helper step in CI (`has_token` pattern)
 - [ ] Extend CI matrix for all runtimes (Python, Node, Dart, Rust, …)
 - [x] Add Actionlint + markdown‑link‑check jobs and pin their versions
-- [ ] Publish docs to GitHub Pages when `GH_PAGES_TOKEN` is present
+- [x] Publish docs to GitHub Pages when `GH_PAGES_TOKEN` is present
 
 ## 3 · Quality & automation
 

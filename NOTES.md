@@ -1102,3 +1102,10 @@ errors and maintains coverage.
 - **Stage**: documentation
 - **Motivation / Decision**: docs wrongly asked users to add files manually.
 - **Next step**: none.
+
+### 2025-07-17  PR #141
+
+- **Summary**: added Pages workflow to publish docs when GH_PAGES_TOKEN is set.
+- **Stage**: implementation
+- **Motivation / Decision**: automate deployment to GitHub Pages per TODO.
+- **Next step**: none.

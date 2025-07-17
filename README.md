@@ -131,6 +131,8 @@ make docs
 ```
 
 The output appears in `docs/_build/html`.
+Pushes to `main` trigger `.github/workflows/pages.yml` to build these docs and
+deploy them to GitHub Pages when the `GH_PAGES_TOKEN` secret is available.
 
 ## License
 
