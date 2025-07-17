@@ -112,16 +112,17 @@ python -m backend.server
 ```
 
 `npm run build` bundles the app to `frontend/dist/bundle.js`. The
-`index.html` file is already present in that directory. Serve the frontend
-in another terminal:
+`index.html` file is already present in that directory. Start the backend
+and open the bundled app directly:
 
 ```bash
 npm run build
-python -m http.server --directory frontend/dist 8080
+python -m backend.server
 ```
 
-Then open [http://localhost:8080/](http://localhost:8080/) <!-- lychee skip -->
-in your browser.
+Then open [http://localhost:8000/](http://localhost:8000/) <!-- lychee skip -->
+in your browser. This mount is optional; if `frontend/dist` is missing you
+can still serve the files with another HTTP server.
 The page connects to `ws://localhost:8000/pose` by default. To reach a remote
 server pass the host and port to `useWebSocket`, for example
 `useWebSocket('/pose', 'example.org', 9001)`.

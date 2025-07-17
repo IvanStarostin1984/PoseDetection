@@ -1149,3 +1149,11 @@ errors and maintains coverage.
 - **Motivation / Decision**: ensure `make typecheck` works offline and update
   bootstrap docs.
 - **Next step**: publish Docker image to a registry.
+
+### 2025-07-17  PR #147
+
+- **Summary**: backend now serves `frontend/dist` with FastAPI `StaticFiles`.
+- **Stage**: feature
+- **Motivation / Decision**: simplify local usage by mounting built assets at
+  the root path. Still optional for manual hosting.
+- **Next step**: none.

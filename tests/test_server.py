@@ -55,6 +55,18 @@ def test_server_starts():
         proc.wait(timeout=5)
 
 
+def test_root_mount_present():
+    import backend.server as server
+    from fastapi.staticfiles import StaticFiles
+
+    for route in server.app.routes:
+        if getattr(route, "path", None) in ("/", "") and hasattr(route, "app"):
+            if isinstance(getattr(route, "app"), StaticFiles):
+                break
+    else:
+        raise AssertionError("root mount not found")
+
+
 class DummyWS:
     def __init__(self):
         self.accepted = False
