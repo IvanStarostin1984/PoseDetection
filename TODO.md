@@ -128,3 +128,4 @@
 - [x] Handle concurrent `/pose` WebSocket clients without blocking.
 - [x] Match CI lint-docs grep excludes with AGENTS guidance.
 - [x] Add tests for pose_endpoint error cases (no frame, process fail, no landmarks).
+- [x] Add performance test for pose_endpoint measuring frame loop time and round-trip.
