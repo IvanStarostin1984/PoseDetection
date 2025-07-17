@@ -169,8 +169,10 @@ make docs
 ```
 
 The output appears in `docs/_build/html`.
-Pushes to `main` trigger `.github/workflows/pages.yml` to build these docs and
-deploy them to GitHub Pages when the `GH_PAGES_TOKEN` secret is available.
+Pushes to `main` run `.github/workflows/pages.yml` to build the docs.
+When `GH_PAGES_TOKEN` is available the workflow deploys them to GitHub Pages.
+Enable Pages in the repo settings with **GitHub Actions** as the source before
+expecting deployments.
 
 ## License
 
