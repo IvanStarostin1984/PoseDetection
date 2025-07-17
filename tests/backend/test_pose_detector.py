@@ -85,3 +85,20 @@ def test_close(monkeypatch):
     det = pd.PoseDetector()
     det.close()
     assert getattr(fake, "closed", False) is True
+
+
+class InspectPose:
+    def __init__(self, *args, **kwargs) -> None:
+        InspectPose.kwargs = kwargs
+
+    def process(self, _frame):
+        return types.SimpleNamespace(pose_landmarks=None)
+
+    def close(self) -> None:
+        pass
+
+
+def test_init_sets_static_image_mode_false(monkeypatch):
+    monkeypatch.setattr(mp.solutions.pose, "Pose", InspectPose)
+    pd.PoseDetector()
+    assert InspectPose.kwargs.get("static_image_mode") is False
