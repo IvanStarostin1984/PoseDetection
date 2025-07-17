@@ -1,17 +1,17 @@
 import { useEffect, useRef, useState } from 'react';
 import useWebSocket from '../hooks/useWebSocket';
 import { drawSkeleton, Point } from '../utils/poseDrawing';
-import MetricsPanel from './MetricsPanel';
+import MetricsPanel, { PoseMetrics } from './MetricsPanel';
 
 interface PoseData {
   landmarks: Point[];
-  metrics: Record<string, number | string>;
+  metrics: PoseMetrics;
 }
 
 const PoseViewer: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const { poseData, status } = useWebSocket<PoseData>('/pose');
+  const { poseData, status, error } = useWebSocket<PoseData>('/pose');
   const [streaming, setStreaming] = useState(true);
   const streamRef = useRef<MediaStream | null>(null);
 
@@ -61,6 +61,7 @@ const PoseViewer: React.FC = () => {
       <video ref={videoRef} autoPlay muted />
       <canvas ref={canvasRef} width={640} height={480} />
       <MetricsPanel data={poseData?.metrics} />
+      {error && <div className="ws-error">Error: {error}</div>}
       <div className="connection-status">Connection: {status}</div>
       <button onClick={() => setStreaming((s) => !s)}>
         {streaming ? 'Stop Webcam' : 'Start Webcam'}
