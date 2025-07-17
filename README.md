@@ -44,6 +44,24 @@ Sample frames for the performance test live in `tests/data/`.
 Placeholder images and a `labels.json` file are already present.
 The pose accuracy test skips unless you replace them with real frames.
 
+## Windows usage
+
+Run `scripts/setup.ps1` to install Python, Node and pre-commit hooks. Each
+Makefile target has a PowerShell wrapper so you do not need `make`. For
+example run `./scripts/lint.ps1` instead of `make lint`.
+
+| Makefile target       | PowerShell script           |
+| --------------------- | --------------------------- |
+| `make lint`           | `scripts/lint.ps1`          |
+| `make lint-docs`      | `scripts/lint-docs.ps1`     |
+| `make test`           | `scripts/test.ps1`          |
+| `make generate`       | `scripts/generate.ps1`      |
+| `make typecheck`      | `scripts/typecheck.ps1`     |
+| `make typecheck-ts`   | `scripts/typecheck-ts.ps1`  |
+| `make update-todo-date` | `scripts/update-todo-date.ps1` |
+| `make check-versions` | `scripts/check-versions.ps1`|
+| `make docs`           | `scripts/docs.ps1`          |
+
 ### Backend server
 
 Run `python -m backend.server` to launch the FastAPI server. The `/pose`

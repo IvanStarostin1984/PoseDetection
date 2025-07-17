@@ -1228,3 +1228,12 @@ errors and maintains coverage.
 - **Stage**: implementation
 - **Motivation / Decision**: PS 5.1 lacks the ternary operator; changed to if/else.
 - **Next step**: none.
+
+### 2025-07-17  PR #159
+
+- **Summary**: added Windows usage section and PowerShell scripts mirroring
+  Makefile commands.
+- **Stage**: documentation
+- **Motivation / Decision**: help Windows users run lint and tests without
+  `make`.
+- **Next step**: none.
