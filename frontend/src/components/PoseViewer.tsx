@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import useWebSocket from '../hooks/useWebSocket';
 import { drawSkeleton, Point } from '../utils/poseDrawing';
-import MetricsPanel from './MetricsPanel';
+import MetricsPanel, { PoseMetrics } from './MetricsPanel';
 
 interface PoseData {
   landmarks: Point[];
-  metrics: Record<string, number | string>;
+  metrics: PoseMetrics;
 }
 
 const PoseViewer: React.FC = () => {

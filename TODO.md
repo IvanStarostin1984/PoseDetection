@@ -139,6 +139,7 @@
 - [x] Ignore WebSocket messages with `error` key and show the message in PoseViewer.
 - [ ] Publish Docker image to a registry
 - [x] Upgrade pages workflow to `actions/upload-pages-artifact@v3`.
+- [x] Add posture angle metric in backend and frontend.
 - [x] Set `static_image_mode=False` in PoseDetector for better streaming performance.
 - [x] Add PowerShell setup script for Windows and document manual setup
       alternatives.
