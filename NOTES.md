@@ -1149,3 +1149,10 @@ errors and maintains coverage.
 - **Motivation / Decision**: ensure `make typecheck` works offline and update
   bootstrap docs.
 - **Next step**: publish Docker image to a registry.
+
+### 2025-07-17  PR #147
+
+- **Summary**: added `actions/configure-pages@v5` step before building docs.
+- **Stage**: maintenance
+- **Motivation / Decision**: configure Pages before uploading.
+- **Next step**: none.

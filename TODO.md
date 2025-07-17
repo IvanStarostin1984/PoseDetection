@@ -138,3 +138,4 @@
 - [x] Pin mypy version in requirements so `make typecheck` works offline.
 - [ ] Publish Docker image to a registry
 - [x] Upgrade pages workflow to `actions/upload-pages-artifact@v3`.
+- [x] Configure Pages before uploading docs
