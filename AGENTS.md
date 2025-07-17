@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.36 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.37 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -37,8 +37,9 @@ document information in code files.
   code-generated. Run `make generate` (calls `python scripts/generate.py`)
   to recreate them and keep these files out of regular commits unless
   intentionally updating the outputs.
-- Sample frames for pose accuracy tests are stored in `tests/data/` and are not tracked.
-  Add PNG images and `labels.json` manually to run the test.
+- Sample frames for pose accuracy tests are stored in `tests/data/`.
+- Placeholder PNG images and a `labels.json` file are provided.
+- Replace them with real frames to run the accuracy test; otherwise it skips.
 - **Search for conflict markers before every commit** –
   `git grep -n -E '<{7}|={7}|>{7}'` must return nothing.
 - **Never include conflict markers verbatim** –
