@@ -1,4 +1,4 @@
-# TODO – Road‑map (last updated: 2025-07-17)
+# TODO – Road‑map (last updated: 2025-07-18)
 
 > *Record only high‑level milestones here; break micro‑tasks out into Issues.*
 > **When you finish a task, tick it and append a short NOTE entry
@@ -140,3 +140,4 @@
 - [x] Upgrade pages workflow to `actions/upload-pages-artifact@v3`.
 - [x] Add PowerShell setup script for Windows and document manual setup
       alternatives.
+- [x] Document alternative wrappers and mention WSL/Docker for Windows users.

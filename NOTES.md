@@ -1156,4 +1156,17 @@ errors and maintains coverage.
 - **Stage**: implementation
 - **Motivation / Decision**: give Windows users an equivalent setup path and
   document manual alternatives for environments without PowerShell.
+
+### 2025-07-18  PR #148
+
+- **Summary**: documented Visual Studio 2022 setup for backend development.
+- **Stage**: documentation
+- **Motivation / Decision**: help Windows users create a venv.
+  Set the server startup file.
+
+### 2025-07-17  PR #149
+
+- **Summary**: added note about npm or Python wrappers and Windows WSL/Docker hint.
+- **Stage**: documentation
+- **Motivation / Decision**: help users who lack `make` or run on Windows.
 - **Next step**: none.

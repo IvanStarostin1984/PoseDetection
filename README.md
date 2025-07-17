@@ -92,6 +92,23 @@ docker build -t posedetect .
 
 See [docs/CONTAINER.md](docs/CONTAINER.md) for details on running the image.
 
+## Visual Studio 2022
+
+Follow these steps to run the backend from Visual Studio:
+
+1. Open the repository folder in VS 2022.
+2. In **Python Environments** choose **Add Environment** → **Virtual
+   Environment** and create a `.venv`.
+3. Install the requirements with `pip install -r requirements.txt`.
+4. Right‑click `backend/server.py` and pick **Set as Startup File**.
+5. Press **F5** to launch the FastAPI server.
+
+Install Node separately to build the React frontend with `npm run build`.
+
+If `make` does not work on your platform you can create npm scripts or a
+small Python wrapper that call `make lint` and `make test`. Windows users may
+prefer running the project in WSL or Docker when shell commands fail.
+
 ## Frontend
 
 The `frontend` folder contains a small React app. Build it and run its tests:
