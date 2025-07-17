@@ -1149,3 +1149,11 @@ errors and maintains coverage.
 - **Motivation / Decision**: ensure `make typecheck` works offline and update
   bootstrap docs.
 - **Next step**: publish Docker image to a registry.
+
+### 2025-07-17  PR #147
+
+- **Summary**: added PowerShell setup script, updated README and AGENTS.
+- **Stage**: implementation
+- **Motivation / Decision**: give Windows users an equivalent setup path and
+  document manual alternatives for environments without PowerShell.
+- **Next step**: none.
