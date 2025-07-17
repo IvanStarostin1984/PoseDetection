@@ -54,6 +54,7 @@ indicating ``standing`` or ``sitting``.
 ## Development
 
 Run `make lint` to check Markdown and Python code style (ruff).
+Run `make typecheck` to check Python types with mypy.
 Run `make typecheck-ts` to compile the frontend TypeScript.
 Run `make test` to execute the test-suite. Performance tests live in
 `tests/performance` and run automatically. Run them on their own with
