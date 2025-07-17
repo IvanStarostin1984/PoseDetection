@@ -75,6 +75,14 @@ finished. Pre-commit hooks are stored in `.pre-commit-cache/` so they can be
 reused offline. The script then runs `pre-commit run --all-files`, which may
 reformat files, so execute it before making changes.
 
+Alternatively build the provided Dockerfile:
+
+```bash
+docker build -t posedetect .
+```
+
+See [docs/CONTAINER.md](docs/CONTAINER.md) for details on running the image.
+
 ## Frontend
 
 The `frontend` folder contains a small React app. Build it and run its tests:

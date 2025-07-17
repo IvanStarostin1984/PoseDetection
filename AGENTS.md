@@ -78,6 +78,8 @@ prevents GitHub prompts.
    pre-commit hooks are skipped.
 7. When using pyenv, run `pyenv rehash` after package installs so new
    shims are picked up.
+8. A `Dockerfile` sets up Python 3.11 and Node 20. Build it with
+   `docker build -t posedetect .` to run tests in a container.
 
 ---
 

@@ -1111,3 +1111,11 @@ errors and maintains coverage.
 - **Motivation / Decision**: verify compatibility across versions with minimal
   workflow changes.
 - **Next step**: none.
+
+### 2025-07-17  PR #142
+
+- **Summary**: added Dockerfile and container guide to document optional
+  container workflow.
+- **Stage**: tooling
+- **Motivation / Decision**: provide a reproducible dev environment.
+- **Next step**: publish image to a registry.
