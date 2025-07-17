@@ -1082,3 +1082,10 @@ errors and maintains coverage.
 - **Motivation / Decision**: ensure `make lint` works when pre-commit hooks are
   skipped.
 - **Next step**: none.
+
+### 2025-07-18  PR #138
+
+- **Summary**: clarified placeholder test data in README and AGENTS.
+- **Stage**: documentation
+- **Motivation / Decision**: docs wrongly asked users to add files manually.
+- **Next step**: none.
