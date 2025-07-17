@@ -119,7 +119,6 @@ If `make` does not work on your platform run `pymake.py <command>` instead.
 It dispatches to the same targets. Windows users may prefer WSL or Docker when
 shell commands fail.
 
-
 ## Frontend
 
 The `frontend` folder contains a small React app. Build it and run its tests:
