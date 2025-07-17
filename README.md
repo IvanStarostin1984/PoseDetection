@@ -11,6 +11,8 @@ FastAPI WebSocket server and a basic React frontend.
 PoseDetection is a minimal showcase for human pose estimation. It detects body
 keypoints from a webcam and serves them through a small web app. See
 [docs/tech-challenge.txt](docs/tech-challenge.txt) for the original assignment.
+Additional assumptions and edge cases for the first feature are listed in
+[docs/feature_a.md](docs/feature_a.md).
 
 ## Quick start
 
@@ -65,14 +67,23 @@ Dependabot reviews `requirements.txt`, `package.json` and
 
 ## Setup
 
-Run `.codex/setup.sh` after cloning to install Python 3.11, Node 20 and all
-project dependencies. This installs `black` from `requirements.txt` so
+Run `.codex/setup.sh` after cloning to install Python 3.11 (set
+`PYTHON_VERSION` to override) and Node 20 (set `NODE_VERSION` to change).
+This installs `black` from `requirements.txt` so
 `make lint` works even when hooks are skipped. Tests rely on these packages,
 so always complete this step before running `make test`. The script is
 idempotent and exits 0 when
 finished. Pre-commit hooks are stored in `.pre-commit-cache/` so they can be
 reused offline. The script then runs `pre-commit run --all-files`, which may
 reformat files, so execute it before making changes.
+
+Alternatively build the provided Dockerfile:
+
+```bash
+docker build -t posedetect .
+```
+
+See [docs/CONTAINER.md](docs/CONTAINER.md) for details on running the image.
 
 ## Frontend
 

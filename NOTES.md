@@ -1109,3 +1109,28 @@ errors and maintains coverage.
 - **Stage**: implementation
 - **Motivation / Decision**: automate deployment to GitHub Pages per TODO.
 - **Next step**: none.
+
+### 2025-07-17  PR #142
+
+- **Summary**: added feature_a documentation and linked it from README.
+- **Stage**: documentation
+- **Motivation / Decision**: capture assumptions and edge cases for the first
+  feature as required by TODO.
+- **Next step**: plan implementation and tests for feature A.
+
+### 2025-07-17  PR #143
+
+- **Summary**: CI now tests Python 3.11 and 3.12 via a matrix and setup script
+  reads PYTHON_VERSION.
+- **Stage**: maintenance
+- **Motivation / Decision**: verify compatibility across versions with minimal
+  workflow changes.
+- **Next step**: none.
+
+### 2025-07-17  PR #144
+
+- **Summary**: added Dockerfile and container guide to document optional
+  container workflow.
+- **Stage**: tooling
+- **Motivation / Decision**: provide a reproducible dev environment.
+- **Next step**: publish image to a registry.
