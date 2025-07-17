@@ -1,8 +1,20 @@
 # Windows setup script mirroring .codex/setup.sh
 Param(
-    [string]$PYTHON_VERSION = $env:PYTHON_VERSION ? $env:PYTHON_VERSION : '3.11',
-    [string]$NODE_VERSION = $env:NODE_VERSION ? $env:NODE_VERSION : '20'
+    [string]$PYTHON_VERSION,
+    [string]$NODE_VERSION
 )
+
+if ($env:PYTHON_VERSION) {
+    $PYTHON_VERSION = $env:PYTHON_VERSION
+} elseif (-not $PYTHON_VERSION) {
+    $PYTHON_VERSION = '3.11'
+}
+
+if ($env:NODE_VERSION) {
+    $NODE_VERSION = $env:NODE_VERSION
+} elseif (-not $NODE_VERSION) {
+    $NODE_VERSION = '20'
+}
 
 $ProjectRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 $PreCommitHome = $env:PRE_COMMIT_HOME
