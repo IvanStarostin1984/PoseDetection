@@ -140,6 +140,7 @@
 - [x] Ignore WebSocket messages with `error` key and show the message in PoseViewer.
 - [ ] Publish Docker image to a registry
 - [x] Upgrade pages workflow to `actions/upload-pages-artifact@v3`.
+- [x] Document streaming toggle logic in README.
 - [ ] Enable GitHub Pages with **GitHub Actions** as the source before
       expecting deployments.
 - [x] Add posture angle metric in backend and frontend.
