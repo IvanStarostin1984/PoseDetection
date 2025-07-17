@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.37 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.38 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -77,6 +77,8 @@ prevents GitHub prompts.
    pre-commit hooks are skipped.
 7. When using pyenv, run `pyenv rehash` after package installs so new
    shims are picked up.
+8. A `Dockerfile` sets up Python 3.11 and Node 20. Build it with
+   `docker build -t posedetect .` to run tests in a container.
 
 ---
 
