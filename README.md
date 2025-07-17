@@ -65,8 +65,9 @@ Dependabot reviews `requirements.txt`, `package.json` and
 
 ## Setup
 
-Run `.codex/setup.sh` after cloning to install Python 3.11, Node 20 and all
-project dependencies. This installs `black` from `requirements.txt` so
+Run `.codex/setup.sh` after cloning to install Python 3.11 (set
+`PYTHON_VERSION` to override) and Node 20 (set `NODE_VERSION` to change).
+This installs `black` from `requirements.txt` so
 `make lint` works even when hooks are skipped. Tests rely on these packages,
 so always complete this step before running `make test`. The script is
 idempotent and exits 0 when

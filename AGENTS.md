@@ -60,7 +60,8 @@ prevents GitHub prompts.
 
 1. Run `.codex/setup.sh` (or `./setup.sh`) once after cloning & whenever
    dependencies change. *The script installs Python, Node and all packages
-   needed for tests.* Always complete this step before running any test or
+   needed for tests.* Set `PYTHON_VERSION` or `NODE_VERSION` to override the
+   defaults (3.11 and 20). Always complete this step before running any test or
    build.
 2. Export **required secrets** (`GIT_TOKEN`, `GH_PAGES_TOKEN`, …)
    in the repository/organisation **Secrets** console.
@@ -132,7 +133,7 @@ prevents GitHub prompts.
    CI catches regressions
    (e.g. fail fast when quality gates or metric thresholds aren’t met).
 5. **Version‑pin policy** – pin *major*/*minor* versions for critical runtimes &
-   actions (e.g. `actions/checkout@v4`, `node@20`, `python~=3.11`).
+   actions (e.g. `actions/checkout@v4`, `node@20`, `python@3.11` and `python@3.12`).
 6. **Confirm pinned packages exist** – verify each version listed in
    `requirements.txt`, `package.json` or other manifests is available on
    its package registry before committing.
@@ -212,12 +213,23 @@ jobs:
     needs: [changes]
     if: needs.changes.outputs.md_only != 'true'
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.11', '3.12']
+        node: ['20']
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
       - name: Bootstrap
-        run: ./.codex/setup.sh   # idempotent; safe when absent
+        run: PYTHON_VERSION=${{ matrix.python }} NODE_VERSION=${{ matrix.node }} ./.codex/setup.sh
       - run: make lint
       - run: make typecheck
+      - run: make typecheck-ts
       - run: make test
 ```
 <!-- markdownlint-enable MD013 -->
