@@ -35,7 +35,7 @@
 - [x] Write README quick‑start (clone → setup → test)
 - [x] Add full doc build (Sphinx / JSDoc / dart‑doc as applicable)
 - [x] Integrate secret‑detection helper step in CI (`has_token` pattern)
-- [ ] Extend CI matrix for all runtimes (Python, Node, Dart, Rust, …)
+- [x] Extend CI matrix for all runtimes (Python, Node, Dart, Rust, …)
 - [x] Add Actionlint + markdown‑link‑check jobs and pin their versions
 - [ ] Publish docs to GitHub Pages when `GH_PAGES_TOKEN` is present
 
@@ -51,7 +51,7 @@
 
 ## 4 · Stretch goals
 
-- [ ] Containerise dev environment (Dockerfile or dev‑container.json)
+- [x] Containerise dev environment (Dockerfile or dev‑container.json)
 - [ ] Auto‑deploy docs & storybooks on each tag
 - [ ] Publish packages (PyPI, npm, pub.dev) via release workflow
 - [ ] Add optional load‑testing / performance CI stage
@@ -135,3 +135,4 @@
 - [x] Call `pyenv rehash` after installing packages in setup script.
 - [x] Skip pose accuracy test when placeholder dataset lacks landmarks.
 - [x] Clarify placeholder images in tests/data and update docs accordingly.
+- [ ] Publish Docker image to a registry
