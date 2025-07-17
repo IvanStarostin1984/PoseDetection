@@ -97,6 +97,7 @@ def test_pose_endpoint_closes_pose(monkeypatch):
     import backend.server as server
 
     pose = DummyPose()
+
     cap = DummyCap()
     monkeypatch.setattr(server, "PoseDetector", lambda *_a, **_k: pose)
     monkeypatch.setattr(server.cv2, "VideoCapture", lambda *_args, **_kw: cap)
@@ -163,3 +164,73 @@ def test_pose_endpoint_allows_concurrent_connections(monkeypatch):
     assert first_cap.released and second_cap.released
     assert first_pose.closed and second_pose.closed
     assert ws1.sent and ws2.sent
+
+
+def test_pose_endpoint_handles_no_frame(monkeypatch):
+    import backend.server as server
+
+    class Cap(DummyCap):
+        def read(self) -> tuple[bool, None]:
+            return False, None
+
+    pose = DummyPose()
+    cap = Cap()
+    monkeypatch.setattr(server, "PoseDetector", lambda *_a, **_k: pose)
+    monkeypatch.setattr(server.cv2, "VideoCapture", lambda *_a, **_k: cap)
+    ws = DummyWS()
+
+    asyncio.run(server.pose_endpoint(ws))
+    assert ws.sent == ['{"error": "no frame"}']
+    assert ws.closed is True
+
+
+def test_pose_endpoint_handles_process_exception(monkeypatch):
+    import backend.server as server
+
+    class FailingPose(DummyPose):
+        def process(self, image: Any) -> list[Any]:
+            raise RuntimeError("boom")
+
+    class Cap(DummyCap):
+        def read(self) -> tuple[bool, None]:
+            return True, None
+
+    cap = Cap()
+    pose = FailingPose()
+    monkeypatch.setattr(server, "PoseDetector", lambda *_a, **_k: pose)
+    monkeypatch.setattr(server.cv2, "VideoCapture", lambda *_a, **_k: cap)
+    ws = DummyWS()
+
+    asyncio.run(server.pose_endpoint(ws))
+    assert ws.sent == ['{"error": "process failed"}']
+    assert ws.closed is True
+
+
+def test_pose_endpoint_reports_no_landmarks(monkeypatch):
+    import backend.server as server
+
+    class PoseNoLandmarks(DummyPose):
+        def process(self, image: Any) -> list[Any]:
+            return []
+
+    class Cap(DummyCap):
+        def __init__(self):
+            super().__init__()
+            self.calls = 0
+
+        def read(self) -> tuple[bool, None]:
+            self.calls += 1
+            if self.calls == 1:
+                return True, None
+            return False, None
+
+    pose = PoseNoLandmarks()
+    cap = Cap()
+    monkeypatch.setattr(server, "PoseDetector", lambda *_a, **_k: pose)
+    monkeypatch.setattr(server.cv2, "VideoCapture", lambda *_a, **_k: cap)
+    ws = DummyWS()
+
+    asyncio.run(server.pose_endpoint(ws))
+    assert ws.sent[0] == '{"error": "no landmarks"}'
+    assert ws.closed is True
+    assert len(ws.sent) == 2

@@ -37,6 +37,8 @@ document information in code files.
   code-generated. Run `make generate` (calls `python scripts/generate.py`)
   to recreate them and keep these files out of regular commits unless
   intentionally updating the outputs.
+- Sample frames for pose accuracy tests are stored in `tests/data/` and are not tracked.
+  Add PNG images and `labels.json` manually to run the test.
 - **Search for conflict markers before every commit** –
   `git grep -n -E '<{7}|={7}|>{7}'` must return nothing.
 - **Never include conflict markers verbatim** –

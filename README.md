@@ -33,6 +33,9 @@ credentials.
 
 The Python dependencies install `mediapipe==0.10.13`,
 `websockets==15.0.1` and `numpy==1.26.4`.
+Sample frames for the performance test live in `tests/data/`.
+Add `labels.json` and PNG images before running `pytest`.
+If you want to check pose accuracy.
 
 ### Backend server
 
