@@ -1038,3 +1038,10 @@ but the lint step lost this path.
 - **Stage**: maintenance
 - **Motivation / Decision**: Makefile failed due to spaces; used tabs instead.
 - **Next step**: none.
+
+### 2025-07-16  PR #132
+
+- **Summary**: added integration test for webcam reading at least one frame.
+- **Stage**: testing
+- **Motivation / Decision**: test pose_endpoint with a mocked webcam frame.
+- **Next step**: none.

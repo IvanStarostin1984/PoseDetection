@@ -127,3 +127,4 @@
 - [x] Add test for zero-length vector in `calculate_angle`.
 - [x] Handle concurrent `/pose` WebSocket clients without blocking.
 - [x] Match CI lint-docs grep excludes with AGENTS guidance.
+- [x] Add integration test for webcam device reading at least one frame.
