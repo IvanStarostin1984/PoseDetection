@@ -1141,3 +1141,11 @@ errors and maintains coverage.
 - **Stage**: maintenance
 - **Motivation / Decision**: keep deployment workflow current and documented.
 - **Next step**: none.
+
+### 2025-07-17  PR #146
+
+- **Summary**: pinned mypy in requirements and documented the type check step.
+- **Stage**: maintenance
+- **Motivation / Decision**: ensure `make typecheck` works offline and update
+  bootstrap docs.
+- **Next step**: publish Docker image to a registry.

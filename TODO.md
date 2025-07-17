@@ -135,5 +135,6 @@
 - [x] Call `pyenv rehash` after installing packages in setup script.
 - [x] Skip pose accuracy test when placeholder dataset lacks landmarks.
 - [x] Clarify placeholder images in tests/data and update docs accordingly.
+- [x] Pin mypy version in requirements so `make typecheck` works offline.
 - [ ] Publish Docker image to a registry
 - [x] Upgrade pages workflow to `actions/upload-pages-artifact@v3`.
