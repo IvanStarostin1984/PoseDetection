@@ -13,7 +13,7 @@ def test_build_payload_format():
     assert len(payload["landmarks"]) == 17
     assert payload["landmarks"][0]["x"] == 0.1
     metrics = payload["metrics"]
-    assert {"knee_angle", "balance", "pose_class"} <= metrics.keys()
+    assert {"knee_angle", "balance", "pose_class", "posture_angle"} <= metrics.keys()
 
 
 def test_names_match_landmarks():

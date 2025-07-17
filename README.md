@@ -16,15 +16,18 @@ Additional assumptions and edge cases for the first feature are listed in
 
 ## Quick start
 
-Clone the repository and **run `./.codex/setup.sh` first** to install
-Python and Node packages. The project requires Node 20 or newer.
+Clone the repository and run the setup script to install Python and Node
+packages.
+On Linux or macOS use **`./.codex/setup.sh`**. Windows users can run
+**`scripts/setup.ps1`** from PowerShell.
+The project requires Node 20 or newer.
 Then check the code:
 
 ```bash
 git clone <repo-url>
 cd PoseDetection
 # run once with network access to fetch pre-commit hooks
-.codex/setup.sh
+./.codex/setup.sh   # Windows: scripts/setup.ps1
 make lint
 make test
 ```
@@ -32,6 +35,8 @@ make test
 If the network is unavailable pass `SKIP_PRECOMMIT=1` to the setup script.
 `pre-commit run` will then try to fetch hooks and may ask for GitHub
 credentials.
+If PowerShell is unavailable install Python 3.11 and Node 20 manually, then run
+`pip install -r requirements.txt` followed by `npm install`.
 
 The Python dependencies install `mediapipe==0.10.13`,
 `websockets==15.0.1` and `numpy==1.26.4`.
@@ -48,8 +53,8 @@ a dictionary with ``x``, ``y`` and ``visibility``. The keypoints are ordered as
 ``left_shoulder``, ``right_shoulder``, ``left_elbow``, ``right_elbow``,
 ``left_wrist``, ``right_wrist``, ``left_hip``, ``right_hip``, ``left_knee``,
 ``right_knee``, ``left_ankle`` and ``right_ankle``. The payload also includes
-simple analytics like knee angle, balance and a ``pose_class`` field
-indicating ``standing`` or ``sitting``.
+simple analytics like knee angle, balance, a posture angle and a ``pose_class``
+field indicating ``standing`` or ``sitting``.
 
 ## Development
 
@@ -68,8 +73,9 @@ Dependabot reviews `requirements.txt`, `package.json` and
 
 ## Setup
 
-Run `.codex/setup.sh` after cloning to install Python 3.11 (set
+Run the provided setup script after cloning to install Python 3.11 (set
 `PYTHON_VERSION` to override) and Node 20 (set `NODE_VERSION` to change).
+On Windows use `scripts/setup.ps1`; other platforms use `.codex/setup.sh`.
 This installs `black` from `requirements.txt` so
 `make lint` works even when hooks are skipped. Tests rely on these packages,
 so always complete this step before running `make test`. The script is
@@ -86,6 +92,23 @@ docker build -t posedetect .
 
 See [docs/CONTAINER.md](docs/CONTAINER.md) for details on running the image.
 
+## Visual Studio 2022
+
+Follow these steps to run the backend from Visual Studio:
+
+1. Open the repository folder in VS 2022.
+2. In **Python Environments** choose **Add Environment** → **Virtual
+   Environment** and create a `.venv`.
+3. Install the requirements with `pip install -r requirements.txt`.
+4. Right‑click `backend/server.py` and pick **Set as Startup File**.
+5. Press **F5** to launch the FastAPI server.
+
+Install Node separately to build the React frontend with `npm run build`.
+
+If `make` does not work on your platform you can create npm scripts or a
+small Python wrapper that call `make lint` and `make test`. Windows users may
+prefer running the project in WSL or Docker when shell commands fail.
+
 ## Frontend
 
 The `frontend` folder contains a small React app. Build it and run its tests:
@@ -101,7 +124,9 @@ show the pose skeleton.
 The `useWebSocket` hook returns the latest pose data and a connection state
 (`connecting`, `open`, `closed` or `error`). PoseViewer displays this state so
 you know if the backend is reachable. The hook accepts optional `host` and
-`port` arguments when you need to connect to another server.
+`port` arguments when you need to connect to another server. Messages may
+contain an `error` field; the hook exposes this via an `error` property and
+leaves the pose data unchanged so the UI can show the problem.
 
 ## Running locally
 

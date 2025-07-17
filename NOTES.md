@@ -1156,4 +1156,42 @@ errors and maintains coverage.
 - **Stage**: feature
 - **Motivation / Decision**: simplify local usage by mounting built assets at
   the root path. Still optional for manual hosting.
+
+### 2025-07-17  PR #148
+
+- **Summary**: added posture angle metric across backend and frontend.
+- **Stage**: implementation
+- **Motivation / Decision**: compute torso angle to display posture data.
+
+### 2025-07-17  PR #149
+
+- **Summary**: frontend shows WebSocket errors without overwriting pose data.
+- **Stage**: feature
+- **Motivation / Decision**: handle backend errors without losing pose data.
+
+### 2025-07-17  PR #150
+
+- **Summary**: set PoseDetector to dynamic mode and documented the improvement.
+- **Stage**: implementation
+- **Motivation / Decision**: lower latency using MediaPipe streaming mode.
+
+### 2025-07-17  PR #151
+
+- **Summary**: added PowerShell setup script, updated README and AGENTS.
+- **Stage**: implementation
+- **Motivation / Decision**: give Windows users an equivalent setup path and
+  document manual alternatives for environments without PowerShell.
+
+### 2025-07-18  PR #152
+
+- **Summary**: documented Visual Studio 2022 setup for backend development.
+- **Stage**: documentation
+- **Motivation / Decision**: help Windows users create a venv.
+  Set the server startup file.
+
+### 2025-07-17  PR #153
+
+- **Summary**: added note about npm or Python wrappers and Windows WSL/Docker hint.
+- **Stage**: documentation
+- **Motivation / Decision**: help users who lack `make` or run on Windows.
 - **Next step**: none.
