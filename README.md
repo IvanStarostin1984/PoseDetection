@@ -123,7 +123,8 @@ npm test
 ```
 
 The PoseViewer component shows the live webcam feed. The **Start Webcam**
-button toggles streaming on and off. It calls `setStreaming(!streaming)` in
+button toggles streaming on and off. Stopping the webcam also closes the
+WebSocket connection. It calls `setStreaming(!streaming)` in
 [`PoseViewer.tsx`](frontend/src/components/PoseViewer.tsx). A canvas overlay
 draws lines between keypoints to show the pose skeleton.
 The `useWebSocket` hook returns the latest pose data and a connection state
