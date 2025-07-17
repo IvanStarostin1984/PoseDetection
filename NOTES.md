@@ -1149,3 +1149,10 @@ errors and maintains coverage.
 - **Motivation / Decision**: ensure `make typecheck` works offline and update
   bootstrap docs.
 - **Next step**: publish Docker image to a registry.
+
+### 2025-07-17  PR #-1
+
+- **Summary**: set PoseDetector to dynamic mode and documented the improvement.
+- **Stage**: implementation
+- **Motivation / Decision**: lower latency using MediaPipe streaming mode.
+- **Next step**: none.
