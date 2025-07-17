@@ -1,0 +1,15 @@
+# Sample data
+
+This directory holds sample PNG frames and labels for performance tests.
+Add files `frame1.png`, `frame2.png`, ... and a `labels.json` file
+before running `pytest`. The images should be small to keep runtime low.
+Each entry in `labels.json` must look like:
+
+```json
+[
+  {"image": "frame1.png", "landmarks": [{"x": 0.1, "y": 0.2}, ...]},
+  {"image": "frame2.png", "landmarks": [...]}
+]
+```
+
+The accuracy test skips when the files are missing.
