@@ -1,4 +1,4 @@
-# TODO – Road‑map (last updated: 2025-07-17)
+# TODO – Road‑map (last updated: 2025-07-18)
 
 > *Record only high‑level milestones here; break micro‑tasks out into Issues.*
 > **When you finish a task, tick it and append a short NOTE entry
@@ -136,6 +136,16 @@
 - [x] Skip pose accuracy test when placeholder dataset lacks landmarks.
 - [x] Clarify placeholder images in tests/data and update docs accordingly.
 - [x] Pin mypy version in requirements so `make typecheck` works offline.
+- [x] Serve built frontend through backend using `StaticFiles`.
+- [x] Ignore WebSocket messages with `error` key and show the message in PoseViewer.
 - [ ] Publish Docker image to a registry
 - [x] Upgrade pages workflow to `actions/upload-pages-artifact@v3`.
 - [x] Configure Pages before uploading docs
+- [x] Document streaming toggle logic in README.
+- [ ] Enable GitHub Pages with **GitHub Actions** as the source before
+      expecting deployments.
+- [x] Add posture angle metric in backend and frontend.
+- [x] Set `static_image_mode=False` in PoseDetector for better streaming performance.
+- [x] Add PowerShell setup script for Windows and document manual setup
+      alternatives.
+- [x] Document alternative wrappers and mention WSL/Docker for Windows users.
