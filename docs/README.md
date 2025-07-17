@@ -40,9 +40,12 @@ performance with continuous frames.
 
 ## Frontend metrics panel
 
-The React frontend displays these metrics below the video feed. When
-connected you might see text like:
+The React frontend displays these metrics below the video feed. They now appear
+in a vertical list for readability. When connected you might see text like:
 
 ```text
-Balance: 0.85 Pose: standing Knee Angle: 160.00°
+Balance: 0.85
+Pose: standing
+Knee Angle: 160.00°
+Posture: 30.00°
 ```

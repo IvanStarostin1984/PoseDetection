@@ -16,6 +16,7 @@ const PoseViewer: React.FC = () => {
     `/pose?c=${wsKey}`,
   );
   const [streaming, setStreaming] = useState(true);
+  const [cameraError, setCameraError] = useState<string | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
 
   useEffect(() => {
@@ -23,6 +24,7 @@ const PoseViewer: React.FC = () => {
     if (!video) return;
     let cancel = false;
     if (streaming) {
+      setCameraError(null);
       navigator.mediaDevices
         .getUserMedia({ video: true })
         .then((stream) => {
@@ -34,12 +36,13 @@ const PoseViewer: React.FC = () => {
           streamRef.current = stream;
         })
         .catch(() => {
-          // ignore failure to access webcam
+          setCameraError('Webcam access denied');
         });
     } else if (streamRef.current) {
       streamRef.current.getTracks().forEach((t) => t.stop());
       streamRef.current = null;
       video.srcObject = null;
+      setCameraError(null);
     }
     return () => {
       cancel = true;
@@ -48,6 +51,7 @@ const PoseViewer: React.FC = () => {
         video.srcObject = null;
         streamRef.current = null;
       }
+      setCameraError(null);
     };
   }, [streaming]);
 
@@ -65,6 +69,9 @@ const PoseViewer: React.FC = () => {
       <canvas ref={canvasRef} width={640} height={480} />
       <MetricsPanel data={poseData?.metrics} />
       {error && <div className="ws-error">Error: {error}</div>}
+      {cameraError && (
+        <div className="camera-error">Error: {cameraError}</div>
+      )}
       <div className="connection-status">Connection: {status}</div>
       <button
         onClick={() => {
