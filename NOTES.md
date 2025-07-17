@@ -1149,3 +1149,10 @@ errors and maintains coverage.
 - **Motivation / Decision**: ensure `make typecheck` works offline and update
   bootstrap docs.
 - **Next step**: publish Docker image to a registry.
+
+### 2025-07-17  PR #147
+
+- **Summary**: frontend shows WebSocket errors without overwriting pose data.
+- **Stage**: feature
+- **Motivation / Decision**: handle backend errors without losing pose data.
+- **Next step**: none.
