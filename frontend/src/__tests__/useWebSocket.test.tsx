@@ -36,6 +36,9 @@ class MockWebSocket {
   triggerClose() {
     this.onclose?.();
   }
+  triggerMessage(data: string) {
+    this.onmessage?.({ data });
+  }
   close() {
     this.triggerClose();
   }
@@ -60,6 +63,45 @@ test('status changes on open and close events', async () => {
     ws.triggerClose();
   });
   expect(result.current.status).toBe('closed');
+
+  window.WebSocket = OriginalWebSocket;
+});
+
+test('ignores messages containing an error key', () => {
+  const ws = new MockWebSocket('ws://test');
+  const OriginalWebSocket = window.WebSocket;
+  // @ts-ignore
+  window.WebSocket = jest.fn(() => ws);
+
+  const { result } = renderHook(() => useWebSocket('/pose'));
+
+  act(() => {
+    ws.triggerOpen();
+    ws.triggerMessage(JSON.stringify({ error: 'bad frame' }));
+  });
+
+  expect(result.current.poseData).toBeNull();
+  expect(result.current.error).toBe('bad frame');
+
+  window.WebSocket = OriginalWebSocket;
+});
+
+test('valid messages clear previous error', () => {
+  const ws = new MockWebSocket('ws://test');
+  const OriginalWebSocket = window.WebSocket;
+  // @ts-ignore
+  window.WebSocket = jest.fn(() => ws);
+
+  const { result } = renderHook(() => useWebSocket<{ x: number }>('/pose'));
+
+  act(() => {
+    ws.triggerOpen();
+    ws.triggerMessage(JSON.stringify({ error: 'oops' }));
+    ws.triggerMessage(JSON.stringify({ x: 1 }));
+  });
+
+  expect(result.current.poseData).toEqual({ x: 1 });
+  expect(result.current.error).toBeNull();
 
   window.WebSocket = OriginalWebSocket;
 });

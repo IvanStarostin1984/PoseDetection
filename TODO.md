@@ -136,6 +136,7 @@
 - [x] Skip pose accuracy test when placeholder dataset lacks landmarks.
 - [x] Clarify placeholder images in tests/data and update docs accordingly.
 - [x] Pin mypy version in requirements so `make typecheck` works offline.
+- [x] Ignore WebSocket messages with `error` key and show the message in PoseViewer.
 - [ ] Publish Docker image to a registry
 - [x] Upgrade pages workflow to `actions/upload-pages-artifact@v3`.
 - [x] Set `static_image_mode=False` in PoseDetector for better streaming performance.
