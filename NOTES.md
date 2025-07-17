@@ -1082,3 +1082,11 @@ errors and maintains coverage.
 - **Motivation / Decision**: ensure `make lint` works when pre-commit hooks are
   skipped.
 - **Next step**: none.
+
+### 2025-07-18  PR #-4
+
+- **Summary**: skip pose accuracy test when placeholder dataset has no landmarks.
+- **Stage**: testing
+- **Motivation / Decision**: avoid false failures when default samples lack
+  landmarks.
+- **Next step**: none.
