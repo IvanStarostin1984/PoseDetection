@@ -1228,3 +1228,12 @@ errors and maintains coverage.
 - **Stage**: implementation
 - **Motivation / Decision**: PS 5.1 lacks the ternary operator; changed to if/else.
 - **Next step**: none.
+
+### 2025-07-17  PR #159
+
+- **Summary**: added close() to useWebSocket and tests, stop button now closes
+  WebSocket and reconnection works; backend handles disconnect without errors.
+- **Stage**: implementation
+- **Motivation / Decision**: allow users to stop streaming cleanly and ensure
+  resources release on client disconnect.
+- **Next step**: none.
