@@ -1208,7 +1208,7 @@ errors and maintains coverage.
 - **Motivation / Decision**: give Windows users an equivalent setup path and
   document manual alternatives for environments without PowerShell.
 
-### 2025-07-18  PR #156
+### 2025-07-17  PR #156
 
 - **Summary**: documented Visual Studio 2022 setup for backend development.
 - **Stage**: documentation
