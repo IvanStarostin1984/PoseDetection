@@ -1041,26 +1041,33 @@ but the lint step lost this path.
 
 ### 2025-07-16  PR #132
 
+- **Summary**: documented performance tests in AGENTS and README.
+- **Stage**: maintenance
+- **Motivation / Decision**: keep guides up to date with new test suite.
+- **Next step**: plan CI stage for performance metrics.
+
+### 2025-07-16  PR #133
+
 - **Summary**: added pose accuracy test skeleton and dataset instructions.
 - **Stage**: implementation
 - **Motivation / Decision**: track pose prediction performance
   with optional sample data.
 - **Next step**: populate dataset with real frames.
 
-### 2025-07-16  PR #133
+### 2025-07-16  PR #134
 
 - **Summary**: added integration test for webcam reading at least one frame.
 - **Stage**: testing
 - **Motivation / Decision**: test pose_endpoint with a mocked webcam frame.
 
-### 2025-07-16  PR #134
+### 2025-07-16  PR #135
 
 - **Summary**: added regression tests for pose_endpoint error handling.
 - **Stage**: testing
 - **Motivation / Decision**: verify WebSocket sends proper
 errors and maintains coverage.
 
-### 2025-07-16  PR #135
+### 2025-07-16  PR #136
 
 - **Summary**: added performance test using dummy webcam and detector.
 - **Stage**: testing
