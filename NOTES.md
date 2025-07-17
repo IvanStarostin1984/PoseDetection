@@ -1102,3 +1102,11 @@ errors and maintains coverage.
 - **Stage**: documentation
 - **Motivation / Decision**: docs wrongly asked users to add files manually.
 - **Next step**: none.
+
+### 2025-07-17  PR #141
+
+- **Summary**: added feature_a documentation and linked it from README.
+- **Stage**: documentation
+- **Motivation / Decision**: capture assumptions and edge cases for the first
+  feature as required by TODO.
+- **Next step**: plan implementation and tests for feature A.

@@ -11,6 +11,8 @@ FastAPI WebSocket server and a basic React frontend.
 PoseDetection is a minimal showcase for human pose estimation. It detects body
 keypoints from a webcam and serves them through a small web app. See
 [docs/tech-challenge.txt](docs/tech-challenge.txt) for the original assignment.
+Additional assumptions and edge cases for the first feature are listed in
+[docs/feature_a.md](docs/feature_a.md).
 
 ## Quick start
 

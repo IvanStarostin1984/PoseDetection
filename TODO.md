@@ -23,7 +23,7 @@
 
 *Repeat the five-bullet block below for every MVP feature A, B, C, ...*
 
-- [ ] Analyse source-of-truth docs; define acceptance criteria for feature A
+- [x] Analyse source-of-truth docs; define acceptance criteria for feature A
 - [ ] Document assumptions / edge‑cases for feature A in `/docs` or README
 - [ ] Implement feature A
 - [ ] Add unit / integration tests for feature A
