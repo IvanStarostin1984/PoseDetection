@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.40 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.41 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -88,6 +88,8 @@ prevents GitHub prompts.
    `docker build -t posedetect .` to run tests in a container.
 11. Windows users without `make` can run the PowerShell wrappers via
     `npm run win:lint` and similar scripts for tests and docs.
+12. Windows users without `make` can run the wrapper scripts in
+    `scripts/windows/` (e.g. `lint.ps1`, `test.ps1`).
 
 ---
 
