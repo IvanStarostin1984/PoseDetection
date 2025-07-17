@@ -127,7 +127,9 @@ The `useWebSocket` hook returns the latest pose data and a connection state
 you know if the backend is reachable. The hook accepts optional `host` and
 `port` arguments when you need to connect to another server. Messages may
 contain an `error` field; the hook exposes this via an `error` property and
-leaves the pose data unchanged so the UI can show the problem.
+leaves the pose data unchanged so the UI can show the problem. The canvas
+sizes itself to the webcam stream when the video metadata loads, so no fixed
+width or height is needed.
 
 ## Running locally
 

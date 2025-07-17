@@ -1228,3 +1228,10 @@ errors and maintains coverage.
 - **Stage**: implementation
 - **Motivation / Decision**: PS 5.1 lacks the ternary operator; changed to if/else.
 - **Next step**: none.
+
+### 2025-07-17  PR #159
+
+- **Summary**: canvas now matches video size; test covers it.
+- **Stage**: implementation
+- **Motivation / Decision**: dynamic sizing keeps UI flexible and matches TODO.
+- **Next step**: none.

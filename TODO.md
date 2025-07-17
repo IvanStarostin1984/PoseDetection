@@ -151,3 +151,4 @@
       alternatives.
 - [x] Document alternative wrappers and mention WSL/Docker for Windows users.
 - [x] Fix PowerShell setup script for compatibility with PowerShell 5.1.
+- [x] Dynamically size PoseViewer canvas to match the webcam stream.

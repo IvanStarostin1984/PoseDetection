@@ -18,7 +18,9 @@ const PoseViewer: React.FC = () => {
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
+    const canvas = canvasRef.current;
     let cancel = false;
+    let onMeta: (() => void) | null = null;
     if (streaming) {
       navigator.mediaDevices
         .getUserMedia({ video: true })
@@ -27,6 +29,13 @@ const PoseViewer: React.FC = () => {
             stream.getTracks().forEach((t) => t.stop());
             return;
           }
+          onMeta = () => {
+            if (canvas) {
+              canvas.width = video.videoWidth;
+              canvas.height = video.videoHeight;
+            }
+          };
+          video.addEventListener('loadedmetadata', onMeta);
           video.srcObject = stream;
           streamRef.current = stream;
         })
@@ -40,6 +49,10 @@ const PoseViewer: React.FC = () => {
     }
     return () => {
       cancel = true;
+      if (onMeta) {
+        video.removeEventListener('loadedmetadata', onMeta);
+        onMeta = null;
+      }
       if (streamRef.current) {
         streamRef.current.getTracks().forEach((t) => t.stop());
         video.srcObject = null;
@@ -59,7 +72,7 @@ const PoseViewer: React.FC = () => {
   return (
     <div className="pose-container">
       <video ref={videoRef} autoPlay muted />
-      <canvas ref={canvasRef} width={640} height={480} />
+      <canvas ref={canvasRef} />
       <MetricsPanel data={poseData?.metrics} />
       {error && <div className="ws-error">Error: {error}</div>}
       <div className="connection-status">Connection: {status}</div>

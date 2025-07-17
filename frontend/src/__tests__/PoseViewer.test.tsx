@@ -53,3 +53,24 @@ test('toggle button stops and starts the webcam', async () => {
   });
   expect(getUserMedia).toHaveBeenCalledTimes(2);
 });
+
+test('canvas matches video dimensions after metadata loads', async () => {
+  const { stream } = mockMedia();
+  const { container } = render(<PoseViewer />);
+
+  const video = await waitFor(() =>
+    container.querySelector('video') as HTMLVideoElement,
+  );
+  expect(video.srcObject).toBe(stream);
+
+  Object.defineProperty(video, 'videoWidth', { value: 320 });
+  Object.defineProperty(video, 'videoHeight', { value: 240 });
+  fireEvent(video, new Event('loadedmetadata'));
+
+  await waitFor(() => {
+    const canvas = container.querySelector('canvas') as HTMLCanvasElement;
+    expect(canvas.width).toBe(320);
+    expect(canvas.height).toBe(240);
+  });
+});
+
