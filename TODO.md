@@ -163,3 +163,5 @@
 - [x] Add tests for `pymake` and PowerShell wrappers.
 - [x] Ensure PowerShell wrapper scripts exit when commands fail.
 - [x] Add npm script `win:setup` and document running `npm run win:setup`.
+- [x] Include `backend/server.py` in coverage checks by removing it from
+      `.coveragerc` omit list.

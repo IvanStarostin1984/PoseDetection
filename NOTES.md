@@ -1366,3 +1366,10 @@ TODO logs the task.
 - **Stage**: documentation
 - **Motivation / Decision**: provide easier bootstrap on Windows using npm.
 - **Next step**: none.
+
+### 2025-07-18  PR #199
+
+- **Summary**: coverage now includes `backend/server.py`.
+- **Stage**: maintenance
+- **Motivation / Decision**: cover server module; coverage remains above 80%.
+- **Next step**: none.
