@@ -168,3 +168,4 @@
       `.coveragerc` omit list.
 - [x] Handle camera open failure in pose_endpoint.
 - [x] Clarify that `useWebSocket` host parameter should omit protocol prefix in README.
+- [x] Lint and typecheck cover `pymake.py` and scripts.

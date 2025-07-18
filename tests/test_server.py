@@ -97,6 +97,7 @@ class DummyPose:
 class DummyCap:
     def __init__(self) -> None:
         self.released = False
+        self.release_calls = 0
 
     def read(self) -> tuple[bool, None]:
         return False, None
@@ -105,6 +106,7 @@ class DummyCap:
         return True
 
     def release(self) -> None:
+        self.release_calls += 1
         self.released = True
 
 
@@ -241,6 +243,7 @@ def test_pose_endpoint_handles_camera_open_failure(monkeypatch):
     assert ws.sent == ['{"error": "camera failed"}']
     assert ws.closed is True
     assert cap.released is True
+    assert cap.release_calls == 1
 
 
 def test_pose_endpoint_reports_no_landmarks(monkeypatch):
