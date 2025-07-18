@@ -1411,4 +1411,10 @@ TODO logs the task.
 - **Summary**: camera release happens only once via finally block.
 - **Stage**: implementation
 - **Motivation / Decision**: avoid duplicate release when camera fails to open.
+
+### 2025-07-18  PR #182
+
+- **Summary**: lint and typecheck now include `pymake.py`; docs updated.
+- **Stage**: implementation
+- **Motivation / Decision**: ensure root scripts are covered by quality tools.
 - **Next step**: none.

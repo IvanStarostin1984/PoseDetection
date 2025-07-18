@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.45 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.46 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -125,12 +125,12 @@ prevents GitHub prompts.
       `requirements.txt`, `package.json` or `package-lock.json` change.
     - Run `make docs` to build the HTML docs into `docs/_build`.
     - Markdownlint reads `.markdownlintignore` to skip build and cache dirs.
-    - Python code under `scripts/` and `tests/` is linted with `ruff` via `make lint`.
-    - Static type checking uses mypy via `make typecheck`.
+    - `make lint` runs `ruff` across all Python sources, including
+      `backend/`, `scripts/`, `tests/` and root scripts like `pymake.py`.
+    - Static type checking uses mypy via `make typecheck` on those same files.
     - TypeScript compile checks run via `make typecheck-ts`.
-    - Python code in `backend/`, `scripts/`, `tests/`, and `docs/` is
-      formatted with `black`. `ruff` still checks only `backend/`, `scripts/`
-      and `tests/` via `make lint`.
+    - `black` formats `backend/`, `scripts/`, `tests/`, `docs/` and root
+      scripts.
     - GitHub Actions workflows are linted with
       `actionlint` pinned at v1.7.7 via pre-commit.
     - `make test` expects dependencies from `.codex/setup.sh`.
