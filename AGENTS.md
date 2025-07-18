@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.43 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.44 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -86,10 +86,11 @@ prevents GitHub prompts.
    shims are picked up.
 10. A `Dockerfile` sets up Python 3.11 and Node 20. Build it with
    `docker build -t posedetect .` to run tests in a container.
-11. Windows users without `make` can run the PowerShell wrappers via
-    `npm run win:lint` and similar scripts for tests and docs.
-12. Windows users can also run the wrapper scripts directly from
-    `scripts/<name>.ps1` (e.g. `scripts/lint.ps1`).
+11. Run `python pymake.py <target>` when `make` is unavailable. The wrapper
+    calls `make` on Unix and the PowerShell scripts on Windows.
+12. Windows users without `make` can still run the wrappers via
+    `npm run win:lint` or directly from `scripts/<name>.ps1` (for example
+    `scripts/lint.ps1`).
 
 ---
 

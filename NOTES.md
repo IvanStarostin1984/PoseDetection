@@ -1326,3 +1326,10 @@ TODO logs the task.
 - **Stage**: documentation
 - **Motivation / Decision**: help Windows users find the equivalent commands quickly.
 - **Next step**: none.
+
+### 2025-07-20  PR #172
+
+- **Summary**: documented `pymake.py` wrapper in AGENTS with dispatch info.
+- **Stage**: documentation
+- **Motivation / Decision**: help contributors run Make targets on any OS.
+- **Next step**: none.
