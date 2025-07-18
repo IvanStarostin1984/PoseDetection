@@ -1334,6 +1334,7 @@ TODO logs the task.
 - **Motivation / Decision**: help contributors run Make targets on any OS.
 
 ### 2025-07-18  PR #173
+
 - **Summary**: pymake now checks for pwsh before powershell; tests updated.
 - **Stage**: implementation
 - **Motivation / Decision**: improve Windows compatibility.
@@ -1344,4 +1345,11 @@ TODO logs the task.
   and added test for subdirectory usage.
 - **Stage**: implementation
 - **Motivation / Decision**: ensure wrapper works from any path per request.
+- **Next step**: none.
+
+### 2025-07-21  PR #175
+
+- **Summary**: tests now use cmd stubs for Windows PowerShell wrappers.
+- **Stage**: testing
+- **Motivation / Decision**: ensure wrapper failure detection on Windows.
 - **Next step**: none.

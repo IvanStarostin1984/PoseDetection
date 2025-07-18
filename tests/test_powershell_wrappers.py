@@ -28,12 +28,18 @@ def test_wrapper_exits_nonzero_on_failure(tmp_path, script: str, cmd: str) -> No
     exe = _powershell_exe()
     stub_dir = tmp_path / "bin"
     stub_dir.mkdir()
+    # Create a cross-platform stub so wrappers fail regardless of PATHEXT
     stub = stub_dir / cmd
     stub.write_text("#!/bin/sh\nexit 1\n")
     stub.chmod(0o755)
 
+    win_stub = stub_dir / f"{cmd}.cmd"
+    win_stub.write_text("@echo off\r\nexit /b 1\r\n")
+    win_stub.chmod(0o755)
+
     env = os.environ.copy()
     env["PATH"] = f"{stub_dir}{os.pathsep}{env['PATH']}"
+    env["PATHEXT"] = f".CMD{os.pathsep}{env.get('PATHEXT', '')}"
 
     repo_root = Path(__file__).resolve().parents[1]
     script_path = repo_root / "scripts" / script
