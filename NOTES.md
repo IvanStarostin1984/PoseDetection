@@ -1334,6 +1334,7 @@ TODO logs the task.
 - **Motivation / Decision**: help contributors run Make targets on any OS.
 
 ### 2025-07-18  PR #173
+
 - **Summary**: pymake now checks for pwsh before powershell; tests updated.
 - **Stage**: implementation
 - **Motivation / Decision**: improve Windows compatibility.
