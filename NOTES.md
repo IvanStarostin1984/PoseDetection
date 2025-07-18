@@ -1274,3 +1274,13 @@ errors and maintains coverage.
 - **Motivation / Decision**: ensure overlay matches video resolution when the
   stream starts.
 - **Next step**: none.
+
+### 2025-07-18  PR #165
+
+- **Summary**: added CSS for `.pose-container` to overlay the canvas on the
+video and rebuilt the frontend bundle. README notes the new styling and
+TODO logs the task.
+- **Stage**: implementation
+- **Motivation / Decision**: match user request for explicit container styling
+  to ensure overlay alignment.
+- **Next step**: none.

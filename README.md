@@ -134,7 +134,8 @@ WebSocket connection. It calls `setStreaming(!streaming)` in
 [`PoseViewer.tsx`](frontend/src/components/PoseViewer.tsx). A canvas overlay
 draws lines between keypoints to show the pose skeleton. The canvas size is
 set from the video's `loadedmetadata` event so it matches the actual webcam
-resolution.
+resolution. The surrounding `.pose-container` is styled so the canvas and
+video stack on top of each other.
 The `useWebSocket` hook returns the latest pose data and a connection state
 (`connecting`, `open`, `closed` or `error`). PoseViewer displays this state so
 you know if the backend is reachable. The hook accepts optional `host` and
