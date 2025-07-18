@@ -91,3 +91,23 @@ jobs:
       - run: make typecheck
       - run: make typecheck-ts
       - run: make test
+
+  test-win:
+    needs: [changes]
+    if: needs.changes.outputs.md_only != 'true'
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Bootstrap
+        run: ./scripts/setup.ps1
+        shell: pwsh
+        env:
+          SKIP_PRECOMMIT: '1'
+      - run: scripts\lint.ps1
+        shell: pwsh
+      - run: scripts\typecheck.ps1
+        shell: pwsh
+      - run: scripts\typecheck-ts.ps1
+        shell: pwsh
+      - run: scripts\test.ps1
+        shell: pwsh

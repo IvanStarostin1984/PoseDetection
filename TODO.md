@@ -156,3 +156,5 @@
 - [x] Provide PowerShell wrappers for Makefile commands.
 - [x] Close WebSocket when stopping the webcam and reopen when restarted.
 - [x] Dynamically size canvas to video dimensions in PoseViewer.
+- [x] Add Windows CI job running PowerShell wrappers.
+- [x] Style pose container overlay to align video and canvas.

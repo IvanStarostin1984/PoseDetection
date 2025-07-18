@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.41 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.42 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -241,6 +241,26 @@ jobs:
       - run: make typecheck
       - run: make typecheck-ts
       - run: make test
+
+  test-win:
+    needs: [changes]
+    if: needs.changes.outputs.md_only != 'true'
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Bootstrap
+        run: ./scripts/setup.ps1
+        shell: pwsh
+        env:
+          SKIP_PRECOMMIT: '1'
+      - run: scripts\lint.ps1
+        shell: pwsh
+      - run: scripts\typecheck.ps1
+        shell: pwsh
+      - run: scripts\typecheck-ts.ps1
+        shell: pwsh
+      - run: scripts\test.ps1
+        shell: pwsh
 ```
 <!-- markdownlint-enable MD013 -->
 
@@ -248,7 +268,7 @@ jobs:
 - Use `<!-- lychee skip -->` after local URLs (e.g. `http://localhost:`)
   so lychee doesn’t fail. Localhost patterns are also
   ignored via `.lycheeignore`.
-- **Code changes** run full lint + tests (`test`) and `actionlint`.
+- **Code changes** run full lint + tests (`test` & `test-win`) and `actionlint`.
 - Add job matrices or deployments later—guardrails above already catch the 90 %
   most common issues.
 
