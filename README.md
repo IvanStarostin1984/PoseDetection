@@ -31,8 +31,8 @@ cd PoseDetection
 make lint
 make test
 # Windows users without make can run:
-#   scripts/windows/lint.ps1
-#   scripts/windows/test.ps1
+#   scripts/lint.ps1
+#   scripts/test.ps1
 ```
 
 If the network is unavailable pass `SKIP_PRECOMMIT=1` to the setup script.
@@ -70,7 +70,7 @@ Run `make typecheck-ts` to compile the frontend TypeScript.
 Run `make test` to execute the test-suite. Performance tests live in
 `tests/performance` and run automatically. Run them on their own with
 `pytest tests/performance`.
-Windows wrappers for these commands live in `scripts/windows/`.
+Windows wrappers for these commands live in `scripts/`.
 CI runs `make check-versions` whenever dependency files change to
 ensure pinned versions are valid.
 Pre-commit hooks are installed automatically by `.codex/setup.sh`,

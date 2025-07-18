@@ -158,3 +158,5 @@
 - [x] Dynamically size canvas to video dimensions in PoseViewer.
 - [x] Add Windows CI job running PowerShell wrappers.
 - [x] Style pose container overlay to align video and canvas.
+- [x] Move PowerShell wrappers into `scripts/` and remove the
+      `scripts/windows/` folder.
