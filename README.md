@@ -161,7 +161,8 @@ video stack on top of each other.
 The `useWebSocket` hook returns the latest pose data and a connection state
 (`connecting`, `open`, `closed` or `error`). PoseViewer displays this state so
 you know if the backend is reachable. The hook accepts optional `host` and
-`port` arguments when you need to connect to another server. Messages may
+`port` arguments when you need to connect to another server. `host` must be
+a hostname or IP address without a protocol prefix. Messages may
 contain an `error` field; the hook exposes this via an `error` property and
 leaves the pose data unchanged so the UI can show the problem.
 
@@ -190,8 +191,8 @@ Then open [http://localhost:8000/](http://localhost:8000/) <!-- lychee skip -->
 in your browser. This mount is optional; if `frontend/dist` is missing you
 can still serve the files with another HTTP server.
 The page connects to `ws://localhost:8000/pose` by default. To reach a remote
-server pass the host and port to `useWebSocket`, for example
-`useWebSocket('/pose', 'example.org', 9001)`.
+server pass the host and port to `useWebSocket`. The host should be just the
+hostname or IP address, for example `useWebSocket('/pose', 'example.org', 9001)`.
 
 ## Backend
 

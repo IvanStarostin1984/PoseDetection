@@ -41,8 +41,6 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Motivation / Decision**: explain quick start and link to tech challenge.
 - **Next step**: none.
 
-### 2025-07-18  PR #178a
-
 - **Summary**: Metrics panel now wraps each metric in its own
   paragraph; tests updated and README clarified vertical display.
 - **Stage**: implementation
@@ -1408,11 +1406,18 @@ TODO logs the task.
 
 ### 2025-07-18  PR #181
 
+- **Summary**: clarified README about passing only hostname/IP to
+  `useWebSocket`.
+- **Stage**: documentation
+- **Motivation / Decision**: avoid confusion over protocol prefixes.
+
+### 2025-07-18  PR #182
+
 - **Summary**: camera release happens only once via finally block.
 - **Stage**: implementation
 - **Motivation / Decision**: avoid duplicate release when camera fails to open.
 
-### 2025-07-18  PR #182
+### 2025-07-18  PR #183
 
 - **Summary**: lint and typecheck now include `pymake.py`; docs updated.
 - **Stage**: implementation
