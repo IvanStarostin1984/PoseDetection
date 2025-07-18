@@ -52,6 +52,11 @@ async def pose_endpoint(ws: WebSocket) -> None:
     """Stream pose metrics over WebSocket."""
     await ws.accept()
     cap = cv2.VideoCapture(0)
+    if not cap.isOpened():
+        await ws.send_text(json.dumps({"error": "camera failed"}))
+        await ws.close()
+        cap.release()
+        return
     detector = PoseDetector()
     try:
         while True:

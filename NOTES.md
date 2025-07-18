@@ -1366,3 +1366,10 @@ TODO logs the task.
 - **Stage**: documentation
 - **Motivation / Decision**: provide easier bootstrap on Windows using npm.
 - **Next step**: none.
+
+### 2025-07-18  PR #178
+
+- **Summary**: handled camera open failure in `pose_endpoint`.
+- **Stage**: implementation
+- **Motivation / Decision**: prevent hanging websocket when webcam unavailable.
+- **Next step**: none.
