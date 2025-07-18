@@ -1274,3 +1274,10 @@ errors and maintains coverage.
 - **Motivation / Decision**: ensure overlay matches video resolution when the
   stream starts.
 - **Next step**: none.
+
+### 2025-07-18  PR #165
+
+- **Summary**: CI now includes a Windows job running PowerShell wrappers.
+- **Stage**: implementation
+- **Motivation / Decision**: ensure lint, type checks and tests pass on Windows.
+- **Next step**: none.
