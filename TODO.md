@@ -1,4 +1,4 @@
-# TODO – Road‑map (last updated: 2025-07-17)
+# TODO – Road‑map (last updated: 2025-07-18)
 
 > *Record only high‑level milestones here; break micro‑tasks out into Issues.*
 > **When you finish a task, tick it and append a short NOTE entry
@@ -156,3 +156,4 @@
 - [x] Provide PowerShell wrappers for Makefile commands.
 - [x] Close WebSocket when stopping the webcam and reopen when restarted.
 - [x] Dynamically size canvas to video dimensions in PoseViewer.
+- [x] Style pose container overlay to align video and canvas.
