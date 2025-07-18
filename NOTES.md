@@ -41,6 +41,24 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Motivation / Decision**: explain quick start and link to tech challenge.
 - **Next step**: none.
 
+### 2025-07-18  PR #178a
+
+- **Summary**: Metrics panel now wraps each metric in its own
+  paragraph; tests updated and README clarified vertical display.
+- **Stage**: implementation
+- **Motivation / Decision**: improve readability by listing metrics on
+  separate lines and keep docs consistent.
+- **Next step**: none.
+
+### 2025-07-18  PR #178b
+
+- **Summary**: Metrics panel now wraps each metric in its own
+  paragraph; tests updated and README clarified vertical display.
+- **Stage**: implementation
+- **Motivation / Decision**: improve readability by listing metrics on
+  separate lines and keep docs consistent.
+- **Next step**: none.
+
 ## 2025-07-13  PR #-1
 
 - **Summary**: added Makefile with lint and test tasks;
@@ -1369,11 +1387,19 @@ TODO logs the task.
 
 ### 2025-07-18  PR #178
 
+- **Summary**: Metrics panel now wraps each metric in its own
+  paragraph; tests updated and README clarified vertical display.
+- **Stage**: implementation
+- **Motivation / Decision**: improve readability by listing metrics on
+  separate lines and keep docs consistent.
+
+### 2025-07-18  PR #179
+
 - **Summary**: coverage now includes `backend/server.py`.
 - **Stage**: maintenance
 - **Motivation / Decision**: cover server module; coverage remains above 80%.
 
-### 2025-07-18  PR #179
+### 2025-07-18  PR #180
 
 - **Summary**: handled camera open failure in `pose_endpoint`.
 - **Stage**: implementation

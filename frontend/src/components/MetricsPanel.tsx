@@ -17,8 +17,10 @@ const MetricsPanel: React.FC<MetricsPanelProps> = ({ data }) => {
   const posture = Number(data?.posture_angle ?? 0);
   return (
     <div className="metrics-panel">
-      Balance: {balance.toFixed(2)} Pose: {pose} Knee Angle: {knee.toFixed(2)}°
-      Posture: {posture.toFixed(2)}°
+      <p>Balance: {balance.toFixed(2)}</p>
+      <p>Pose: {pose}</p>
+      <p>Knee Angle: {knee.toFixed(2)}°</p>
+      <p>Posture: {posture.toFixed(2)}°</p>
     </div>
   );
 };
