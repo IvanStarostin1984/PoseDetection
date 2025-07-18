@@ -1326,3 +1326,7 @@ TODO logs the task.
 - **Stage**: documentation
 - **Motivation / Decision**: help Windows users find the equivalent commands quickly.
 - **Next step**: none.
+\n### 2025-07-18  PR #?
+- **Summary**: pymake now checks for pwsh before powershell; tests updated.
+- **Stage**: implementation
+- **Motivation / Decision**: improve Windows compatibility.

@@ -9,6 +9,7 @@ unknown command.
 from __future__ import annotations
 
 import os
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -44,8 +45,9 @@ def main(argv: list[str] | None = None) -> int:
         if not script.is_file():
             print(f"error: missing script {script}", file=sys.stderr)
             return 1
+        exe = shutil.which("pwsh") or "powershell"
         cmd = [
-            "powershell",
+            exe,
             "-NoProfile",
             "-ExecutionPolicy",
             "Bypass",
