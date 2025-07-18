@@ -1,6 +1,5 @@
 import subprocess
 import types
-from pathlib import Path
 
 import pymake
 
@@ -30,6 +29,7 @@ def _setup_script(tmp_path):
 def test_pymake_prefers_pwsh(tmp_path, monkeypatch):
     _setup_script(tmp_path)
     monkeypatch.chdir(tmp_path)
+    monkeypatch.setattr(pymake, "__file__", str(tmp_path / "pymake.py"))
 
     calls = []
 
@@ -75,7 +75,39 @@ def test_pymake_falls_back_to_powershell(tmp_path, monkeypatch):
         "-ExecutionPolicy",
         "Bypass",
         "-File",
-        str(Path("scripts") / "lint.ps1"),
+        str(script_path),
+    ]
+    assert ret == 0
+    assert calls == [expected]
+
+
+def test_pymake_works_from_subdirectory(tmp_path, monkeypatch):
+    root = tmp_path / "project"
+    script_dir = root / "scripts"
+    script_dir.mkdir(parents=True)
+    script_path = script_dir / "lint.ps1"
+    script_path.write_text("")
+    (root / "subdir").mkdir()
+
+    monkeypatch.chdir(root / "subdir")
+    monkeypatch.setattr(pymake, "__file__", str(root / "pymake.py"))
+
+    calls = []
+
+    def fake_call(cmd):
+        calls.append(cmd)
+        return 0
+
+    monkeypatch.setattr(pymake, "os", types.SimpleNamespace(name="nt"))
+    monkeypatch.setattr(subprocess, "call", fake_call)
+    ret = pymake.main(["lint"])
+    expected = [
+        "powershell",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        str(script_path),
     ]
     assert ret == 0
     assert calls == [expected]

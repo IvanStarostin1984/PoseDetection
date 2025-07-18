@@ -1320,13 +1320,22 @@ TODO logs the task.
 - **Stage**: implementation
 - **Motivation / Decision**: let Windows CI fail when lint or tests fail.
 
-### 2025-07-19  PR #171
+### 2025-07-18  PR #171
 
 - **Summary**: added a table mapping Make targets to PowerShell wrappers in README.
 - **Stage**: documentation
 - **Motivation / Decision**: help Windows users find the equivalent commands quickly.
 - **Next step**: none.
-\n### 2025-07-18  PR #?
+
+### 2025-07-18  PR #172
 - **Summary**: pymake now checks for pwsh before powershell; tests updated.
 - **Stage**: implementation
 - **Motivation / Decision**: improve Windows compatibility.
+
+### 2025-07-18  PR #173
+
+- **Summary**: adjusted pymake to find PowerShell scripts relative to its file
+  and added test for subdirectory usage.
+- **Stage**: implementation
+- **Motivation / Decision**: ensure wrapper works from any path per request.
+- **Next step**: none.
