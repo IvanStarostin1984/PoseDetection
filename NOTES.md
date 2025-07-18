@@ -1305,3 +1305,12 @@ TODO logs the task.
 - **Stage**: implementation
 - **Motivation / Decision**: simplify wrapper usage and avoid duplicate scripts.
 - **Next step**: none.
+
+### 2025-07-18  PR #X2
+
+- **Summary**: added tests for `pymake` and PowerShell wrappers to verify failure
+  exit codes.
+- **Stage**: testing
+- **Motivation / Decision**: ensure cross-platform wrappers behave correctly and
+  increase coverage.
+- **Next step**: none.
