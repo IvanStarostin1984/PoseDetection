@@ -1305,3 +1305,10 @@ TODO logs the task.
 - **Stage**: implementation
 - **Motivation / Decision**: simplify wrapper usage and avoid duplicate scripts.
 - **Next step**: none.
+
+### 2025-07-19  PR #X
+
+- **Summary**: added a table mapping Make targets to PowerShell wrappers in README.
+- **Stage**: documentation
+- **Motivation / Decision**: help Windows users find the equivalent commands quickly.
+- **Next step**: none.

@@ -71,6 +71,24 @@ Run `make test` to execute the test-suite. Performance tests live in
 `tests/performance` and run automatically. Run them on their own with
 `pytest tests/performance`.
 Windows wrappers for these commands live in `scripts/`.
+
+<!-- markdownlint-disable MD013 -->
+The table below lists the common Make targets and their PowerShell
+equivalents:
+
+| Make command           | PowerShell script |
+| ---------------------- | ----------------- |
+| `make lint`            | `npm run win:lint` or `scripts/lint.ps1` |
+| `make typecheck`       | `npm run win:typecheck` or `scripts/typecheck.ps1` |
+| `make typecheck-ts`    | `npm run win:typecheck-ts` or `scripts/typecheck-ts.ps1` |
+| `make test`            | `npm run win:test` or `scripts/test.ps1` |
+| `make docs`            | `npm run win:docs` or `scripts/docs.ps1` |
+| `make generate`        | `npm run win:generate` or `scripts/generate.ps1` |
+| `make lint-docs`       | `npm run win:lint-docs` or `scripts/lint-docs.ps1` |
+| `make update-todo-date`| `npm run win:update-todo-date` or `scripts/update_todo_date.ps1` |
+| `make check-versions`  | `npm run win:check-versions` or `scripts/check_versions.ps1` |
+<!-- markdownlint-enable MD013 -->
+
 CI runs `make check-versions` whenever dependency files change to
 ensure pinned versions are valid.
 Pre-commit hooks are installed automatically by `.codex/setup.sh`,
