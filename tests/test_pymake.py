@@ -27,7 +27,7 @@ def _setup_script(tmp_path):
 
 
 def test_pymake_prefers_pwsh(tmp_path, monkeypatch):
-    _setup_script(tmp_path)
+    script_path = _setup_script(tmp_path)
     monkeypatch.chdir(tmp_path)
     monkeypatch.setattr(pymake, "__file__", str(tmp_path / "pymake.py"))
 
@@ -49,15 +49,16 @@ def test_pymake_prefers_pwsh(tmp_path, monkeypatch):
         "-ExecutionPolicy",
         "Bypass",
         "-File",
-        str(Path("scripts") / "lint.ps1"),
+        str(script_path),
     ]
     assert ret == 0
     assert calls == [expected]
 
 
 def test_pymake_falls_back_to_powershell(tmp_path, monkeypatch):
-    _setup_script(tmp_path)
+    script_path = _setup_script(tmp_path)
     monkeypatch.chdir(tmp_path)
+    monkeypatch.setattr(pymake, "__file__", str(tmp_path / "pymake.py"))
 
     calls = []
 

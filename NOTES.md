@@ -1334,6 +1334,7 @@ TODO logs the task.
 - **Motivation / Decision**: help contributors run Make targets on any OS.
 
 ### 2025-07-18  PR #173
+
 - **Summary**: pymake now checks for pwsh before powershell; tests updated.
 - **Stage**: implementation
 - **Motivation / Decision**: improve Windows compatibility.
@@ -1344,4 +1345,13 @@ TODO logs the task.
   and added test for subdirectory usage.
 - **Stage**: implementation
 - **Motivation / Decision**: ensure wrapper works from any path per request.
+- **Next step**: none.
+
+### 2025-07-18  PR #175
+
+- **Summary**: fixed test_pymake_falls_back_to_powershell to use script_path and
+  updated expected paths; added missing import.
+- **Stage**: testing
+- **Motivation / Decision**: tests failed due to undefined name and mismatched
+  path. Using the temporary script improves reliability.
 - **Next step**: none.
