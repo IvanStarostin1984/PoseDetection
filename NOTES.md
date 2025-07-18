@@ -1306,13 +1306,21 @@ TODO logs the task.
 - **Motivation / Decision**: simplify wrapper usage and avoid duplicate scripts.
 - **Next step**: none.
 
-### 2025-07-18  PR #169
+### 2025-07-18  PR #X169
+
+- **Summary**: added tests for `pymake` and PowerShell wrappers to verify failure
+  exit codes.
+- **Stage**: testing
+- **Motivation / Decision**: ensure cross-platform wrappers behave correctly and
+  increase coverage.
+
+### 2025-07-18  PR #170
 
 - **Summary**: PowerShell wrapper scripts now exit if any external command fails.
 - **Stage**: implementation
 - **Motivation / Decision**: let Windows CI fail when lint or tests fail.
 
-### 2025-07-19  PR #170
+### 2025-07-19  PR #171
 
 - **Summary**: added a table mapping Make targets to PowerShell wrappers in README.
 - **Stage**: documentation
