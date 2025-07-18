@@ -1369,6 +1369,12 @@ TODO logs the task.
 
 ### 2025-07-18  PR #178
 
+- **Summary**: coverage now includes `backend/server.py`.
+- **Stage**: maintenance
+- **Motivation / Decision**: cover server module; coverage remains above 80%.
+
+### 2025-07-18  PR #179
+
 - **Summary**: handled camera open failure in `pose_endpoint`.
 - **Stage**: implementation
 - **Motivation / Decision**: prevent hanging websocket when webcam unavailable.
