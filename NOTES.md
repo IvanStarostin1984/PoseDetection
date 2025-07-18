@@ -1347,14 +1347,20 @@ TODO logs the task.
 - **Motivation / Decision**: ensure wrapper works from any path per request.
 - **Next step**: none.
 
-### 2025-07-21  PR #175
+### 2025-07-18  PR #175
 
 - **Summary**: tests now use cmd stubs for Windows PowerShell wrappers.
 - **Stage**: testing
 - **Motivation / Decision**: ensure wrapper failure detection on Windows.
 - **Next step**: none.
 
-### 2025-07-22  PR #176
+### 2025-07-18  PR #176
+
+- **Summary**: test-win job now runs `python pymake.py lint` after `scripts\\lint.ps1`.
+- **Stage**: implementation
+- **Motivation / Decision**: mirror Windows lint steps to manual instructions.
+
+### 2025-07-18  PR #177
 
 - **Summary**: added `win:setup` npm script and updated README for Windows setup.
 - **Stage**: documentation

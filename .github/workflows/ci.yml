@@ -105,6 +105,8 @@ jobs:
           SKIP_PRECOMMIT: '1'
       - run: scripts\lint.ps1
         shell: pwsh
+      - run: python pymake.py lint
+        shell: pwsh
       - run: scripts\typecheck.ps1
         shell: pwsh
       - run: scripts\typecheck-ts.ps1

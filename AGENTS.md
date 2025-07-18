@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.44 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.45 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -255,6 +255,8 @@ jobs:
         env:
           SKIP_PRECOMMIT: '1'
       - run: scripts\lint.ps1
+        shell: pwsh
+      - run: python pymake.py lint
         shell: pwsh
       - run: scripts\typecheck.ps1
         shell: pwsh
