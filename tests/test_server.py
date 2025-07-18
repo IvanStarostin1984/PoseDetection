@@ -101,6 +101,9 @@ class DummyCap:
     def read(self) -> tuple[bool, None]:
         return False, None
 
+    def isOpened(self) -> bool:
+        return True
+
     def release(self) -> None:
         self.released = True
 
@@ -216,6 +219,28 @@ def test_pose_endpoint_handles_process_exception(monkeypatch):
     asyncio.run(server.pose_endpoint(ws))
     assert ws.sent == ['{"error": "process failed"}']
     assert ws.closed is True
+
+
+def test_pose_endpoint_handles_camera_open_failure(monkeypatch):
+    import backend.server as server
+
+    class Cap(DummyCap):
+        def isOpened(self) -> bool:
+            return False
+
+    cap = Cap()
+
+    def fail_pose(*_a: Any, **_k: Any) -> DummyPose:
+        raise AssertionError("pose should not be created")
+
+    monkeypatch.setattr(server, "PoseDetector", fail_pose)
+    monkeypatch.setattr(server.cv2, "VideoCapture", lambda *_a, **_k: cap)
+    ws = DummyWS()
+
+    asyncio.run(server.pose_endpoint(ws))
+    assert ws.sent == ['{"error": "camera failed"}']
+    assert ws.closed is True
+    assert cap.released is True
 
 
 def test_pose_endpoint_reports_no_landmarks(monkeypatch):
