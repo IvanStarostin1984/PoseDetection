@@ -1326,3 +1326,11 @@ TODO logs the task.
 - **Stage**: documentation
 - **Motivation / Decision**: help Windows users find the equivalent commands quickly.
 - **Next step**: none.
+
+-### 2025-07-20  PR #X172
+
+- **Summary**: adjusted pymake to find PowerShell scripts relative to its file
+  and added test for subdirectory usage.
+- **Stage**: implementation
+- **Motivation / Decision**: ensure wrapper works from any path per request.
+- **Next step**: none.
