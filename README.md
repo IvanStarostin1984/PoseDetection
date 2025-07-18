@@ -135,7 +135,8 @@ via `npm run win:<target>` for any Make command. Windows users may still prefer
 WSL or Docker when shell commands fail.
 
 If `make` does not work on your platform run `pymake.py <command>` instead.
-It dispatches to the same targets. Windows users may prefer WSL or Docker when
+It dispatches to the same targets and will use `pwsh` when available, falling
+back to `powershell` otherwise. Windows users may prefer WSL or Docker when
 shell commands fail.
 
 ## Frontend
