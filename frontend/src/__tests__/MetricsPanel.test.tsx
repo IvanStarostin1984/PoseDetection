@@ -13,9 +13,8 @@ test('displays balance, pose, knee and posture angle', () => {
       }}
     />,
   );
-  expect(
-    screen.getByText(
-      /Balance: 0\.50 Pose: standing Knee Angle: 45\.50° Posture: 30\.00°/,
-    ),
-  ).toBeInTheDocument();
+  expect(screen.getByText(/Balance: 0\.50/)).toBeInTheDocument();
+  expect(screen.getByText(/Pose: standing/)).toBeInTheDocument();
+  expect(screen.getByText(/Knee Angle: 45\.50°/)).toBeInTheDocument();
+  expect(screen.getByText(/Posture: 30\.00°/)).toBeInTheDocument();
 });

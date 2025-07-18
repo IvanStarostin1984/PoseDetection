@@ -41,6 +41,24 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Motivation / Decision**: explain quick start and link to tech challenge.
 - **Next step**: none.
 
+### 2025-07-18  PR #178a
+
+- **Summary**: Metrics panel now wraps each metric in its own
+  paragraph; tests updated and README clarified vertical display.
+- **Stage**: implementation
+- **Motivation / Decision**: improve readability by listing metrics on
+  separate lines and keep docs consistent.
+- **Next step**: none.
+
+### 2025-07-18  PR #178b
+
+- **Summary**: Metrics panel now wraps each metric in its own
+  paragraph; tests updated and README clarified vertical display.
+- **Stage**: implementation
+- **Motivation / Decision**: improve readability by listing metrics on
+  separate lines and keep docs consistent.
+- **Next step**: none.
+
 ## 2025-07-13  PR #-1
 
 - **Summary**: added Makefile with lint and test tasks;
@@ -1365,4 +1383,13 @@ TODO logs the task.
 - **Summary**: added `win:setup` npm script and updated README for Windows setup.
 - **Stage**: documentation
 - **Motivation / Decision**: provide easier bootstrap on Windows using npm.
+- **Next step**: none.
+
+### 2025-07-18  PR #178c
+
+- **Summary**: Metrics panel now wraps each metric in its own
+  paragraph; tests updated and README clarified vertical display.
+- **Stage**: implementation
+- **Motivation / Decision**: improve readability by listing metrics on
+  separate lines and keep docs consistent.
 - **Next step**: none.

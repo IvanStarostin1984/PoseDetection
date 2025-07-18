@@ -166,8 +166,8 @@ contain an `error` field; the hook exposes this via an `error` property and
 leaves the pose data unchanged so the UI can show the problem.
 
 If webcam access is denied the viewer now reports "Webcam access denied" next
-to the connection status. The metrics panel below the video lists each metric on
-its own line for clarity.
+to the connection status. The metrics panel below the video displays the
+Balance, Pose, Knee Angle and Posture metrics on separate lines for clarity.
 
 ## Running locally
 
