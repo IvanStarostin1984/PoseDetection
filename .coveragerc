@@ -1,4 +1,3 @@
 [run]
 omit =
     generated/*
-    backend/server.py

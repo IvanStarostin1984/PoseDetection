@@ -1385,11 +1385,23 @@ TODO logs the task.
 - **Motivation / Decision**: provide easier bootstrap on Windows using npm.
 - **Next step**: none.
 
-### 2025-07-18  PR #178c
+### 2025-07-18  PR #178
 
 - **Summary**: Metrics panel now wraps each metric in its own
   paragraph; tests updated and README clarified vertical display.
 - **Stage**: implementation
 - **Motivation / Decision**: improve readability by listing metrics on
   separate lines and keep docs consistent.
+
+### 2025-07-18  PR #179
+
+- **Summary**: coverage now includes `backend/server.py`.
+- **Stage**: maintenance
+- **Motivation / Decision**: cover server module; coverage remains above 80%.
+
+### 2025-07-18  PR #180
+
+- **Summary**: handled camera open failure in `pose_endpoint`.
+- **Stage**: implementation
+- **Motivation / Decision**: prevent hanging websocket when webcam unavailable.
 - **Next step**: none.

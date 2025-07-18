@@ -164,3 +164,6 @@
 - [x] Ensure PowerShell wrapper scripts exit when commands fail.
 - [x] Add npm script `win:setup` and document running `npm run win:setup`.
 - [x] Wrap metrics in `MetricsPanel` in separate elements and update tests.
+- [x] Include `backend/server.py` in coverage checks by removing it from
+      `.coveragerc` omit list.
+- [x] Handle camera open failure in pose_endpoint.
