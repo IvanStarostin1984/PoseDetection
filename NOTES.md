@@ -1353,3 +1353,10 @@ TODO logs the task.
 - **Stage**: testing
 - **Motivation / Decision**: ensure wrapper failure detection on Windows.
 - **Next step**: none.
+
+### 2025-07-22  PR #-
+
+- **Summary**: test-win job now runs `python pymake.py lint` after `scripts\\lint.ps1`.
+- **Stage**: implementation
+- **Motivation / Decision**: mirror Windows lint steps to manual instructions.
+- **Next step**: none.
