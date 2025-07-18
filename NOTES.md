@@ -1274,3 +1274,11 @@ errors and maintains coverage.
 - **Motivation / Decision**: ensure overlay matches video resolution when the
   stream starts.
 - **Next step**: none.
+
+### 2025-07-18  PR #165
+
+- **Summary**: added PowerShell wrappers for generate, lint-docs,
+update-todo-date and check-versions via npm scripts.
+- **Stage**: implementation
+- **Motivation / Decision**: allow Windows users to run all Make tasks.
+- **Next step**: none.
