@@ -155,3 +155,4 @@
 - [x] Provide cross-platform `pymake.py` wrapper for Make targets.
 - [x] Provide PowerShell wrappers for Makefile commands.
 - [x] Close WebSocket when stopping the webcam and reopen when restarted.
+- [x] Dynamically size canvas to video dimensions in PoseViewer.

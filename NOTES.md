@@ -1250,7 +1250,6 @@ errors and maintains coverage.
 - **Stage**: implementation
 - **Motivation / Decision**: simplify running Make targets on Windows.
 
-
 ### 2025-07-17  PR #162
 
 - **Summary**: added PowerShell wrappers for Makefile commands.
@@ -1265,4 +1264,13 @@ errors and maintains coverage.
 - **Stage**: implementation
 - **Motivation / Decision**: allow users to stop streaming cleanly and ensure
   resources release on client disconnect.
+- **Next step**: none.
+
+### 2025-07-17  PR #164
+
+- **Summary**: canvas now resizes to the webcam video and tests cover the
+  behaviour. Added README note and updated TODO.
+- **Stage**: implementation
+- **Motivation / Decision**: ensure overlay matches video resolution when the
+  stream starts.
 - **Next step**: none.

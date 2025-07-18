@@ -36,6 +36,24 @@ test('assigns webcam stream to video element', async () => {
   expect(getUserMedia).toHaveBeenCalled();
 });
 
+test('canvas matches video dimensions after metadata loads', async () => {
+  const { stream } = mockMedia();
+  const PoseViewer = require('../components/PoseViewer').default;
+  const { container } = render(<PoseViewer />);
+  const video = container.querySelector('video') as HTMLVideoElement;
+  const canvas = container.querySelector('canvas') as HTMLCanvasElement;
+  await waitFor(() => {
+    expect(video.srcObject).toBe(stream);
+  });
+  Object.defineProperty(video, 'videoWidth', { value: 320 });
+  Object.defineProperty(video, 'videoHeight', { value: 240 });
+  fireEvent(video, new Event('loadedmetadata'));
+  await waitFor(() => {
+    expect(canvas.width).toBe(320);
+    expect(canvas.height).toBe(240);
+  });
+});
+
 test('toggle button stops and starts the webcam', async () => {
   const { stream, getUserMedia } = mockMedia();
   const PoseViewer = require('../components/PoseViewer').default;
