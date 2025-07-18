@@ -1405,3 +1405,10 @@ TODO logs the task.
 - **Stage**: implementation
 - **Motivation / Decision**: prevent hanging websocket when webcam unavailable.
 - **Next step**: none.
+
+### 2025-07-18  PR #181
+
+- **Summary**: lint and typecheck now include `pymake.py`; docs updated.
+- **Stage**: implementation
+- **Motivation / Decision**: ensure root scripts are covered by quality tools.
+- **Next step**: none.
