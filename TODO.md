@@ -161,3 +161,4 @@
 - [x] Move PowerShell wrappers into `scripts/` and remove the
       `scripts/windows/` folder.
 - [x] Add tests for `pymake` and PowerShell wrappers.
+- [x] Ensure PowerShell wrapper scripts exit when commands fail.

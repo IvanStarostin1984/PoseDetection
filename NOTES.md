@@ -1298,7 +1298,7 @@ TODO logs the task.
   to ensure overlay alignment.
 - **Next step**: none.
 
-### 2025-07-18  PR #X
+### 2025-07-18  PR #168
 
 - **Summary**: moved PowerShell wrappers into `scripts/` and removed the old
   `scripts/windows` folder; updated docs.
@@ -1306,11 +1306,23 @@ TODO logs the task.
 - **Motivation / Decision**: simplify wrapper usage and avoid duplicate scripts.
 - **Next step**: none.
 
-### 2025-07-18  PR #X2
+### 2025-07-18  PR #X169
 
 - **Summary**: added tests for `pymake` and PowerShell wrappers to verify failure
   exit codes.
 - **Stage**: testing
 - **Motivation / Decision**: ensure cross-platform wrappers behave correctly and
   increase coverage.
+
+### 2025-07-18  PR #170
+
+- **Summary**: PowerShell wrapper scripts now exit if any external command fails.
+- **Stage**: implementation
+- **Motivation / Decision**: let Windows CI fail when lint or tests fail.
+
+### 2025-07-19  PR #171
+
+- **Summary**: added a table mapping Make targets to PowerShell wrappers in README.
+- **Stage**: documentation
+- **Motivation / Decision**: help Windows users find the equivalent commands quickly.
 - **Next step**: none.
