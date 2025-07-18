@@ -1405,3 +1405,10 @@ TODO logs the task.
 - **Stage**: implementation
 - **Motivation / Decision**: prevent hanging websocket when webcam unavailable.
 - **Next step**: none.
+
+### 2025-07-18  PR #181
+
+- **Summary**: camera release happens only once via finally block.
+- **Stage**: implementation
+- **Motivation / Decision**: avoid duplicate release when camera fails to open.
+- **Next step**: none.
