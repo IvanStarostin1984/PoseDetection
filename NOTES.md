@@ -1298,7 +1298,7 @@ TODO logs the task.
   to ensure overlay alignment.
 - **Next step**: none.
 
-### 2025-07-18  PR #X
+### 2025-07-18  PR #168
 
 - **Summary**: moved PowerShell wrappers into `scripts/` and removed the old
   `scripts/windows` folder; updated docs.
@@ -1306,7 +1306,13 @@ TODO logs the task.
 - **Motivation / Decision**: simplify wrapper usage and avoid duplicate scripts.
 - **Next step**: none.
 
-### 2025-07-19  PR #X
+### 2025-07-18  PR #169
+
+- **Summary**: PowerShell wrapper scripts now exit if any external command fails.
+- **Stage**: implementation
+- **Motivation / Decision**: let Windows CI fail when lint or tests fail.
+
+### 2025-07-19  PR #170
 
 - **Summary**: added a table mapping Make targets to PowerShell wrappers in README.
 - **Stage**: documentation
