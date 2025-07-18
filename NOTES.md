@@ -1305,3 +1305,10 @@ TODO logs the task.
 - **Stage**: implementation
 - **Motivation / Decision**: simplify wrapper usage and avoid duplicate scripts.
 - **Next step**: none.
+
+### 2025-07-18  PR #Y
+
+- **Summary**: PowerShell wrapper scripts now exit if any external command fails.
+- **Stage**: implementation
+- **Motivation / Decision**: let Windows CI fail when lint or tests fail.
+- **Next step**: none.
