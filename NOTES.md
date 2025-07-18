@@ -1346,3 +1346,10 @@ TODO logs the task.
 - **Stage**: implementation
 - **Motivation / Decision**: ensure wrapper works from any path per request.
 - **Next step**: none.
+
+### 2025-07-21  PR #175
+
+- **Summary**: tests now use cmd stubs for Windows PowerShell wrappers.
+- **Stage**: testing
+- **Motivation / Decision**: ensure wrapper failure detection on Windows.
+- **Next step**: none.
