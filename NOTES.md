@@ -1280,4 +1280,13 @@ errors and maintains coverage.
 - **Summary**: CI now includes a Windows job running PowerShell wrappers.
 - **Stage**: implementation
 - **Motivation / Decision**: ensure lint, type checks and tests pass on Windows.
+
+### 2025-07-18  PR #166
+
+- **Summary**: added CSS for `.pose-container` to overlay the canvas on the
+video and rebuilt the frontend bundle. README notes the new styling and
+TODO logs the task.
+- **Stage**: implementation
+- **Motivation / Decision**: match user request for explicit container styling
+  to ensure overlay alignment.
 - **Next step**: none.
