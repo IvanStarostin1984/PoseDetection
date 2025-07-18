@@ -5,6 +5,7 @@
   "scripts": {
     "test": "jest",
     "build": "esbuild frontend/src/index.tsx --bundle --outfile=frontend/dist/bundle.js --format=iife --jsx=automatic",
+    "win:setup": "powershell -ExecutionPolicy Bypass -File scripts/setup.ps1",
     "win:lint": "powershell -ExecutionPolicy Bypass -File scripts/lint.ps1",
     "win:typecheck": "powershell -ExecutionPolicy Bypass -File scripts/typecheck.ps1",
     "win:typecheck-ts": "powershell -ExecutionPolicy Bypass -File scripts/typecheck-ts.ps1",
