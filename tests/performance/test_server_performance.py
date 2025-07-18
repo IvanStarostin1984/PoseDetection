@@ -21,6 +21,9 @@ class DummyCap:
     def release(self) -> None:
         self.released = True
 
+    def isOpened(self) -> bool:
+        return True
+
 
 class DummyDetector:
     def process(self, frame: Any) -> list[dict[str, float]]:

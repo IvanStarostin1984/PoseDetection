@@ -47,6 +47,9 @@ class DummyCap:
     def release(self) -> None:
         self.released = True
 
+    def isOpened(self) -> bool:
+        return True
+
 
 def test_pose_endpoint_reads_frame(monkeypatch: Any) -> None:
     cap = DummyCap()
