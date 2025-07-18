@@ -18,6 +18,13 @@ const PoseViewer: React.FC = () => {
   const [streaming, setStreaming] = useState(true);
   const [cameraError, setCameraError] = useState<string | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
+  const resizeCanvas = () => {
+    const video = videoRef.current;
+    const canvas = canvasRef.current;
+    if (!video || !canvas) return;
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+  };
 
   useEffect(() => {
     const video = videoRef.current;
@@ -34,6 +41,7 @@ const PoseViewer: React.FC = () => {
           }
           video.srcObject = stream;
           streamRef.current = stream;
+          video.addEventListener('loadedmetadata', resizeCanvas, { once: true });
         })
         .catch(() => {
           setCameraError('Webcam access denied');
@@ -46,6 +54,7 @@ const PoseViewer: React.FC = () => {
     }
     return () => {
       cancel = true;
+      video.removeEventListener('loadedmetadata', resizeCanvas);
       if (streamRef.current) {
         streamRef.current.getTracks().forEach((t) => t.stop());
         video.srcObject = null;
@@ -66,7 +75,7 @@ const PoseViewer: React.FC = () => {
   return (
     <div className="pose-container">
       <video ref={videoRef} autoPlay muted />
-      <canvas ref={canvasRef} width={640} height={480} />
+      <canvas ref={canvasRef} />
       <MetricsPanel data={poseData?.metrics} />
       {error && <div className="ws-error">Error: {error}</div>}
       {cameraError && (
