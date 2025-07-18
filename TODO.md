@@ -162,3 +162,4 @@
       `scripts/windows/` folder.
 - [x] Add tests for `pymake` and PowerShell wrappers.
 - [x] Ensure PowerShell wrapper scripts exit when commands fail.
+- [x] Add npm script `win:setup` and document running `npm run win:setup`.

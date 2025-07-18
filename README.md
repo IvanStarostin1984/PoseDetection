@@ -18,8 +18,9 @@ Additional assumptions and edge cases for the first feature are listed in
 
 Clone the repository and run the setup script to install Python and Node
 packages.
-On Linux or macOS use **`./.codex/setup.sh`**. Windows users can run
-**`scripts/setup.ps1`** from PowerShell.
+On Linux or macOS use **`./.codex/setup.sh`**.
+Windows users can run **`scripts/setup.ps1`** or
+`npm run win:setup` from PowerShell.
 The project requires Node 20 or newer.
 Then check the code:
 
@@ -27,7 +28,7 @@ Then check the code:
 git clone <repo-url>
 cd PoseDetection
 # run once with network access to fetch pre-commit hooks
-./.codex/setup.sh   # Windows: scripts/setup.ps1
+./.codex/setup.sh   # Windows: scripts/setup.ps1 or npm run win:setup
 make lint
 make test
 # Windows users without make can run:
@@ -100,7 +101,8 @@ Dependabot reviews `requirements.txt`, `package.json` and
 
 Run the provided setup script after cloning to install Python 3.11 (set
 `PYTHON_VERSION` to override) and Node 20 (set `NODE_VERSION` to change).
-On Windows use `scripts/setup.ps1`; other platforms use `.codex/setup.sh`.
+On Windows run `scripts/setup.ps1` or `npm run win:setup`.
+Other platforms use `.codex/setup.sh`.
 This installs `black` from `requirements.txt` so
 `make lint` works even when hooks are skipped. Tests rely on these packages,
 so always complete this step before running `make test`. The script is

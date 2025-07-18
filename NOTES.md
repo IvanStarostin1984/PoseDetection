@@ -1353,3 +1353,10 @@ TODO logs the task.
 - **Stage**: testing
 - **Motivation / Decision**: ensure wrapper failure detection on Windows.
 - **Next step**: none.
+
+### 2025-07-22  PR #176
+
+- **Summary**: added `win:setup` npm script and updated README for Windows setup.
+- **Stage**: documentation
+- **Motivation / Decision**: provide easier bootstrap on Windows using npm.
+- **Next step**: none.
