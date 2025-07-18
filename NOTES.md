@@ -1297,3 +1297,11 @@ TODO logs the task.
 - **Motivation / Decision**: match user request for explicit container styling
   to ensure overlay alignment.
 - **Next step**: none.
+
+### 2025-07-18  PR #X
+
+- **Summary**: moved PowerShell wrappers into `scripts/` and removed the old
+  `scripts/windows` folder; updated docs.
+- **Stage**: implementation
+- **Motivation / Decision**: simplify wrapper usage and avoid duplicate scripts.
+- **Next step**: none.
