@@ -1277,11 +1277,18 @@ errors and maintains coverage.
 
 ### 2025-07-18  PR #165
 
+- **Summary**: added PowerShell wrappers for generate, lint-docs,
+update-todo-date and check-versions via npm scripts.
+- **Stage**: implementation
+- **Motivation / Decision**: allow Windows users to run all Make tasks.
+
+### 2025-07-18  PR #166
+
 - **Summary**: CI now includes a Windows job running PowerShell wrappers.
 - **Stage**: implementation
 - **Motivation / Decision**: ensure lint, type checks and tests pass on Windows.
 
-### 2025-07-18  PR #166
+### 2025-07-18  PR #167
 
 - **Summary**: added CSS for `.pose-container` to overlay the canvas on the
 video and rebuilt the frontend bundle. README notes the new styling and
