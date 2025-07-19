@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.46 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.47 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -63,32 +63,35 @@ prevents GitHub prompts.
    PowerShell. *The script installs Python, Node and all packages needed for
    tests.* Set `PYTHON_VERSION` or `NODE_VERSION` to override the defaults
    (3.11 and 20). Always complete this step before running any test or build.
-2. Export **required secrets** (`GIT_TOKEN`, `GH_PAGES_TOKEN`, …)
+2. Run the setup script inside your active Python environment. IDEs may
+   create a new `.venv`, so rerun it there (or `pip install -r requirements.txt`)
+   before starting the backend.
+3. Export **required secrets** (`GIT_TOKEN`, `GH_PAGES_TOKEN`, …)
    in the repository/organisation **Secrets** console.
-3. Verify the **secret‑detection helper step** in
+4. Verify the **secret‑detection helper step** in
     `.github/workflows/ci.yml` (see § 4) so forks without secrets still pass.
-4. Pushes to `main` run `.github/workflows/pages.yml` which builds the Sphinx
+5. Pushes to `main` run `.github/workflows/pages.yml` which builds the Sphinx
    docs, uploads them using `actions/upload-pages-artifact@v3` and deploys them
    to GitHub Pages when `GH_PAGES_TOKEN` is present. Enable Pages in the repo
    settings with **GitHub Actions** as the source. `GH_PAGES_TOKEN` requires
    `pages:write` and repo access.
-5. On the first PR, update README badges to point at your fork (owner/repo).
-6. `.codex/setup.sh` installs `pre-commit`, sets up the hooks and then runs
+6. On the first PR, update README badges to point at your fork (owner/repo).
+7. `.codex/setup.sh` installs `pre-commit`, sets up the hooks and then runs
    `pre-commit run --all-files`. This may reformat files, so run the script
    before editing anything. Hooks are installed using `python3 -m pre_commit`
    on the first run to avoid PATH issues. Set `SKIP_PRECOMMIT=1` to bypass this
    when offline. The CI workflow passes this flag because the runners have
    restricted network access.
-7. `black` is pinned in `requirements.txt` so `make lint` works when
+8. `black` is pinned in `requirements.txt` so `make lint` works when
    pre-commit hooks are skipped.
-8. `mypy` is pinned in `requirements.txt` so `make typecheck` works.
-9. When using pyenv, run `pyenv rehash` after package installs so new
+9. `mypy` is pinned in `requirements.txt` so `make typecheck` works.
+10. When using pyenv, run `pyenv rehash` after package installs so new
    shims are picked up.
-10. A `Dockerfile` sets up Python 3.11 and Node 20. Build it with
+11. A `Dockerfile` sets up Python 3.11 and Node 20. Build it with
    `docker build -t posedetect .` to run tests in a container.
-11. Run `python pymake.py <target>` when `make` is unavailable. The wrapper
+12. Run `python pymake.py <target>` when `make` is unavailable. The wrapper
     calls `make` on Unix and the PowerShell scripts on Windows.
-12. Windows users without `make` can still run the wrappers via
+13. Windows users without `make` can still run the wrappers via
     `npm run win:lint` or directly from `scripts/<name>.ps1` (for example
     `scripts/lint.ps1`).
 
