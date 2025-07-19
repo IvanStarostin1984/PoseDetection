@@ -1440,3 +1440,11 @@ TODO logs the task.
 - **Stage**: implementation
 - **Motivation / Decision**: prevent StaticFiles from catching WebSocket traffic.
 - **Next step**: none.
+
+### 2025-07-20  PR #186
+
+- **Summary**: PoseViewer now sends each webcam frame as a JPEG blob over the WebSocket.
+  useWebSocket exposes a `send` method and parses binary messages. Tests updated.
+- **Stage**: implementation
+- **Motivation / Decision**: allow remote pose detection by streaming frames.
+- **Next step**: none.

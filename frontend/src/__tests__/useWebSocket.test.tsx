@@ -30,6 +30,7 @@ class MockWebSocket {
   onerror: (() => void) | null = null;
   onmessage: ((ev: { data: string }) => void) | null = null;
   constructor(public url: string) {}
+  send = jest.fn();
   triggerOpen() {
     this.onopen?.();
   }
@@ -123,6 +124,24 @@ test('close function sets status to closed', () => {
     result.current.close();
   });
   expect(result.current.status).toBe('closed');
+
+  window.WebSocket = OriginalWebSocket;
+});
+
+test('send function forwards data to WebSocket', () => {
+  const ws = new MockWebSocket('ws://test');
+  const OriginalWebSocket = window.WebSocket;
+  // @ts-ignore
+  window.WebSocket = jest.fn(() => ws);
+
+  const { result } = renderHook(() => useWebSocket('/pose'));
+
+  act(() => {
+    ws.triggerOpen();
+    result.current.send(new Blob());
+  });
+
+  expect(ws.send).toHaveBeenCalled();
 
   window.WebSocket = OriginalWebSocket;
 });
