@@ -130,6 +130,11 @@ Follow these steps to run the backend from Visual Studio:
 4. Right‑click `backend/server.py` and pick **Set as Startup File**.
 5. Press **F5** to launch the FastAPI server.
 
+`scripts/setup.ps1` installs packages for the interpreter currently
+active. When VS creates a new `.venv`, run the script again inside that
+environment or use `pip install -r requirements.txt` before launching
+the backend.
+
 Install Node separately to build the React frontend with `npm run build`.
 
 If `make` does not work on your platform use the provided PowerShell wrappers

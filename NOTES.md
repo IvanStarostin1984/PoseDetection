@@ -1423,3 +1423,12 @@ TODO logs the task.
 - **Stage**: implementation
 - **Motivation / Decision**: ensure root scripts are covered by quality tools.
 - **Next step**: none.
+
+### 2025-07-19  PR #184
+
+- **Summary**: clarified VS setup instructions.
+  Added note on rerunning the setup script inside new virtual environments.
+- **Stage**: documentation
+- **Motivation / Decision**: help Windows users avoid missing packages when
+  IDEs create `.venv` folders.
+- **Next step**: none.
