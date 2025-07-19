@@ -7,19 +7,27 @@ import backend.server as server
 
 
 class DummyWS:
-    def __init__(self) -> None:
+    def __init__(self, frames: list[bytes]) -> None:
         self.accepted = False
         self.sent: list[str] = []
-        self.closed = False
+        self.frames = frames
+        self.idx = 0
 
     async def accept(self) -> None:
         self.accepted = True
+
+    async def receive_bytes(self) -> bytes:
+        if self.idx >= len(self.frames):
+            raise server.WebSocketDisconnect()
+        data = self.frames[self.idx]
+        self.idx += 1
+        return data
 
     async def send_text(self, text: str) -> None:
         self.sent.append(text)
 
     async def close(self) -> None:
-        self.closed = True
+        pass
 
 
 class DummyPose:
@@ -33,33 +41,13 @@ class DummyPose:
         self.closed = True
 
 
-class DummyCap:
-    def __init__(self) -> None:
-        self.released = False
-        self.calls = 0
-
-    def read(self) -> tuple[bool, Any]:
-        self.calls += 1
-        if self.calls == 1:
-            return True, np.zeros((1, 1, 3), dtype=np.uint8)
-        return False, None
-
-    def release(self) -> None:
-        self.released = True
-
-    def isOpened(self) -> bool:
-        return True
-
-
 def test_pose_endpoint_reads_frame(monkeypatch: Any) -> None:
-    cap = DummyCap()
     pose = DummyPose()
-    monkeypatch.setattr(server.cv2, "VideoCapture", lambda *_a, **_k: cap)
     monkeypatch.setattr(server, "PoseDetector", lambda *_a, **_k: pose)
-
-    ws = DummyWS()
+    frame = np.zeros((1, 1, 3), dtype=np.uint8)
+    _, buf = server.cv2.imencode(".jpg", frame)
+    ws = DummyWS([buf.tobytes()])
     asyncio.run(server.pose_endpoint(ws))
 
-    assert cap.calls >= 1
-    assert ws.closed is True
+    assert ws.sent
     assert pose.closed is True

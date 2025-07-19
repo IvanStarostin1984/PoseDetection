@@ -1441,8 +1441,14 @@ TODO logs the task.
 - **Motivation / Decision**: prevent StaticFiles from catching WebSocket traffic.
 - **Next step**: none.
 
-### 2025-07-20  PR #186
+### 2025-07-19  PR #186
 
+- **Summary**: server reads JPEG bytes from clients instead of webcam.
+  Updated tests and kept WebSocket open until client disconnects.
+- **Stage**: implementation
+- **Motivation / Decision**: align backend with frontend streaming frames.
+
+### 2025-07-19  PR #187
 - **Summary**: PoseViewer now sends each webcam frame as a JPEG blob over the WebSocket.
   useWebSocket exposes a `send` method and parses binary messages. Tests updated.
 - **Stage**: implementation

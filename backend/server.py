@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import cv2
+import numpy as np
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.staticfiles import StaticFiles
 import asyncio
@@ -34,11 +35,9 @@ def build_payload(points: List[Dict[str, float]]) -> Dict[str, Any]:
     return {"landmarks": points, "metrics": metrics}
 
 
-async def _read_frame(cap: cv2.VideoCapture) -> tuple[bool, Any]:
-    return await asyncio.to_thread(cap.read)
-
-
-async def _process(det: PoseDetector, frame: Any) -> list[dict[str, float]]:
+async def _process(det: PoseDetector, data: bytes) -> list[dict[str, float]]:
+    arr = np.frombuffer(data, dtype=np.uint8)
+    frame = cv2.imdecode(arr, cv2.IMREAD_COLOR)
     return await asyncio.to_thread(det.process, frame)
 
 
@@ -46,43 +45,37 @@ async def _process(det: PoseDetector, frame: Any) -> list[dict[str, float]]:
 async def pose_endpoint(ws: WebSocket) -> None:
     """Stream pose metrics over WebSocket."""
     await ws.accept()
-    cap = cv2.VideoCapture(0)
-    detector: PoseDetector | None = None
+    detector = PoseDetector()
     try:
-        if not cap.isOpened():
-            await ws.send_text(json.dumps({"error": "camera failed"}))
-            await ws.close()
-            return
-        detector = PoseDetector()
         while True:
-            ok, frame = await _read_frame(cap)
-            if not ok:
-                await ws.send_text(json.dumps({"error": "no frame"}))
-                await ws.close()
+            try:
+                data = await ws.receive_bytes()
+            except WebSocketDisconnect:
                 break
 
             try:
-                points = await _process(detector, frame)
+                points = await _process(detector, data)
             except Exception:
-                await ws.send_text(json.dumps({"error": "process failed"}))
-                await ws.close()
-                break
+                try:
+                    await ws.send_text(json.dumps({"error": "process failed"}))
+                except WebSocketDisconnect:
+                    break
+                continue
 
             if not points:
-                await ws.send_text(json.dumps({"error": "no landmarks"}))
+                try:
+                    await ws.send_text(json.dumps({"error": "no landmarks"}))
+                except WebSocketDisconnect:
+                    break
                 continue
 
             payload = build_payload(points)
-            await ws.send_text(json.dumps(payload))
-    except (WebSocketDisconnect, RuntimeError):
-        await ws.close()
-    except Exception:
-        await ws.close()
-        raise
+            try:
+                await ws.send_text(json.dumps(payload))
+            except WebSocketDisconnect:
+                break
     finally:
-        cap.release()
-        if detector:
-            detector.close()
+        detector.close()
 
 
 app.mount(

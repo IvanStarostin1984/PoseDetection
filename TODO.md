@@ -172,4 +172,5 @@
 - [x] Explain that `scripts/setup.ps1` installs packages for the active Python
   interpreter and rerun it when an IDE creates a new `.venv`.
 - [x] Serve static files after defining routes so WebSocket connections work.
+- [x] Receive JPEG frames from clients over `/pose` WebSocket and decode them server-side.
 - [x] Send webcam frames as JPEG blobs over WebSocket.
