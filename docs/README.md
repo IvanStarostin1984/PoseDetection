@@ -14,9 +14,10 @@ The pose detector outputs 17 landmarks in the following order:
 
 ## Backend analytics
 
-The backend exposes a WebSocket endpoint at `/pose`. It captures webcam frames
-with MediaPipe and streams pose metrics as JSON. The metrics are calculated in
-`backend/analytics.py`:
+The backend exposes a WebSocket endpoint at `/pose`. The browser captures
+webcam frames, encodes each one as a JPEG and sends it to this endpoint. The
+server decodes these bytes, runs `PoseDetector`, and streams pose metrics as
+JSON. The metrics are calculated in `backend/analytics.py`:
 
 ```python
 from backend.analytics import extract_pose_metrics
