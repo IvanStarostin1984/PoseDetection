@@ -14,11 +14,6 @@ from .pose_detector import PoseDetector
 import uvicorn
 
 app = FastAPI()
-app.mount(
-    "/",
-    StaticFiles(directory="frontend/dist", html=True),
-    name="static",
-)
 
 # names for the 17-landmark subset used by PoseDetector
 _NAMES = [lm.name.lower() for lm in PoseDetector.LANDMARKS]
@@ -88,6 +83,13 @@ async def pose_endpoint(ws: WebSocket) -> None:
         cap.release()
         if detector:
             detector.close()
+
+
+app.mount(
+    "/",
+    StaticFiles(directory="frontend/dist", html=True),
+    name="static",
+)
 
 
 def main() -> None:

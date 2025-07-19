@@ -67,6 +67,21 @@ def test_root_mount_present():
         raise AssertionError("root mount not found")
 
 
+def test_pose_route_before_static_mount():
+    import backend.server as server
+    from fastapi.staticfiles import StaticFiles
+
+    pose_idx = static_idx = None
+    for idx, route in enumerate(server.app.routes):
+        if getattr(route, "path", None) == "/pose":
+            pose_idx = idx
+        if getattr(route, "path", None) in ("/", "") and hasattr(route, "app"):
+            if isinstance(getattr(route, "app"), StaticFiles):
+                static_idx = idx
+    assert pose_idx is not None and static_idx is not None
+    assert pose_idx < static_idx
+
+
 class DummyWS:
     def __init__(self):
         self.accepted = False
