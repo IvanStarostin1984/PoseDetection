@@ -1,4 +1,4 @@
-# TODO – Road‑map (last updated: 2025-07-20)
+# TODO – Road‑map (last updated: 2025-07-19)
 
 > *Record only high‑level milestones here; break micro‑tasks out into Issues.*
 > **When you finish a task, tick it and append a short NOTE entry
@@ -24,7 +24,7 @@
 *Repeat the five-bullet block below for every MVP feature A, B, C, ...*
 
 - [x] Analyse source-of-truth docs; define acceptance criteria for feature A
-- [ ] Document assumptions / edge‑cases for feature A in `/docs` or README
+- [x] Document assumptions / edge‑cases for feature A in `/docs` or README
 - [ ] Implement feature A
 - [ ] Add unit / integration tests for feature A
 - [ ] Wire CI quality gate (coverage ≥ 80 %, metric thresholds, etc.) that
