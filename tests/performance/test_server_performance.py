@@ -1,28 +1,9 @@
 import asyncio
 import time
 from typing import Any
+import numpy as np
 
 import backend.server as server
-
-
-class DummyCap:
-    def __init__(self, frames: int, times: list[float]) -> None:
-        self._frames = frames
-        self.released = False
-        self.times = times
-
-    def read(self) -> tuple[bool, Any]:
-        if self._frames <= 0:
-            return False, None
-        self._frames -= 1
-        self.times.append(time.perf_counter())
-        return True, object()
-
-    def release(self) -> None:
-        self.released = True
-
-    def isOpened(self) -> bool:
-        return True
 
 
 class DummyDetector:
@@ -34,25 +15,34 @@ class DummyDetector:
 
 
 class DummyWS:
-    def __init__(self, times: list[float]) -> None:
+    def __init__(
+        self, frames: list[bytes], recv_times: list[float], send_times: list[float]
+    ) -> None:
         self.accepted = False
         self.sent: list[str] = []
-        self.times = times
+        self.recv_times = recv_times
+        self.send_times = send_times
+        self.frames = frames
+        self.idx = 0
         self.closed = False
 
     async def accept(self) -> None:
         self.accepted = True
 
+    async def receive_bytes(self) -> bytes:
+        if self.idx >= len(self.frames):
+            raise server.WebSocketDisconnect()
+        self.recv_times.append(time.perf_counter())
+        data = self.frames[self.idx]
+        self.idx += 1
+        return data
+
     async def send_text(self, text: str) -> None:
         self.sent.append(text)
-        self.times.append(time.perf_counter())
+        self.send_times.append(time.perf_counter())
 
     async def close(self) -> None:
         self.closed = True
-
-
-async def _dummy_read_frame(cap: DummyCap) -> tuple[bool, Any]:
-    return cap.read()
 
 
 async def _dummy_process(det: DummyDetector, frame: Any) -> list[dict[str, float]]:
@@ -61,24 +51,23 @@ async def _dummy_process(det: DummyDetector, frame: Any) -> list[dict[str, float
 
 def test_pose_endpoint_performance(monkeypatch: Any) -> None:
     frame_count = 10
-    cap_times: list[float] = []
-    ws_times: list[float] = []
+    recv_times: list[float] = []
+    send_times: list[float] = []
 
-    monkeypatch.setattr(server, "_read_frame", _dummy_read_frame)
     monkeypatch.setattr(server, "_process", _dummy_process)
-    monkeypatch.setattr(
-        server.cv2, "VideoCapture", lambda *_a, **_k: DummyCap(frame_count, cap_times)
-    )
     monkeypatch.setattr(server, "PoseDetector", lambda *_a, **_k: DummyDetector())
 
-    ws = DummyWS(ws_times)
+    frame = np.zeros((1, 1, 3), dtype=np.uint8)
+    _, buf = server.cv2.imencode(".jpg", frame)
+    frames = [buf.tobytes()] * frame_count
+
+    ws = DummyWS(frames, recv_times, send_times)
     asyncio.run(server.pose_endpoint(ws))
 
-    assert ws.closed
-    assert len(ws.sent) == frame_count + 1
-    assert len(cap_times) == frame_count
+    assert len(ws.sent) == frame_count
+    assert len(recv_times) == frame_count
 
-    durations = [ws_times[i] - cap_times[i] for i in range(frame_count)]
+    durations = [send_times[i] - recv_times[i] for i in range(frame_count)]
     avg_loop = sum(durations) / frame_count
     assert avg_loop <= 0.05
     assert max(durations) < 0.2

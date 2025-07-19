@@ -1440,3 +1440,11 @@ TODO logs the task.
 - **Stage**: implementation
 - **Motivation / Decision**: prevent StaticFiles from catching WebSocket traffic.
 - **Next step**: none.
+
+### 2025-07-20  PR #186
+
+- **Summary**: server reads JPEG bytes from clients instead of webcam.
+  Updated tests and kept WebSocket open until client disconnects.
+- **Stage**: implementation
+- **Motivation / Decision**: align backend with frontend streaming frames.
+- **Next step**: none.
