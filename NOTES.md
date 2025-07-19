@@ -1449,7 +1449,9 @@ TODO logs the task.
 - **Motivation / Decision**: align backend with frontend streaming frames.
 
 ### 2025-07-19  PR #187
-- **Summary**: PoseViewer now sends each webcam frame as a JPEG blob over the WebSocket.
+
+- **Summary**: PoseViewer now sends each webcam frame as a
+JPEG blob over the WebSocket.
   useWebSocket exposes a `send` method and parses binary messages. Tests updated.
 - **Stage**: implementation
 - **Motivation / Decision**: allow remote pose detection by streaming frames.
