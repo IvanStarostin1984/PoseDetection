@@ -12,12 +12,13 @@ const PoseViewer: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [wsKey, setWsKey] = useState(0);
-  const { poseData, status, error, close } = useWebSocket<PoseData>(
+  const { poseData, status, error, close, send } = useWebSocket<PoseData>(
     `/pose?c=${wsKey}`,
   );
   const [streaming, setStreaming] = useState(true);
   const [cameraError, setCameraError] = useState<string | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
+  const offscreenRef = useRef<HTMLCanvasElement>(document.createElement('canvas'));
   const resizeCanvas = () => {
     const video = videoRef.current;
     const canvas = canvasRef.current;
@@ -25,6 +26,23 @@ const PoseViewer: React.FC = () => {
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
   };
+
+  useEffect(() => {
+    const video = videoRef.current;
+    const off = offscreenRef.current;
+    if (!video || !off || !streaming || status !== 'open') return;
+    const ctx = off.getContext('2d');
+    if (!ctx) return;
+    const id = setInterval(() => {
+      off.width = video.videoWidth;
+      off.height = video.videoHeight;
+      ctx.drawImage(video, 0, 0, off.width, off.height);
+      off.toBlob((b) => {
+        if (b) send(b);
+      }, 'image/jpeg');
+    }, 100);
+    return () => clearInterval(id);
+  }, [streaming, status, send]);
 
   useEffect(() => {
     const video = videoRef.current;

@@ -25,6 +25,10 @@ export default function useWebSocket<T>(
     wsRef.current?.close();
   }
 
+  function send(data: string | Blob | ArrayBufferLike) {
+    wsRef.current?.send(data);
+  }
+
   useEffect(() => {
     const url = resolveUrl(path, host, port);
     const ws = new WebSocket(url);
@@ -33,9 +37,15 @@ export default function useWebSocket<T>(
       setErrorMsg(null);
       setStatus('open');
     };
-    ws.onmessage = (ev) => {
+    ws.onmessage = async (ev) => {
       try {
-        const data = JSON.parse(ev.data);
+        const text =
+          typeof ev.data === 'string'
+            ? ev.data
+            : ev.data instanceof Blob
+            ? await ev.data.text()
+            : new TextDecoder().decode(ev.data as ArrayBuffer);
+        const data = JSON.parse(text);
         if ('error' in data) {
           setErrorMsg(String(data.error));
           return;
@@ -56,5 +66,5 @@ export default function useWebSocket<T>(
     };
   }, [path, host, port]);
 
-  return { poseData, status, error: errorMsg, close };
+  return { poseData, status, error: errorMsg, close, send };
 }
