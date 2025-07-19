@@ -1432,3 +1432,11 @@ TODO logs the task.
 - **Motivation / Decision**: help Windows users avoid missing packages when
   IDEs create `.venv` folders.
 - **Next step**: none.
+
+### 2025-07-19  PR #185
+
+- **Summary**: moved static mount after routes to fix WebSocket endpoint order.
+  Added test for route order.
+- **Stage**: implementation
+- **Motivation / Decision**: prevent StaticFiles from catching WebSocket traffic.
+- **Next step**: none.

@@ -1,4 +1,4 @@
-# TODO – Road‑map (last updated: 2025-07-19)
+# TODO – Road‑map (last updated: 2025-07-20)
 
 > *Record only high‑level milestones here; break micro‑tasks out into Issues.*
 > **When you finish a task, tick it and append a short NOTE entry
@@ -171,3 +171,4 @@
 - [x] Lint and typecheck cover `pymake.py` and scripts.
 - [x] Explain that `scripts/setup.ps1` installs packages for the active Python
   interpreter and rerun it when an IDE creates a new `.venv`.
+- [x] Serve static files after defining routes so WebSocket connections work.
