@@ -4,7 +4,7 @@ import PoseViewer from '../components/PoseViewer';
 
 jest.mock('../hooks/useWebSocket', () => ({
   __esModule: true,
-  default: () => ({ poseData: null, status: 'open', error: 'failed to parse' }),
+  default: () => ({ poseData: null, status: 'open', error: 'failed to parse', send: jest.fn() }),
 }));
 
 test('renders WebSocket error message', () => {

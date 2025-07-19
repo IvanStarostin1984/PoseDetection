@@ -6,7 +6,13 @@ jest.mock('../hooks/useWebSocket');
 const mockWS = useWebSocket as jest.Mock;
 
 beforeEach(() => {
-  mockWS.mockReturnValue({ poseData: null, status: 'open', error: null, close: jest.fn() });
+  mockWS.mockReturnValue({
+    poseData: null,
+    status: 'open',
+    error: null,
+    close: jest.fn(),
+    send: jest.fn(),
+  });
 });
 
 class FakeStream {
@@ -100,4 +106,42 @@ test('stop button closes the WebSocket', async () => {
     expect(getByText('Connection: closed')).toBeInTheDocument();
   });
   expect(getUserMedia).toHaveBeenCalled();
+});
+
+test('sends frames over WebSocket', async () => {
+  jest.useFakeTimers();
+  const { stream } = mockMedia();
+  const send = jest.fn();
+  mockWS.mockReturnValue({ poseData: null, status: 'open', error: null, close: jest.fn(), send });
+  const origGetContext = HTMLCanvasElement.prototype.getContext;
+  const origToBlob = HTMLCanvasElement.prototype.toBlob;
+  Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
+    configurable: true,
+    value: () => ({ drawImage: jest.fn() }),
+  });
+  Object.defineProperty(HTMLCanvasElement.prototype, 'toBlob', {
+    configurable: true,
+    value: (cb: (b: Blob) => void) => cb(new Blob()),
+  });
+
+  const PoseViewer = require('../components/PoseViewer').default;
+  const { container } = render(<PoseViewer />);
+  const video = container.querySelector('video') as HTMLVideoElement;
+  await waitFor(() => {
+    expect(video.srcObject).toBe(stream);
+  });
+  Object.defineProperty(video, 'videoWidth', { value: 1 });
+  Object.defineProperty(video, 'videoHeight', { value: 1 });
+  fireEvent(video, new Event('loadedmetadata'));
+  jest.advanceTimersByTime(100);
+  expect(send).toHaveBeenCalled();
+  Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
+    configurable: true,
+    value: origGetContext,
+  });
+  Object.defineProperty(HTMLCanvasElement.prototype, 'toBlob', {
+    configurable: true,
+    value: origToBlob,
+  });
+  jest.useRealTimers();
 });
