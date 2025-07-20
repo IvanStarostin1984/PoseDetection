@@ -36,7 +36,7 @@ export function drawSkeleton(
   videoHeight: number,
 ): void {
   const scale = typeof (ctx as any).getTransform === 'function'
-    ? (ctx as any).getTransform().a || 1
+    ? Math.abs((ctx as any).getTransform().a) || 1
     : 1;
   ctx.strokeStyle = 'lime';
   ctx.lineWidth = 2 / scale;

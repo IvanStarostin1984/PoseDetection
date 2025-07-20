@@ -184,3 +184,5 @@
       overlay scaling.
 - [x] Set `ctx.lineWidth` only in `drawSkeleton` and remove duplicate call from
       `PoseViewer`. Add test for scale handling.
+- [x] Use absolute scale from `getTransform` in `drawSkeleton` and ensure
+      positive line width.

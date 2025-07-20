@@ -1561,7 +1561,7 @@ TODO logs the task.
 - **Motivation / Decision**: ensure consistent rendering after canvas resizes and
   simplify poseDrawing logic.
 
-### 2025-07-20  ctx.lineWidth cleanup
+### 2025-07-20  PR #201
 
 - **Summary**: converted normalized landmarks to pixels in `drawSkeleton` and
   applied line width scaling in `PoseViewer`. Updated docs and tests.
@@ -1569,10 +1569,18 @@ TODO logs the task.
 - **Motivation / Decision**: fix incorrect overlay coordinates when using
   intrinsic video dimensions.
 
-### 2025-07-20
+### 2025-07-20  PR #202
 
 - **Summary**: removed line width assignment from `PoseViewer` and added a unit
   test verifying `drawSkeleton` handles scaling. Reason: avoid redundant
   `ctx.lineWidth` calls.
 - **Stage**: implementation
 - **Motivation / Decision**: keep drawing logic localized in `drawSkeleton`.
+
+### 2025-07-20  PR #203
+
+- **Summary**: use absolute scale from `getTransform` so line width stays
+  positive when mirroring. Added test.
+- **Stage**: implementation
+- **Motivation / Decision**: ensure overlay drawing works after `ctx.scale(-1,1)`.
+- **Next step**: none.

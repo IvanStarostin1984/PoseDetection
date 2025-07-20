@@ -60,4 +60,15 @@ test('drawSkeleton sets line width based on transform scale', () => {
   ctx.getTransform = () => ({ a: 0.5 } as DOMMatrix);
   drawSkeleton(ctx, [], 100, 100);
   expect(ctx.lineWidth).toBeCloseTo(4);
+
+test('lineWidth remains positive when context is mirrored', () => {
+  const ctx = makeCtx();
+  let transform = { a: 1 };
+  (ctx as any).getTransform = () => transform;
+  (ctx as any).scale = (x: number, y: number) => {
+    transform = { a: transform.a * x };
+  };
+  (ctx as any).scale(-1, 1);
+  drawSkeleton(ctx, [{ x: 0, y: 0 }], 100, 100);
+  expect(ctx.lineWidth).toBeGreaterThan(0);
 });
