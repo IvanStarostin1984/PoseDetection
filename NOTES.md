@@ -1526,7 +1526,13 @@ TODO logs the task.
 - **Motivation / Decision**: keep README in sync with the scaling code.
 - **Next step**: none.
 
-### 2025-07-20 PR #196
+### 2025-07-20  PR #196
+
+- **Summary**: added test for mirroring via getComputedStyle.
+- **Stage**: testing
+- **Motivation / Decision**: verify overlay handles flipped video.
+
+### 2025-07-20 PR #197
 
 - **Summary**: documented `alignCanvasToVideo` and `drawSkeleton` with
   JSDoc comments. Updated README to match canvas resizing.
@@ -1534,13 +1540,13 @@ TODO logs the task.
 - **Motivation / Decision**: help contributors understand overlay sizing
   and keep docs consistent with code.
 
-### 2025-07-20  PR #197
+### 2025-07-20  PR #198
 
 - **Summary**: ticked overlay scaling refactor in TODO.
 - **Stage**: documentation
 - **Motivation / Decision**: refactor completed earlier; marked roadmap done.
 
-### 2025-07-20  PR #198
+### 2025-07-20  PR #199
 
 - **Summary**: clarified that `alignCanvasToVideo` only sizes the canvas using `devicePixelRatio`.
 - **Stage**: documentation
