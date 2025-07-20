@@ -1,4 +1,4 @@
-# TODO – Road‑map (last updated: 2025-07-19)
+# TODO – Road‑map (last updated: 2025-07-20)
 
 > *Record only high‑level milestones here; break micro‑tasks out into Issues.*
 > **When you finish a task, tick it and append a short NOTE entry
@@ -174,3 +174,4 @@
 - [x] Serve static files after defining routes so WebSocket connections work.
 - [x] Receive JPEG frames from clients over `/pose` WebSocket and decode them server-side.
 - [x] Send webcam frames as JPEG blobs over WebSocket.
+- [ ] Remove fixed height from .pose-container so metrics show below the video.
