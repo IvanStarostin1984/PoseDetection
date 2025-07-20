@@ -95,7 +95,11 @@ const PoseViewer: React.FC = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
     ctx.save();
-    ctx.scale(canvas.width / video.videoWidth, canvas.height / video.videoHeight);
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const sx = canvas.width / video.videoWidth;
+    const sy = canvas.height / video.videoHeight;
+    ctx.scale(sx, sy);
     const transform = getComputedStyle(video).transform;
     if (transform.startsWith('matrix(-1')) {
       ctx.translate(video.videoWidth, 0);
