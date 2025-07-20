@@ -1525,3 +1525,10 @@ TODO logs the task.
 - **Stage**: documentation
 - **Motivation / Decision**: keep README in sync with the scaling code.
 - **Next step**: none.
+
+### 2025-07-20  PR #196
+
+- **Summary**: added test for mirroring via getComputedStyle.
+- **Stage**: testing
+- **Motivation / Decision**: verify overlay handles flipped video.
+- **Next step**: none.

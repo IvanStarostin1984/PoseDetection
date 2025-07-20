@@ -121,6 +121,70 @@ test('canvas matches video dimensions after metadata loads', async () => {
   HTMLVideoElement.prototype.getBoundingClientRect = origRect;
 });
 
+test('mirrors context when video transform flips horizontally', async () => {
+  const { stream } = mockMedia();
+  const ctx: any = {
+    canvas: null,
+    drawImage: jest.fn(),
+    clearRect: jest.fn(),
+    beginPath: jest.fn(),
+    moveTo: jest.fn(),
+    lineTo: jest.fn(),
+    stroke: jest.fn(),
+    arc: jest.fn(),
+    fill: jest.fn(),
+    save: jest.fn(),
+    restore: jest.fn(),
+    scale: jest.fn(),
+    translate: jest.fn(),
+  };
+  const origGetContext = HTMLCanvasElement.prototype.getContext;
+  Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
+    configurable: true,
+    value: function () {
+      ctx.canvas = this as HTMLCanvasElement;
+      return ctx;
+    },
+  });
+  const origRect = HTMLVideoElement.prototype.getBoundingClientRect;
+  HTMLVideoElement.prototype.getBoundingClientRect = () => ({
+    width: 100,
+    height: 50,
+  } as DOMRect);
+  let setPose: (p: any) => void = () => {};
+  mockWS.mockImplementation(() => {
+    const [poseData, setData] = require('react').useState(null);
+    setPose = setData;
+    return { poseData, status: 'open', error: null, close: jest.fn(), send: jest.fn() };
+  });
+  const spy = jest
+    .spyOn(window, 'getComputedStyle')
+    .mockReturnValue({ transform: 'matrix(-1, 0, 0, 1, 0, 0)' } as CSSStyleDeclaration);
+  const PoseViewer = require('../components/PoseViewer').default;
+  const { container } = render(<PoseViewer />);
+  const video = container.querySelector('video') as HTMLVideoElement;
+  await waitFor(() => {
+    expect(video.srcObject).toBe(stream);
+  });
+  Object.defineProperty(video, 'videoWidth', { value: 100 });
+  Object.defineProperty(video, 'videoHeight', { value: 50 });
+  fireEvent(video, new Event('loadedmetadata'));
+  resizeCb([] as any, {} as ResizeObserver);
+  require('@testing-library/react').act(() => {
+    setPose({ landmarks: [], metrics: { balance: 0, pose_class: '', knee_angle: 0, posture_angle: 0 } });
+  });
+  await waitFor(() => {
+    expect(ctx.translate).toHaveBeenCalledWith(100, 0);
+    expect(ctx.scale).toHaveBeenCalledWith(-1, 1);
+  });
+  spy.mockRestore();
+  Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
+    configurable: true,
+    value: origGetContext,
+  });
+  HTMLVideoElement.prototype.getBoundingClientRect = origRect;
+});
+
 test('scales context when rect size differs from video size', async () => {
   const { stream } = mockMedia();
   const ctx: any = {
