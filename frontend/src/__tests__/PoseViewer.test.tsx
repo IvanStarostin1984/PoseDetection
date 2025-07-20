@@ -48,8 +48,6 @@ beforeEach(() => {
         restore: jest.fn(),
         scale: jest.fn(),
         translate: jest.fn(),
-        setTransform: jest.fn(),
-        scale: jest.fn(),
       } as unknown as CanvasRenderingContext2D;
     },
   });
@@ -125,7 +123,8 @@ test('canvas matches video dimensions after metadata loads', async () => {
 
 test('scales context when rect size differs from video size', async () => {
   const { stream } = mockMedia();
-  const ctx = {
+  const ctx: any = {
+    canvas: null,
     drawImage: jest.fn(),
     clearRect: jest.fn(),
     beginPath: jest.fn(),
@@ -134,13 +133,16 @@ test('scales context when rect size differs from video size', async () => {
     stroke: jest.fn(),
     arc: jest.fn(),
     fill: jest.fn(),
-    setTransform: jest.fn(),
+    save: jest.fn(),
+    restore: jest.fn(),
     scale: jest.fn(),
-  } as unknown as CanvasRenderingContext2D;
+    translate: jest.fn(),
+  };
   const origGetContext = HTMLCanvasElement.prototype.getContext;
   Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
     configurable: true,
     value: function () {
+      ctx.canvas = this as HTMLCanvasElement;
       return ctx;
     },
   });
@@ -149,6 +151,12 @@ test('scales context when rect size differs from video size', async () => {
     width: 100,
     height: 50,
   } as DOMRect);
+  let setPose: (p: any) => void = () => {};
+  mockWS.mockImplementation(() => {
+    const [poseData, setData] = require('react').useState(null);
+    setPose = setData;
+    return { poseData, status: 'open', error: null, close: jest.fn(), send: jest.fn() };
+  });
   const PoseViewer = require('../components/PoseViewer').default;
   const { container } = render(<PoseViewer />);
   const video = container.querySelector('video') as HTMLVideoElement;
@@ -159,10 +167,15 @@ test('scales context when rect size differs from video size', async () => {
   Object.defineProperty(video, 'videoWidth', { value: 400 });
   Object.defineProperty(video, 'videoHeight', { value: 200 });
   fireEvent(video, new Event('loadedmetadata'));
+  resizeCb([] as any, {} as ResizeObserver);
+  require('@testing-library/react').act(() => {
+    setPose({ landmarks: [], metrics: { balance: 0, pose_class: '', knee_angle: 0, posture_angle: 0 } });
+  });
   await waitFor(() => {
     expect(canvas.width).toBe(200);
     expect(canvas.height).toBe(100);
-    expect(ctx.setTransform).toHaveBeenCalledWith(0.5, 0, 0, 0.5, 0, 0);
+    expect(ctx.save).toHaveBeenCalled();
+    expect(ctx.scale).toHaveBeenCalledWith(0.5, 0.5);
   });
   Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
     configurable: true,
@@ -247,27 +260,14 @@ test('sends frames over WebSocket', async () => {
     stroke: jest.fn(),
     arc: jest.fn(),
     fill: jest.fn(),
-    setTransform: jest.fn(),
     scale: jest.fn(),
+    save: jest.fn(),
+    restore: jest.fn(),
+    translate: jest.fn(),
   };
   Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
     configurable: true,
     value: function () {
-      return {
-        canvas: this,
-        drawImage: jest.fn(),
-        clearRect: jest.fn(),
-        beginPath: jest.fn(),
-        moveTo: jest.fn(),
-        lineTo: jest.fn(),
-        stroke: jest.fn(),
-        arc: jest.fn(),
-        fill: jest.fn(),
-        save: jest.fn(),
-        restore: jest.fn(),
-        scale: jest.fn(),
-        translate: jest.fn(),
-      } as unknown as CanvasRenderingContext2D;
       ctx.canvas = this as HTMLCanvasElement;
       return ctx as CanvasRenderingContext2D;
     },
@@ -288,11 +288,14 @@ test('sends frames over WebSocket', async () => {
   Object.defineProperty(video, 'videoHeight', { value: 1 });
   fireEvent(video, new Event('loadedmetadata'));
   resizeCb([] as any, {} as ResizeObserver);
-  await waitFor(() => {
-    expect(canvas.width).toBe(2);
-    expect(canvas.height).toBe(2);
-    expect(ctx.setTransform).toHaveBeenCalledWith(2, 0, 0, 2, 0, 0);
+  require('@testing-library/react').act(() => {
+    setPose({ landmarks: [], metrics: { balance: 0, pose_class: '', knee_angle: 0, posture_angle: 0 } });
   });
+  jest.advanceTimersByTime(100);
+  expect(ctx.save).toHaveBeenCalled();
+  expect(ctx.scale).toHaveBeenCalledWith(2, 2);
+  expect(canvas.width).toBe(2);
+  expect(canvas.height).toBe(2);
   rect.width = 2;
   rect.height = 2;
   resizeCb([] as any, {} as ResizeObserver);
@@ -302,7 +305,7 @@ test('sends frames over WebSocket', async () => {
   jest.advanceTimersByTime(100);
   expect(canvas.width).toBe(4);
   expect(canvas.height).toBe(4);
-  expect(ctx.setTransform).toHaveBeenLastCalledWith(4, 0, 0, 4, 0, 0);
+  expect(ctx.scale).toHaveBeenLastCalledWith(4, 4);
   expect(send).toHaveBeenCalled();
   Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
     configurable: true,
