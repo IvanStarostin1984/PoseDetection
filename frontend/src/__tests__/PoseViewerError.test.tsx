@@ -7,7 +7,17 @@ jest.mock('../hooks/useWebSocket', () => ({
   default: () => ({ poseData: null, status: 'open', error: 'failed to parse', send: jest.fn() }),
 }));
 
+let resizeCb: ResizeObserverCallback;
+class MockRO {
+  observe = jest.fn();
+  disconnect = jest.fn();
+  constructor(cb: ResizeObserverCallback) {
+    resizeCb = cb;
+  }
+}
+
 beforeEach(() => {
+  (global as any).ResizeObserver = MockRO as unknown as typeof ResizeObserver;
   Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
     configurable: true,
     value: function () {
@@ -21,6 +31,10 @@ beforeEach(() => {
         stroke: jest.fn(),
         arc: jest.fn(),
         fill: jest.fn(),
+        save: jest.fn(),
+        restore: jest.fn(),
+        scale: jest.fn(),
+        translate: jest.fn(),
       } as unknown as CanvasRenderingContext2D;
     },
   });
@@ -33,6 +47,7 @@ beforeEach(() => {
 afterEach(() => {
   delete (HTMLCanvasElement.prototype as any).getContext;
   delete (HTMLCanvasElement.prototype as any).toBlob;
+  delete (global as any).ResizeObserver;
 });
 
 test('renders WebSocket error message', () => {

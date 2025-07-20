@@ -20,12 +20,6 @@ const PoseViewer: React.FC = () => {
   const [cameraError, setCameraError] = useState<string | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
   const offscreenRef = useRef<HTMLCanvasElement>(document.createElement('canvas'));
-  const resizeCanvas = () => {
-    const video = videoRef.current;
-    const canvas = canvasRef.current;
-    if (!video || !canvas) return;
-    alignCanvasToVideo(video, canvas);
-  };
 
   useEffect(() => {
     const video = videoRef.current;
@@ -46,6 +40,20 @@ const PoseViewer: React.FC = () => {
 
   useEffect(() => {
     const video = videoRef.current;
+    const canvas = canvasRef.current;
+    if (!video || !canvas) return;
+    const align = () => alignCanvasToVideo(video, canvas);
+    const observer = new ResizeObserver(align);
+    observer.observe(video);
+    video.addEventListener('loadedmetadata', align);
+    return () => {
+      observer.disconnect();
+      video.removeEventListener('loadedmetadata', align);
+    };
+  }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
     if (!video) return;
     let cancel = false;
     if (streaming) {
@@ -59,7 +67,6 @@ const PoseViewer: React.FC = () => {
           }
           video.srcObject = stream;
           streamRef.current = stream;
-          video.addEventListener('loadedmetadata', resizeCanvas, { once: true });
         })
         .catch(() => {
           setCameraError('Webcam access denied');
@@ -72,7 +79,6 @@ const PoseViewer: React.FC = () => {
     }
     return () => {
       cancel = true;
-      video.removeEventListener('loadedmetadata', resizeCanvas);
       if (streamRef.current) {
         streamRef.current.getTracks().forEach((t) => t.stop());
         video.srcObject = null;
@@ -86,10 +92,17 @@ const PoseViewer: React.FC = () => {
     const canvas = canvasRef.current;
     const video = videoRef.current;
     if (!canvas || !video || !poseData) return;
-    alignCanvasToVideo(video, canvas);
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    ctx.save();
+    ctx.scale(canvas.width / video.videoWidth, canvas.height / video.videoHeight);
+    const transform = getComputedStyle(video).transform;
+    if (transform.startsWith('matrix(-1')) {
+      ctx.translate(video.videoWidth, 0);
+      ctx.scale(-1, 1);
+    }
     drawSkeleton(ctx, poseData.landmarks);
+    ctx.restore();
   }, [poseData]);
 
   return (

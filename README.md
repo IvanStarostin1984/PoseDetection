@@ -160,9 +160,11 @@ button toggles streaming on and off. Stopping the webcam also closes the
 WebSocket connection. It calls `setStreaming(!streaming)` in
 [`PoseViewer.tsx`](frontend/src/components/PoseViewer.tsx). A canvas overlay
 draws lines between keypoints to show the pose skeleton. The helper
-`alignCanvasToVideo` reads `video.getBoundingClientRect()` and updates the
-canvas so it always covers the visible video area. It runs once after the
-`loadedmetadata` event and before each frame is drawn. The surrounding
+`alignCanvasToVideo` multiplies the video bounds by
+`window.devicePixelRatio` so the overlay stays crisp. A `ResizeObserver`
+updates the canvas after `loadedmetadata` and whenever the video element
+resizes. When drawing, PoseViewer scales the context from the actual video
+size and flips horizontally if the video is mirrored. The surrounding
 `.pose-container` is styled so the canvas and video stack on top of each other.
 The container does not set a fixed height so the metrics panel renders below
 the video overlay.

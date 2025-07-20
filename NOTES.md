@@ -1482,3 +1482,12 @@ TODO logs the task.
 - **Motivation / Decision**: ensure the overlay resizes correctly when the video
   element scales, matching new TODO item.
 - **Next step**: none.
+
+### 2025-07-21  PR #zzz
+
+- **Summary**: canvas overlay now respects device pixel ratio and handles
+  mirroring via `ResizeObserver` in PoseViewer. Updated tests and README.
+- **Stage**: implementation
+- **Motivation / Decision**: improve drawing quality on high‑DPI screens and
+  avoid resizing work on every frame.
+- **Next step**: none.

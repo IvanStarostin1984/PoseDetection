@@ -3,8 +3,9 @@ export default function alignCanvasToVideo(
   canvas: HTMLCanvasElement,
 ): void {
   const rect = video.getBoundingClientRect();
-  canvas.width = rect.width;
-  canvas.height = rect.height;
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
   canvas.style.width = `${rect.width}px`;
   canvas.style.height = `${rect.height}px`;
 }

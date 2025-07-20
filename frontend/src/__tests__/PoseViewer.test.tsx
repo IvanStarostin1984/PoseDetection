@@ -5,7 +5,17 @@ import useWebSocket from '../hooks/useWebSocket';
 jest.mock('../hooks/useWebSocket');
 const mockWS = useWebSocket as jest.Mock;
 
+let resizeCb: ResizeObserverCallback;
+class MockRO {
+  observe = jest.fn();
+  disconnect = jest.fn();
+  constructor(cb: ResizeObserverCallback) {
+    resizeCb = cb;
+  }
+}
+
 beforeEach(() => {
+  (global as any).ResizeObserver = MockRO as unknown as typeof ResizeObserver;
   mockWS.mockReturnValue({
     poseData: null,
     status: 'open',
@@ -26,6 +36,10 @@ beforeEach(() => {
         stroke: jest.fn(),
         arc: jest.fn(),
         fill: jest.fn(),
+        save: jest.fn(),
+        restore: jest.fn(),
+        scale: jest.fn(),
+        translate: jest.fn(),
       } as unknown as CanvasRenderingContext2D;
     },
   });
@@ -38,6 +52,7 @@ beforeEach(() => {
 afterEach(() => {
   delete (HTMLCanvasElement.prototype as any).getContext;
   delete (HTMLCanvasElement.prototype as any).toBlob;
+  delete (global as any).ResizeObserver;
 });
 
 class FakeStream {
@@ -82,6 +97,7 @@ test('canvas matches video dimensions after metadata loads', async () => {
     expect(video.srcObject).toBe(stream);
   });
   fireEvent(video, new Event('loadedmetadata'));
+  resizeCb([] as any, {} as ResizeObserver);
   await waitFor(() => {
     expect(canvas.width).toBe(320);
     expect(canvas.height).toBe(240);
@@ -168,6 +184,10 @@ test('sends frames over WebSocket', async () => {
         stroke: jest.fn(),
         arc: jest.fn(),
         fill: jest.fn(),
+        save: jest.fn(),
+        restore: jest.fn(),
+        scale: jest.fn(),
+        translate: jest.fn(),
       } as unknown as CanvasRenderingContext2D;
     },
   });
@@ -186,12 +206,14 @@ test('sends frames over WebSocket', async () => {
   Object.defineProperty(video, 'videoWidth', { value: 1 });
   Object.defineProperty(video, 'videoHeight', { value: 1 });
   fireEvent(video, new Event('loadedmetadata'));
+  resizeCb([] as any, {} as ResizeObserver);
   await waitFor(() => {
     expect(canvas.width).toBe(1);
     expect(canvas.height).toBe(1);
   });
   rect.width = 2;
   rect.height = 2;
+  resizeCb([] as any, {} as ResizeObserver);
   require('@testing-library/react').act(() => {
     setPose({ landmarks: [], metrics: { balance: 0, pose_class: '', knee_angle: 0, posture_angle: 0 } });
   });
