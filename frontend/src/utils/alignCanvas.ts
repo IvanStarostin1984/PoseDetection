@@ -1,3 +1,9 @@
+/**
+ * Resize `canvas` so it matches the size of `video`.
+ * Uses the device pixel ratio to keep drawings crisp.
+ * @param video Video element used for sizing.
+ * @param canvas Canvas to resize.
+ */
 export default function alignCanvasToVideo(
   video: HTMLVideoElement,
   canvas: HTMLCanvasElement,

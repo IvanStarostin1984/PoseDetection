@@ -21,6 +21,14 @@ export const EDGES: [number, number][] = [
   [14, 16],
 ];
 
+/**
+ * Draw pose landmarks and edges on a canvas.
+ * Clears the context before drawing.
+ * @param ctx Canvas context used for drawing.
+ * @param landmarks Normalized landmark array.
+ * @param videoWidth Width of the source video in pixels.
+ * @param videoHeight Height of the source video in pixels.
+ */
 export function drawSkeleton(
   ctx: CanvasRenderingContext2D,
   landmarks: Point[],
