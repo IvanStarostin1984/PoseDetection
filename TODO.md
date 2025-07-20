@@ -180,3 +180,5 @@
 - [x] Scale pose drawing context during render instead of via
       `alignCanvasToVideo`.
 - [x] Refactor overlay scaling logic and update tests accordingly.
+- [x] Convert normalized landmarks to pixels in `drawSkeleton` for accurate
+      overlay scaling.

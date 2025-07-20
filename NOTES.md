@@ -1553,10 +1553,18 @@ TODO logs the task.
 - **Motivation / Decision**: drop transform reference so README matches code.
 - **Next step**: none.
 
-### 2025-07-20
+### 2025-07-20  PR #200
 
 - **Summary**: reset overlay transform before scaling and removed scaling from
   `drawSkeleton`. Updated tests accordingly.
 - **Stage**: implementation
 - **Motivation / Decision**: ensure consistent rendering after canvas resizes and
   simplify poseDrawing logic.
+
+### 2025-07-20
+
+- **Summary**: converted normalized landmarks to pixels in `drawSkeleton` and
+  applied line width scaling in `PoseViewer`. Updated docs and tests.
+- **Stage**: implementation
+- **Motivation / Decision**: fix incorrect overlay coordinates when using
+  intrinsic video dimensions.

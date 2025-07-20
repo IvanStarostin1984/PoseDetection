@@ -1,9 +1,12 @@
 import { render, waitFor, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import useWebSocket from '../hooks/useWebSocket';
+import { drawSkeleton } from '../utils/poseDrawing';
 
 jest.mock('../hooks/useWebSocket');
+jest.mock('../utils/poseDrawing');
 const mockWS = useWebSocket as jest.Mock;
+const mockDraw = drawSkeleton as jest.Mock;
 
 let resizeCb: ResizeObserverCallback;
 class MockRO {
@@ -44,6 +47,8 @@ beforeEach(() => {
         stroke: jest.fn(),
         arc: jest.fn(),
         fill: jest.fn(),
+        lineWidth: 0,
+        getTransform: () => ({ a: 1 }),
         save: jest.fn(),
         setTransform: jest.fn(),
         restore: jest.fn(),
@@ -62,6 +67,7 @@ afterEach(() => {
   delete (HTMLCanvasElement.prototype as any).getContext;
   delete (HTMLCanvasElement.prototype as any).toBlob;
   delete (global as any).ResizeObserver;
+  mockDraw.mockReset();
   if (origDevicePixelRatio === undefined) {
     delete (window as any).devicePixelRatio;
   } else {
@@ -134,6 +140,8 @@ test('mirrors context when video transform flips horizontally', async () => {
     stroke: jest.fn(),
     arc: jest.fn(),
     fill: jest.fn(),
+    lineWidth: 0,
+    getTransform: () => ({ a: 1 }),
     save: jest.fn(),
     setTransform: jest.fn(),
     restore: jest.fn(),
@@ -178,6 +186,11 @@ test('mirrors context when video transform flips horizontally', async () => {
   await waitFor(() => {
     expect(ctx.translate).toHaveBeenCalledWith(100, 0);
     expect(ctx.scale).toHaveBeenCalledWith(-1, 1);
+    expect(mockDraw).toHaveBeenCalled();
+    const call = mockDraw.mock.calls[0];
+    expect(call[2]).toBe(100);
+    expect(call[3]).toBe(50);
+    expect(ctx.lineWidth).toBeCloseTo(1);
   });
   spy.mockRestore();
   Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
@@ -199,6 +212,8 @@ test('scales context when rect size differs from video size', async () => {
     stroke: jest.fn(),
     arc: jest.fn(),
     fill: jest.fn(),
+    lineWidth: 0,
+    getTransform: () => ({ a: 1 }),
     save: jest.fn(),
     setTransform: jest.fn(),
     restore: jest.fn(),
@@ -243,6 +258,7 @@ test('scales context when rect size differs from video size', async () => {
     expect(canvas.height).toBe(100);
     expect(ctx.save).toHaveBeenCalled();
     expect(ctx.scale).toHaveBeenCalledWith(0.5, 0.5);
+    expect(ctx.lineWidth).toBeCloseTo(4);
   });
   Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
     configurable: true,
@@ -327,6 +343,8 @@ test('sends frames over WebSocket', async () => {
     stroke: jest.fn(),
     arc: jest.fn(),
     fill: jest.fn(),
+    lineWidth: 0,
+    getTransform: () => ({ a: 1 }),
     scale: jest.fn(),
     save: jest.fn(),
     setTransform: jest.fn(),

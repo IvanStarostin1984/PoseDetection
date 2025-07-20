@@ -12,6 +12,10 @@ The pose detector outputs 17 landmarks in the following order:
 ``left_wrist``, ``right_wrist``, ``left_hip``, ``right_hip``, ``left_knee``,
 ``right_knee``, ``left_ankle`` and ``right_ankle``.
 
+The landmark coordinates are normalized between 0 and 1. When drawing the
+pose skeleton these values are multiplied by the video's width and height to
+obtain pixel positions.
+
 ## Backend analytics
 
 The backend exposes a WebSocket endpoint at `/pose`. The browser captures
