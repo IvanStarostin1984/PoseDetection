@@ -94,14 +94,20 @@ const PoseViewer: React.FC = () => {
     if (!canvas || !video || !poseData) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    const sx = canvas.width / video.videoWidth;
+    const sy = canvas.height / video.videoHeight;
     ctx.save();
-    ctx.scale(canvas.width / video.videoWidth, canvas.height / video.videoHeight);
+    ctx.scale(sx, sy);
     const transform = getComputedStyle(video).transform;
     if (transform.startsWith('matrix(-1')) {
       ctx.translate(video.videoWidth, 0);
       ctx.scale(-1, 1);
     }
-    drawSkeleton(ctx, poseData.landmarks, video.videoWidth, video.videoHeight);
+    const px = poseData.landmarks.map((p) => ({
+      x: p.x * video.videoWidth,
+      y: p.y * video.videoHeight,
+    }));
+    drawSkeleton(ctx, px);
     ctx.restore();
   }, [poseData]);
 

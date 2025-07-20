@@ -25,17 +25,17 @@ export const EDGES: [number, number][] = [
  * Draw pose landmarks and edges on a canvas.
  * Clears the context before drawing.
  * @param ctx Canvas context used for drawing.
- * @param landmarks Normalized landmark array.
- * @param videoWidth Width of the source video in pixels.
- * @param videoHeight Height of the source video in pixels.
+ * @param landmarks Landmark array in pixel units.
  */
 export function drawSkeleton(
   ctx: CanvasRenderingContext2D,
   landmarks: Point[],
-  videoWidth: number,
-  videoHeight: number,
 ): void {
+  ctx.save();
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+  ctx.restore();
+
   ctx.strokeStyle = 'lime';
   ctx.lineWidth = 2;
   for (const [a, b] of EDGES) {
@@ -43,14 +43,14 @@ export function drawSkeleton(
     const pb = landmarks[b];
     if (!pa || !pb) continue;
     ctx.beginPath();
-    ctx.moveTo(pa.x * videoWidth, pa.y * videoHeight);
-    ctx.lineTo(pb.x * videoWidth, pb.y * videoHeight);
+    ctx.moveTo(pa.x, pa.y);
+    ctx.lineTo(pb.x, pb.y);
     ctx.stroke();
   }
   ctx.fillStyle = 'red';
   for (const p of landmarks) {
     ctx.beginPath();
-    ctx.arc(p.x * videoWidth, p.y * videoHeight, 4, 0, Math.PI * 2);
+    ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
     ctx.fill();
   }
 }

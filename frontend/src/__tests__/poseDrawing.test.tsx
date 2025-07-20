@@ -13,26 +13,29 @@ const makeCtx = () => {
     fillStyle: '',
     strokeStyle: '',
     lineWidth: 0,
+    setTransform: jest.fn(),
+    save: jest.fn(),
+    restore: jest.fn(),
   } as unknown as CanvasRenderingContext2D;
 };
 
 test('drawSkeleton connects edge landmarks', () => {
   const ctx = makeCtx();
   const landmarks: Point[] = Array.from({ length: 17 }, (_, i) => ({
-    x: i / 100,
-    y: i / 100,
+    x: i,
+    y: i,
   }));
-  drawSkeleton(ctx, landmarks, 100, 100);
+  drawSkeleton(ctx, landmarks);
   expect(ctx.lineTo).toHaveBeenCalledTimes(EDGES.length);
   EDGES.forEach((edge, i) => {
     const s = landmarks[edge[0]];
     const e = landmarks[edge[1]];
     const m = (ctx.moveTo as jest.Mock).mock.calls[i];
     const l = (ctx.lineTo as jest.Mock).mock.calls[i];
-    expect(m[0]).toBeCloseTo(s.x * 100);
-    expect(m[1]).toBeCloseTo(s.y * 100);
-    expect(l[0]).toBeCloseTo(e.x * 100);
-    expect(l[1]).toBeCloseTo(e.y * 100);
+    expect(m[0]).toBeCloseTo(s.x);
+    expect(m[1]).toBeCloseTo(s.y);
+    expect(l[0]).toBeCloseTo(e.x);
+    expect(l[1]).toBeCloseTo(e.y);
   });
 });
 

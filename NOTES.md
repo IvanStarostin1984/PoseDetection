@@ -1552,3 +1552,9 @@ TODO logs the task.
 - **Stage**: documentation
 - **Motivation / Decision**: drop transform reference so README matches code.
 - **Next step**: none.
+\n### 2025-07-20
+- **Summary**: drawSkeleton resets transform before clearing and uses pixel
+  coordinates. PoseViewer maps normalized points to pixels. Tests cover the new
+  behavior.
+- **Stage**: tests
+- **Motivation / Decision**: clearer overlay scaling and pixel-based drawing.

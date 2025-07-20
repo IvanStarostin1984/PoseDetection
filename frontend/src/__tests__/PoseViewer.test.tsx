@@ -48,6 +48,7 @@ beforeEach(() => {
         restore: jest.fn(),
         scale: jest.fn(),
         translate: jest.fn(),
+        setTransform: jest.fn(),
       } as unknown as CanvasRenderingContext2D;
     },
   });
@@ -137,6 +138,7 @@ test('mirrors context when video transform flips horizontally', async () => {
     restore: jest.fn(),
     scale: jest.fn(),
     translate: jest.fn(),
+    setTransform: jest.fn(),
   };
   const origGetContext = HTMLCanvasElement.prototype.getContext;
   Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
@@ -176,6 +178,12 @@ test('mirrors context when video transform flips horizontally', async () => {
   await waitFor(() => {
     expect(ctx.translate).toHaveBeenCalledWith(100, 0);
     expect(ctx.scale).toHaveBeenCalledWith(-1, 1);
+    expect(ctx.scale).toHaveBeenCalledTimes(2);
+    expect((ctx.scale as jest.Mock).mock.calls[0]).toEqual([2, 2]);
+    expect(ctx.setTransform).toHaveBeenCalledWith(1, 0, 0, 1, 0, 0);
+    const st = (ctx.setTransform as jest.Mock).mock.invocationCallOrder[0];
+    const clr = (ctx.clearRect as jest.Mock).mock.invocationCallOrder[0];
+    expect(st).toBeLessThan(clr);
   });
   spy.mockRestore();
   Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
@@ -201,6 +209,7 @@ test('scales context when rect size differs from video size', async () => {
     restore: jest.fn(),
     scale: jest.fn(),
     translate: jest.fn(),
+    setTransform: jest.fn(),
   };
   const origGetContext = HTMLCanvasElement.prototype.getContext;
   Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
@@ -239,7 +248,12 @@ test('scales context when rect size differs from video size', async () => {
     expect(canvas.width).toBe(200);
     expect(canvas.height).toBe(100);
     expect(ctx.save).toHaveBeenCalled();
+    expect(ctx.scale).toHaveBeenCalledTimes(1);
     expect(ctx.scale).toHaveBeenCalledWith(0.5, 0.5);
+    expect(ctx.setTransform).toHaveBeenCalledWith(1, 0, 0, 1, 0, 0);
+    const st = (ctx.setTransform as jest.Mock).mock.invocationCallOrder[0];
+    const clr = (ctx.clearRect as jest.Mock).mock.invocationCallOrder[0];
+    expect(st).toBeLessThan(clr);
   });
   Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
     configurable: true,
@@ -328,6 +342,7 @@ test('sends frames over WebSocket', async () => {
     save: jest.fn(),
     restore: jest.fn(),
     translate: jest.fn(),
+    setTransform: jest.fn(),
   };
   Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
     configurable: true,
@@ -358,6 +373,11 @@ test('sends frames over WebSocket', async () => {
   jest.advanceTimersByTime(100);
   expect(ctx.save).toHaveBeenCalled();
   expect(ctx.scale).toHaveBeenCalledWith(2, 2);
+  expect(ctx.scale).toHaveBeenCalledTimes(1);
+  expect(ctx.setTransform).toHaveBeenCalledWith(1, 0, 0, 1, 0, 0);
+  const st1 = (ctx.setTransform as jest.Mock).mock.invocationCallOrder[0];
+  const clr1 = (ctx.clearRect as jest.Mock).mock.invocationCallOrder[0];
+  expect(st1).toBeLessThan(clr1);
   expect(canvas.width).toBe(2);
   expect(canvas.height).toBe(2);
   rect.width = 2;
@@ -370,6 +390,10 @@ test('sends frames over WebSocket', async () => {
   expect(canvas.width).toBe(4);
   expect(canvas.height).toBe(4);
   expect(ctx.scale).toHaveBeenLastCalledWith(4, 4);
+  expect(ctx.scale).toHaveBeenCalledTimes(2);
+  const st2 = (ctx.setTransform as jest.Mock).mock.invocationCallOrder[1];
+  const clr2 = (ctx.clearRect as jest.Mock).mock.invocationCallOrder[1];
+  expect(st2).toBeLessThan(clr2);
   expect(send).toHaveBeenCalled();
   Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
     configurable: true,
