@@ -32,25 +32,28 @@ export const EDGES: [number, number][] = [
 export function drawSkeleton(
   ctx: CanvasRenderingContext2D,
   landmarks: Point[],
-  _videoWidth: number,
-  _videoHeight: number,
+  videoWidth: number,
+  videoHeight: number,
 ): void {
-  ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+  const scale = typeof (ctx as any).getTransform === 'function'
+    ? (ctx as any).getTransform().a || 1
+    : 1;
   ctx.strokeStyle = 'lime';
-  ctx.lineWidth = 2;
+  ctx.lineWidth = 2 / scale;
   for (const [a, b] of EDGES) {
     const pa = landmarks[a];
     const pb = landmarks[b];
     if (!pa || !pb) continue;
     ctx.beginPath();
-    ctx.moveTo(pa.x, pa.y);
-    ctx.lineTo(pb.x, pb.y);
+    ctx.moveTo(pa.x * videoWidth, pa.y * videoHeight);
+    ctx.lineTo(pb.x * videoWidth, pb.y * videoHeight);
     ctx.stroke();
   }
   ctx.fillStyle = 'red';
+  const radius = 4 / scale;
   for (const p of landmarks) {
     ctx.beginPath();
-    ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
+    ctx.arc(p.x * videoWidth, p.y * videoHeight, radius, 0, Math.PI * 2);
     ctx.fill();
   }
 }
