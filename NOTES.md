@@ -1503,13 +1503,22 @@ TODO logs the task.
 
 ### 2025-07-20  PR #193
 
+- **Summary**: moved context scaling from `alignCanvasToVideo` into the drawing
+  effect. `alignCanvasToVideo` now only sizes the canvas. Updated pose drawing
+  to use raw video coordinates and adjusted tests accordingly.
+- **Stage**: implementation
+- **Motivation / Decision**: simplify overlay logic and prepare for mirroring
+  detection via `getComputedStyle`.
+
+### 2025-07-20  PR #194
+
 - **Summary**: added TODO item to refactor overlay scaling and update tests.
 - **Stage**: planning
 - **Motivation / Decision**: overlay sizing code is complex; refactor
   for maintainability and test coverage.
 - **Next step**: implement refactor and adjust tests.
 
-- ### 2025-07-21 PR #194
+- ### 2025-07-20 PR #195
 
 - **Summary**: updated PoseViewer docs to explain
   `alignCanvasToVideo` transform setup and device pixel ratio.

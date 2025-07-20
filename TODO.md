@@ -177,5 +177,6 @@
 - [x] Remove fixed height from .pose-container so metrics show below the video.
 - [x] Handle device pixel ratio and mirroring in PoseViewer overlay using a
       ResizeObserver.
-
+- [x] Scale pose drawing context during render instead of via
+      `alignCanvasToVideo`.
 - [ ] Refactor overlay scaling logic and update tests accordingly.

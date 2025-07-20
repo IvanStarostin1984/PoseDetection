@@ -8,9 +8,4 @@ export default function alignCanvasToVideo(
   canvas.height = rect.height * dpr;
   canvas.style.width = `${rect.width}px`;
   canvas.style.height = `${rect.height}px`;
-  const ctx = canvas.getContext('2d');
-  if (!ctx) return;
-  const scaleX = canvas.width / (video.videoWidth || rect.width);
-  const scaleY = canvas.height / (video.videoHeight || rect.height);
-  ctx.setTransform(scaleX, 0, 0, scaleY, 0, 0);
 }

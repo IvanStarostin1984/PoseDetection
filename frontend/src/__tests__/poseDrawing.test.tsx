@@ -22,7 +22,7 @@ test('drawSkeleton connects edge landmarks', () => {
     x: i / 100,
     y: i / 100,
   }));
-  drawSkeleton(ctx, landmarks);
+  drawSkeleton(ctx, landmarks, 100, 100);
   expect(ctx.lineTo).toHaveBeenCalledTimes(EDGES.length);
   EDGES.forEach((edge, i) => {
     const s = landmarks[edge[0]];
