@@ -1526,13 +1526,21 @@ TODO logs the task.
 - **Motivation / Decision**: keep README in sync with the scaling code.
 - **Next step**: none.
 
-### 2025-07-20  PR #196
+### 2025-07-20 PR #196
+
+- **Summary**: documented `alignCanvasToVideo` and `drawSkeleton` with
+  JSDoc comments. Updated README to match canvas resizing.
+- **Stage**: documentation
+- **Motivation / Decision**: help contributors understand overlay sizing
+  and keep docs consistent with code.
+
+### 2025-07-20  PR #197
 
 - **Summary**: ticked overlay scaling refactor in TODO.
 - **Stage**: documentation
 - **Motivation / Decision**: refactor completed earlier; marked roadmap done.
 
-### 2025-07-20  PR #197
+### 2025-07-20  PR #198
 
 - **Summary**: clarified that `alignCanvasToVideo` only sizes the canvas using `devicePixelRatio`.
 - **Stage**: documentation
