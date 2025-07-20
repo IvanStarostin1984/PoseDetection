@@ -55,6 +55,12 @@ test('edges list matches 17-point skeleton', () => {
   expect(EDGES).toEqual(expected);
 });
 
+test('drawSkeleton sets line width based on transform scale', () => {
+  const ctx = makeCtx();
+  ctx.getTransform = () => ({ a: 0.5 } as DOMMatrix);
+  drawSkeleton(ctx, [], 100, 100);
+  expect(ctx.lineWidth).toBeCloseTo(4);
+
 test('lineWidth remains positive when context is mirrored', () => {
   const ctx = makeCtx();
   let transform = { a: 1 };
