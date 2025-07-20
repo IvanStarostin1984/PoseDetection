@@ -1468,6 +1468,7 @@ TODO logs the task.
 - **Next step**: none.
 
 ### 2025-07-20  PR #189
+
 - **Summary**: removed fixed height from .pose-container so metrics panel
   shows below the video overlay; updated README.
 - **Stage**: bugfix
@@ -1498,4 +1499,12 @@ TODO logs the task.
 - **Stage**: implementation
 - **Motivation / Decision**: ensure crisp rendering on high-DPI screens and
   verify scaling logic via Jest.
+- **Next step**: none.
+
+- ### 2025-07-21 PR #193
+
+- **Summary**: updated PoseViewer docs to explain
+  `alignCanvasToVideo` transform setup and device pixel ratio.
+- **Stage**: documentation
+- **Motivation / Decision**: keep README in sync with the scaling code.
 - **Next step**: none.
