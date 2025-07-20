@@ -1568,3 +1568,11 @@ TODO logs the task.
 - **Stage**: implementation
 - **Motivation / Decision**: fix incorrect overlay coordinates when using
   intrinsic video dimensions.
+
+### 2025-07-20  PR #201
+
+- **Summary**: use absolute scale from `getTransform` so line width stays
+  positive when mirroring. Added test.
+- **Stage**: implementation
+- **Motivation / Decision**: ensure overlay drawing works after `ctx.scale(-1,1)`.
+- **Next step**: none.
