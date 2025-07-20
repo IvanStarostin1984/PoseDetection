@@ -1526,9 +1526,15 @@ TODO logs the task.
 - **Motivation / Decision**: keep README in sync with the scaling code.
 - **Next step**: none.
 
-### 2025-07-20  PR #XXX
+### 2025-07-20  PR #196
 
 - **Summary**: ticked overlay scaling refactor in TODO.
 - **Stage**: documentation
 - **Motivation / Decision**: refactor completed earlier; marked roadmap done.
+
+### 2025-07-20  PR #197
+
+- **Summary**: clarified that `alignCanvasToVideo` only sizes the canvas using `devicePixelRatio`.
+- **Stage**: documentation
+- **Motivation / Decision**: drop transform reference so README matches code.
 - **Next step**: none.
