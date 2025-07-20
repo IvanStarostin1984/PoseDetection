@@ -1525,3 +1525,10 @@ TODO logs the task.
 - **Stage**: documentation
 - **Motivation / Decision**: keep README in sync with the scaling code.
 - **Next step**: none.
+
+### 2025-07-20  PR #196
+
+- **Summary**: clarified that `alignCanvasToVideo` only sizes the canvas using `devicePixelRatio`.
+- **Stage**: documentation
+- **Motivation / Decision**: drop transform reference so README matches code.
+- **Next step**: none.
