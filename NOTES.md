@@ -1466,3 +1466,10 @@ TODO logs the task.
 - **Motivation / Decision**: keep documentation in sync after moving webcam
   capture to the client.
 - **Next step**: none.
+\n### 2025-07-20  PR #xxx
+- **Summary**: removed fixed height from .pose-container so metrics panel
+  shows below the video overlay; updated README.
+- **Stage**: bugfix
+- **Motivation / Decision**: CSS overlay hid metrics because container
+  height restricted it; letting it grow exposes the panel.
+- **Next step**: none.
