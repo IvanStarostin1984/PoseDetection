@@ -1468,6 +1468,7 @@ TODO logs the task.
 - **Next step**: none.
 
 ### 2025-07-20  PR #189
+
 - **Summary**: removed fixed height from .pose-container so metrics panel
   shows below the video overlay; updated README.
 - **Stage**: bugfix
@@ -1499,3 +1500,11 @@ TODO logs the task.
 - **Motivation / Decision**: ensure crisp rendering on high-DPI screens and
   verify scaling logic via Jest.
 - **Next step**: none.
+
+### 2025-07-20  PR #193
+
+- **Summary**: added TODO item to refactor overlay scaling and update tests.
+- **Stage**: planning
+- **Motivation / Decision**: overlay sizing code is complex; refactor
+  for maintainability and test coverage.
+- **Next step**: implement refactor and adjust tests.

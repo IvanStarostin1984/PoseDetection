@@ -177,3 +177,5 @@
 - [x] Remove fixed height from .pose-container so metrics show below the video.
 - [x] Handle device pixel ratio and mirroring in PoseViewer overlay using a
       ResizeObserver.
+
+- [ ] Refactor overlay scaling logic and update tests accordingly.
