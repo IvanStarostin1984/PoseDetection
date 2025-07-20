@@ -175,3 +175,5 @@
 - [x] Receive JPEG frames from clients over `/pose` WebSocket and decode them server-side.
 - [x] Send webcam frames as JPEG blobs over WebSocket.
 - [x] Remove fixed height from .pose-container so metrics show below the video.
+- [x] Handle device pixel ratio and mirroring in PoseViewer overlay using a
+      ResizeObserver.
