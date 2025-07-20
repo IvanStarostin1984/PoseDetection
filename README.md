@@ -165,6 +165,7 @@ draws lines between keypoints to show the pose skeleton. The helper
 updates the canvas after `loadedmetadata` and whenever the video element
 resizes. When drawing, PoseViewer scales the context from the actual video
 size and flips horizontally if the video is mirrored. The surrounding
+
 `.pose-container` is styled so the canvas and video stack on top of each other.
 The container does not set a fixed height so the metrics panel renders below
 the video overlay.

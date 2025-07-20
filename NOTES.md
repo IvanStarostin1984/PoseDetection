@@ -1466,7 +1466,8 @@ TODO logs the task.
 - **Motivation / Decision**: keep documentation in sync after moving webcam
   capture to the client.
 - **Next step**: none.
-\n### 2025-07-20  PR #xxx
+
+### 2025-07-20  PR #189
 - **Summary**: removed fixed height from .pose-container so metrics panel
   shows below the video overlay; updated README.
 - **Stage**: bugfix
@@ -1474,7 +1475,7 @@ TODO logs the task.
   height restricted it; letting it grow exposes the panel.
 - **Next step**: none.
 
-### 2025-07-21  PR #yyy
+### 2025-07-20  PR #190
 
 - **Summary**: added alignCanvasToVideo helper to keep the overlay sized to the
   video and updated tests and docs.
@@ -1483,11 +1484,18 @@ TODO logs the task.
   element scales, matching new TODO item.
 - **Next step**: none.
 
-### 2025-07-21  PR #zzz
+### 2025-07-20  PR #191
 
 - **Summary**: canvas overlay now respects device pixel ratio and handles
   mirroring via `ResizeObserver` in PoseViewer. Updated tests and README.
 - **Stage**: implementation
 - **Motivation / Decision**: improve drawing quality on high‑DPI screens and
   avoid resizing work on every frame.
+
+### 2025-07-20  PR #192
+
+- **Summary**: scaled PoseViewer canvas by `devicePixelRatio` and adjusted tests.
+- **Stage**: implementation
+- **Motivation / Decision**: ensure crisp rendering on high-DPI screens and
+  verify scaling logic via Jest.
 - **Next step**: none.
