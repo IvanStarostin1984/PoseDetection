@@ -29,10 +29,10 @@ test('drawSkeleton connects edge landmarks', () => {
     const e = landmarks[edge[1]];
     const m = (ctx.moveTo as jest.Mock).mock.calls[i];
     const l = (ctx.lineTo as jest.Mock).mock.calls[i];
-    expect(m[0]).toBeCloseTo(s.x * 100);
-    expect(m[1]).toBeCloseTo(s.y * 100);
-    expect(l[0]).toBeCloseTo(e.x * 100);
-    expect(l[1]).toBeCloseTo(e.y * 100);
+    expect(m[0]).toBeCloseTo(s.x);
+    expect(m[1]).toBeCloseTo(s.y);
+    expect(l[0]).toBeCloseTo(e.x);
+    expect(l[1]).toBeCloseTo(e.y);
   });
 });
 

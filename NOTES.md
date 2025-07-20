@@ -1552,3 +1552,11 @@ TODO logs the task.
 - **Stage**: documentation
 - **Motivation / Decision**: drop transform reference so README matches code.
 - **Next step**: none.
+
+### 2025-07-20
+
+- **Summary**: reset overlay transform before scaling and removed scaling from
+  `drawSkeleton`. Updated tests accordingly.
+- **Stage**: implementation
+- **Motivation / Decision**: ensure consistent rendering after canvas resizes and
+  simplify poseDrawing logic.
