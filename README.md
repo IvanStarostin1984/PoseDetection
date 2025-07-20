@@ -161,7 +161,8 @@ WebSocket connection. It calls `setStreaming(!streaming)` in
 [`PoseViewer.tsx`](frontend/src/components/PoseViewer.tsx). A canvas overlay
 draws lines between keypoints to show the pose skeleton. The helper
 `alignCanvasToVideo` reads `video.getBoundingClientRect()` and updates the
-canvas so it always covers the visible video area. It runs once after the
+canvas so it always covers the visible video area. It multiplies the size by
+`window.devicePixelRatio` and scales the drawing context. It runs once after the
 `loadedmetadata` event and before each frame is drawn. The surrounding
 `.pose-container` is styled so the canvas and video stack on top of each other.
 The container does not set a fixed height so the metrics panel renders below

@@ -1482,3 +1482,11 @@ TODO logs the task.
 - **Motivation / Decision**: ensure the overlay resizes correctly when the video
   element scales, matching new TODO item.
 - **Next step**: none.
+
+### 2025-07-22  PR #zzz
+
+- **Summary**: scaled PoseViewer canvas by `devicePixelRatio` and adjusted tests.
+- **Stage**: implementation
+- **Motivation / Decision**: ensure crisp rendering on high-DPI screens and
+  verify scaling logic via Jest.
+- **Next step**: none.
