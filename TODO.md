@@ -182,3 +182,5 @@
 - [x] Refactor overlay scaling logic and update tests accordingly.
 - [x] Convert normalized landmarks to pixels in `drawSkeleton` for accurate
       overlay scaling.
+- [x] Use absolute scale from `getTransform` in `drawSkeleton` and ensure
+      positive line width.
