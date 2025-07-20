@@ -7,6 +7,34 @@ jest.mock('../hooks/useWebSocket', () => ({
   default: () => ({ poseData: null, status: 'open', error: 'failed to parse', send: jest.fn() }),
 }));
 
+beforeEach(() => {
+  Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
+    configurable: true,
+    value: function () {
+      return {
+        canvas: this,
+        drawImage: jest.fn(),
+        clearRect: jest.fn(),
+        beginPath: jest.fn(),
+        moveTo: jest.fn(),
+        lineTo: jest.fn(),
+        stroke: jest.fn(),
+        arc: jest.fn(),
+        fill: jest.fn(),
+      } as unknown as CanvasRenderingContext2D;
+    },
+  });
+  Object.defineProperty(HTMLCanvasElement.prototype, 'toBlob', {
+    configurable: true,
+    value: (cb: (b: Blob) => void) => cb(new Blob()),
+  });
+});
+
+afterEach(() => {
+  delete (HTMLCanvasElement.prototype as any).getContext;
+  delete (HTMLCanvasElement.prototype as any).toBlob;
+});
+
 test('renders WebSocket error message', () => {
   class FakeStream {
     getTracks() {
