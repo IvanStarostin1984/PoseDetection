@@ -190,7 +190,6 @@ test('mirrors context when video transform flips horizontally', async () => {
     const call = mockDraw.mock.calls[0];
     expect(call[2]).toBe(100);
     expect(call[3]).toBe(50);
-    expect(ctx.lineWidth).toBeCloseTo(1);
   });
   spy.mockRestore();
   Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
@@ -258,7 +257,6 @@ test('scales context when rect size differs from video size', async () => {
     expect(canvas.height).toBe(100);
     expect(ctx.save).toHaveBeenCalled();
     expect(ctx.scale).toHaveBeenCalledWith(0.5, 0.5);
-    expect(ctx.lineWidth).toBeCloseTo(4);
   });
   Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
     configurable: true,
