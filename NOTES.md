@@ -1508,3 +1508,11 @@ TODO logs the task.
 - **Motivation / Decision**: overlay sizing code is complex; refactor
   for maintainability and test coverage.
 - **Next step**: implement refactor and adjust tests.
+
+- ### 2025-07-21 PR #194
+
+- **Summary**: updated PoseViewer docs to explain
+  `alignCanvasToVideo` transform setup and device pixel ratio.
+- **Stage**: documentation
+- **Motivation / Decision**: keep README in sync with the scaling code.
+- **Next step**: none.
