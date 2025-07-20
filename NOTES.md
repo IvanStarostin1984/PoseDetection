@@ -1525,3 +1525,10 @@ TODO logs the task.
 - **Stage**: documentation
 - **Motivation / Decision**: keep README in sync with the scaling code.
 - **Next step**: none.
+
+### 2025-07-20  PR #XXX
+
+- **Summary**: ticked overlay scaling refactor in TODO.
+- **Stage**: documentation
+- **Motivation / Decision**: refactor completed earlier; marked roadmap done.
+- **Next step**: none.

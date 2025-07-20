@@ -179,4 +179,4 @@
       ResizeObserver.
 - [x] Scale pose drawing context during render instead of via
       `alignCanvasToVideo`.
-- [ ] Refactor overlay scaling logic and update tests accordingly.
+- [x] Refactor overlay scaling logic and update tests accordingly.
