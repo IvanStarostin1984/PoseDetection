@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import useWebSocket from '../hooks/useWebSocket';
 import { drawSkeleton, Point } from '../utils/poseDrawing';
+import alignCanvasToVideo from '../utils/alignCanvas';
 import MetricsPanel, { PoseMetrics } from './MetricsPanel';
 
 interface PoseData {
@@ -23,8 +24,7 @@ const PoseViewer: React.FC = () => {
     const video = videoRef.current;
     const canvas = canvasRef.current;
     if (!video || !canvas) return;
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
+    alignCanvasToVideo(video, canvas);
   };
 
   useEffect(() => {
@@ -84,7 +84,9 @@ const PoseViewer: React.FC = () => {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas || !poseData) return;
+    const video = videoRef.current;
+    if (!canvas || !video || !poseData) return;
+    alignCanvasToVideo(video, canvas);
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
     drawSkeleton(ctx, poseData.landmarks);

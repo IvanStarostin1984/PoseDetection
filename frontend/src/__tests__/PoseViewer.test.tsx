@@ -13,6 +13,31 @@ beforeEach(() => {
     close: jest.fn(),
     send: jest.fn(),
   });
+  Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
+    configurable: true,
+    value: function () {
+      return {
+        canvas: this,
+        drawImage: jest.fn(),
+        clearRect: jest.fn(),
+        beginPath: jest.fn(),
+        moveTo: jest.fn(),
+        lineTo: jest.fn(),
+        stroke: jest.fn(),
+        arc: jest.fn(),
+        fill: jest.fn(),
+      } as unknown as CanvasRenderingContext2D;
+    },
+  });
+  Object.defineProperty(HTMLCanvasElement.prototype, 'toBlob', {
+    configurable: true,
+    value: (cb: (b: Blob) => void) => cb(new Blob()),
+  });
+});
+
+afterEach(() => {
+  delete (HTMLCanvasElement.prototype as any).getContext;
+  delete (HTMLCanvasElement.prototype as any).toBlob;
 });
 
 class FakeStream {
@@ -44,6 +69,11 @@ test('assigns webcam stream to video element', async () => {
 
 test('canvas matches video dimensions after metadata loads', async () => {
   const { stream } = mockMedia();
+  const origRect = HTMLVideoElement.prototype.getBoundingClientRect;
+  HTMLVideoElement.prototype.getBoundingClientRect = () => ({
+    width: 320,
+    height: 240,
+  } as DOMRect);
   const PoseViewer = require('../components/PoseViewer').default;
   const { container } = render(<PoseViewer />);
   const video = container.querySelector('video') as HTMLVideoElement;
@@ -51,13 +81,12 @@ test('canvas matches video dimensions after metadata loads', async () => {
   await waitFor(() => {
     expect(video.srcObject).toBe(stream);
   });
-  Object.defineProperty(video, 'videoWidth', { value: 320 });
-  Object.defineProperty(video, 'videoHeight', { value: 240 });
   fireEvent(video, new Event('loadedmetadata'));
   await waitFor(() => {
     expect(canvas.width).toBe(320);
     expect(canvas.height).toBe(240);
   });
+  HTMLVideoElement.prototype.getBoundingClientRect = origRect;
 });
 
 test('toggle button stops and starts the webcam', async () => {
@@ -112,12 +141,35 @@ test('sends frames over WebSocket', async () => {
   jest.useFakeTimers();
   const { stream } = mockMedia();
   const send = jest.fn();
-  mockWS.mockReturnValue({ poseData: null, status: 'open', error: null, close: jest.fn(), send });
+  let setPose: (p: any) => void = () => {};
+  mockWS.mockImplementation(() => {
+    const [poseData, setData] = require('react').useState(null);
+    setPose = setData;
+    return { poseData, status: 'open', error: null, close: jest.fn(), send };
+  });
   const origGetContext = HTMLCanvasElement.prototype.getContext;
   const origToBlob = HTMLCanvasElement.prototype.toBlob;
+  const origRect = HTMLVideoElement.prototype.getBoundingClientRect;
+  const rect = { width: 1, height: 1 } as { width: number; height: number };
+  Object.defineProperty(HTMLVideoElement.prototype, 'getBoundingClientRect', {
+    configurable: true,
+    value: () => rect as DOMRect,
+  });
   Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
     configurable: true,
-    value: () => ({ drawImage: jest.fn() }),
+    value: function () {
+      return {
+        canvas: this,
+        drawImage: jest.fn(),
+        clearRect: jest.fn(),
+        beginPath: jest.fn(),
+        moveTo: jest.fn(),
+        lineTo: jest.fn(),
+        stroke: jest.fn(),
+        arc: jest.fn(),
+        fill: jest.fn(),
+      } as unknown as CanvasRenderingContext2D;
+    },
   });
   Object.defineProperty(HTMLCanvasElement.prototype, 'toBlob', {
     configurable: true,
@@ -127,13 +179,25 @@ test('sends frames over WebSocket', async () => {
   const PoseViewer = require('../components/PoseViewer').default;
   const { container } = render(<PoseViewer />);
   const video = container.querySelector('video') as HTMLVideoElement;
+  const canvas = container.querySelector('canvas') as HTMLCanvasElement;
   await waitFor(() => {
     expect(video.srcObject).toBe(stream);
   });
   Object.defineProperty(video, 'videoWidth', { value: 1 });
   Object.defineProperty(video, 'videoHeight', { value: 1 });
   fireEvent(video, new Event('loadedmetadata'));
+  await waitFor(() => {
+    expect(canvas.width).toBe(1);
+    expect(canvas.height).toBe(1);
+  });
+  rect.width = 2;
+  rect.height = 2;
+  require('@testing-library/react').act(() => {
+    setPose({ landmarks: [], metrics: { balance: 0, pose_class: '', knee_angle: 0, posture_angle: 0 } });
+  });
   jest.advanceTimersByTime(100);
+  expect(canvas.width).toBe(2);
+  expect(canvas.height).toBe(2);
   expect(send).toHaveBeenCalled();
   Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
     configurable: true,
@@ -142,6 +206,10 @@ test('sends frames over WebSocket', async () => {
   Object.defineProperty(HTMLCanvasElement.prototype, 'toBlob', {
     configurable: true,
     value: origToBlob,
+  });
+  Object.defineProperty(HTMLVideoElement.prototype, 'getBoundingClientRect', {
+    configurable: true,
+    value: origRect,
   });
   jest.useRealTimers();
 });

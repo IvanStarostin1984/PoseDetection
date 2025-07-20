@@ -1473,3 +1473,12 @@ TODO logs the task.
 - **Motivation / Decision**: CSS overlay hid metrics because container
   height restricted it; letting it grow exposes the panel.
 - **Next step**: none.
+
+### 2025-07-21  PR #yyy
+
+- **Summary**: added alignCanvasToVideo helper to keep the overlay sized to the
+  video and updated tests and docs.
+- **Stage**: implementation
+- **Motivation / Decision**: ensure the overlay resizes correctly when the video
+  element scales, matching new TODO item.
+- **Next step**: none.

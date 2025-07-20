@@ -174,4 +174,4 @@
 - [x] Serve static files after defining routes so WebSocket connections work.
 - [x] Receive JPEG frames from clients over `/pose` WebSocket and decode them server-side.
 - [x] Send webcam frames as JPEG blobs over WebSocket.
-- [ ] Remove fixed height from .pose-container so metrics show below the video.
+- [x] Remove fixed height from .pose-container so metrics show below the video.
