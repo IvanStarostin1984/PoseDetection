@@ -1501,7 +1501,15 @@ TODO logs the task.
   verify scaling logic via Jest.
 - **Next step**: none.
 
-- ### 2025-07-21 PR #193
+### 2025-07-20  PR #193
+
+- **Summary**: added TODO item to refactor overlay scaling and update tests.
+- **Stage**: planning
+- **Motivation / Decision**: overlay sizing code is complex; refactor
+  for maintainability and test coverage.
+- **Next step**: implement refactor and adjust tests.
+
+- ### 2025-07-21 PR #194
 
 - **Summary**: updated PoseViewer docs to explain
   `alignCanvasToVideo` transform setup and device pixel ratio.
