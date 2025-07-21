@@ -2,6 +2,7 @@ import asyncio
 import time
 from typing import Any
 import numpy as np
+import json
 
 import backend.server as server
 
@@ -66,6 +67,9 @@ def test_pose_endpoint_performance(monkeypatch: Any) -> None:
 
     assert len(ws.sent) == frame_count
     assert len(recv_times) == frame_count
+
+    for msg in ws.sent:
+        assert "fps" in json.loads(msg)["metrics"]
 
     durations = [send_times[i] - recv_times[i] for i in range(frame_count)]
     avg_loop = sum(durations) / frame_count
