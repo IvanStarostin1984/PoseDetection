@@ -44,7 +44,7 @@ const PoseViewer: React.FC = () => {
         return;
       }
       encodePending.current = true;
-      const start = performance.now();
+          const start = performance.now();
       off.width = video.videoWidth;
       off.height = video.videoHeight;
       ctx.drawImage(video, 0, 0, off.width, off.height);
@@ -54,7 +54,7 @@ const PoseViewer: React.FC = () => {
           setEncodeMs(end - start);
           if (b) {
             setSizeKB(b.size / 1024);
-            const ts = performance.now();
+            const ts = Date.now();
             tsSendRef.current = ts;
             const buf = new ArrayBuffer(8 + b.size);
             new DataView(buf).setFloat64(0, ts, true);
@@ -149,7 +149,7 @@ const PoseViewer: React.FC = () => {
     if (!canvas || !video || !poseData) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
-    const recv = performance.now();
+    const recv = Date.now();
     const tsOut = Number((poseData.metrics as any).ts_out ?? 0);
     setDownlinkMs(recv - tsOut * 1000);
     const start = recv;
@@ -168,7 +168,7 @@ const PoseViewer: React.FC = () => {
     ctx.restore();
     const end = performance.now();
     setDrawMs(end - start);
-    setLatencyMs(end - tsSendRef.current);
+    setLatencyMs(Date.now() - tsSendRef.current);
   }, [poseData]);
 
   const metrics: PoseMetrics | undefined = poseData

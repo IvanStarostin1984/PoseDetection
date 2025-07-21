@@ -1692,6 +1692,12 @@ TODO logs the task.
 
 ### 2025-07-24  PR #218
 
+- **Summary**: switched frame timestamps to epoch using Date.now()/time.time.
+- **Stage**: implementation
+- **Motivation / Decision**: align client-server clocks for accurate network metrics.
+
+### 2025-07-24  PR #219
+
 - **Summary**: refined metrics list in README and docs; removed duplicates.
 - **Stage**: documentation
 - **Motivation / Decision**: clarify metrics displayed in the UI.
