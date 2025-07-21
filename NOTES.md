@@ -1750,3 +1750,10 @@ TODO logs the task.
 - **Stage**: documentation
 - **Motivation / Decision**: avoid inconsistent timings; align coding guidelines.
 - **Next step**: none.
+
+### 2025-07-21  PR #227
+
+- **Summary**: reduced frame interval to 50ms in PoseViewer for smoother video.
+- **Stage**: implementation
+- **Motivation / Decision**: 20 FPS target requires faster capture; tests updated.
+- **Next step**: none.
