@@ -1779,7 +1779,15 @@ TODO logs the task.
 - **Motivation / Decision**: markdown-link-check expected path from source dir.
 
 ### 2025-07-21  PR #231
+
 - **Summary**: added lychee skip comment after Pages deployment link.
 - **Stage**: documentation
 - **Motivation / Decision**: ensure link checker passes for remote URL.
+- **Next step**: none.
+
+### 2025-07-21
+
+- **Summary**: added filter_visible utility and tests.
+- **Stage**: implementation
+- **Motivation / Decision**: needed helper to filter visible landmarks.
 - **Next step**: none.
