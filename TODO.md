@@ -196,3 +196,4 @@
 - [x] Include model complexity string in WebSocket payload and UI.
 - [x] Track uplink, wait, downlink and latency using frame timestamps and show
       these metrics in the UI.
+- [x] Add CPU and memory usage metrics using optional psutil.

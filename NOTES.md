@@ -1675,3 +1675,10 @@ TODO logs the task.
 - **Motivation / Decision**: docs listed outdated metrics; verified
   MetricsPanel.tsx and synced both READMEs.
 - **Next step**: none.
+
+### 2025-07-21  PR #216
+
+- **Summary**: added CPU and memory metrics via optional psutil with rolling
+  averages.
+- **Stage**: implementation
+- **Motivation / Decision**: monitor backend resource usage and fulfil TODO.
