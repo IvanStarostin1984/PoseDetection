@@ -1692,17 +1692,25 @@ TODO logs the task.
 
 ### 2025-07-24  PR #218
 
+- **Summary**: inserted `from __future__ import annotations` in tests and
+  updated style guide.
+- **Stage**: maintenance
+- **Motivation / Decision**: union types require the future import on
+  Python 3.9; tests were missing it.
+
+### 2025-07-24  PR #219
+
 - **Summary**: parse_requirements now strips trailing comments; tests cover it.
 - **Stage**: implementation
 - **Motivation / Decision**: avoid wrong version checks; resolves TODO.
 
-### 2025-07-24  PR #219
+### 2025-07-24  PR #220
 
 - **Summary**: switched frame timestamps to epoch using Date.now()/time.time.
 - **Stage**: implementation
 - **Motivation / Decision**: align client-server clocks for accurate network metrics.
 
-### 2025-07-24  PR #220
+### 2025-07-24  PR #221
 
 - **Summary**: refined metrics list in README and docs; removed duplicates.
 - **Stage**: documentation

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Any
 from backend.server import build_payload
 import backend.server as server
