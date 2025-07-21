@@ -69,7 +69,10 @@ def test_pose_endpoint_performance(monkeypatch: Any) -> None:
     assert len(recv_times) == frame_count
 
     for msg in ws.sent:
-        assert "fps" in json.loads(msg)["metrics"]
+        metrics = json.loads(msg)["metrics"]
+        assert "fps" in metrics
+        assert "infer_ms" in metrics
+        assert "json_ms" in metrics
 
     durations = [send_times[i] - recv_times[i] for i in range(frame_count)]
     avg_loop = sum(durations) / frame_count

@@ -190,3 +190,4 @@
 - [x] Add FPS metric to backend payload and display it.
 - [x] Add `playsInline` to the video element and an `.overlay` canvas class.
 - [x] Move MetricsPanel outside `.pose-container` to display below the video.
+- [x] Add infer_ms and json_ms timing metrics to backend payload.

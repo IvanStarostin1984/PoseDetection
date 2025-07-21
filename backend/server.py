@@ -57,7 +57,9 @@ async def pose_endpoint(ws: WebSocket) -> None:
                 break
 
             try:
+                start_infer = time.perf_counter()
                 points = await _process(detector, data)
+                infer_ms = (time.perf_counter() - start_infer) * 1000.0
             except Exception:
                 try:
                     await ws.send_text(json.dumps({"error": "process failed"}))
@@ -76,7 +78,12 @@ async def pose_endpoint(ws: WebSocket) -> None:
             delta = now - last_time
             fps = 1.0 / delta if delta > 0 else float("inf")
             last_time = now
+
+            start_json = time.perf_counter()
             payload = build_payload(points, fps)
+            json_ms = (time.perf_counter() - start_json) * 1000.0
+            payload["metrics"]["infer_ms"] = infer_ms
+            payload["metrics"]["json_ms"] = json_ms
             try:
                 await ws.send_text(json.dumps(payload))
             except WebSocketDisconnect:

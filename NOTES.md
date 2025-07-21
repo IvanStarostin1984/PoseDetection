@@ -1622,3 +1622,12 @@ TODO logs the task.
 - **Stage**: implementation
 - **Motivation / Decision**: show metrics as sibling element so layout is clearer.
 - **Next step**: none.
+
+### 2025-07-22  PR #-1
+
+- **Summary**: added infer_ms and json_ms timing metrics to backend payload and
+  updated tests and docs.
+- **Stage**: implementation
+- **Motivation / Decision**: expose inference and serialization times for
+  performance debugging.
+- **Next step**: none.
