@@ -1774,20 +1774,40 @@ TODO logs the task.
 
 ### 2025-07-21  PR #230
 
+- **Summary**: AGENTS guide advises using `<!-- lychee skip -->` for future links
+  and checking relative paths after moving docs.
+- **Stage**: documentation
+- **Motivation / Decision**: avoid false link errors and ensure references stay
+  valid.
+
+### 2025-07-21  PR #231
+
 - **Summary**: fixed Sphinx docs links to tech challenge file.
 - **Stage**: documentation
 - **Motivation / Decision**: markdown-link-check expected path from source dir.
 
-### 2025-07-21  PR #231
+### 2025-07-21  PR #232
 
 - **Summary**: added lychee skip comment after Pages deployment link.
 - **Stage**: documentation
 - **Motivation / Decision**: ensure link checker passes for remote URL.
 - **Next step**: none.
 
-### 2025-07-21  PR #232
+### 2025-07-21  PR #233
 
 - **Summary**: added backend config module with VISIBILITY_MIN constant and test.
 - **Stage**: implementation
 - **Motivation / Decision**: centralise landmark visibility threshold for reuse.
+
+### 2025-07-21  PR #234
+
+- **Summary**: added filter_visible utility and tests.
+- **Stage**: implementation
+- **Motivation / Decision**: needed helper to filter visible landmarks.
+
+### 2025-07-21  PR #235
+
+- **Summary**: filtered low-visibility landmarks in PoseDetector and added test.
+- **Stage**: implementation
+- **Motivation / Decision**: discard unreliable points using VISIBILITY_MIN.
 - **Next step**: none.

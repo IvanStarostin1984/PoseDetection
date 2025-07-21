@@ -1,6 +1,9 @@
+from __future__ import annotations
+
 import types
 import numpy as np
 import backend.pose_detector as pd
+from backend.config import VISIBILITY_MIN
 import mediapipe as mp
 
 
@@ -110,3 +113,24 @@ def test_init_uses_model_complexity_constant(monkeypatch):
     assert (
         InspectPose.kwargs.get("model_complexity") == pd.PoseDetector.MODEL_COMPLEXITY
     )
+
+
+def test_visibility_filter(monkeypatch):
+    class LowVisPose:
+        def __init__(self, *args, **kwargs):
+            pass
+
+        def process(self, _frame):
+            lm = types.SimpleNamespace(x=0.0, y=0.0, visibility=VISIBILITY_MIN - 0.1)
+            return types.SimpleNamespace(
+                pose_landmarks=types.SimpleNamespace(landmark=[lm] * 33)
+            )
+
+        def close(self):
+            pass
+
+    monkeypatch.setattr(mp.solutions.pose, "Pose", LowVisPose)
+    det = pd.PoseDetector()
+    frame = np.zeros((1, 1, 3), dtype=np.uint8)
+    result = det.process(frame)
+    assert result == []

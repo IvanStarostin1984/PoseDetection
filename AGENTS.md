@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.51 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.52 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -277,6 +277,9 @@ jobs:
 - Use `<!-- lychee skip -->` after local URLs (e.g. `http://localhost:`)
   so lychee doesn’t fail. Localhost patterns are also
   ignored via `.lycheeignore`.
+- For links to resources that may not exist yet (e.g. future GitHub Pages)
+  include `<!-- lychee skip -->` so lychee doesn’t report them.
+- When moving documentation files, verify relative paths so links keep working.
 - **Code changes** run full lint + tests (`test` & `test-win`) and `actionlint`.
 - Add job matrices or deployments later—guardrails above already catch the 90 %
   most common issues.
