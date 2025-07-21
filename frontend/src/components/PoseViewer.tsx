@@ -177,6 +177,7 @@ const PoseViewer: React.FC = () => {
         fps: Number((poseData.metrics as any).fps ?? 0),
         inferMs: Number((poseData.metrics as any).infer_ms ?? 0),
         jsonMs: Number((poseData.metrics as any).json_ms ?? 0),
+        decodeMs: Number((poseData.metrics as any).decode_ms ?? 0),
         encodeMs,
         sizeKB,
         drawMs,

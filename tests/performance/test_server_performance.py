@@ -46,8 +46,10 @@ class DummyWS:
         self.closed = True
 
 
-async def _dummy_process(det: DummyDetector, frame: Any) -> list[dict[str, float]]:
-    return det.process(frame)
+async def _dummy_process(
+    det: DummyDetector, frame: Any
+) -> tuple[list[dict[str, float]], float]:
+    return det.process(frame), 0.0
 
 
 def test_pose_endpoint_performance(monkeypatch: Any) -> None:
@@ -73,6 +75,7 @@ def test_pose_endpoint_performance(monkeypatch: Any) -> None:
         assert "fps" in metrics
         assert "infer_ms" in metrics
         assert "json_ms" in metrics
+        assert "decode_ms" in metrics
         assert "cpu_percent" in metrics
         assert "rss_bytes" in metrics
 

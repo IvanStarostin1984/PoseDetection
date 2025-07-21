@@ -184,7 +184,7 @@ leaves the pose data unchanged so the UI can show the problem.
 If webcam access is denied the viewer now reports "Webcam access denied" next
 to the connection status. The metrics panel below `.pose-container` lists
 balance, pose, knee angle, posture angle, FPS, infer and JSON times, encode
-time, blob size, draw time, uplink and wait times, downlink delay, latency,
+time, decode time, blob size, draw time, uplink and wait times, downlink delay, latency,
 client FPS, dropped frames and the model name. When `psutil` is installed
 CPU and memory usage also appear.
 

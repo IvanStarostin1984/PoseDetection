@@ -49,8 +49,9 @@ performance with continuous frames.
 
 The React frontend displays these metrics below the video feed in a vertical
 list for readability. Each line shows balance, pose, knee angle, posture angle,
-FPS, infer and JSON times, encode time, blob size, draw time, uplink and wait
-times, downlink delay, end-to-end latency, client FPS, dropped frames and the
+FPS, infer and JSON times, decode time, encode time, blob size, draw time,
+uplink and wait times, downlink delay, end-to-end latency, client FPS,
+dropped frames and the
 model name. When `psutil` is installed the panel also shows CPU and memory
 usage. When connected you might see text like:
 
@@ -60,6 +61,7 @@ Pose: standing
 Knee Angle: 160.00°
 Posture: 30.00°
 FPS: 25.00
+Decode: 3.00 ms
 Encode: 5.00 ms
 Size: 12.3 KB
 Draw: 8.00 ms

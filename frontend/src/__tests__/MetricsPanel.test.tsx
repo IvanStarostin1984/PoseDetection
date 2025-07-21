@@ -13,6 +13,7 @@ test('displays all metrics', () => {
         fps: 20,
         inferMs: 6,
         jsonMs: 2,
+        decodeMs: 1,
         encodeMs: 5,
         sizeKB: 12.3,
         drawMs: 8,
@@ -35,6 +36,7 @@ test('displays all metrics', () => {
   expect(screen.getByText(/FPS: 20\.00/)).toBeInTheDocument();
   expect(screen.getByText(/Infer: 6\.00 ms/)).toBeInTheDocument();
   expect(screen.getByText(/JSON: 2\.00 ms/)).toBeInTheDocument();
+  expect(screen.getByText(/Decode: 1\.00 ms/)).toBeInTheDocument();
   expect(screen.getByText(/Encode: 5\.00 ms/)).toBeInTheDocument();
   expect(screen.getByText(/Size: 12\.3 KB/)).toBeInTheDocument();
   expect(screen.getByText(/Draw: 8\.00 ms/)).toBeInTheDocument();

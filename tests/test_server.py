@@ -248,12 +248,16 @@ def test_fps_metric_updates(monkeypatch):
         1.0,  # initial last_time
         1.01,  # ts_recv 1
         1.02,  # start_infer 1
+        1.021,  # decode_start 1
+        1.03,  # decode_end 1
         1.04,  # end_infer 1
         1.10,  # now 1
         1.12,  # start_json 1
         1.14,  # end_json 1
         1.20,  # ts_recv 2
         1.22,  # start_infer 2
+        1.221,  # decode_start 2
+        1.23,  # decode_end 2
         1.24,  # end_infer 2
         1.30,  # now 2
         1.32,  # start_json 2
@@ -280,6 +284,7 @@ def test_fps_metric_updates(monkeypatch):
         m = p["metrics"]
         assert "infer_ms" in m
         assert "json_ms" in m
+        assert "decode_ms" in m
         assert "cpu_percent" in m
         assert "rss_bytes" in m
 
@@ -293,6 +298,8 @@ def test_timestamp_metrics(monkeypatch):
         0.0,  # initial last_time
         1.0,  # ts_recv_perf
         1.05,  # start_infer
+        1.055,  # decode_start
+        1.06,  # decode_end
         1.10,  # end_infer
         1.20,  # now
         1.25,  # start_json
@@ -327,3 +334,4 @@ def test_timestamp_metrics(monkeypatch):
     assert abs(m["ts_out"] - 1000.27) < 1e-6
     assert "cpu_percent" in m
     assert "rss_bytes" in m
+    assert "decode_ms" in m

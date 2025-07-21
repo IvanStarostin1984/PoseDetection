@@ -81,10 +81,15 @@ def build_payload(points: List[Dict[str, float]], fps: float) -> Dict[str, Any]:
     return {"landmarks": points, "metrics": metrics, "model": model}
 
 
-async def _process(det: PoseDetector, data: bytes) -> list[dict[str, float]]:
+async def _process(
+    det: PoseDetector, data: bytes
+) -> tuple[list[dict[str, float]], float]:
     arr = np.frombuffer(data, dtype=np.uint8)
+    start = time.perf_counter()
     frame = cv2.imdecode(arr, cv2.IMREAD_COLOR)
-    return await asyncio.to_thread(det.process, frame)
+    decode_ms = (time.perf_counter() - start) * 1000.0
+    points = await asyncio.to_thread(det.process, frame)
+    return points, decode_ms
 
 
 @app.websocket("/pose")
@@ -107,7 +112,7 @@ async def pose_endpoint(ws: WebSocket) -> None:
             try:
                 start_infer = time.perf_counter()
                 wait_ms = (start_infer - ts_recv_perf) * 1000.0
-                points = await _process(detector, frame_bytes)
+                points, decode_ms = await _process(detector, frame_bytes)
                 infer_ms = (time.perf_counter() - start_infer) * 1000.0
                 uplink_ms = ts_recv_ms - ts_send
             except Exception:
@@ -136,6 +141,7 @@ async def pose_endpoint(ws: WebSocket) -> None:
                 {
                     "infer_ms": infer_ms,
                     "json_ms": json_ms,
+                    "decode_ms": decode_ms,
                     "uplink_ms": uplink_ms,
                     "wait_ms": wait_ms,
                     "ts_out": time.time(),

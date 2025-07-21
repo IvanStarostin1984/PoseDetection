@@ -200,3 +200,4 @@
 - [x] Ensure all Python modules start with `from __future__ import annotations`
       for Python 3.9 support.
 - [x] Strip comments in parse_requirements to avoid false version mismatches.
+- [x] Measure decode_ms for cv2.imdecode and expose metric in UI.

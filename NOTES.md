@@ -1716,3 +1716,10 @@ TODO logs the task.
 - **Stage**: documentation
 - **Motivation / Decision**: clarify metrics displayed in the UI.
 - **Next step**: none.
+
+### 2025-07-25  PR #222
+
+- **Summary**: added decode_ms metric timing cv2.imdecode;
+  frontend and docs show it.
+- **Stage**: implementation
+- **Motivation / Decision**: track image decode cost for performance insight.
