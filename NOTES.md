@@ -1622,3 +1622,12 @@ TODO logs the task.
 - **Stage**: implementation
 - **Motivation / Decision**: show metrics as sibling element so layout is clearer.
 - **Next step**: none.
+
+### 2025-07-21  PR #208
+
+- **Summary**: measured frame encode and draw time, blob size, client FPS and
+  dropped frames. Updated UI, docs and tests.
+- **Stage**: implementation
+- **Motivation / Decision**: expose client-side performance metrics for easier
+  debugging and monitoring.
+- **Next step**: none.
