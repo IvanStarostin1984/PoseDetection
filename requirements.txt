@@ -11,3 +11,4 @@ sphinx==7.2.6
 numpy==1.26.4
 mypy==1.16.1
 psutil==5.9.8  # optional
+myst-parser==4.0.1

@@ -143,7 +143,7 @@
 - [x] Remove obsolete Jekyll Pages workflow.
 - [x] Configure Pages before uploading docs
 - [x] Document streaming toggle logic in README.
-- [ ] Enable GitHub Pages with **GitHub Actions** as the source before
+- [x] Enable GitHub Pages with **GitHub Actions** as the source before
       expecting deployments.
 - [x] Add posture angle metric in backend and frontend.
 - [x] Set `static_image_mode=False` in PoseDetector for better streaming performance.
