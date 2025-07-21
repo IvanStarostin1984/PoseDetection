@@ -102,10 +102,11 @@ async def pose_endpoint(ws: WebSocket) -> None:
 
             ts_send = struct.unpack("<d", data[:8])[0]
             frame_bytes = data[8:]
-            ts_recv_ms = time.perf_counter() * 1000.0
+            ts_recv_ms = time.time() * 1000.0
+            ts_recv_perf = time.perf_counter()
             try:
                 start_infer = time.perf_counter()
-                wait_ms = start_infer * 1000.0 - ts_recv_ms
+                wait_ms = (start_infer - ts_recv_perf) * 1000.0
                 points = await _process(detector, frame_bytes)
                 infer_ms = (time.perf_counter() - start_infer) * 1000.0
                 uplink_ms = ts_recv_ms - ts_send
@@ -137,7 +138,7 @@ async def pose_endpoint(ws: WebSocket) -> None:
                     "json_ms": json_ms,
                     "uplink_ms": uplink_ms,
                     "wait_ms": wait_ms,
-                    "ts_out": time.perf_counter(),
+                    "ts_out": time.time(),
                 }
             )
             try:

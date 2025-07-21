@@ -1689,3 +1689,10 @@ TODO logs the task.
   averages.
 - **Stage**: implementation
 - **Motivation / Decision**: monitor backend resource usage and fulfil TODO.
+
+### 2025-07-24  PR #218
+
+- **Summary**: switched frame timestamps to epoch using Date.now()/time.time.
+- **Stage**: implementation
+- **Motivation / Decision**: align client-server clocks for accurate network metrics.
+- **Next step**: none.
