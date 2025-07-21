@@ -1585,7 +1585,7 @@ TODO logs the task.
 - **Motivation / Decision**: ensure overlay drawing works after `ctx.scale(-1,1)`.
 - **Next step**: none.
 
-### 2025-07-21  PR #-
+### 2025-07-21  PR #204
 
 - **Summary**: fixed missing closing brace in `poseDrawing.test.tsx` so tests run.
 - **Stage**: maintenance
