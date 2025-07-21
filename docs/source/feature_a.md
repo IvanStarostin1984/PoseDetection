@@ -23,4 +23,4 @@ real‑time pose detection with 17 keypoints and a simple analytics overlay.
   reconnect gracefully.
 
 These notes complement the main specification in
-[docs/tech-challenge.txt](tech-challenge.txt).
+[docs/tech-challenge.txt](../tech-challenge.txt).

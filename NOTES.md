@@ -1772,11 +1772,22 @@ TODO logs the task.
 - **Motivation / Decision**: show published docs and provide Sphinx overview.
 - **Next step**: none.
 
-### 2025-07-21  PR #???
+### 2025-07-21  PR #230
 
 - **Summary**: AGENTS guide advises using `<!-- lychee skip -->` for future links
   and checking relative paths after moving docs.
 - **Stage**: documentation
 - **Motivation / Decision**: avoid false link errors and ensure references stay
   valid.
+
+### 2025-07-21  PR #231
+
+- **Summary**: fixed Sphinx docs links to tech challenge file.
+- **Stage**: documentation
+- **Motivation / Decision**: markdown-link-check expected path from source dir.
+
+### 2025-07-21  PR #232
+- **Summary**: added lychee skip comment after Pages deployment link.
+- **Stage**: documentation
+- **Motivation / Decision**: ensure link checker passes for remote URL.
 - **Next step**: none.
