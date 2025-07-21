@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.48 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.49 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -127,6 +127,8 @@ prevents GitHub prompts.
     - Run `make check-versions` when changing dependencies to
       verify pinned versions exist. CI runs this automatically when
       `requirements.txt`, `package.json` or `package-lock.json` change.
+    - When adding optional packages (e.g. `psutil`) mention them in README
+      and run `make check-versions` to validate the pin.
     - Run `make docs` to build the HTML docs into `docs/_build`.
     - Markdownlint reads `.markdownlintignore` to skip build and cache dirs.
     - `make lint` runs `ruff` across all Python sources, including

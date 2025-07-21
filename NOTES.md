@@ -1676,7 +1676,14 @@ TODO logs the task.
   MetricsPanel.tsx and synced both READMEs.
 - **Next step**: none.
 
-### 2025-07-21  PR #216
+### 2025-07-23  PR #216
+
+- **Summary**: documented policy for optional packages in AGENTS guide.
+- **Stage**: documentation
+- **Motivation / Decision**: ensure new optional dependencies get pinned and described.
+- **Next step**: none.
+
+### 2025-07-21  PR #217
 
 - **Summary**: added CPU and memory metrics via optional psutil with rolling
   averages.
