@@ -1716,3 +1716,11 @@ TODO logs the task.
 - **Stage**: documentation
 - **Motivation / Decision**: clarify metrics displayed in the UI.
 - **Next step**: none.
+
+### 2025-07-25  PR #222
+
+- **Summary**: fixed negative drawMs by using performance.now() for start and end.
+- **Stage**: implementation
+- **Motivation / Decision**: performance.now and Date.now were mixed causing
+  negative timing; use one source for reliability.
+- **Next step**: none.
