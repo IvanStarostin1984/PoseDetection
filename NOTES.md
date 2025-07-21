@@ -1689,3 +1689,12 @@ TODO logs the task.
   averages.
 - **Stage**: implementation
 - **Motivation / Decision**: monitor backend resource usage and fulfil TODO.
+
+### 2025-07-24  PR #218
+
+- **Summary**: inserted `from __future__ import annotations` in tests and
+  updated style guide.
+- **Stage**: maintenance
+- **Motivation / Decision**: union types require the future import on
+  Python 3.9; tests were missing it.
+- **Next step**: none.

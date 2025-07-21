@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.49 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.50 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -301,6 +301,8 @@ jobs:
 - Use a normal space after `#` in headings.
 - Avoid bare URLs; format them as Markdown links (MD034).
 - Avoid inline HTML.
+- All Python modules, including tests, must start with
+  `from __future__ import annotations` so union types work on Python 3.9.
 
 ---
 
