@@ -14,7 +14,7 @@ import struct
 
 def test_build_payload_format():
     lms = [{"x": 0.1, "y": 0.2, "visibility": 0.9}] * 17
-    payload = build_payload(lms, 30.0)
+    payload = build_payload(lms, 30.0, 30.0)
     assert isinstance(payload["landmarks"], list)
     assert len(payload["landmarks"]) == 17
     assert payload["landmarks"][0]["x"] == 0.1
@@ -26,6 +26,7 @@ def test_build_payload_format():
         "posture_angle",
     } <= metrics.keys()
     assert "fps" in metrics
+    assert "fps_avg" in metrics
     assert "cpu_percent" in metrics
     assert "rss_bytes" in metrics
     assert payload["model"] in ("lite", "full")
@@ -273,15 +274,19 @@ def test_fps_metric_updates(monkeypatch):
 
     payloads = [json.loads(msg) for msg in ws.sent]
     fps_values = [p["metrics"]["fps"] for p in payloads]
+    fps_avg_values = [p["metrics"]["fps_avg"] for p in payloads]
     assert len(fps_values) == 2
     assert abs(fps_values[0] - 10.0) < 1e-6
     assert abs(fps_values[1] - 5.0) < 1e-6
+    assert abs(fps_avg_values[0] - 10.0) < 1e-6
+    assert abs(fps_avg_values[1] - (2 / 0.30)) < 1e-6
     for p in payloads:
         m = p["metrics"]
         assert "infer_ms" in m
         assert "json_ms" in m
         assert "cpu_percent" in m
         assert "rss_bytes" in m
+        assert "fps_avg" in m
 
 
 def test_timestamp_metrics(monkeypatch):
@@ -327,3 +332,4 @@ def test_timestamp_metrics(monkeypatch):
     assert abs(m["ts_out"] - 1000.27) < 1e-6
     assert "cpu_percent" in m
     assert "rss_bytes" in m
+    assert "fps_avg" in m

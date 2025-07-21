@@ -68,10 +68,13 @@ async def _stop_sampler() -> None:
             await SAMPLER_TASK
 
 
-def build_payload(points: List[Dict[str, float]], fps: float) -> Dict[str, Any]:
-    """Return WebSocket payload from 17 keypoints and frame rate."""
+def build_payload(
+    points: List[Dict[str, float]], fps: float, fps_avg: float
+) -> Dict[str, Any]:
+    """Return WebSocket payload from 17 keypoints and frame rates."""
     metrics = extract_pose_metrics(_to_named(points))
     metrics["fps"] = fps
+    metrics["fps_avg"] = fps_avg
     cpu = sum(CPU_HISTORY) / len(CPU_HISTORY) if CPU_HISTORY else 0.0
     rss = int(sum(RSS_HISTORY) / len(RSS_HISTORY)) if RSS_HISTORY else 0
     metrics["cpu_percent"] = cpu
@@ -92,6 +95,7 @@ async def pose_endpoint(ws: WebSocket) -> None:
     """Stream pose metrics over WebSocket."""
     await ws.accept()
     last_time = time.perf_counter()
+    times: Deque[float] = deque([last_time], maxlen=30)
     detector = PoseDetector()
     try:
         while True:
@@ -128,9 +132,15 @@ async def pose_endpoint(ws: WebSocket) -> None:
             delta = now - last_time
             fps = 1.0 / delta if delta > 0 else float("inf")
             last_time = now
+            times.append(now)
+            fps_avg = (
+                (len(times) - 1) / (times[-1] - times[0])
+                if len(times) > 1 and times[-1] != times[0]
+                else float("inf")
+            )
 
             start_json = time.perf_counter()
-            payload = build_payload(points, fps)
+            payload = build_payload(points, fps, fps_avg)
             json_ms = (time.perf_counter() - start_json) * 1000.0
             payload["metrics"].update(
                 {
