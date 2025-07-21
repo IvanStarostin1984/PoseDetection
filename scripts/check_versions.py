@@ -19,6 +19,7 @@ def parse_requirements(req_path: Path) -> dict[str, str]:
             continue
         name, version = line.split("==", 1)
         name = name.split("[", 1)[0]
+        version = version.split("#", 1)[0].strip()
         packages[name] = version
     return packages
 

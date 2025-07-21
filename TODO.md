@@ -197,3 +197,4 @@
 - [x] Track uplink, wait, downlink and latency using frame timestamps and show
       these metrics in the UI.
 - [x] Add CPU and memory usage metrics using optional psutil.
+- [x] Strip comments in parse_requirements to avoid false version mismatches.
