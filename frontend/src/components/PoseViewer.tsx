@@ -152,7 +152,7 @@ const PoseViewer: React.FC = () => {
     const recv = Date.now();
     const tsOut = Number((poseData.metrics as any).ts_out ?? 0);
     setDownlinkMs(recv - tsOut * 1000);
-    const start = recv;
+    const start = performance.now();
     ctx.save();
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.clearRect(0, 0, canvas.width, canvas.height);

@@ -1717,7 +1717,14 @@ TODO logs the task.
 - **Motivation / Decision**: clarify metrics displayed in the UI.
 - **Next step**: none.
 
-### 2025-07-21  PR #222
+### 2025-07-25  PR #222
+
+- **Summary**: fixed negative drawMs by using performance.now() for start and end.
+- **Stage**: implementation
+- **Motivation / Decision**: performance.now and Date.now were mixed causing
+  negative timing; use one source for reliability.
+
+### 2025-07-21  PR #223
 
 - **Summary**: patched `test_pymake_works_from_subdirectory` to mock PowerShell
   detection.
@@ -1725,7 +1732,7 @@ TODO logs the task.
 - **Motivation / Decision**: make test deterministic regardless of installed
   executables.
 
-### 2025-07-21  PR #223
+### 2025-07-21  PR #224
 
 - **Summary**: added rule requiring consistent clock source for duration measurement.
 - **Stage**: documentation
