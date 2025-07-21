@@ -1639,3 +1639,11 @@ TODO logs the task.
 - **Motivation / Decision**: expose client-side performance metrics for easier
   debugging and monitoring.
 - **Next step**: none.
+
+### 2025-07-21  PR #211
+
+- **Summary**: updated README and docs to list metrics exactly as the UI shows.
+- **Stage**: documentation
+- **Motivation / Decision**: docs listed outdated metrics; verified
+  MetricsPanel.tsx and synced both READMEs.
+- **Next step**: none.
