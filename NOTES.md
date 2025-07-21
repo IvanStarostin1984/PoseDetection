@@ -1771,3 +1771,12 @@ TODO logs the task.
 - **Stage**: documentation
 - **Motivation / Decision**: show published docs and provide Sphinx overview.
 - **Next step**: none.
+
+### 2025-07-21  PR #???
+
+- **Summary**: AGENTS guide advises using `<!-- lychee skip -->` for future links
+  and checking relative paths after moving docs.
+- **Stage**: documentation
+- **Motivation / Decision**: avoid false link errors and ensure references stay
+  valid.
+- **Next step**: none.
