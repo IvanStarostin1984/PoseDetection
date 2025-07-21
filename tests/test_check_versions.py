@@ -32,3 +32,9 @@ def test_check_versions_cli_fail(tmp_path, monkeypatch):
     (tmp_path / "package.json").write_text(json.dumps({"dependencies": {"a": "1.0.0"}}))
     monkeypatch.setattr(cv.request, "urlopen", fake_urlopen_fail)
     assert cv.check_versions(tmp_path) == 1
+
+
+def test_parse_requirements_strips_comments(tmp_path):
+    req = tmp_path / "requirements.txt"
+    req.write_text("pkg==1.0  # comment\n")
+    assert cv.parse_requirements(req) == {"pkg": "1.0"}

@@ -1683,9 +1683,16 @@ TODO logs the task.
 - **Motivation / Decision**: ensure new optional dependencies get pinned and described.
 - **Next step**: none.
 
-### 2025-07-21  PR #217
+### 2025-07-24  PR #217
 
 - **Summary**: added CPU and memory metrics via optional psutil with rolling
   averages.
 - **Stage**: implementation
 - **Motivation / Decision**: monitor backend resource usage and fulfil TODO.
+
+### 2025-07-24  PR #218
+
+- **Summary**: parse_requirements now strips trailing comments; tests cover it.
+- **Stage**: implementation
+- **Motivation / Decision**: avoid wrong version checks; resolves TODO.
+- **Next step**: none.
