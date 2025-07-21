@@ -1716,3 +1716,10 @@ TODO logs the task.
 - **Stage**: documentation
 - **Motivation / Decision**: clarify metrics displayed in the UI.
 - **Next step**: none.
+
+### 2025-07-25  PR #222
+
+- **Summary**: added rule requiring consistent clock source for duration measurement.
+- **Stage**: documentation
+- **Motivation / Decision**: avoid inconsistent timings; align coding guidelines.
+- **Next step**: none.
