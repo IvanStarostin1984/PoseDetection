@@ -1676,21 +1676,21 @@ TODO logs the task.
   MetricsPanel.tsx and synced both READMEs.
 - **Next step**: none.
 
-### 2025-07-23  PR #216
+### 2025-07-21  PR #216
 
 - **Summary**: documented policy for optional packages in AGENTS guide.
 - **Stage**: documentation
 - **Motivation / Decision**: ensure new optional dependencies get pinned and described.
 - **Next step**: none.
 
-### 2025-07-24  PR #217
+### 2025-07-21  PR #217
 
 - **Summary**: added CPU and memory metrics via optional psutil with rolling
   averages.
 - **Stage**: implementation
 - **Motivation / Decision**: monitor backend resource usage and fulfil TODO.
 
-### 2025-07-24  PR #218
+### 2025-07-21  PR #218
 
 - **Summary**: inserted `from __future__ import annotations` in tests and
   updated style guide.
@@ -1698,29 +1698,36 @@ TODO logs the task.
 - **Motivation / Decision**: union types require the future import on
   Python 3.9; tests were missing it.
 
-### 2025-07-24  PR #219
+### 2025-07-21  PR #219
 
 - **Summary**: parse_requirements now strips trailing comments; tests cover it.
 - **Stage**: implementation
 - **Motivation / Decision**: avoid wrong version checks; resolves TODO.
 
-### 2025-07-24  PR #220
+### 2025-07-21  PR #220
 
 - **Summary**: switched frame timestamps to epoch using Date.now()/time.time.
 - **Stage**: implementation
 - **Motivation / Decision**: align client-server clocks for accurate network metrics.
 
-### 2025-07-24  PR #221
+### 2025-07-21  PR #221
 
 - **Summary**: refined metrics list in README and docs; removed duplicates.
 - **Stage**: documentation
 - **Motivation / Decision**: clarify metrics displayed in the UI.
 - **Next step**: none.
 
-### 2025-07-25  PR #222
+### 2025-07-21  PR #222
 
 - **Summary**: patched `test_pymake_works_from_subdirectory` to mock PowerShell
   detection.
 - **Stage**: testing
 - **Motivation / Decision**: make test deterministic regardless of installed
   executables.
+
+### 2025-07-21  PR #223
+
+- **Summary**: added rule requiring consistent clock source for duration measurement.
+- **Stage**: documentation
+- **Motivation / Decision**: avoid inconsistent timings; align coding guidelines.
+- **Next step**: none.
