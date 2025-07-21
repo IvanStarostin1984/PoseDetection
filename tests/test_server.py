@@ -23,6 +23,7 @@ def test_build_payload_format():
         "posture_angle",
     } <= metrics.keys()
     assert "fps" in metrics
+    assert payload["model"] in ("lite", "full")
 
 
 def test_names_match_landmarks():

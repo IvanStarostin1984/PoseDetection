@@ -1639,3 +1639,10 @@ TODO logs the task.
 - **Motivation / Decision**: expose client-side performance metrics for easier
   debugging and monitoring.
 - **Next step**: none.
+
+### 2025-07-21  PR #211
+
+- **Summary**: exposed model complexity via constant, WebSocket payload and UI.
+- **Stage**: implementation
+- **Motivation / Decision**: allow frontends to know if lite or full model runs.
+- **Next step**: none.

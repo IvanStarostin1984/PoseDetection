@@ -9,6 +9,7 @@ export interface PoseMetrics {
   drawMs?: number;
   clientFps?: number;
   droppedFrames?: number;
+  model?: string;
   [key: string]: number | string | undefined;
 }
 
@@ -27,6 +28,7 @@ const MetricsPanel: React.FC<MetricsPanelProps> = ({ data }) => {
   const drawMs = Number(data?.drawMs ?? 0);
   const clientFps = Number(data?.clientFps ?? 0);
   const droppedFrames = Number(data?.droppedFrames ?? 0);
+  const model = data?.model ?? '';
   return (
     <div className="metrics-panel">
       <p>Balance: {balance.toFixed(2)}</p>
@@ -39,6 +41,7 @@ const MetricsPanel: React.FC<MetricsPanelProps> = ({ data }) => {
       <p>Draw: {drawMs.toFixed(2)} ms</p>
       <p>Client FPS: {clientFps.toFixed(2)}</p>
       <p>Dropped Frames: {droppedFrames}</p>
+      <p>Model: {model}</p>
     </div>
   );
 };

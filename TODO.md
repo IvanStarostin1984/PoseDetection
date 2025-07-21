@@ -193,3 +193,4 @@
 - [x] Add infer_ms and json_ms timing metrics to backend payload.
 - [x] Measure client encode/draw times and show encodeMs, sizeKB, drawMs,
       clientFps and droppedFrames in MetricsPanel.
+- [x] Include model complexity string in WebSocket payload and UI.

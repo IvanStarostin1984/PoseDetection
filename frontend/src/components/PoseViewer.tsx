@@ -7,6 +7,7 @@ import MetricsPanel, { PoseMetrics } from './MetricsPanel';
 interface PoseData {
   landmarks: Point[];
   metrics: PoseMetrics;
+  model: string;
 }
 
 const PoseViewer: React.FC = () => {
@@ -156,6 +157,7 @@ const PoseViewer: React.FC = () => {
         drawMs,
         clientFps,
         droppedFrames,
+        model: poseData.model,
       }
     : undefined;
 

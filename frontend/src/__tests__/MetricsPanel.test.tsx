@@ -16,6 +16,7 @@ test('displays all metrics', () => {
         drawMs: 8,
         clientFps: 15,
         droppedFrames: 2,
+        model: 'lite',
       }}
     />,
   );
@@ -29,4 +30,5 @@ test('displays all metrics', () => {
   expect(screen.getByText(/Draw: 8\.00 ms/)).toBeInTheDocument();
   expect(screen.getByText(/Client FPS: 15\.00/)).toBeInTheDocument();
   expect(screen.getByText(/Dropped Frames: 2/)).toBeInTheDocument();
+  expect(screen.getByText(/Model: lite/)).toBeInTheDocument();
 });
