@@ -1719,18 +1719,24 @@ TODO logs the task.
 
 ### 2025-07-21  PR #222
 
+- **Summary**: AGENTS guide bumped to v1.51 with note on patching env lookups.
+- **Stage**: documentation
+- **Motivation / Decision**: keep tests deterministic across CI runners.
+
+### 2025-07-21  PR #223
+
 - **Summary**: backend and docs expose average FPS metric `fps_avg`.
 - **Stage**: implementation
 - **Motivation / Decision**: provide smoother FPS reporting over a 30-frame window.
 
-### 2025-07-25  PR #223
+### 2025-07-25  PR #224
 
 - **Summary**: fixed negative drawMs by using performance.now() for start and end.
 - **Stage**: implementation
 - **Motivation / Decision**: performance.now and Date.now were mixed causing
   negative timing; use one source for reliability.
 
-### 2025-07-21  PR #224
+### 2025-07-21  PR #225
 
 - **Summary**: patched `test_pymake_works_from_subdirectory` to mock PowerShell
   detection.
@@ -1738,7 +1744,7 @@ TODO logs the task.
 - **Motivation / Decision**: make test deterministic regardless of installed
   executables.
 
-### 2025-07-21  PR #225
+### 2025-07-21  PR #226
 
 - **Summary**: added rule requiring consistent clock source for duration measurement.
 - **Stage**: documentation

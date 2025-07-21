@@ -303,6 +303,8 @@ jobs:
 - Avoid inline HTML.
 - All Python modules, including tests, must start with
   `from __future__ import annotations` so union types work on Python 3.9.
+- Patch environment lookups (e.g. `shutil.which`, env vars) in tests so
+  they run deterministically across CI runners.
 - Use the same clock source for all duration measurements; in browsers call
   `performance.now()`.
 
