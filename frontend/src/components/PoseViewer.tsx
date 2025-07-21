@@ -89,7 +89,7 @@ const PoseViewer: React.FC = () => {
         },
         'image/jpeg',
       );
-    }, 50);
+    }, 25);
     return () => clearInterval(id);
   }, [streaming, status, send]);
 

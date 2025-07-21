@@ -1757,3 +1757,10 @@ TODO logs the task.
 - **Stage**: implementation
 - **Motivation / Decision**: 20 FPS target requires faster capture; tests updated.
 - **Next step**: none.
+
+### 2025-07-21  PR #228
+
+- **Summary**: halved PoseViewer interval to 25ms for snappier streaming.
+- **Stage**: implementation
+- **Motivation / Decision**: higher 40 FPS target; updated test delays.
+- **Next step**: none.
