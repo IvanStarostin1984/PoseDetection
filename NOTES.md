@@ -1716,3 +1716,9 @@ TODO logs the task.
 - **Stage**: documentation
 - **Motivation / Decision**: clarify metrics displayed in the UI.
 - **Next step**: none.
+
+### 2025-07-25
+
+- **Summary**: backend and docs expose average FPS metric `fps_avg`.
+- **Stage**: implementation
+- **Motivation / Decision**: provide smoother FPS reporting over a 30-frame window.

@@ -32,9 +32,9 @@ metrics = extract_pose_metrics(landmarks)
 
 The returned dictionary contains ``knee_angle`` in degrees,
 ``balance`` between the hips, ``posture_angle`` and ``pose_class``.
-It also includes an ``fps`` metric for the current frame rate. When ``psutil``
-is installed the dictionary adds ``cpu_percent`` and ``rss_bytes`` for process
-usage statistics.
+It also includes ``fps`` and ``fps_avg`` metrics for the current and average
+frame rate. When ``psutil`` is installed the dictionary adds ``cpu_percent`` and
+``rss_bytes`` for process usage statistics.
 
 Start the backend server with:
 
