@@ -382,7 +382,7 @@ test('sends frames over WebSocket', async () => {
     setPose({ landmarks: [], metrics: { balance: 0, pose_class: '', knee_angle: 0, posture_angle: 0, fps: 0 } });
   });
   await require('@testing-library/react').act(async () => {
-    jest.advanceTimersByTime(50);
+    jest.advanceTimersByTime(25);
     await Promise.resolve();
   });
   expect(ctx.save).toHaveBeenCalled();
@@ -396,7 +396,7 @@ test('sends frames over WebSocket', async () => {
     setPose({ landmarks: [], metrics: { balance: 0, pose_class: '', knee_angle: 0, posture_angle: 0, fps: 0 } });
   });
   await require('@testing-library/react').act(async () => {
-    jest.advanceTimersByTime(50);
+    jest.advanceTimersByTime(25);
     await Promise.resolve();
   });
   expect(canvas.width).toBe(4);
