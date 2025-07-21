@@ -1638,28 +1638,37 @@ TODO logs the task.
 - **Stage**: implementation
 - **Motivation / Decision**: expose client-side performance metrics for easier
   debugging and monitoring.
+  - **Next step**: none.
+
+### 2025-07-22  PR #211
+
+- **Summary**: added inferMs and jsonMs metrics to MetricsPanel and wired them
+  through PoseViewer. Updated tests and README.
+- **Stage**: implementation
+- **Motivation / Decision**: expose backend inference and serialization timings
+  in the frontend for easier profiling.
 - **Next step**: none.
 
-### 2025-07-21  PR #211
+### 2025-07-21  PR #212
 
 - **Summary**: exposed model complexity via constant, WebSocket payload and UI.
 - **Stage**: implementation
 - **Motivation / Decision**: allow frontends to know if lite or full model runs.
 
-### 2025-07-21  PR #212
+### 2025-07-21  PR #213
 
 - **Summary**: added timestamp-based latency metrics between client and server.
 - **Stage**: implementation
 - **Motivation / Decision**: measure network delays for troubleshooting.
 
-### 2025-07-21  PR #213
+### 2025-07-21  PR #214
 
 - **Summary**: documented npm install in setup script and AGENTS guide.
 - **Stage**: maintenance
 - **Motivation / Decision**: ensure `make typecheck-ts` passes by installing
   Node packages.
 
-### 2025-07-21  PR #214
+### 2025-07-21  PR #215
 
 - **Summary**: updated README and docs to list metrics exactly as the UI shows.
 - **Stage**: documentation

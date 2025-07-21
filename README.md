@@ -182,6 +182,9 @@ leaves the pose data unchanged so the UI can show the problem.
 
 If webcam access is denied the viewer now reports "Webcam access denied" next
 to the connection status. The metrics panel rendered after `.pose-container`
+displays the Balance, Pose, Knee Angle, Posture, FPS, infer_ms, json_ms,
+Encode, Size, Draw, Client FPS and Dropped Frames metrics on separate lines
+for clarity.
 lists Balance, Pose, Knee Angle, Posture, FPS and timing metrics such as
 encode, uplink, wait, downlink, latency, json and inference times plus blob
 size, draw time, client FPS and dropped frames.
