@@ -169,8 +169,8 @@ video size and flips horizontally if the video is mirrored. The
 surrounding
 
 `.pose-container` is styled so the canvas and video stack on top of each other.
-The container does not set a fixed height so the metrics panel renders below
-the video overlay.
+`MetricsPanel` is rendered as a sibling after this container so the metrics list
+appears below the video overlay.
 The `useWebSocket` hook returns the latest pose data and a connection state
 (`connecting`, `open`, `closed` or `error`). PoseViewer displays this state so
 you know if the backend is reachable. The hook accepts optional `host` and
@@ -180,9 +180,9 @@ contain an `error` field; the hook exposes this via an `error` property and
 leaves the pose data unchanged so the UI can show the problem.
 
 If webcam access is denied the viewer now reports "Webcam access denied" next
-to the connection status. The metrics panel below the video displays the
-Balance, Pose, Knee Angle, Posture and FPS metrics on separate lines for
-clarity.
+to the connection status. The metrics panel rendered after `.pose-container`
+displays the Balance, Pose, Knee Angle, Posture and FPS metrics on separate
+lines for clarity.
 
 ## Running locally
 

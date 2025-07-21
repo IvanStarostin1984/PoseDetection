@@ -114,9 +114,11 @@ const PoseViewer: React.FC = () => {
     : undefined;
 
   return (
-    <div className="pose-container">
-      <video ref={videoRef} autoPlay muted playsInline />
-      <canvas ref={canvasRef} className="overlay" />
+    <>
+      <div className="pose-container">
+        <video ref={videoRef} autoPlay muted playsInline />
+        <canvas ref={canvasRef} className="overlay" />
+      </div>
       <MetricsPanel data={metrics} />
       {error && <div className="ws-error">Error: {error}</div>}
       {cameraError && (
@@ -136,7 +138,7 @@ const PoseViewer: React.FC = () => {
       >
         {streaming ? 'Stop Webcam' : 'Start Webcam'}
       </button>
-    </div>
+    </>
   );
 };
 

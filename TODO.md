@@ -189,3 +189,4 @@
 - [x] Display FPS metric in MetricsPanel.
 - [x] Add FPS metric to backend payload and display it.
 - [x] Add `playsInline` to the video element and an `.overlay` canvas class.
+- [x] Move MetricsPanel outside `.pose-container` to display below the video.
