@@ -411,3 +411,35 @@ test('sends frames over WebSocket', async () => {
   });
   jest.useRealTimers();
 });
+
+test('drawMs is non-negative after rendering a frame', async () => {
+  const { stream } = mockMedia();
+  let setPose: (p: any) => void = () => {};
+  mockWS.mockImplementation(() => {
+    const [poseData, setData] = require('react').useState(null);
+    setPose = setData;
+    return { poseData, status: 'open', error: null, close: jest.fn(), send: jest.fn() };
+  });
+  const PoseViewer = require('../components/PoseViewer').default;
+  const { container } = render(<PoseViewer />);
+  const video = container.querySelector('video') as HTMLVideoElement;
+  await waitFor(() => {
+    expect(video.srcObject).toBe(stream);
+  });
+  Object.defineProperty(video, 'videoWidth', { value: 100 });
+  Object.defineProperty(video, 'videoHeight', { value: 50 });
+  fireEvent(video, new Event('loadedmetadata'));
+  resizeCb([] as any, {} as ResizeObserver);
+  require('@testing-library/react').act(() => {
+    setPose({ landmarks: [], metrics: { balance: 0, pose_class: '', knee_angle: 0, posture_angle: 0, fps: 0 } });
+  });
+  await waitFor(() => {
+    const panel = container.querySelector('.metrics-panel') as HTMLElement;
+    const drawEl = Array.from(panel.querySelectorAll('p')).find((p) =>
+      p.textContent?.startsWith('Draw:')
+    );
+    expect(drawEl).toBeTruthy();
+    const value = parseFloat(drawEl!.textContent!.replace(/[^0-9.-]/g, ''));
+    expect(value).toBeGreaterThanOrEqual(0);
+  });
+});
