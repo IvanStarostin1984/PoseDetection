@@ -1716,3 +1716,10 @@ TODO logs the task.
 - **Stage**: documentation
 - **Motivation / Decision**: clarify metrics displayed in the UI.
 - **Next step**: none.
+
+### 2025-07-25  PR #-0
+
+- **Summary**: AGENTS guide bumped to v1.51 with note on patching env lookups.
+- **Stage**: documentation
+- **Motivation / Decision**: keep tests deterministic across CI runners.
+- **Next step**: none.
