@@ -1599,4 +1599,10 @@ TODO logs the task.
 - **Stage**: implementation
 - **Motivation / Decision**: expose streaming rate for monitoring.
   Added defaulting logic.
+
+### 2025-07-21  PR #206
+
+- **Summary**: added FPS metric in backend payload and updated tests and docs.
+- **Stage**: implementation
+- **Motivation / Decision**: allow clients to monitor server frame rate.
 - **Next step**: none.

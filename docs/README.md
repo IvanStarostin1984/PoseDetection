@@ -31,8 +31,8 @@ metrics = extract_pose_metrics(landmarks)
 ```
 
 The returned dictionary contains ``knee_angle`` in degrees,
-``balance`` between the hips and ``pose_class`` which is either
-``"standing"`` or ``"sitting"`` when the angles can be computed.
+``balance`` between the hips, ``posture_angle`` and ``pose_class``.
+It also includes an ``fps`` metric for the current frame rate.
 
 Start the backend server with:
 
