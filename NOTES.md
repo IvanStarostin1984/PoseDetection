@@ -1689,3 +1689,10 @@ TODO logs the task.
   averages.
 - **Stage**: implementation
 - **Motivation / Decision**: monitor backend resource usage and fulfil TODO.
+
+### 2025-07-24  PR #218
+
+- **Summary**: refined metrics list in README and docs; removed duplicates.
+- **Stage**: documentation
+- **Motivation / Decision**: clarify metrics displayed in the UI.
+- **Next step**: none.
