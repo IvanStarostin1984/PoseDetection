@@ -235,7 +235,8 @@ When `GH_PAGES_TOKEN` is available the workflow deploys them to GitHub Pages.
 Enable Pages in the repo settings with **GitHub Actions** as the source before
 expecting deployments.
 
-- [Deployment history on GitHub Pages](https://github.com/IvanStarostin1984/PoseDetection/deployments/github-pages)
+<!-- markdownlint-disable-next-line MD013 -->
+- [Deployment history on GitHub Pages](https://github.com/IvanStarostin1984/PoseDetection/deployments/github-pages) <!-- lychee skip -->
 
 ## License
 
