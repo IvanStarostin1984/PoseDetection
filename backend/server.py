@@ -35,7 +35,9 @@ def build_payload(points: List[Dict[str, float]], fps: float) -> Dict[str, Any]:
     """Return WebSocket payload from 17 keypoints and frame rate."""
     metrics = extract_pose_metrics(_to_named(points))
     metrics["fps"] = fps
-    return {"landmarks": points, "metrics": metrics}
+    complexity = getattr(PoseDetector, "MODEL_COMPLEXITY", 1)
+    model = "lite" if complexity == 0 else "full"
+    return {"landmarks": points, "metrics": metrics, "model": model}
 
 
 async def _process(det: PoseDetector, data: bytes) -> list[dict[str, float]]:

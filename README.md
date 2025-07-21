@@ -58,8 +58,8 @@ a dictionary with ``x``, ``y`` and ``visibility``. The keypoints are ordered as
 ``left_wrist``, ``right_wrist``, ``left_hip``, ``right_hip``, ``left_knee``,
 ``right_knee``, ``left_ankle`` and ``right_ankle``. The payload also includes
 simple analytics like knee angle, balance, a posture angle, an ``fps`` value,
-``infer_ms`` and ``json_ms`` timings and a ``pose_class`` field indicating
-``standing`` or ``sitting``.
+``infer_ms`` and ``json_ms`` timings, the ``model`` string (``lite`` or ``full``)
+and a ``pose_class`` field indicating ``standing`` or ``sitting``.
 
 ## Development
 
