@@ -1615,7 +1615,7 @@ TODO logs the task.
   overlay class simplifies styling.
 - **Next step**: none.
 
-### 2025-07-21
+### 2025-07-21  PR #208
 
 - **Summary**: moved MetricsPanel below pose-container and clarified README.
   Built frontend.
@@ -1623,7 +1623,15 @@ TODO logs the task.
 - **Motivation / Decision**: show metrics as sibling element so layout is clearer.
 - **Next step**: none.
 
-### 2025-07-21  PR #208
+### 2025-07-21  PR #209
+
+- **Summary**: added infer_ms and json_ms timing metrics to backend payload and
+  updated tests and docs.
+- **Stage**: implementation
+- **Motivation / Decision**: expose inference and serialization times for
+  performance debugging.
+
+### 2025-07-21  PR #210
 
 - **Summary**: measured frame encode and draw time, blob size, client FPS and
   dropped frames. Updated UI, docs and tests.

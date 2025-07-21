@@ -238,7 +238,19 @@ def test_fps_metric_updates(monkeypatch):
         def process(self, image: Any) -> list[Any]:
             return [{"x": 0.0, "y": 0.0}] * 17
 
-    times = [1.0, 1.1, 1.3]
+    times = [
+        1.0,  # initial last_time
+        1.02,  # start_infer 1
+        1.04,  # end_infer 1
+        1.10,  # now 1
+        1.12,  # start_json 1
+        1.14,  # end_json 1
+        1.20,  # start_infer 2
+        1.22,  # end_infer 2
+        1.30,  # now 2
+        1.32,  # start_json 2
+        1.34,  # end_json 2
+    ]
 
     def fake_perf_counter() -> float:
         return times.pop(0)
@@ -251,7 +263,12 @@ def test_fps_metric_updates(monkeypatch):
 
     asyncio.run(server.pose_endpoint(ws))
 
-    fps_values = [json.loads(msg)["metrics"]["fps"] for msg in ws.sent]
+    payloads = [json.loads(msg) for msg in ws.sent]
+    fps_values = [p["metrics"]["fps"] for p in payloads]
     assert len(fps_values) == 2
     assert abs(fps_values[0] - 10.0) < 1e-6
     assert abs(fps_values[1] - 5.0) < 1e-6
+    for p in payloads:
+        m = p["metrics"]
+        assert "infer_ms" in m
+        assert "json_ms" in m
