@@ -1642,12 +1642,18 @@ TODO logs the task.
 
 ### 2025-07-21  PR #211
 
+- **Summary**: added timestamp-based latency metrics between client and server.
+- **Stage**: implementation
+- **Motivation / Decision**: measure network delays for troubleshooting.
+
+### 2025-07-21  PR #212
+
 - **Summary**: documented npm install in setup script and AGENTS guide.
 - **Stage**: maintenance
 - **Motivation / Decision**: ensure `make typecheck-ts` passes by installing
   Node packages.
 
-### 2025-07-21  PR #212
+### 2025-07-21  PR #213
 
 - **Summary**: updated README and docs to list metrics exactly as the UI shows.
 - **Stage**: documentation

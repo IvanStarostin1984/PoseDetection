@@ -375,7 +375,10 @@ test('sends frames over WebSocket', async () => {
   require('@testing-library/react').act(() => {
     setPose({ landmarks: [], metrics: { balance: 0, pose_class: '', knee_angle: 0, posture_angle: 0, fps: 0 } });
   });
-  jest.advanceTimersByTime(100);
+  await require('@testing-library/react').act(async () => {
+    jest.advanceTimersByTime(100);
+    await Promise.resolve();
+  });
   expect(ctx.save).toHaveBeenCalled();
   expect(ctx.scale).toHaveBeenCalledWith(2, 2);
   expect(canvas.width).toBe(2);
@@ -386,7 +389,10 @@ test('sends frames over WebSocket', async () => {
   require('@testing-library/react').act(() => {
     setPose({ landmarks: [], metrics: { balance: 0, pose_class: '', knee_angle: 0, posture_angle: 0, fps: 0 } });
   });
-  jest.advanceTimersByTime(100);
+  await require('@testing-library/react').act(async () => {
+    jest.advanceTimersByTime(100);
+    await Promise.resolve();
+  });
   expect(canvas.width).toBe(4);
   expect(canvas.height).toBe(4);
   expect(ctx.scale).toHaveBeenLastCalledWith(4, 4);

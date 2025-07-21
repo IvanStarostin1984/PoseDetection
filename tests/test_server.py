@@ -7,6 +7,7 @@ import subprocess
 import time
 import asyncio
 import json
+import struct
 
 
 def test_build_payload_format():
@@ -240,16 +241,20 @@ def test_fps_metric_updates(monkeypatch):
 
     times = [
         1.0,  # initial last_time
+        1.01,  # ts_recv 1
         1.02,  # start_infer 1
         1.04,  # end_infer 1
         1.10,  # now 1
         1.12,  # start_json 1
         1.14,  # end_json 1
-        1.20,  # start_infer 2
-        1.22,  # end_infer 2
+        1.16,  # ts_out 1
+        1.20,  # ts_recv 2
+        1.22,  # start_infer 2
+        1.24,  # end_infer 2
         1.30,  # now 2
         1.32,  # start_json 2
         1.34,  # end_json 2
+        1.36,  # ts_out 2
     ]
 
     def fake_perf_counter() -> float:
@@ -272,3 +277,39 @@ def test_fps_metric_updates(monkeypatch):
         m = p["metrics"]
         assert "infer_ms" in m
         assert "json_ms" in m
+
+
+def test_timestamp_metrics(monkeypatch):
+    class Pose(DummyPose):
+        def process(self, image: Any) -> list[Any]:
+            return [{"x": 0.0, "y": 0.0}] * 17
+
+    times = [
+        0.0,  # initial last_time
+        1.0,  # ts_recv
+        1.05,  # start_infer
+        1.10,  # end_infer
+        1.20,  # now
+        1.25,  # start_json
+        1.26,  # end_json
+        1.27,  # ts_out
+    ]
+
+    def fake_perf_counter() -> float:
+        return times.pop(0)
+
+    monkeypatch.setattr(server.time, "perf_counter", fake_perf_counter)
+    monkeypatch.setattr(server, "PoseDetector", lambda *_a, **_k: Pose())
+    frame = np.zeros((1, 1, 3), dtype=np.uint8)
+    _, buf = server.cv2.imencode(".jpg", frame)
+    ts_send = 100.0
+    data = struct.pack("<d", ts_send) + buf.tobytes()
+    ws = DummyWS([data])
+
+    asyncio.run(server.pose_endpoint(ws))
+
+    payload = json.loads(ws.sent[0])
+    m = payload["metrics"]
+    assert abs(m["uplink_ms"] - (1000.0 - ts_send)) < 1e-6
+    assert abs(m["wait_ms"] - 50.0) < 1e-6
+    assert abs(m["ts_out"] - 1.27) < 1e-6

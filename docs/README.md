@@ -46,9 +46,10 @@ performance with continuous frames.
 ## Frontend metrics panel
 
 The React frontend displays these metrics below the video feed. They now appear
-in a vertical list for readability. Each line shows Balance, Pose, Knee Angle,
-Posture, FPS, Encode, Size, Draw, Client FPS and Dropped Frames. When
-connected you might see text like:
+in a vertical list for readability. Each line shows balance, pose, knee and
+posture angles, server FPS and the new encode time, blob size, draw time,
+uplink and wait times, downlink delay, end-to-end latency,
+client FPS and dropped frame count. When connected you might see text like:
 
 ```text
 Balance: 0.85
@@ -59,6 +60,10 @@ FPS: 25.00
 Encode: 5.00 ms
 Size: 12.3 KB
 Draw: 8.00 ms
+Uplink: 4.00 ms
+Wait: 1.00 ms
+Downlink: 6.00 ms
+Latency: 9.00 ms
 Client FPS: 24.00
 Dropped Frames: 0
 ```
