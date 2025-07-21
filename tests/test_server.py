@@ -252,14 +252,12 @@ def test_fps_metric_updates(monkeypatch):
         1.10,  # now 1
         1.12,  # start_json 1
         1.14,  # end_json 1
-        1.16,  # ts_out 1
         1.20,  # ts_recv 2
         1.22,  # start_infer 2
         1.24,  # end_infer 2
         1.30,  # now 2
         1.32,  # start_json 2
         1.34,  # end_json 2
-        1.36,  # ts_out 2
     ]
 
     def fake_perf_counter() -> float:
@@ -291,25 +289,32 @@ def test_timestamp_metrics(monkeypatch):
         def process(self, image: Any) -> list[Any]:
             return [{"x": 0.0, "y": 0.0}] * 17
 
-    times = [
+    perf_times = [
         0.0,  # initial last_time
-        1.0,  # ts_recv
+        1.0,  # ts_recv_perf
         1.05,  # start_infer
         1.10,  # end_infer
         1.20,  # now
         1.25,  # start_json
         1.26,  # end_json
-        1.27,  # ts_out
+    ]
+    wall_times = [
+        1000.0,  # ts_recv_ms
+        1000.27,  # ts_out
     ]
 
     def fake_perf_counter() -> float:
-        return times.pop(0)
+        return perf_times.pop(0)
+
+    def fake_time() -> float:
+        return wall_times.pop(0)
 
     monkeypatch.setattr(server.time, "perf_counter", fake_perf_counter)
+    monkeypatch.setattr(server.time, "time", fake_time)
     monkeypatch.setattr(server, "PoseDetector", lambda *_a, **_k: Pose())
     frame = np.zeros((1, 1, 3), dtype=np.uint8)
     _, buf = server.cv2.imencode(".jpg", frame)
-    ts_send = 100.0
+    ts_send = 999000.0
     data = struct.pack("<d", ts_send) + buf.tobytes()
     ws = DummyWS([data])
 
@@ -317,8 +322,8 @@ def test_timestamp_metrics(monkeypatch):
 
     payload = json.loads(ws.sent[0])
     m = payload["metrics"]
-    assert abs(m["uplink_ms"] - (1000.0 - ts_send)) < 1e-6
+    assert abs(m["uplink_ms"] - (1000000.0 - ts_send)) < 1e-6
     assert abs(m["wait_ms"] - 50.0) < 1e-6
-    assert abs(m["ts_out"] - 1.27) < 1e-6
+    assert abs(m["ts_out"] - 1000.27) < 1e-6
     assert "cpu_percent" in m
     assert "rss_bytes" in m

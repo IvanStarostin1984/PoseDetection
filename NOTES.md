@@ -1683,7 +1683,7 @@ TODO logs the task.
 - **Motivation / Decision**: ensure new optional dependencies get pinned and described.
 - **Next step**: none.
 
-### 2025-07-21  PR #217
+### 2025-07-24  PR #217
 
 - **Summary**: added CPU and memory metrics via optional psutil with rolling
   averages.
@@ -1697,4 +1697,22 @@ TODO logs the task.
 - **Stage**: maintenance
 - **Motivation / Decision**: union types require the future import on
   Python 3.9; tests were missing it.
+
+### 2025-07-24  PR #219
+
+- **Summary**: parse_requirements now strips trailing comments; tests cover it.
+- **Stage**: implementation
+- **Motivation / Decision**: avoid wrong version checks; resolves TODO.
+
+### 2025-07-24  PR #220
+
+- **Summary**: switched frame timestamps to epoch using Date.now()/time.time.
+- **Stage**: implementation
+- **Motivation / Decision**: align client-server clocks for accurate network metrics.
+
+### 2025-07-24  PR #221
+
+- **Summary**: refined metrics list in README and docs; removed duplicates.
+- **Stage**: documentation
+- **Motivation / Decision**: clarify metrics displayed in the UI.
 - **Next step**: none.

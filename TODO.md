@@ -199,3 +199,4 @@
 - [x] Add CPU and memory usage metrics using optional psutil.
 - [x] Ensure all Python modules start with `from __future__ import annotations`
       for Python 3.9 support.
+- [x] Strip comments in parse_requirements to avoid false version mismatches.
