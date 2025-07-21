@@ -1774,6 +1774,11 @@ TODO logs the task.
 
 ### 2025-07-21  PR #230
 
+- **Summary**: fixed Sphinx docs links to tech challenge file.
+- **Stage**: documentation
+- **Motivation / Decision**: markdown-link-check expected path from source dir.
+
+### 2025-07-21  PR #231
 - **Summary**: added lychee skip comment after Pages deployment link.
 - **Stage**: documentation
 - **Motivation / Decision**: ensure link checker passes for remote URL.
