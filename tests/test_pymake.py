@@ -101,6 +101,7 @@ def test_pymake_works_from_subdirectory(tmp_path, monkeypatch):
         return 0
 
     monkeypatch.setattr(pymake, "os", types.SimpleNamespace(name="nt"))
+    monkeypatch.setattr(pymake.shutil, "which", lambda exe: None)
     monkeypatch.setattr(subprocess, "call", fake_call)
     ret = pymake.main(["lint"])
     expected = [

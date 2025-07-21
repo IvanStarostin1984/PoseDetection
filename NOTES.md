@@ -1716,3 +1716,11 @@ TODO logs the task.
 - **Stage**: documentation
 - **Motivation / Decision**: clarify metrics displayed in the UI.
 - **Next step**: none.
+
+### 2025-07-25  PR #222
+
+- **Summary**: patched `test_pymake_works_from_subdirectory` to mock PowerShell
+  detection.
+- **Stage**: testing
+- **Motivation / Decision**: make test deterministic regardless of installed
+  executables.
