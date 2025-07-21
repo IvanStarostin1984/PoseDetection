@@ -1584,3 +1584,11 @@ TODO logs the task.
 - **Stage**: implementation
 - **Motivation / Decision**: ensure overlay drawing works after `ctx.scale(-1,1)`.
 - **Next step**: none.
+
+### 2025-07-21  PR #-
+
+- **Summary**: fixed missing closing brace in `poseDrawing.test.tsx` so tests run.
+- **Stage**: maintenance
+- **Motivation / Decision**: previous refactor left an unclosed test block which
+  broke Jest output.
+- **Next step**: none.
