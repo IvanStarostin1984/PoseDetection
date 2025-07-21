@@ -1795,6 +1795,12 @@ TODO logs the task.
 
 ### 2025-07-21  PR #233
 
+- **Summary**: added filter_visible utility and tests.
+- **Stage**: implementation
+- **Motivation / Decision**: needed helper to filter visible landmarks.
+
+### 2025-07-21  PR #234
+
 - **Summary**: filtered low-visibility landmarks in PoseDetector and added test.
 - **Stage**: implementation
 - **Motivation / Decision**: discard unreliable points using VISIBILITY_MIN.
