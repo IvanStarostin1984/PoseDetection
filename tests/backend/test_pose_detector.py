@@ -102,3 +102,11 @@ def test_init_sets_static_image_mode_false(monkeypatch):
     monkeypatch.setattr(mp.solutions.pose, "Pose", InspectPose)
     pd.PoseDetector()
     assert InspectPose.kwargs.get("static_image_mode") is False
+
+
+def test_init_uses_model_complexity_constant(monkeypatch):
+    monkeypatch.setattr(mp.solutions.pose, "Pose", InspectPose)
+    pd.PoseDetector()
+    assert (
+        InspectPose.kwargs.get("model_complexity") == pd.PoseDetector.MODEL_COMPLEXITY
+    )

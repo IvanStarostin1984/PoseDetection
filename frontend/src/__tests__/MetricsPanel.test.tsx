@@ -16,8 +16,13 @@ test('displays all metrics', () => {
         encodeMs: 5,
         sizeKB: 12.3,
         drawMs: 8,
+        uplink_ms: 4,
+        wait_ms: 1,
+        downlinkMs: 6,
+        latencyMs: 9,
         clientFps: 15,
         droppedFrames: 2,
+        model: 'lite',
       }}
     />,
   );
@@ -31,6 +36,11 @@ test('displays all metrics', () => {
   expect(screen.getByText(/Encode: 5\.00 ms/)).toBeInTheDocument();
   expect(screen.getByText(/Size: 12\.3 KB/)).toBeInTheDocument();
   expect(screen.getByText(/Draw: 8\.00 ms/)).toBeInTheDocument();
+  expect(screen.getByText(/Uplink: 4\.00 ms/)).toBeInTheDocument();
+  expect(screen.getByText(/Wait: 1\.00 ms/)).toBeInTheDocument();
+  expect(screen.getByText(/Downlink: 6\.00 ms/)).toBeInTheDocument();
+  expect(screen.getByText(/Latency: 9\.00 ms/)).toBeInTheDocument();
   expect(screen.getByText(/Client FPS: 15\.00/)).toBeInTheDocument();
   expect(screen.getByText(/Dropped Frames: 2/)).toBeInTheDocument();
+  expect(screen.getByText(/Model: lite/)).toBeInTheDocument();
 });

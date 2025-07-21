@@ -27,9 +27,14 @@ class PoseDetector:
         mp.solutions.pose.PoseLandmark.RIGHT_ANKLE,
     ]
 
+    # 0 selects the lightweight model, 1 the full model
+    MODEL_COMPLEXITY = 1
+
     def __init__(self) -> None:
         # static_image_mode=False improves performance in video streams
-        self._pose = mp.solutions.pose.Pose(model_complexity=1, static_image_mode=False)
+        self._pose = mp.solutions.pose.Pose(
+            model_complexity=self.MODEL_COMPLEXITY, static_image_mode=False
+        )
 
     def process(self, frame: np.ndarray) -> list[dict[str, float]]:
         """Return 17 keypoints as dicts with x, y and visibility."""

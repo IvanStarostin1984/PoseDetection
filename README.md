@@ -58,8 +58,8 @@ a dictionary with ``x``, ``y`` and ``visibility``. The keypoints are ordered as
 ``left_wrist``, ``right_wrist``, ``left_hip``, ``right_hip``, ``left_knee``,
 ``right_knee``, ``left_ankle`` and ``right_ankle``. The payload also includes
 simple analytics like knee angle, balance, a posture angle, an ``fps`` value,
-``infer_ms`` and ``json_ms`` timings and a ``pose_class`` field indicating
-``standing`` or ``sitting``.
+``infer_ms`` and ``json_ms`` timings, the ``model`` string (``lite`` or ``full``)
+and a ``pose_class`` field indicating ``standing`` or ``sitting``.
 
 ## Development
 
@@ -185,6 +185,11 @@ to the connection status. The metrics panel rendered after `.pose-container`
 displays the Balance, Pose, Knee Angle, Posture, FPS, infer_ms, json_ms,
 Encode, Size, Draw, Client FPS and Dropped Frames metrics on separate lines
 for clarity.
+lists Balance, Pose, Knee Angle, Posture, FPS and timing metrics such as
+encode, uplink, wait, downlink, latency, json and inference times plus blob
+size, draw time, client FPS and dropped frames.
+displays the Balance, Pose, Knee Angle, Posture, FPS, Encode, Size, Draw,
+Client FPS and Dropped Frames metrics on separate lines for clarity.
 
 ## Running locally
 

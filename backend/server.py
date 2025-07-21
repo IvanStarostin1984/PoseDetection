@@ -7,6 +7,7 @@ from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.staticfiles import StaticFiles
 import asyncio
 import time
+import struct
 
 from typing import Any, Dict, List
 
@@ -34,7 +35,9 @@ def build_payload(points: List[Dict[str, float]], fps: float) -> Dict[str, Any]:
     """Return WebSocket payload from 17 keypoints and frame rate."""
     metrics = extract_pose_metrics(_to_named(points))
     metrics["fps"] = fps
-    return {"landmarks": points, "metrics": metrics}
+    complexity = getattr(PoseDetector, "MODEL_COMPLEXITY", 1)
+    model = "lite" if complexity == 0 else "full"
+    return {"landmarks": points, "metrics": metrics, "model": model}
 
 
 async def _process(det: PoseDetector, data: bytes) -> list[dict[str, float]]:
@@ -56,10 +59,15 @@ async def pose_endpoint(ws: WebSocket) -> None:
             except WebSocketDisconnect:
                 break
 
+            ts_send = struct.unpack("<d", data[:8])[0]
+            frame_bytes = data[8:]
+            ts_recv_ms = time.perf_counter() * 1000.0
             try:
                 start_infer = time.perf_counter()
-                points = await _process(detector, data)
+                wait_ms = start_infer * 1000.0 - ts_recv_ms
+                points = await _process(detector, frame_bytes)
                 infer_ms = (time.perf_counter() - start_infer) * 1000.0
+                uplink_ms = ts_recv_ms - ts_send
             except Exception:
                 try:
                     await ws.send_text(json.dumps({"error": "process failed"}))
@@ -82,8 +90,15 @@ async def pose_endpoint(ws: WebSocket) -> None:
             start_json = time.perf_counter()
             payload = build_payload(points, fps)
             json_ms = (time.perf_counter() - start_json) * 1000.0
-            payload["metrics"]["infer_ms"] = infer_ms
-            payload["metrics"]["json_ms"] = json_ms
+            payload["metrics"].update(
+                {
+                    "infer_ms": infer_ms,
+                    "json_ms": json_ms,
+                    "uplink_ms": uplink_ms,
+                    "wait_ms": wait_ms,
+                    "ts_out": time.perf_counter(),
+                }
+            )
             try:
                 await ws.send_text(json.dumps(payload))
             except WebSocketDisconnect:
