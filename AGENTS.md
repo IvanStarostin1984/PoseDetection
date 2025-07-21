@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.50 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.51 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -303,6 +303,8 @@ jobs:
 - Avoid inline HTML.
 - All Python modules, including tests, must start with
   `from __future__ import annotations` so union types work on Python 3.9.
+- Use the same clock source for all duration measurements; in browsers call
+  `performance.now()`.
 
 ---
 

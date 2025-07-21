@@ -201,3 +201,5 @@
       for Python 3.9 support.
 - [x] Strip comments in parse_requirements to avoid false version mismatches.
 - [x] Record draw time with performance.now to prevent negative values.
+- [x] Ensure `test_pymake_works_from_subdirectory` stubs shutil.which for
+      deterministic behavior.
