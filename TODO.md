@@ -1,4 +1,4 @@
-# TODO – Road‑map (last updated: 2025-07-20)
+# TODO – Road‑map (last updated: 2025-07-21)
 
 > *Record only high‑level milestones here; break micro‑tasks out into Issues.*
 > **When you finish a task, tick it and append a short NOTE entry
@@ -186,3 +186,4 @@
       `PoseViewer`. Add test for scale handling.
 - [x] Use absolute scale from `getTransform` in `drawSkeleton` and ensure
       positive line width.
+- [x] Add FPS metric to backend payload and display it.

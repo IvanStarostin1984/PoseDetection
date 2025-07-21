@@ -6,6 +6,7 @@ import numpy as np
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.staticfiles import StaticFiles
 import asyncio
+import time
 
 from typing import Any, Dict, List
 
@@ -29,9 +30,10 @@ def _to_named(points: List[Dict[str, float]]) -> Dict[str, Dict[str, float]]:
     return named
 
 
-def build_payload(points: List[Dict[str, float]]) -> Dict[str, Any]:
-    """Return WebSocket payload from 17 keypoints."""
+def build_payload(points: List[Dict[str, float]], fps: float) -> Dict[str, Any]:
+    """Return WebSocket payload from 17 keypoints and frame rate."""
     metrics = extract_pose_metrics(_to_named(points))
+    metrics["fps"] = fps
     return {"landmarks": points, "metrics": metrics}
 
 
@@ -45,6 +47,7 @@ async def _process(det: PoseDetector, data: bytes) -> list[dict[str, float]]:
 async def pose_endpoint(ws: WebSocket) -> None:
     """Stream pose metrics over WebSocket."""
     await ws.accept()
+    last_time = time.perf_counter()
     detector = PoseDetector()
     try:
         while True:
@@ -69,7 +72,11 @@ async def pose_endpoint(ws: WebSocket) -> None:
                     break
                 continue
 
-            payload = build_payload(points)
+            now = time.perf_counter()
+            delta = now - last_time
+            fps = 1.0 / delta if delta > 0 else float("inf")
+            last_time = now
+            payload = build_payload(points, fps)
             try:
                 await ws.send_text(json.dumps(payload))
             except WebSocketDisconnect:

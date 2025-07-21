@@ -6,16 +6,23 @@ import sys
 import subprocess
 import time
 import asyncio
+import json
 
 
 def test_build_payload_format():
     lms = [{"x": 0.1, "y": 0.2, "visibility": 0.9}] * 17
-    payload = build_payload(lms)
+    payload = build_payload(lms, 30.0)
     assert isinstance(payload["landmarks"], list)
     assert len(payload["landmarks"]) == 17
     assert payload["landmarks"][0]["x"] == 0.1
     metrics = payload["metrics"]
-    assert {"knee_angle", "balance", "pose_class", "posture_angle"} <= metrics.keys()
+    assert {
+        "knee_angle",
+        "balance",
+        "pose_class",
+        "posture_angle",
+    } <= metrics.keys()
+    assert "fps" in metrics
 
 
 def test_names_match_landmarks():
@@ -224,3 +231,27 @@ def test_pose_endpoint_handles_client_disconnect(monkeypatch):
 
     asyncio.run(server.pose_endpoint(ws))
     assert pose.closed is True
+
+
+def test_fps_metric_updates(monkeypatch):
+    class Pose(DummyPose):
+        def process(self, image: Any) -> list[Any]:
+            return [{"x": 0.0, "y": 0.0}] * 17
+
+    times = [1.0, 1.1, 1.3]
+
+    def fake_perf_counter() -> float:
+        return times.pop(0)
+
+    monkeypatch.setattr(server.time, "perf_counter", fake_perf_counter)
+    monkeypatch.setattr(server, "PoseDetector", lambda *_a, **_k: Pose())
+    frame = np.zeros((1, 1, 3), dtype=np.uint8)
+    _, buf = server.cv2.imencode(".jpg", frame)
+    ws = DummyWS([buf.tobytes(), buf.tobytes()])
+
+    asyncio.run(server.pose_endpoint(ws))
+
+    fps_values = [json.loads(msg)["metrics"]["fps"] for msg in ws.sent]
+    assert len(fps_values) == 2
+    assert abs(fps_values[0] - 10.0) < 1e-6
+    assert abs(fps_values[1] - 5.0) < 1e-6

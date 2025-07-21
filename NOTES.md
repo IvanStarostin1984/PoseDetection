@@ -1592,3 +1592,10 @@ TODO logs the task.
 - **Motivation / Decision**: previous refactor left an unclosed test block which
   broke Jest output.
 - **Next step**: none.
+
+### 2025-07-21  PR #205
+
+- **Summary**: added FPS metric in backend payload and updated tests and docs.
+- **Stage**: implementation
+- **Motivation / Decision**: allow clients to monitor server frame rate.
+- **Next step**: none.
