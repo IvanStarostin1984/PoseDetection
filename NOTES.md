@@ -1639,3 +1639,12 @@ TODO logs the task.
 - **Motivation / Decision**: expose client-side performance metrics for easier
   debugging and monitoring.
 - **Next step**: none.
+
+### 2025-07-21  PR #211
+
+- **Summary**: added CPU and memory metrics using psutil; MetricsPanel displays
+  rolling averages.
+- **Stage**: implementation
+- **Motivation / Decision**: monitor resource usage during streaming and expose
+  it in the UI.
+- **Next step**: none.

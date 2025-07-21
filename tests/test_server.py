@@ -21,6 +21,8 @@ def test_build_payload_format():
         "balance",
         "pose_class",
         "posture_angle",
+        "cpu_percent",
+        "mem_mb",
     } <= metrics.keys()
     assert "fps" in metrics
 
@@ -272,3 +274,5 @@ def test_fps_metric_updates(monkeypatch):
         m = p["metrics"]
         assert "infer_ms" in m
         assert "json_ms" in m
+        assert "cpu_percent" in m
+        assert "mem_mb" in m

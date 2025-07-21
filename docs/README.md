@@ -47,8 +47,9 @@ performance with continuous frames.
 
 The React frontend displays these metrics below the video feed. They now appear
 in a vertical list for readability. Each line shows balance, pose, knee and
-posture angles, server FPS and the new encode time, blob size, draw time,
-client FPS and dropped frame count. When connected you might see text like:
+posture angles, server FPS, CPU and memory usage followed by the encode time,
+blob size, draw time, client FPS and dropped frame count. When connected you
+might see text like:
 
 ```text
 Balance: 0.85
@@ -56,6 +57,8 @@ Pose: standing
 Knee Angle: 160.00°
 Posture: 30.00°
 FPS: 25.00
+CPU: 50 %
+Mem: 200 MB
 Encode: 5.00 ms
 Size: 12.3 KB
 Draw: 8.00 ms

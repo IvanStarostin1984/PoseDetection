@@ -73,6 +73,8 @@ def test_pose_endpoint_performance(monkeypatch: Any) -> None:
         assert "fps" in metrics
         assert "infer_ms" in metrics
         assert "json_ms" in metrics
+        assert "cpu_percent" in metrics
+        assert "mem_mb" in metrics
 
     durations = [send_times[i] - recv_times[i] for i in range(frame_count)]
     avg_loop = sum(durations) / frame_count

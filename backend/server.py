@@ -7,11 +7,17 @@ from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.staticfiles import StaticFiles
 import asyncio
 import time
+from collections import deque
 
-from typing import Any, Dict, List
+from typing import Any, Deque, Dict, List
 
 from .analytics import extract_pose_metrics
 from .pose_detector import PoseDetector
+
+try:  # optional dependency for process metrics
+    import psutil
+except Exception:  # pragma: no cover - psutil may be missing
+    psutil = None  # type: ignore
 
 import uvicorn
 
@@ -19,6 +25,10 @@ app = FastAPI()
 
 # names for the 17-landmark subset used by PoseDetector
 _NAMES = [lm.name.lower() for lm in PoseDetector.LANDMARKS]
+
+# store recent CPU and memory samples for rolling averages
+_CPU: Deque[float] = deque(maxlen=60)
+_MEM: Deque[float] = deque(maxlen=60)
 
 
 def _to_named(points: List[Dict[str, float]]) -> Dict[str, Dict[str, float]]:
@@ -34,6 +44,8 @@ def build_payload(points: List[Dict[str, float]], fps: float) -> Dict[str, Any]:
     """Return WebSocket payload from 17 keypoints and frame rate."""
     metrics = extract_pose_metrics(_to_named(points))
     metrics["fps"] = fps
+    metrics["cpu_percent"] = sum(_CPU) / len(_CPU) if _CPU else 0.0
+    metrics["mem_mb"] = sum(_MEM) / len(_MEM) if _MEM else 0.0
     return {"landmarks": points, "metrics": metrics}
 
 
@@ -48,6 +60,8 @@ async def pose_endpoint(ws: WebSocket) -> None:
     """Stream pose metrics over WebSocket."""
     await ws.accept()
     last_time = time.perf_counter()
+    sample_time = last_time
+    proc = psutil.Process() if psutil else None
     detector = PoseDetector()
     try:
         while True:
@@ -78,6 +92,11 @@ async def pose_endpoint(ws: WebSocket) -> None:
             delta = now - last_time
             fps = 1.0 / delta if delta > 0 else float("inf")
             last_time = now
+
+            if proc and now - sample_time >= 1.0:
+                _CPU.append(proc.cpu_percent(interval=None))
+                _MEM.append(proc.memory_info().rss / (1024 * 1024))
+                sample_time = now
 
             start_json = time.perf_counter()
             payload = build_payload(points, fps)
