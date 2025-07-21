@@ -181,7 +181,7 @@ test('mirrors context when video transform flips horizontally', async () => {
   fireEvent(video, new Event('loadedmetadata'));
   resizeCb([] as any, {} as ResizeObserver);
   require('@testing-library/react').act(() => {
-    setPose({ landmarks: [], metrics: { balance: 0, pose_class: '', knee_angle: 0, posture_angle: 0 } });
+    setPose({ landmarks: [], metrics: { balance: 0, pose_class: '', knee_angle: 0, posture_angle: 0, fps: 0 } });
   });
   await waitFor(() => {
     expect(ctx.translate).toHaveBeenCalledWith(100, 0);
@@ -250,7 +250,7 @@ test('scales context when rect size differs from video size', async () => {
   fireEvent(video, new Event('loadedmetadata'));
   resizeCb([] as any, {} as ResizeObserver);
   require('@testing-library/react').act(() => {
-    setPose({ landmarks: [], metrics: { balance: 0, pose_class: '', knee_angle: 0, posture_angle: 0 } });
+    setPose({ landmarks: [], metrics: { balance: 0, pose_class: '', knee_angle: 0, posture_angle: 0, fps: 0 } });
   });
   await waitFor(() => {
     expect(canvas.width).toBe(200);
@@ -373,7 +373,7 @@ test('sends frames over WebSocket', async () => {
   fireEvent(video, new Event('loadedmetadata'));
   resizeCb([] as any, {} as ResizeObserver);
   require('@testing-library/react').act(() => {
-    setPose({ landmarks: [], metrics: { balance: 0, pose_class: '', knee_angle: 0, posture_angle: 0 } });
+    setPose({ landmarks: [], metrics: { balance: 0, pose_class: '', knee_angle: 0, posture_angle: 0, fps: 0 } });
   });
   jest.advanceTimersByTime(100);
   expect(ctx.save).toHaveBeenCalled();
@@ -384,7 +384,7 @@ test('sends frames over WebSocket', async () => {
   rect.height = 2;
   resizeCb([] as any, {} as ResizeObserver);
   require('@testing-library/react').act(() => {
-    setPose({ landmarks: [], metrics: { balance: 0, pose_class: '', knee_angle: 0, posture_angle: 0 } });
+    setPose({ landmarks: [], metrics: { balance: 0, pose_class: '', knee_angle: 0, posture_angle: 0, fps: 0 } });
   });
   jest.advanceTimersByTime(100);
   expect(canvas.width).toBe(4);

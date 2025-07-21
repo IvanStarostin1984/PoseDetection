@@ -10,6 +10,7 @@ test('displays balance, pose, knee and posture angle', () => {
         pose_class: 'standing',
         knee_angle: 45.5,
         posture_angle: 30.0,
+        fps: 20,
       }}
     />,
   );
@@ -17,4 +18,5 @@ test('displays balance, pose, knee and posture angle', () => {
   expect(screen.getByText(/Pose: standing/)).toBeInTheDocument();
   expect(screen.getByText(/Knee Angle: 45\.50°/)).toBeInTheDocument();
   expect(screen.getByText(/Posture: 30\.00°/)).toBeInTheDocument();
+  expect(screen.getByText(/FPS: 20\.00/)).toBeInTheDocument();
 });

@@ -53,5 +53,5 @@ Balance: 0.85
 Pose: standing
 Knee Angle: 160.00°
 Posture: 30.00°
-FPS: 29.9
+FPS: 25.00
 ```
