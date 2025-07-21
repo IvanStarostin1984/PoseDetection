@@ -47,7 +47,10 @@ if [ -f .pre-commit-config.yaml ] && [ "${SKIP_PRECOMMIT:-0}" != "1" ]; then
   python3 -m pre_commit run --all-files || true
 fi
 
-npm install
+# install Node packages so TypeScript tools work
+if [ -f package.json ]; then
+  npm install
+fi
 
 echo "Setup complete"
 exit 0

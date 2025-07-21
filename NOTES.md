@@ -1639,3 +1639,11 @@ TODO logs the task.
 - **Motivation / Decision**: expose client-side performance metrics for easier
   debugging and monitoring.
 - **Next step**: none.
+
+### 2025-07-21  PR #211
+
+- **Summary**: documented npm install in setup script and AGENTS guide.
+- **Stage**: maintenance
+- **Motivation / Decision**: ensure `make typecheck-ts` passes by installing
+  Node packages.
+- **Next step**: none.
