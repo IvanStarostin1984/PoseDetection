@@ -1779,7 +1779,15 @@ TODO logs the task.
 - **Motivation / Decision**: markdown-link-check expected path from source dir.
 
 ### 2025-07-21  PR #231
+
 - **Summary**: added lychee skip comment after Pages deployment link.
 - **Stage**: documentation
 - **Motivation / Decision**: ensure link checker passes for remote URL.
+- **Next step**: none.
+
+### 2025-07-21  PR #232
+
+- **Summary**: added `__future__` annotations to pose_detector; fixed docs.
+- **Stage**: implementation
+- **Motivation / Decision**: followed coding rules to add import; linters pass.
 - **Next step**: none.
