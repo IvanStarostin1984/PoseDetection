@@ -1771,3 +1771,10 @@ TODO logs the task.
 - **Stage**: documentation
 - **Motivation / Decision**: show published docs and provide Sphinx overview.
 - **Next step**: none.
+
+### 2025-07-21  PR #230
+
+- **Summary**: fixed Sphinx docs links to tech challenge file.
+- **Stage**: documentation
+- **Motivation / Decision**: markdown-link-check expected path from source dir.
+- **Next step**: none.
