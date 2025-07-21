@@ -1646,4 +1646,11 @@ TODO logs the task.
 - **Stage**: maintenance
 - **Motivation / Decision**: ensure `make typecheck-ts` passes by installing
   Node packages.
+
+### 2025-07-21  PR #212
+
+- **Summary**: updated README and docs to list metrics exactly as the UI shows.
+- **Stage**: documentation
+- **Motivation / Decision**: docs listed outdated metrics; verified
+  MetricsPanel.tsx and synced both READMEs.
 - **Next step**: none.
