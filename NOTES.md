@@ -1795,11 +1795,17 @@ TODO logs the task.
 
 ### 2025-07-21  PR #233
 
+- **Summary**: added backend config module with VISIBILITY_MIN constant and test.
+- **Stage**: implementation
+- **Motivation / Decision**: centralise landmark visibility threshold for reuse.
+
+### 2025-07-21  PR #234
+
 - **Summary**: added filter_visible utility and tests.
 - **Stage**: implementation
 - **Motivation / Decision**: needed helper to filter visible landmarks.
 
-### 2025-07-21  PR #234
+### 2025-07-21  PR #235
 
 - **Summary**: filtered low-visibility landmarks in PoseDetector and added test.
 - **Stage**: implementation

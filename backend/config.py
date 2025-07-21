@@ -1,5 +1,6 @@
 from __future__ import annotations
 
-"""Backend configuration constants."""
+"""Central configuration constants."""
 
-VISIBILITY_MIN = 0.5
+VISIBILITY_MIN = 0.50
+"""Minimum visibility score for pose landmarks."""
