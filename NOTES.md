@@ -1675,3 +1675,10 @@ TODO logs the task.
 - **Motivation / Decision**: docs listed outdated metrics; verified
   MetricsPanel.tsx and synced both READMEs.
 - **Next step**: none.
+
+### 2025-07-23  PR #216
+
+- **Summary**: documented policy for optional packages in AGENTS guide.
+- **Stage**: documentation
+- **Motivation / Decision**: ensure new optional dependencies get pinned and described.
+- **Next step**: none.
