@@ -204,3 +204,5 @@
 - [x] Ensure `test_pymake_works_from_subdirectory` stubs shutil.which for
       deterministic behavior.
 - [x] Reduce frame capture interval in PoseViewer to 25ms for smoother video.
+- [x] Document lychee skip for future links and verify relative paths when
+      moving docs.
