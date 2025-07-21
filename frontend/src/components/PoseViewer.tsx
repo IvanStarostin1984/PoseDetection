@@ -18,8 +18,15 @@ const PoseViewer: React.FC = () => {
   );
   const [streaming, setStreaming] = useState(true);
   const [cameraError, setCameraError] = useState<string | null>(null);
+  const [encodeMs, setEncodeMs] = useState(0);
+  const [sizeKB, setSizeKB] = useState(0);
+  const [clientFps, setClientFps] = useState(0);
+  const [droppedFrames, setDroppedFrames] = useState(0);
+  const [drawMs, setDrawMs] = useState(0);
   const streamRef = useRef<MediaStream | null>(null);
   const offscreenRef = useRef<HTMLCanvasElement>(document.createElement('canvas'));
+  const encodePending = useRef(false);
+  const frameTimes = useRef<number[]>([]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -28,12 +35,41 @@ const PoseViewer: React.FC = () => {
     const ctx = off.getContext('2d');
     if (!ctx) return;
     const id = setInterval(() => {
+      if (encodePending.current) {
+        setDroppedFrames((d) => d + 1);
+        return;
+      }
+      encodePending.current = true;
+      const start = performance.now();
       off.width = video.videoWidth;
       off.height = video.videoHeight;
       ctx.drawImage(video, 0, 0, off.width, off.height);
-      off.toBlob((b) => {
-        if (b) send(b);
-      }, 'image/jpeg');
+      off.toBlob(
+        (b) => {
+          const end = performance.now();
+          setEncodeMs(end - start);
+          if (b) {
+            setSizeKB(b.size / 1024);
+            send(b);
+          }
+          encodePending.current = false;
+          const now = end;
+          frameTimes.current.push(now);
+          while (frameTimes.current.length > 0 && now - frameTimes.current[0] > 1000) {
+            frameTimes.current.shift();
+          }
+          if (frameTimes.current.length > 1) {
+            const first = frameTimes.current[0];
+            const last = frameTimes.current[frameTimes.current.length - 1];
+            setClientFps(
+              ((frameTimes.current.length - 1) * 1000) / (last - first),
+            );
+          } else {
+            setClientFps(0);
+          }
+        },
+        'image/jpeg',
+      );
     }, 100);
     return () => clearInterval(id);
   }, [streaming, status, send]);
@@ -94,6 +130,7 @@ const PoseViewer: React.FC = () => {
     if (!canvas || !video || !poseData) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    const start = performance.now();
     ctx.save();
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -107,10 +144,19 @@ const PoseViewer: React.FC = () => {
     }
     drawSkeleton(ctx, poseData.landmarks, video.videoWidth, video.videoHeight);
     ctx.restore();
+    setDrawMs(performance.now() - start);
   }, [poseData]);
 
   const metrics: PoseMetrics | undefined = poseData
-    ? { ...poseData.metrics, fps: Number((poseData.metrics as any).fps ?? 0) }
+    ? {
+        ...poseData.metrics,
+        fps: Number((poseData.metrics as any).fps ?? 0),
+        encodeMs,
+        sizeKB,
+        drawMs,
+        clientFps,
+        droppedFrames,
+      }
     : undefined;
 
   return (
