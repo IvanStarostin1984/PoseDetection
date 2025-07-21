@@ -4,6 +4,9 @@ import cv2
 import mediapipe as mp
 import numpy as np
 
+from .config import VISIBILITY_MIN
+from .pose.landmark_utils import filter_visible
+
 
 class PoseDetector:
     """Extract 17 pose keypoints from a BGR video frame."""
@@ -56,7 +59,7 @@ class PoseDetector:
                     "visibility": float(lm.visibility),
                 }
             )
-        return keypoints
+        return filter_visible(keypoints, VISIBILITY_MIN)
 
     def close(self) -> None:
         """Release MediaPipe resources."""
