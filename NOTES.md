@@ -1614,3 +1614,11 @@ TODO logs the task.
 - **Motivation / Decision**: playsInline allows autoplay on mobile and the
   overlay class simplifies styling.
 - **Next step**: none.
+
+### 2025-07-21
+
+- **Summary**: moved MetricsPanel below pose-container and clarified README.
+  Built frontend.
+- **Stage**: implementation
+- **Motivation / Decision**: show metrics as sibling element so layout is clearer.
+- **Next step**: none.

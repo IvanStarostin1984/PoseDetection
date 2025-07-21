@@ -184,11 +184,13 @@ const PoseViewer: React.FC = () => {
   };
 
   return (
-    <div className="pose-container">
-      <video ref={videoRef} />
-      <canvas ref={canvasRef} />
+    <>
+      <div className="pose-container">
+        <video ref={videoRef} />
+        <canvas ref={canvasRef} />
+      </div>
       <MetricsPanel data={poseData} />
-    </div>
+    </>
   );
 };
 ```
