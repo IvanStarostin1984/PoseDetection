@@ -1606,3 +1606,11 @@ TODO logs the task.
 - **Stage**: implementation
 - **Motivation / Decision**: allow clients to monitor server frame rate.
 - **Next step**: none.
+
+### 2025-07-21  PR #207
+
+- **Summary**: added `playsInline` to video and an `.overlay` class to canvas.
+- **Stage**: implementation
+- **Motivation / Decision**: playsInline allows autoplay on mobile and the
+  overlay class simplifies styling.
+- **Next step**: none.

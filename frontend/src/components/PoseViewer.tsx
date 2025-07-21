@@ -115,8 +115,8 @@ const PoseViewer: React.FC = () => {
 
   return (
     <div className="pose-container">
-      <video ref={videoRef} autoPlay muted />
-      <canvas ref={canvasRef} />
+      <video ref={videoRef} autoPlay muted playsInline />
+      <canvas ref={canvasRef} className="overlay" />
       <MetricsPanel data={metrics} />
       {error && <div className="ws-error">Error: {error}</div>}
       {cameraError && (
