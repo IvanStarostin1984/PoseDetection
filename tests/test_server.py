@@ -24,6 +24,8 @@ def test_build_payload_format():
         "posture_angle",
     } <= metrics.keys()
     assert "fps" in metrics
+    assert "cpu_percent" in metrics
+    assert "rss_bytes" in metrics
     assert payload["model"] in ("lite", "full")
 
 
@@ -278,6 +280,8 @@ def test_fps_metric_updates(monkeypatch):
         m = p["metrics"]
         assert "infer_ms" in m
         assert "json_ms" in m
+        assert "cpu_percent" in m
+        assert "rss_bytes" in m
 
 
 def test_timestamp_metrics(monkeypatch):
@@ -314,3 +318,5 @@ def test_timestamp_metrics(monkeypatch):
     assert abs(m["uplink_ms"] - (1000.0 - ts_send)) < 1e-6
     assert abs(m["wait_ms"] - 50.0) < 1e-6
     assert abs(m["ts_out"] - 1.27) < 1e-6
+    assert "cpu_percent" in m
+    assert "rss_bytes" in m

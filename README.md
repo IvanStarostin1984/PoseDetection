@@ -128,6 +128,7 @@ Follow these steps to run the backend from Visual Studio:
 2. In **Python Environments** choose **Add Environment** → **Virtual
    Environment** and create a `.venv`.
 3. Install the requirements with `pip install -r requirements.txt`.
+   The optional `psutil` package enables CPU and memory metrics.
 4. Right‑click `backend/server.py` and pick **Set as Startup File**.
 5. Press **F5** to launch the FastAPI server.
 
@@ -184,7 +185,8 @@ If webcam access is denied the viewer now reports "Webcam access denied" next
 to the connection status. The metrics panel rendered after `.pose-container`
 displays the Balance, Pose, Knee Angle, Posture, FPS, infer_ms, json_ms,
 Encode, Size, Draw, Client FPS and Dropped Frames metrics on separate lines
-for clarity.
+for clarity. When `psutil` is installed the panel also shows CPU and memory
+usage.
 lists Balance, Pose, Knee Angle, Posture, FPS and timing metrics such as
 encode, uplink, wait, downlink, latency, json and inference times plus blob
 size, draw time, client FPS and dropped frames.

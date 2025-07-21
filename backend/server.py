@@ -1,22 +1,35 @@
 from __future__ import annotations
 
 import json
+import contextlib
 import cv2
 import numpy as np
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.staticfiles import StaticFiles
+from collections import deque
 import asyncio
 import time
 import struct
 
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Deque
 
 from .analytics import extract_pose_metrics
 from .pose_detector import PoseDetector
 
+try:
+    import psutil  # type: ignore
+except Exception:  # pragma: no cover - optional dependency
+    psutil = None
+
 import uvicorn
 
 app = FastAPI()
+
+# optional CPU/memory sampling
+PROC = psutil.Process() if psutil else None
+CPU_HISTORY: Deque[float] = deque(maxlen=5)
+RSS_HISTORY: Deque[int] = deque(maxlen=5)
+SAMPLER_TASK: asyncio.Task[None] | None = None
 
 # names for the 17-landmark subset used by PoseDetector
 _NAMES = [lm.name.lower() for lm in PoseDetector.LANDMARKS]
@@ -31,10 +44,38 @@ def _to_named(points: List[Dict[str, float]]) -> Dict[str, Dict[str, float]]:
     return named
 
 
+async def _sample_proc() -> None:
+    """Collect CPU and memory usage once per second."""
+    assert PROC is not None
+    while True:
+        CPU_HISTORY.append(PROC.cpu_percent(interval=None))
+        RSS_HISTORY.append(PROC.memory_info().rss)
+        await asyncio.sleep(1)
+
+
+@app.on_event("startup")
+async def _start_sampler() -> None:
+    global SAMPLER_TASK
+    if PROC is not None:
+        SAMPLER_TASK = asyncio.create_task(_sample_proc())
+
+
+@app.on_event("shutdown")
+async def _stop_sampler() -> None:
+    if SAMPLER_TASK:
+        SAMPLER_TASK.cancel()
+        with contextlib.suppress(asyncio.CancelledError):
+            await SAMPLER_TASK
+
+
 def build_payload(points: List[Dict[str, float]], fps: float) -> Dict[str, Any]:
     """Return WebSocket payload from 17 keypoints and frame rate."""
     metrics = extract_pose_metrics(_to_named(points))
     metrics["fps"] = fps
+    cpu = sum(CPU_HISTORY) / len(CPU_HISTORY) if CPU_HISTORY else 0.0
+    rss = int(sum(RSS_HISTORY) / len(RSS_HISTORY)) if RSS_HISTORY else 0
+    metrics["cpu_percent"] = cpu
+    metrics["rss_bytes"] = rss
     complexity = getattr(PoseDetector, "MODEL_COMPLEXITY", 1)
     model = "lite" if complexity == 0 else "full"
     return {"landmarks": points, "metrics": metrics, "model": model}
