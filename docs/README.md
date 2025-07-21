@@ -46,9 +46,9 @@ performance with continuous frames.
 ## Frontend metrics panel
 
 The React frontend displays these metrics below the video feed. They now appear
-in a vertical list for readability. Each line shows balance, pose, knee and
-posture angles, server FPS and the new encode time, blob size, draw time,
-client FPS and dropped frame count. When connected you might see text like:
+in a vertical list for readability. Each line shows Balance, Pose, Knee Angle,
+Posture, FPS, Encode, Size, Draw, Client FPS and Dropped Frames. When
+connected you might see text like:
 
 ```text
 Balance: 0.85
