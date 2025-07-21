@@ -109,11 +109,15 @@ const PoseViewer: React.FC = () => {
     ctx.restore();
   }, [poseData]);
 
+  const metrics: PoseMetrics | undefined = poseData
+    ? { ...poseData.metrics, fps: Number((poseData.metrics as any).fps ?? 0) }
+    : undefined;
+
   return (
     <div className="pose-container">
       <video ref={videoRef} autoPlay muted />
       <canvas ref={canvasRef} />
-      <MetricsPanel data={poseData?.metrics} />
+      <MetricsPanel data={metrics} />
       {error && <div className="ws-error">Error: {error}</div>}
       {cameraError && (
         <div className="camera-error">Error: {cameraError}</div>

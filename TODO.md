@@ -186,3 +186,4 @@
       `PoseViewer`. Add test for scale handling.
 - [x] Use absolute scale from `getTransform` in `drawSkeleton` and ensure
       positive line width.
+- [x] Display FPS metric in MetricsPanel.

@@ -1592,3 +1592,11 @@ TODO logs the task.
 - **Motivation / Decision**: previous refactor left an unclosed test block which
   broke Jest output.
 - **Next step**: none.
+
+### 2025-07-21  PR #205
+
+- **Summary**: MetricsPanel now displays FPS and PoseViewer ensures fps is present.
+- **Stage**: implementation
+- **Motivation / Decision**: expose streaming rate for monitoring.
+  Added defaulting logic.
+- **Next step**: none.
