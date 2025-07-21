@@ -1,16 +1,16 @@
-.. PoseDetection documentation master file, created by
-   sphinx-quickstart on Mon Jul 14 10:57:30 2025.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+PoseDetection documentation
+---------------------------
 
-Welcome to PoseDetection's documentation!
-#########################################
+PoseDetection is a real-time pose estimation demo. The Python backend
+runs MediaPipe to detect 17 keypoints and streams metrics over a
+WebSocket. A React frontend draws the skeleton and lists timing and
+posture metrics.
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
-
+   README.md
+   feature_a.md
 
 Indices and tables
 ##################

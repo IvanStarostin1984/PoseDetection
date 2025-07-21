@@ -1764,3 +1764,10 @@ TODO logs the task.
 - **Stage**: implementation
 - **Motivation / Decision**: higher 40 FPS target; updated test delays.
 - **Next step**: none.
+
+### 2025-07-21  PR #229
+
+- **Summary**: linked Pages deployment, added docs overview and ticked TODO.
+- **Stage**: documentation
+- **Motivation / Decision**: show published docs and provide Sphinx overview.
+- **Next step**: none.
