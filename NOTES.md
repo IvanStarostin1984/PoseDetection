@@ -1695,4 +1695,16 @@ TODO logs the task.
 - **Summary**: parse_requirements now strips trailing comments; tests cover it.
 - **Stage**: implementation
 - **Motivation / Decision**: avoid wrong version checks; resolves TODO.
+
+### 2025-07-24  PR #219
+
+- **Summary**: switched frame timestamps to epoch using Date.now()/time.time.
+- **Stage**: implementation
+- **Motivation / Decision**: align client-server clocks for accurate network metrics.
+
+### 2025-07-24  PR #220
+
+- **Summary**: refined metrics list in README and docs; removed duplicates.
+- **Stage**: documentation
+- **Motivation / Decision**: clarify metrics displayed in the UI.
 - **Next step**: none.

@@ -47,12 +47,12 @@ performance with continuous frames.
 
 ## Frontend metrics panel
 
-The React frontend displays these metrics below the video feed. They now appear
-in a vertical list for readability. Each line shows balance, pose, knee and
-posture angles, server FPS and the new encode time, blob size, draw time,
-uplink and wait times, downlink delay, end-to-end latency,
-client FPS and dropped frame count. When `psutil` is installed the panel also
-shows CPU and memory usage. When connected you might see text like:
+The React frontend displays these metrics below the video feed in a vertical
+list for readability. Each line shows balance, pose, knee angle, posture angle,
+FPS, infer and JSON times, encode time, blob size, draw time, uplink and wait
+times, downlink delay, end-to-end latency, client FPS, dropped frames and the
+model name. When `psutil` is installed the panel also shows CPU and memory
+usage. When connected you might see text like:
 
 ```text
 Balance: 0.85
