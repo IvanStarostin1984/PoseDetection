@@ -1638,4 +1638,12 @@ TODO logs the task.
 - **Stage**: implementation
 - **Motivation / Decision**: expose client-side performance metrics for easier
   debugging and monitoring.
-- **Next step**: none.
+  - **Next step**: none.
+
+### 2025-07-22  PR #211
+
+- **Summary**: added inferMs and jsonMs metrics to MetricsPanel and wired them
+  through PoseViewer. Updated tests and README.
+- **Stage**: implementation
+- **Motivation / Decision**: expose backend inference and serialization timings
+  in the frontend for easier profiling.
