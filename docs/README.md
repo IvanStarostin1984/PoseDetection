@@ -32,7 +32,9 @@ metrics = extract_pose_metrics(landmarks)
 
 The returned dictionary contains ``knee_angle`` in degrees,
 ``balance`` between the hips, ``posture_angle`` and ``pose_class``.
-It also includes an ``fps`` metric for the current frame rate.
+It also includes an ``fps`` metric for the current frame rate. When ``psutil``
+is installed the dictionary adds ``cpu_percent`` and ``rss_bytes`` for process
+usage statistics.
 
 Start the backend server with:
 
@@ -49,7 +51,8 @@ The React frontend displays these metrics below the video feed. They now appear
 in a vertical list for readability. Each line shows balance, pose, knee and
 posture angles, server FPS and the new encode time, blob size, draw time,
 uplink and wait times, downlink delay, end-to-end latency,
-client FPS and dropped frame count. When connected you might see text like:
+client FPS and dropped frame count. When `psutil` is installed the panel also
+shows CPU and memory usage. When connected you might see text like:
 
 ```text
 Balance: 0.85
@@ -66,4 +69,6 @@ Downlink: 6.00 ms
 Latency: 9.00 ms
 Client FPS: 24.00
 Dropped Frames: 0
+CPU: 80.0 %
+Mem: 120 MB
 ```

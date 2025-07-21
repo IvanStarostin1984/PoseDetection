@@ -16,6 +16,8 @@ export interface PoseMetrics {
   clientFps?: number;
   droppedFrames?: number;
   model?: string;
+  cpu_percent?: number;
+  rss_bytes?: number;
   [key: string]: number | string | undefined;
 }
 
@@ -41,6 +43,8 @@ const MetricsPanel: React.FC<MetricsPanelProps> = ({ data }) => {
   const clientFps = Number(data?.clientFps ?? 0);
   const droppedFrames = Number(data?.droppedFrames ?? 0);
   const model = data?.model ?? '';
+  const cpu = Number((data as any)?.cpu_percent ?? 0);
+  const rssMB = Number((data as any)?.rss_bytes ?? 0) / (1024 * 1024);
   return (
     <div className="metrics-panel">
       <p>Balance: {balance.toFixed(2)}</p>
@@ -60,6 +64,8 @@ const MetricsPanel: React.FC<MetricsPanelProps> = ({ data }) => {
       <p>Client FPS: {clientFps.toFixed(2)}</p>
       <p>Dropped Frames: {droppedFrames}</p>
       <p>Model: {model}</p>
+      <p>CPU: {cpu.toFixed(0)} %</p>
+      <p>Mem: {rssMB.toFixed(0)} MB</p>
     </div>
   );
 };

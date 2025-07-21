@@ -1682,3 +1682,10 @@ TODO logs the task.
 - **Stage**: documentation
 - **Motivation / Decision**: ensure new optional dependencies get pinned and described.
 - **Next step**: none.
+
+### 2025-07-21  PR #217
+
+- **Summary**: added CPU and memory metrics via optional psutil with rolling
+  averages.
+- **Stage**: implementation
+- **Motivation / Decision**: monitor backend resource usage and fulfil TODO.
