@@ -7,6 +7,10 @@ export interface PoseMetrics {
   encodeMs?: number;
   sizeKB?: number;
   drawMs?: number;
+  uplink_ms?: number;
+  wait_ms?: number;
+  downlinkMs?: number;
+  latencyMs?: number;
   clientFps?: number;
   droppedFrames?: number;
   [key: string]: number | string | undefined;
@@ -25,6 +29,10 @@ const MetricsPanel: React.FC<MetricsPanelProps> = ({ data }) => {
   const encodeMs = Number(data?.encodeMs ?? 0);
   const sizeKB = Number(data?.sizeKB ?? 0);
   const drawMs = Number(data?.drawMs ?? 0);
+  const uplinkMs = Number((data as any)?.uplink_ms ?? 0);
+  const waitMs = Number((data as any)?.wait_ms ?? 0);
+  const downlinkMs = Number(data?.downlinkMs ?? 0);
+  const latencyMs = Number(data?.latencyMs ?? 0);
   const clientFps = Number(data?.clientFps ?? 0);
   const droppedFrames = Number(data?.droppedFrames ?? 0);
   return (
@@ -37,6 +45,10 @@ const MetricsPanel: React.FC<MetricsPanelProps> = ({ data }) => {
       <p>Encode: {encodeMs.toFixed(2)} ms</p>
       <p>Size: {sizeKB.toFixed(1)} KB</p>
       <p>Draw: {drawMs.toFixed(2)} ms</p>
+      <p>Uplink: {uplinkMs.toFixed(2)} ms</p>
+      <p>Wait: {waitMs.toFixed(2)} ms</p>
+      <p>Downlink: {downlinkMs.toFixed(2)} ms</p>
+      <p>Latency: {latencyMs.toFixed(2)} ms</p>
       <p>Client FPS: {clientFps.toFixed(2)}</p>
       <p>Dropped Frames: {droppedFrames}</p>
     </div>

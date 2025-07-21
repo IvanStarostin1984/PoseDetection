@@ -23,10 +23,13 @@ const PoseViewer: React.FC = () => {
   const [clientFps, setClientFps] = useState(0);
   const [droppedFrames, setDroppedFrames] = useState(0);
   const [drawMs, setDrawMs] = useState(0);
+  const [downlinkMs, setDownlinkMs] = useState(0);
+  const [latencyMs, setLatencyMs] = useState(0);
   const streamRef = useRef<MediaStream | null>(null);
   const offscreenRef = useRef<HTMLCanvasElement>(document.createElement('canvas'));
   const encodePending = useRef(false);
   const frameTimes = useRef<number[]>([]);
+  const tsSendRef = useRef(0);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -45,12 +48,27 @@ const PoseViewer: React.FC = () => {
       off.height = video.videoHeight;
       ctx.drawImage(video, 0, 0, off.width, off.height);
       off.toBlob(
-        (b) => {
+        async (b) => {
           const end = performance.now();
           setEncodeMs(end - start);
           if (b) {
             setSizeKB(b.size / 1024);
-            send(b);
+            const ts = performance.now();
+            tsSendRef.current = ts;
+            const buf = new ArrayBuffer(8 + b.size);
+            new DataView(buf).setFloat64(0, ts, true);
+            let arrayBuf: ArrayBuffer;
+            if ('arrayBuffer' in b) {
+              arrayBuf = await (b as any).arrayBuffer();
+            } else {
+              arrayBuf = await new Promise((resolve) => {
+                const fr = new FileReader();
+                fr.onloadend = () => resolve(fr.result as ArrayBuffer);
+                fr.readAsArrayBuffer(b);
+              });
+            }
+            new Uint8Array(buf, 8).set(new Uint8Array(arrayBuf));
+            send(buf);
           }
           encodePending.current = false;
           const now = end;
@@ -130,7 +148,10 @@ const PoseViewer: React.FC = () => {
     if (!canvas || !video || !poseData) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
-    const start = performance.now();
+    const recv = performance.now();
+    const tsOut = Number((poseData.metrics as any).ts_out ?? 0);
+    setDownlinkMs(recv - tsOut * 1000);
+    const start = recv;
     ctx.save();
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -144,7 +165,9 @@ const PoseViewer: React.FC = () => {
     }
     drawSkeleton(ctx, poseData.landmarks, video.videoWidth, video.videoHeight);
     ctx.restore();
-    setDrawMs(performance.now() - start);
+    const end = performance.now();
+    setDrawMs(end - start);
+    setLatencyMs(end - tsSendRef.current);
   }, [poseData]);
 
   const metrics: PoseMetrics | undefined = poseData
@@ -154,6 +177,8 @@ const PoseViewer: React.FC = () => {
         encodeMs,
         sizeKB,
         drawMs,
+        downlinkMs,
+        latencyMs,
         clientFps,
         droppedFrames,
       }

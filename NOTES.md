@@ -1639,3 +1639,10 @@ TODO logs the task.
 - **Motivation / Decision**: expose client-side performance metrics for easier
   debugging and monitoring.
 - **Next step**: none.
+
+### 2025-07-21  PR #211
+
+- **Summary**: added timestamp-based latency metrics between client and server.
+- **Stage**: implementation
+- **Motivation / Decision**: measure network delays for troubleshooting.
+- **Next step**: none.
