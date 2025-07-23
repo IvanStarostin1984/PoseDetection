@@ -1850,7 +1850,13 @@ TODO logs the task.
 - **Motivation / Decision**: align contributor guide with user request.
 - **Next step**: none.
 
-### 2025-07-23  PR #242
+### 2025-07-24  PR #242
+
+- **Summary**: setup script installs OpenCV runtime libs and docs updated.
+- **Stage**: implementation
+- **Motivation / Decision**: OpenCV needed system libs; devs must rerun setup.
+
+### 2025-07-23  PR #243
 
 - **Summary**: updated drawSkeleton to use getScale callback and skip invisible
   landmarks. Updated PoseViewer and tests.
@@ -1858,7 +1864,7 @@ TODO logs the task.
 - **Motivation / Decision**: unify scaling logic.
   Respect visibility threshold.
 
-### 2025-07-23  PR #243
+### 2025-07-23  PR #244
 
 - **Summary**: updated overlay scaling; PoseViewer now listens for video
   metadata and window resize events. A closure stores the scale values and
