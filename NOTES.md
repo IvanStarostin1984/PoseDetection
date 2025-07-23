@@ -1849,3 +1849,9 @@ TODO logs the task.
 - **Stage**: documentation
 - **Motivation / Decision**: align contributor guide with user request.
 - **Next step**: none.
+
+### 2025-07-23  PR #242
+
+- **Summary**: enforce visibility in WebSocket payload type; tests verify it.
+- **Stage**: implementation
+- **Motivation / Decision**: ensure pose landmarks include visibility.

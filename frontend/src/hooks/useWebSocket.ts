@@ -11,7 +11,11 @@ export function resolveUrl(
   return `${protocol}://${addr}${path}`;
 }
 
-export default function useWebSocket<T>(
+export interface WithVisibility {
+  landmarks: { visibility: number }[];
+}
+
+export default function useWebSocket<T extends WithVisibility>(
   path: string,
   host?: string,
   port = 8000,
