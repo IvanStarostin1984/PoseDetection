@@ -20,13 +20,13 @@ lint-docs:
 
 test:
 	@if [ -d tests ]; then \
-	python -m pytest --cov=backend --cov=frontend --cov-config=.coveragerc --cov-fail-under=80; \
-	else \
-	echo "No tests yet"; \
-	fi
-	@if [ -d frontend/src/__tests__ ]; then \
-	npx --yes jest; \
-	fi
+		python -m pytest --cov=backend --cov=frontend --cov-config=.coveragerc --cov-fail-under=80; \
+		else \
+		echo "No tests yet"; \
+		fi
+	@if find frontend/src tests/frontend -name '*.test.tsx' -print -quit 2>/dev/null | grep -q .; then \
+		npx --yes jest; \
+		fi
 
 
 generate:
