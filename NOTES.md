@@ -1941,3 +1941,10 @@ TODO logs the task.
 - **Stage**: documentation
 - **Motivation / Decision**: roadmap updated because setup script installs libgl1.
 - **Next step**: none.
+
+### 2025-07-23  PR #254
+
+- **Summary**: bumped AGENTS guide to v1.55 and noted UTF-8 encoding for files.
+- **Stage**: documentation
+- **Motivation / Decision**: prevent locale errors when reading or writing files.
+- **Next step**: none.
