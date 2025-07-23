@@ -1993,7 +1993,16 @@ TODO logs the task.
   make visibility threshold adaptive.
 - **Next step**: none.
 
-### 2025-07-23
+### 2025-07-23  PR #261
+
+- **Summary**: ticked the PoseViewer capture TODO and updated README to note
+  streaming starts after `canplay`, stops if the socket closes and uses a
+  500 ms watchdog to compute median visibility.
+- **Stage**: documentation
+- **Motivation / Decision**: keep docs aligned with the code and record task
+  completion.
+
+### 2025-07-23  PR #262
 
 - **Summary**: improved PoseViewer with videoReady flag and watchdog capture.
 - Clamped threshold and reset encode state on disconnect.
