@@ -105,6 +105,15 @@ Run the provided setup script after cloning to install Python 3.11 (set
 `PYTHON_VERSION` to override) and Node 20 (set `NODE_VERSION` to change).
 On Windows run `scripts/setup.ps1` or `npm run win:setup`.
 Other platforms use `.codex/setup.sh`.
+This installs `libgl1` and `libglib2.0-0` so `cv2` imports work on headless
+servers.
+It also installs `black` from `requirements.txt` so
+`make lint` works even when hooks are skipped. Tests rely on these packages,
+so always complete this step before running `make test`. The script is
+idempotent and exits 0 when
+finished. Pre-commit hooks are stored in `.pre-commit-cache/` so they can be
+reused offline. The script then runs `pre-commit run --all-files`, which may
+reformat files, so execute it before making changes.
 The script now also installs minimal OpenCV runtime libraries—`libgl1-mesa-glx`,
 `libglib2.0-0`, `libsm6`, `libxext6` and `libxrender1`.
 Run it again if you cloned the repo before this change.

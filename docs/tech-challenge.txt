@@ -46,6 +46,8 @@ Phase 1: Core Pose Detection (1.5 Stunden)
 Task 1.1: Environment Setup (20 Min)
 # Python Backend Setup
 pip install fastapi uvicorn opencv-python mediapipe websockets
+# cv2 requires libGL packages (libgl1, libglib2.0-0)
+# The setup script installs them automatically
 # oder
 # Browser-only mit TensorFlow.js
 npm install @tensorflow/tfjs @tensorflow-models/posenet
