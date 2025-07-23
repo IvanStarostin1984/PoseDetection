@@ -1849,3 +1849,12 @@ TODO logs the task.
 - **Stage**: documentation
 - **Motivation / Decision**: align contributor guide with user request.
 - **Next step**: none.
+
+### 2025-07-23  PR #242
+
+- **Summary**: updated drawSkeleton to use getScale callback and skip invisible
+  landmarks. Updated PoseViewer and tests.
+- **Stage**: implementation
+- **Motivation / Decision**: unify scaling logic.
+  Respect visibility threshold.
+- **Next step**: none.

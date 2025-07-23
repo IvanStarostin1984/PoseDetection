@@ -212,3 +212,4 @@
 - [x] Preserve landmark names when filtering low visibility points.
 
 - [x] Skip drawing skeleton when visibility low; update PoseLandmark type.
+- [x] Refactor drawSkeleton to accept a getScale callback and skip invisible landmarks.

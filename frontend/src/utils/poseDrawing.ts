@@ -27,37 +27,42 @@ export const EDGES: [number, number][] = [
  * Clears the context before drawing.
  * @param ctx Canvas context used for drawing.
  * @param landmarks Normalized landmark array.
- * @param videoWidth Width of the source video in pixels.
- * @param videoHeight Height of the source video in pixels.
+ * @param getScale Callback returning the pixel scale factors.
+ * @param visibilityMin Visibility threshold for drawing.
  */
 export function drawSkeleton(
   ctx: CanvasRenderingContext2D,
   landmarks: PoseLandmark[],
-  videoWidth: number,
-  videoHeight: number,
+  getScale: () => { scaleX: number; scaleY: number },
   visibilityMin = 0.5,
 ): void {
+  const { scaleX, scaleY } = getScale();
   const scale = typeof (ctx as any).getTransform === 'function'
     ? Math.abs((ctx as any).getTransform().a) || 1
     : 1;
   ctx.strokeStyle = 'lime';
   ctx.lineWidth = 2 / scale;
+  const pixels = landmarks.map((lm) => ({
+    x: lm.x * scaleX,
+    y: lm.y * scaleY,
+    visibility: lm.visibility,
+  }));
   for (const [a, b] of EDGES) {
-    const pa = landmarks[a];
-    const pb = landmarks[b];
+    const pa = pixels[a];
+    const pb = pixels[b];
     if (!pa || !pb) continue;
     if (pa.visibility < visibilityMin || pb.visibility < visibilityMin) continue;
     ctx.beginPath();
-    ctx.moveTo(pa.x * videoWidth, pa.y * videoHeight);
-    ctx.lineTo(pb.x * videoWidth, pb.y * videoHeight);
+    ctx.moveTo(pa.x, pa.y);
+    ctx.lineTo(pb.x, pb.y);
     ctx.stroke();
   }
   ctx.fillStyle = 'red';
   const radius = 4 / scale;
-  for (const p of landmarks) {
+  for (const p of pixels) {
     if (p.visibility < visibilityMin) continue;
     ctx.beginPath();
-    ctx.arc(p.x * videoWidth, p.y * videoHeight, radius, 0, Math.PI * 2);
+    ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
     ctx.fill();
   }
 }

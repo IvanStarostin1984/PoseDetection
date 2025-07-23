@@ -24,7 +24,7 @@ test('drawSkeleton connects edge landmarks', () => {
     y: i / 100,
     visibility: 1,
   }));
-  drawSkeleton(ctx, landmarks, 100, 100);
+  drawSkeleton(ctx, landmarks, () => ({ scaleX: 100, scaleY: 100 }));
   expect(ctx.lineTo).toHaveBeenCalledTimes(EDGES.length);
   EDGES.forEach((edge, i) => {
     const s = landmarks[edge[0]];
@@ -59,7 +59,7 @@ test('edges list matches 17-point skeleton', () => {
 test('drawSkeleton sets line width based on transform scale', () => {
   const ctx = makeCtx();
   ctx.getTransform = () => ({ a: 0.5 } as DOMMatrix);
-  drawSkeleton(ctx, [], 100, 100);
+  drawSkeleton(ctx, [], () => ({ scaleX: 100, scaleY: 100 }));
   expect(ctx.lineWidth).toBeCloseTo(4);
 });
 
@@ -71,7 +71,7 @@ test('lineWidth remains positive when context is mirrored', () => {
     transform = { a: transform.a * x };
   };
   (ctx as any).scale(-1, 1);
-  drawSkeleton(ctx, [{ x: 0, y: 0, visibility: 1 }], 100, 100);
+  drawSkeleton(ctx, [{ x: 0, y: 0, visibility: 1 }], () => ({ scaleX: 100, scaleY: 100 }));
   expect(ctx.lineWidth).toBeGreaterThan(0);
 });
 
@@ -81,7 +81,7 @@ test('landmarks below visibility threshold are skipped', () => {
     { x: 0, y: 0, visibility: 0.4 },
     { x: 1, y: 1, visibility: 0.4 },
   ];
-  drawSkeleton(ctx, landmarks, 100, 100, 0.5);
+  drawSkeleton(ctx, landmarks, () => ({ scaleX: 100, scaleY: 100 }), 0.5);
   expect(ctx.moveTo).not.toHaveBeenCalled();
   expect(ctx.arc).not.toHaveBeenCalled();
 });
