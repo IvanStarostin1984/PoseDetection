@@ -220,3 +220,5 @@
 - [x] Make the TODO date updater cross-platform.
 - [x] Add future imports and UTF-8 encoding to helper scripts.
 - [x] Replace FastAPI on_event decorators with lifespan context manager.
+- [x] Avoid unnecessary canvas resizing; make `resizeCanvas` idempotent
+  and add a unit test.

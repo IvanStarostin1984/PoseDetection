@@ -176,7 +176,8 @@ WebSocket connection. It calls `setStreaming(!streaming)` in
 draws lines between keypoints to show the pose skeleton. The helper
 `resizeCanvas` reads `video.getBoundingClientRect()` and
 multiplies the bounds by `window.devicePixelRatio`. It sets the canvas
-width and height so drawing uses video pixels. `PoseViewer` listens for
+width and height so drawing uses video pixels and only updates these
+properties when the new values differ. `PoseViewer` listens for
 `loadedmetadata` on the video and the `resize` event on `window` to keep the
 overlay aligned. When drawing, PoseViewer saves the context, flips horizontally
 if the video is mirrored and then calls `drawSkeleton(ctx, poseData.landmarks,
