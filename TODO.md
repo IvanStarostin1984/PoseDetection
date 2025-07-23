@@ -223,3 +223,5 @@
 - [x] Replace FastAPI on_event decorators with lifespan context manager.
 - [x] Avoid unnecessary canvas resizing; make `resizeCanvas` idempotent
   and add a unit test.
+- [ ] Capture frames on demand in PoseViewer; track dropped frames and
+      use a median visibility threshold.
