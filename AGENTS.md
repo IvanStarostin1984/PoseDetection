@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.55 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.56 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -153,6 +153,8 @@ prevents GitHub prompts.
       `make test`. Execute them alone with `pytest tests/performance`.
     - Frontend Jest tests may live in `frontend/src` or `tests/frontend`.
       `make test` runs `npx jest` when any `*.test.tsx` file exists.
+    - Begin the frame loop only once the video fires `canplay` and the WebSocket
+      is open. Reset any `encodePending` flags when the socket errors.
 3. **Style rules** – keep code formatted (`black`, `prettier`,
    `dart format`, etc.) and Markdown lines ≤ 80 chars;
    avoid multiple consecutive blank lines (markdownlint MD012);

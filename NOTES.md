@@ -1992,3 +1992,12 @@ TODO logs the task.
 - **Motivation / Decision**: reduce dropped frames when backend is slow and
   make visibility threshold adaptive.
 - **Next step**: none.
+
+### 2025-07-23  PR #261
+
+- **Summary**: added frontend guidance to start frame loop after `canplay` and
+  WebSocket open, and reset `encodePending` on socket errors.
+- **Stage**: documentation
+- **Motivation / Decision**: document safe capture start and recovery rules to
+  prevent hangs.
+- **Next step**: none.
