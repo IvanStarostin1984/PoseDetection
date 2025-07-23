@@ -373,6 +373,7 @@ test('sends frames over WebSocket', async () => {
   });
   Object.defineProperty(video, 'videoWidth', { value: 1 });
   Object.defineProperty(video, 'videoHeight', { value: 1 });
+  Object.defineProperty(video, 'readyState', { value: 2 });
   fireEvent(video, new Event('loadedmetadata'));
   window.dispatchEvent(new Event('resize'));
   require('@testing-library/react').act(() => {
@@ -516,6 +517,7 @@ test('drops frames during backend delay', async () => {
   });
   Object.defineProperty(video, 'videoWidth', { value: 1 });
   Object.defineProperty(video, 'videoHeight', { value: 1 });
+  Object.defineProperty(video, 'readyState', { value: 2 });
   fireEvent(video, new Event('loadedmetadata'));
   window.dispatchEvent(new Event('resize'));
   await waitFor(() => expect(send).toHaveBeenCalledTimes(1));
