@@ -19,6 +19,12 @@ have_node() {
   command -v node >/dev/null 2>&1 && node -v | grep -q "v$NODE_VERSION"
 }
 
+ensure_libgl() {
+  dpkg -s libgl1 >/dev/null 2>&1 && dpkg -s libglib2.0-0 >/dev/null 2>&1 && return
+  sudo apt-get update -y
+  sudo apt-get install -y libgl1 libglib2.0-0
+}
+
 if ! have_python; then
   echo "Installing Python $PYTHON_VERSION" >&2
   sudo apt-get update -y
@@ -34,6 +40,7 @@ if ! have_node; then
   curl -fsSL https://deb.nodesource.com/setup_$NODE_VERSION.x | sudo -E bash -
   sudo apt-get install -y nodejs
 fi
+ensure_libgl
 python3 -m pip install -r requirements.txt
 python3 -m pip install pre-commit
 if command -v pyenv >/dev/null 2>&1; then

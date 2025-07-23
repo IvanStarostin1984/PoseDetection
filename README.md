@@ -105,7 +105,9 @@ Run the provided setup script after cloning to install Python 3.11 (set
 `PYTHON_VERSION` to override) and Node 20 (set `NODE_VERSION` to change).
 On Windows run `scripts/setup.ps1` or `npm run win:setup`.
 Other platforms use `.codex/setup.sh`.
-This installs `black` from `requirements.txt` so
+This installs `libgl1` and `libglib2.0-0` so `cv2` imports work on headless
+servers.
+It also installs `black` from `requirements.txt` so
 `make lint` works even when hooks are skipped. Tests rely on these packages,
 so always complete this step before running `make test`. The script is
 idempotent and exits 0 when

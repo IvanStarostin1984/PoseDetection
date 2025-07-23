@@ -1849,3 +1849,11 @@ TODO logs the task.
 - **Stage**: documentation
 - **Motivation / Decision**: align contributor guide with user request.
 - **Next step**: none.
+
+### 2025-07-23  PR #242
+
+- **Summary**: document libGL requirement for cv2 and install libs via setup script.
+- **Stage**: implementation
+- **Motivation / Decision**: opencv import fails without libGL packages.
+  Bundling them in the setup script avoids manual steps.
+- **Next step**: none.
