@@ -1858,29 +1858,35 @@ TODO logs the task.
 
 ### 2025-07-23  PR #242
 
+- **Summary**: added jest-canvas-mock and a canvas-based skeleton test.
+- **Stage**: implementation
+- **Motivation / Decision**: verify drawSkeleton uses visibility filter correctly.
+
+### 2025-07-23  PR #243
+
 - **Summary**: mention jest-canvas-mock for canvas tests and updated AGENTS version.
 - **Stage**: documentation
 - **Motivation / Decision**: clarify testing dependencies.
 
-### 2025-07-23  PR #243
+### 2025-07-23  PR #244
 
 - **Summary**: enforce visibility in WebSocket payload type; tests verify it.
 - **Stage**: implementation
 - **Motivation / Decision**: ensure pose landmarks include visibility.
 
-### 2025-07-23  PR #244
+### 2025-07-23  PR #245
 
 - **Summary**: updated form-data to 4.0.4 via npm audit fix.
 - **Stage**: maintenance
 - **Motivation / Decision**: address security advisory and keep dependencies patched.
 
-### 2025-07-24  PR #245
+### 2025-07-24  PR #246
 
 - **Summary**: setup script installs OpenCV runtime libs and docs updated.
 - **Stage**: implementation
 - **Motivation / Decision**: OpenCV needed system libs; devs must rerun setup.
 
-### 2025-07-23  PR #246
+### 2025-07-23  PR #247
 
 - **Summary**: updated drawSkeleton to use getScale callback and skip invisible
   landmarks. Updated PoseViewer and tests.
@@ -1888,7 +1894,7 @@ TODO logs the task.
 - **Motivation / Decision**: unify scaling logic.
   Respect visibility threshold.
 
-### 2025-07-23  PR #247
+### 2025-07-23  PR #248
 
 - **Summary**: updated overlay scaling; PoseViewer now listens for video
   metadata and window resize events. A closure stores the scale values and
