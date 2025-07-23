@@ -1992,3 +1992,13 @@ TODO logs the task.
 - **Motivation / Decision**: reduce dropped frames when backend is slow and
   make visibility threshold adaptive.
 - **Next step**: none.
+
+### 2025-07-23  PR #261
+
+- **Summary**: ticked the PoseViewer capture TODO and updated README to note
+  streaming starts after `canplay`, stops if the socket closes and uses a
+  500 ms watchdog to compute median visibility.
+- **Stage**: documentation
+- **Motivation / Decision**: keep docs aligned with the code and record task
+  completion.
+- **Next step**: none.
