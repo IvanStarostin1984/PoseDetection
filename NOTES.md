@@ -1910,3 +1910,10 @@ TODO logs the task.
 - **Motivation / Decision**: keep overlay scaling stable and simplify context
   transforms.
 - **Next step**: none.
+
+### 2025-07-25  PR #250
+
+- **Summary**: updated canvas test to use drawSkeleton callback API.
+- **Stage**: testing
+- **Motivation / Decision**: align test with new getScale design.
+- **Next step**: none.
