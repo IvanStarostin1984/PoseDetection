@@ -1817,3 +1817,10 @@ TODO logs the task.
 - **Stage**: implementation
 - **Motivation / Decision**: discard unreliable points using VISIBILITY_MIN.
 - **Next step**: none.
+
+### 2025-07-23  PR #NNN
+
+- **Summary**: preserved landmark names by moving visibility checks into _to_named.
+- **Stage**: implementation
+- **Motivation / Decision**: maintain correct mapping when some landmarks are hidden.
+- **Next step**: none.

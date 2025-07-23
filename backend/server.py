@@ -13,6 +13,8 @@ import struct
 
 from typing import Any, Dict, List, Deque
 
+from .config import VISIBILITY_MIN
+
 from .analytics import extract_pose_metrics
 from .pose_detector import PoseDetector
 
@@ -40,7 +42,8 @@ def _to_named(points: List[Dict[str, float]]) -> Dict[str, Dict[str, float]]:
     for idx, pt in enumerate(points):
         if idx >= len(_NAMES):
             break
-        named[_NAMES[idx]] = {"x": pt["x"], "y": pt["y"]}
+        if pt.get("visibility", 0.0) >= VISIBILITY_MIN:
+            named[_NAMES[idx]] = {"x": pt["x"], "y": pt["y"]}
     return named
 
 

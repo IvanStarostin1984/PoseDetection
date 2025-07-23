@@ -1,4 +1,4 @@
-# TODO – Road‑map (last updated: 2025-07-21)
+# TODO – Road‑map (last updated: 2025-07-23)
 
 > *Record only high‑level milestones here; break micro‑tasks out into Issues.*
 > **When you finish a task, tick it and append a short NOTE entry
@@ -208,3 +208,5 @@
 - [x] Add filter_visible utility with unit tests.
 - [x] Document lychee skip for future links and verify relative paths when
       moving docs.
+
+- [x] Preserve landmark names when filtering low visibility points.
