@@ -1849,3 +1849,10 @@ TODO logs the task.
 - **Stage**: documentation
 - **Motivation / Decision**: align contributor guide with user request.
 - **Next step**: none.
+
+### 2025-07-23  PR #242
+
+- **Summary**: added jest-canvas-mock and a canvas-based skeleton test.
+- **Stage**: implementation
+- **Motivation / Decision**: verify drawSkeleton uses visibility filter correctly.
+- **Next step**: none.
