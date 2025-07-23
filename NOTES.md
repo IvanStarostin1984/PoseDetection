@@ -1836,4 +1836,9 @@ TODO logs the task.
 - **Summary**: skip low-confidence points via visibility; update types.
 - **Stage**: implementation
 - **Motivation / Decision**: draw code uses visibility filtering to cut noise.
+
+### 2025-07-23  PR #240
+- **Summary**: documented Jest test paths and `npm test` step in AGENTS.
+- **Stage**: documentation
+- **Motivation / Decision**: align contributor guide with user request.
 - **Next step**: none.
