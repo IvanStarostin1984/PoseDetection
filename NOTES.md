@@ -1983,3 +1983,12 @@ TODO logs the task.
 - **Stage**: testing
 - **Motivation / Decision**: verify skeleton rendering is paused on hidden tabs.
 - **Next step**: none.
+
+### 2025-07-25  PR #260
+
+- **Summary**: refactored PoseViewer to capture frames on demand and use
+  median visibility for skeleton drawing. Added regression and delay tests.
+- **Stage**: implementation
+- **Motivation / Decision**: reduce dropped frames when backend is slow and
+  make visibility threshold adaptive.
+- **Next step**: none.

@@ -30,67 +30,72 @@ const PoseViewer: React.FC = () => {
   const encodePending = useRef(false);
   const frameTimes = useRef<number[]>([]);
   const tsSendRef = useRef(0);
+  const maxVisHistory = useRef<{ ts: number; v: number }[]>([]);
 
-  useEffect(() => {
+  const captureAndSend = () => {
     const video = videoRef.current;
     const off = offscreenRef.current;
-    if (!video || !off || !streaming || status !== 'open') return;
-    const ctx = off.getContext('2d');
-    if (!ctx) return;
-    const id = setInterval(() => {
+    if (!video || !off || encodePending.current || document.hidden) {
       if (encodePending.current) {
         setDroppedFrames((d) => d + 1);
-        return;
       }
-      encodePending.current = true;
-          const start = performance.now();
-      off.width = video.videoWidth;
-      off.height = video.videoHeight;
-      ctx.drawImage(video, 0, 0, off.width, off.height);
-      off.toBlob(
-        async (b) => {
-          const end = performance.now();
-          setEncodeMs(end - start);
-          if (b) {
-            setSizeKB(b.size / 1024);
-            const ts = Date.now();
-            tsSendRef.current = ts;
-            const buf = new ArrayBuffer(8 + b.size);
-            new DataView(buf).setFloat64(0, ts, true);
-            let arrayBuf: ArrayBuffer;
-            if ('arrayBuffer' in b) {
-              arrayBuf = await (b as any).arrayBuffer();
-            } else {
-              arrayBuf = await new Promise((resolve) => {
-                const fr = new FileReader();
-                fr.onloadend = () => resolve(fr.result as ArrayBuffer);
-                fr.readAsArrayBuffer(b);
-              });
-            }
-            new Uint8Array(buf, 8).set(new Uint8Array(arrayBuf));
-            send(buf);
-          }
-          encodePending.current = false;
-          const now = end;
-          frameTimes.current.push(now);
-          while (frameTimes.current.length > 0 && now - frameTimes.current[0] > 1000) {
-            frameTimes.current.shift();
-          }
-          if (frameTimes.current.length > 1) {
-            const first = frameTimes.current[0];
-            const last = frameTimes.current[frameTimes.current.length - 1];
-            setClientFps(
-              ((frameTimes.current.length - 1) * 1000) / (last - first),
-            );
+      return;
+    }
+    const ctx = off.getContext('2d');
+    if (!ctx) return;
+    encodePending.current = true;
+    const start = performance.now();
+    off.width = video.videoWidth;
+    off.height = video.videoHeight;
+    ctx.drawImage(video, 0, 0, off.width, off.height);
+    off.toBlob(
+      async (b) => {
+        const end = performance.now();
+        setEncodeMs(end - start);
+        if (b) {
+          setSizeKB(b.size / 1024);
+          const ts = Date.now();
+          tsSendRef.current = ts;
+          const buf = new ArrayBuffer(8 + b.size);
+          new DataView(buf).setFloat64(0, ts, true);
+          let arrayBuf: ArrayBuffer;
+          if ('arrayBuffer' in b) {
+            arrayBuf = await (b as any).arrayBuffer();
           } else {
-            setClientFps(0);
+            arrayBuf = await new Promise((resolve) => {
+              const fr = new FileReader();
+              fr.onloadend = () => resolve(fr.result as ArrayBuffer);
+              fr.readAsArrayBuffer(b);
+            });
           }
-        },
-        'image/jpeg',
-      );
-    }, 25);
-    return () => clearInterval(id);
-  }, [streaming, status, send]);
+          new Uint8Array(buf, 8).set(new Uint8Array(arrayBuf));
+          send(buf);
+        }
+        encodePending.current = false;
+        const now = end;
+        frameTimes.current.push(now);
+        while (frameTimes.current.length > 0 && now - frameTimes.current[0] > 1000) {
+          frameTimes.current.shift();
+        }
+        if (frameTimes.current.length > 1) {
+          const first = frameTimes.current[0];
+          const last = frameTimes.current[frameTimes.current.length - 1];
+          setClientFps(
+            ((frameTimes.current.length - 1) * 1000) / (last - first),
+          );
+        } else {
+          setClientFps(0);
+        }
+      },
+      'image/jpeg',
+    );
+  };
+
+  useEffect(() => {
+    if (streaming && status === 'open') {
+      requestAnimationFrame(captureAndSend);
+    }
+  }, [streaming, status]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -150,6 +155,23 @@ const PoseViewer: React.FC = () => {
     const recv = Date.now();
     const tsOut = Number((poseData.metrics as any).ts_out ?? 0);
     setDownlinkMs(recv - tsOut * 1000);
+    const nowVis = Math.max(
+      0,
+      ...poseData.landmarks.map((l) => Number(l.visibility ?? 0)),
+    );
+    const nowTs = performance.now();
+    maxVisHistory.current.push({ ts: nowTs, v: nowVis });
+    while (maxVisHistory.current.length > 0 &&
+           nowTs - maxVisHistory.current[0].ts > 500) {
+      maxVisHistory.current.shift();
+    }
+    const sorted = maxVisHistory.current
+      .map((h) => h.v)
+      .sort((a, b) => a - b);
+    const median = sorted.length
+      ? sorted[Math.floor(sorted.length / 2)]
+      : 0;
+    const threshold = Math.max(0.3, 0.6 * median);
     const start = performance.now();
     ctx.save();
     ctx.setTransform(1, 0, 0, 1, 0, 0);
@@ -159,11 +181,12 @@ const PoseViewer: React.FC = () => {
       ctx.translate(video.videoWidth, 0);
       ctx.scale(-1, 1);
     }
-    drawSkeleton(ctx, poseData.landmarks, 0.5);
+    drawSkeleton(ctx, poseData.landmarks, threshold);
     ctx.restore();
     const end = performance.now();
     setDrawMs(end - start);
     setLatencyMs(Date.now() - tsSendRef.current);
+    requestAnimationFrame(captureAndSend);
   }, [poseData]);
 
   const metrics: PoseMetrics | undefined = poseData

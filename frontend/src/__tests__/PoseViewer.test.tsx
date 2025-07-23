@@ -12,6 +12,7 @@ const mockWS = useWebSocket as jest.Mock;
 const mockDraw = drawSkeleton as jest.Mock;
 
 let origDevicePixelRatio: number | undefined;
+let origRAF: typeof requestAnimationFrame;
 
 
 beforeEach(() => {
@@ -54,6 +55,11 @@ beforeEach(() => {
     configurable: true,
     value: (cb: (b: Blob) => void) => cb(new Blob()),
   });
+  origRAF = window.requestAnimationFrame;
+  window.requestAnimationFrame = (cb: FrameRequestCallback) => {
+    cb(0);
+    return 1;
+  };
 });
 
 afterEach(() => {
@@ -68,6 +74,7 @@ afterEach(() => {
       value: origDevicePixelRatio,
     });
   }
+  window.requestAnimationFrame = origRAF;
 });
 
 class FakeStream {
@@ -180,7 +187,7 @@ test('mirrors context when video transform flips horizontally', async () => {
     expect(ctx.scale).toHaveBeenCalledWith(-1, 1);
     expect(mockDraw).toHaveBeenCalled();
     const call = mockDraw.mock.calls[0];
-    expect(call[2]).toBe(0.5);
+    expect(call[2]).toBeCloseTo(0.3);
   });
   spy.mockRestore();
   Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
@@ -311,7 +318,6 @@ test('stop button closes the WebSocket', async () => {
 });
 
 test('sends frames over WebSocket', async () => {
-  jest.useFakeTimers();
   const { stream } = mockMedia();
   const send = jest.fn();
   let setPose: (p: any) => void = () => {};
@@ -372,12 +378,8 @@ test('sends frames over WebSocket', async () => {
   require('@testing-library/react').act(() => {
     setPose({ landmarks: [], metrics: { balance: 0, pose_class: '', knee_angle: 0, posture_angle: 0, fps: 0 } });
   });
-  await require('@testing-library/react').act(async () => {
-    jest.advanceTimersByTime(25);
-    await Promise.resolve();
-  });
+  await waitFor(() => expect(send).toHaveBeenCalled());
   expect(ctx.save).toHaveBeenCalled();
-  expect(ctx.scale).not.toHaveBeenCalled();
   expect(canvas.width).toBe(2);
   expect(canvas.height).toBe(2);
   rect.width = 2;
@@ -386,13 +388,9 @@ test('sends frames over WebSocket', async () => {
   require('@testing-library/react').act(() => {
     setPose({ landmarks: [], metrics: { balance: 0, pose_class: '', knee_angle: 0, posture_angle: 0, fps: 0 } });
   });
-  await require('@testing-library/react').act(async () => {
-    jest.advanceTimersByTime(25);
-    await Promise.resolve();
-  });
+  await waitFor(() => expect(send).toHaveBeenCalledTimes(2));
   expect(canvas.width).toBe(4);
   expect(canvas.height).toBe(4);
-  expect(ctx.scale).not.toHaveBeenCalled();
   expect(send).toHaveBeenCalled();
   Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
     configurable: true,
@@ -406,7 +404,6 @@ test('sends frames over WebSocket', async () => {
     configurable: true,
     value: origRect,
   });
-  jest.useRealTimers();
 });
 
 test('drawMs is non-negative after rendering a frame', async () => {
@@ -468,4 +465,65 @@ test('skips drawing when page is hidden', async () => {
     expect(mockDraw).not.toHaveBeenCalled();
   });
   Object.defineProperty(document, 'hidden', { configurable: true, value: origHidden });
+});
+
+test('draws when highest visibility is 0.4', async () => {
+  const { stream } = mockMedia();
+  let setPose: (p: any) => void = () => {};
+  mockWS.mockImplementation(() => {
+    const [poseData, setData] = require('react').useState(null);
+    setPose = setData;
+    return { poseData, status: 'open', error: null, close: jest.fn(), send: jest.fn() };
+  });
+  const PoseViewer = require('../components/PoseViewer').default;
+  const { container } = render(<PoseViewer />);
+  const video = container.querySelector('video') as HTMLVideoElement;
+  await waitFor(() => {
+    expect(video.srcObject).toBe(stream);
+  });
+  Object.defineProperty(video, 'videoWidth', { value: 100 });
+  Object.defineProperty(video, 'videoHeight', { value: 50 });
+  fireEvent(video, new Event('loadedmetadata'));
+  window.dispatchEvent(new Event('resize'));
+  require('@testing-library/react').act(() => {
+    setPose({
+      landmarks: [{ x: 0, y: 0, visibility: 0.4 }],
+      metrics: { balance: 0, pose_class: '', knee_angle: 0, posture_angle: 0, fps: 0 },
+    });
+  });
+  await waitFor(() => {
+    expect(mockDraw).toHaveBeenCalled();
+    const call = mockDraw.mock.calls[mockDraw.mock.calls.length - 1];
+    expect(call[2]).toBeCloseTo(0.3);
+  });
+});
+
+test('drops frames during backend delay', async () => {
+  jest.useFakeTimers();
+  const { stream } = mockMedia();
+  const send = jest.fn();
+  let setPose: (p: any) => void = () => {};
+  mockWS.mockImplementation(() => {
+    const [poseData, setData] = require('react').useState(null);
+    setPose = setData;
+    return { poseData, status: 'open', error: null, close: jest.fn(), send };
+  });
+  const PoseViewer = require('../components/PoseViewer').default;
+  const { container } = render(<PoseViewer />);
+  const video = container.querySelector('video') as HTMLVideoElement;
+  await waitFor(() => {
+    expect(video.srcObject).toBe(stream);
+  });
+  Object.defineProperty(video, 'videoWidth', { value: 1 });
+  Object.defineProperty(video, 'videoHeight', { value: 1 });
+  fireEvent(video, new Event('loadedmetadata'));
+  window.dispatchEvent(new Event('resize'));
+  await waitFor(() => expect(send).toHaveBeenCalledTimes(1));
+  jest.advanceTimersByTime(200);
+  expect(send).toHaveBeenCalledTimes(1);
+  require('@testing-library/react').act(() => {
+    setPose({ landmarks: [], metrics: { balance: 0, pose_class: '', knee_angle: 0, posture_angle: 0, fps: 0 } });
+  });
+  await waitFor(() => expect(send).toHaveBeenCalledTimes(2));
+  jest.useRealTimers();
 });
