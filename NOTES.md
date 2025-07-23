@@ -1969,7 +1969,7 @@ TODO logs the task.
 - **Motivation / Decision**: prevent unnecessary canvas updates causing flicker.
 - **Next step**: none.
 
-### 2025-07-24  PR #258
+### 2025-07-23  PR #258
 
 - **Summary**: replaced FastAPI on_event hooks with lifespan context manager.
 - **Stage**: implementation
@@ -1977,14 +1977,14 @@ TODO logs the task.
   deprecation warnings.
 - **Next step**: none.
 
-### 2025-07-24  PR #259
+### 2025-07-23  PR #259
 
 - **Summary**: added test ensuring PoseViewer skips drawing when page hidden.
 - **Stage**: testing
 - **Motivation / Decision**: verify skeleton rendering is paused on hidden tabs.
 - **Next step**: none.
 
-### 2025-07-25  PR #260
+### 2025-07-23  PR #260
 
 - **Summary**: refactored PoseViewer to capture frames on demand and use
   median visibility for skeleton drawing. Added regression and delay tests.
