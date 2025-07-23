@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import re
 import sys
 from datetime import date
@@ -29,7 +31,7 @@ def update_todo_date(todo_path: Path) -> int:
         issues are caught and converted into the return code.
     """
     try:
-        lines = todo_path.read_text().splitlines()
+        lines = todo_path.read_text(encoding="utf-8").splitlines()
     except Exception as exc:  # defensive coding
         print(f"error: {exc}", file=sys.stderr)
         return 1
@@ -47,7 +49,7 @@ def update_todo_date(todo_path: Path) -> int:
         return 0
     lines[0] = f"{match.group(1)}{today}{match.group(3)}"
     try:
-        todo_path.write_text("\n".join(lines) + "\n")
+        todo_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     except Exception as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 1

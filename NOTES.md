@@ -1947,4 +1947,17 @@ TODO logs the task.
 - **Summary**: bumped AGENTS guide to v1.55 and noted UTF-8 encoding for files.
 - **Stage**: documentation
 - **Motivation / Decision**: prevent locale errors when reading or writing files.
+
+### 2025-07-23  PR #255
+
+- **Summary**: updated update_todo_date script to use explicit UTF-8 encoding
+  and future import.
+- **Stage**: implementation
+- **Motivation / Decision**: ensure cross-platform TODO date updates.
+
+### 2025-07-23  PR #256
+
+- **Summary**: added future imports to scripts and forced UTF-8 for text IO.
+- **Stage**: implementation
+- **Motivation / Decision**: support Python 3.9 and avoid encoding issues.
 - **Next step**: none.

@@ -217,3 +217,5 @@
 - [x] Install minimal OpenCV runtime libs via setup script.
 - [x] Refactor drawSkeleton to accept a getScale callback and skip invisible landmarks.
 - [x] Update canvas test to call drawSkeleton with the getScale callback.
+- [x] Make the TODO date updater cross-platform.
+- [x] Add future imports and UTF-8 encoding to helper scripts.
