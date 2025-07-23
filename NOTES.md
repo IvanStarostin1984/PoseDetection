@@ -1857,4 +1857,13 @@ TODO logs the task.
 - **Stage**: implementation
 - **Motivation / Decision**: unify scaling logic.
   Respect visibility threshold.
+
+### 2025-07-23  PR #243
+
+- **Summary**: updated overlay scaling; PoseViewer now listens for video
+  metadata and window resize events. A closure stores the scale values and
+  exposes `getScale`. Removed the alignCanvas module.
+- **Stage**: implementation
+- **Motivation / Decision**: keep overlay scaling stable and simplify context
+  transforms.
 - **Next step**: none.
