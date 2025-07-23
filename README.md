@@ -170,8 +170,9 @@ npm test
 ```
 
 The PoseViewer component shows the live webcam feed. The **Start Webcam**
-button toggles streaming on and off. Stopping the webcam also closes the
-WebSocket connection. It calls `setStreaming(!streaming)` in
+button toggles streaming on and off. Streaming begins once the webcam emits
+`canplay` so frames are only captured when the video can play. Closing the
+socket stops the loop. It calls `setStreaming(!streaming)` in
 [`PoseViewer.tsx`](frontend/src/components/PoseViewer.tsx). A canvas overlay
 draws lines between keypoints to show the pose skeleton. The helper
 `resizeCanvas` reads `video.getBoundingClientRect()` and
@@ -181,7 +182,8 @@ properties when the new values differ. `PoseViewer` listens for
 `loadedmetadata` on the video and the `resize` event on `window` to keep the
 overlay aligned. When drawing, PoseViewer saves the context, flips horizontally
 if the video is mirrored and then calls `drawSkeleton(ctx, poseData.landmarks,
-0.5)`. The
+threshold)`. The threshold is the median landmark visibility from the last
+500&nbsp;ms so skeleton drawing adapts when points are lost. The
 surrounding
 
 `.pose-container` is styled so the canvas and video stack on top of each other.
