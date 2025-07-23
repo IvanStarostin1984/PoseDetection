@@ -147,6 +147,8 @@ prevents GitHub prompts.
     - `make test` expects dependencies from `.codex/setup.sh`.
     - Jest picks up tests in `frontend/src/__tests__` and `tests/frontend`.
       Run `npm test` after `.codex/setup.sh` to execute them.
+    - Canvas unit tests rely on `jest-canvas-mock`.
+      Jest scans `frontend/src/__tests__` and `tests/frontend`.
     - Performance tests reside in `tests/performance` and run as part of
       `make test`. Execute them alone with `pytest tests/performance`.
     - Frontend Jest tests may live in `frontend/src` or `tests/frontend`.
