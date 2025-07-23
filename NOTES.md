@@ -1925,3 +1925,10 @@ TODO logs the task.
 - **Stage**: testing
 - **Motivation / Decision**: align test with new getScale design.
 - **Next step**: none.
+
+### 2025-07-26  PR #252
+
+- **Summary**: ticked TODO item for installing libgl1 via setup script.
+- **Stage**: documentation
+- **Motivation / Decision**: roadmap updated because setup script installs libgl1.
+- **Next step**: none.

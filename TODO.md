@@ -1,4 +1,4 @@
-# TODO – Road‑map (last updated: 2025-07-23)
+# TODO – Road‑map (last updated: 2025-07-26)
 
 > *Record only high‑level milestones here; break micro‑tasks out into Issues.*
 > **When you finish a task, tick it and append a short NOTE entry
@@ -213,7 +213,7 @@
 
 - [x] Skip drawing skeleton when visibility low; update PoseLandmark type.
 - [x] Document libGL packages for cv2 and install them in setup script.
-- [ ] Install libgl1 via setup script so OpenCV imports succeed during tests.
+- [x] Install libgl1 via setup script so OpenCV imports succeed during tests.
 - [x] Install minimal OpenCV runtime libs via setup script.
 - [x] Refactor drawSkeleton to accept a getScale callback and skip invisible landmarks.
 - [x] Update canvas test to call drawSkeleton with the getScale callback.
