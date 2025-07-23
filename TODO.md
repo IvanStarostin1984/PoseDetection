@@ -213,3 +213,6 @@
 
 - [x] Skip drawing skeleton when visibility low; update PoseLandmark type.
 - [x] Document libGL packages for cv2 and install them in setup script.
+- [ ] Install libgl1 via setup script so OpenCV imports succeed during tests.
+- [x] Install minimal OpenCV runtime libs via setup script.
+- [x] Refactor drawSkeleton to accept a getScale callback and skip invisible landmarks.

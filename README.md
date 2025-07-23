@@ -114,6 +114,15 @@ idempotent and exits 0 when
 finished. Pre-commit hooks are stored in `.pre-commit-cache/` so they can be
 reused offline. The script then runs `pre-commit run --all-files`, which may
 reformat files, so execute it before making changes.
+The script now also installs minimal OpenCV runtime libraries—`libgl1-mesa-glx`,
+`libglib2.0-0`, `libsm6`, `libxext6` and `libxrender1`.
+Run it again if you cloned the repo before this change.
+It installs `black` from `requirements.txt` so
+`make lint` works even when hooks are skipped. Tests rely on these packages, so
+always complete this step before running `make test`. The script is idempotent
+and exits 0 when finished. Pre-commit hooks are stored in `.pre-commit-cache/`
+so they can be reused offline. The script then runs `pre-commit run --all-files`,
+which may reformat files, so execute it before making changes.
 
 Alternatively build the provided Dockerfile:
 
@@ -165,12 +174,13 @@ button toggles streaming on and off. Stopping the webcam also closes the
 WebSocket connection. It calls `setStreaming(!streaming)` in
 [`PoseViewer.tsx`](frontend/src/components/PoseViewer.tsx). A canvas overlay
 draws lines between keypoints to show the pose skeleton. The helper
-`alignCanvasToVideo` reads `video.getBoundingClientRect()` and
+`resizeCanvas` reads `video.getBoundingClientRect()` and
 multiplies the bounds by `window.devicePixelRatio`. It sets the canvas
-width and height so drawing uses video pixels. A `ResizeObserver`
-updates the canvas after `loadedmetadata` and whenever the video element
-resizes. When drawing, PoseViewer saves the context, scales from the
-video size and flips horizontally if the video is mirrored. The
+width and height so drawing uses video pixels and stores the scaling
+factors. `PoseViewer` listens for `loadedmetadata` on the video and the
+`resize` event on `window` to keep the overlay aligned. When drawing,
+PoseViewer saves the context, uses `getScale()` to scale from the video
+size and flips horizontally if the video is mirrored. The
 surrounding
 
 `.pose-container` is styled so the canvas and video stack on top of each other.

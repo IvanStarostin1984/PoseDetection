@@ -93,15 +93,20 @@ test('valid messages clear previous error', () => {
   // @ts-ignore
   window.WebSocket = jest.fn(() => ws);
 
-  const { result } = renderHook(() => useWebSocket<{ x: number }>('/pose'));
+  interface Payload {
+    landmarks: { visibility: number }[];
+  }
+  const { result } = renderHook(() => useWebSocket<Payload>('/pose'));
 
   act(() => {
     ws.triggerOpen();
     ws.triggerMessage(JSON.stringify({ error: 'oops' }));
-    ws.triggerMessage(JSON.stringify({ x: 1 }));
+    ws.triggerMessage(
+      JSON.stringify({ landmarks: [{ visibility: 0.7 }] }),
+    );
   });
 
-  expect(result.current.poseData).toEqual({ x: 1 });
+  expect(result.current.poseData?.landmarks[0].visibility).toBeCloseTo(0.7);
   expect(result.current.error).toBeNull();
 
   window.WebSocket = OriginalWebSocket;

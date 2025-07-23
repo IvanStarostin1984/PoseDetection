@@ -31,7 +31,15 @@ if ! have_python; then
   sudo apt-get install -y software-properties-common >/dev/null
   sudo add-apt-repository -y ppa:deadsnakes/ppa
   sudo apt-get update -y
-  sudo apt-get install -y python${PYTHON_VERSION} python${PYTHON_VERSION}-venv
+  sudo apt-get install -y \
+    python${PYTHON_VERSION} \
+    python${PYTHON_VERSION}-venv
+  sudo apt-get install -y \
+    libglib2.0-0 \
+    libsm6 \
+    libxext6 \
+    libxrender1
+  sudo apt-get install -y libgl1-mesa-glx || sudo apt-get install -y libgl1
   sudo ln -sf /usr/bin/python${PYTHON_VERSION} /usr/local/bin/python3
 fi
 
