@@ -1911,7 +1911,7 @@ TODO logs the task.
   transforms.
 - **Next step**: none.
 
-### 2025-07-24  PR #250
+### 2025-07-23  PR #250
 
 - **Summary**: Windows CI installs Python 3.11 and Node 20 before setup and
   linting uses `python -m black` to avoid PATH issues.
@@ -1919,14 +1919,14 @@ TODO logs the task.
 - **Motivation / Decision**: ensure consistent tool versions and reliable
   invocation on Windows runners.
 
-### 2025-07-25  PR #251
+### 2025-07-23  PR #251
 
 - **Summary**: updated canvas test to use drawSkeleton callback API.
 - **Stage**: testing
 - **Motivation / Decision**: align test with new getScale design.
 - **Next step**: none.
 
-### 2025-07-26
+### 2025-07-23  PR #252
 
 - **Summary**: simplified drawSkeleton to use canvas size and removed the scale
   callback. PoseViewer skips drawing when tab hidden and resizes only on events.
@@ -1934,4 +1934,10 @@ TODO logs the task.
 - **Stage**: implementation
 - **Motivation / Decision**: streamline overlay logic
   and avoid unnecessary transforms.
+
+### 2025-07-23  PR #253
+
+- **Summary**: ticked TODO item for installing libgl1 via setup script.
+- **Stage**: documentation
+- **Motivation / Decision**: roadmap updated because setup script installs libgl1.
 - **Next step**: none.
