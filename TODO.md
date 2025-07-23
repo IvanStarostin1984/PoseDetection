@@ -208,3 +208,4 @@
 - [x] Add filter_visible utility with unit tests.
 - [x] Document lychee skip for future links and verify relative paths when
       moving docs.
+- [x] Add tests for filter_visible with out-of-range threshold raising ValueError.
