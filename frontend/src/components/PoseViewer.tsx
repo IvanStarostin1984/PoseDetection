@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import useWebSocket from '../hooks/useWebSocket';
-import { drawSkeleton, PoseLandmark } from '../utils/poseDrawing';
-import alignCanvasToVideo from '../utils/alignCanvas';
+import { drawSkeleton, PoseLandmark, resizeCanvas, getScale } from '../utils/poseDrawing';
 import MetricsPanel, { PoseMetrics } from './MetricsPanel';
 
 interface PoseData {
@@ -97,13 +96,13 @@ const PoseViewer: React.FC = () => {
     const video = videoRef.current;
     const canvas = canvasRef.current;
     if (!video || !canvas) return;
-    const align = () => alignCanvasToVideo(video, canvas);
-    const observer = new ResizeObserver(align);
-    observer.observe(video);
-    video.addEventListener('loadedmetadata', align);
+    const resize = () => resizeCanvas(video, canvas);
+    video.addEventListener('loadedmetadata', resize);
+    window.addEventListener('resize', resize);
+    resize();
     return () => {
-      observer.disconnect();
-      video.removeEventListener('loadedmetadata', align);
+      video.removeEventListener('loadedmetadata', resize);
+      window.removeEventListener('resize', resize);
     };
   }, []);
 
@@ -156,15 +155,18 @@ const PoseViewer: React.FC = () => {
     ctx.save();
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    const sx = canvas.width / video.videoWidth;
-    const sy = canvas.height / video.videoHeight;
-    ctx.scale(sx, sy);
+    const { scaleX, scaleY } = getScale();
+    ctx.scale(scaleX, scaleY);
     const transform = getComputedStyle(video).transform;
     if (transform.startsWith('matrix(-1')) {
       ctx.translate(video.videoWidth, 0);
       ctx.scale(-1, 1);
     }
-    drawSkeleton(ctx, poseData.landmarks, video.videoWidth, video.videoHeight);
+    drawSkeleton(
+      ctx,
+      poseData.landmarks,
+      () => ({ scaleX: video.videoWidth, scaleY: video.videoHeight }),
+    );
     ctx.restore();
     const end = performance.now();
     setDrawMs(end - start);
