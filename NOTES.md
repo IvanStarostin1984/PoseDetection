@@ -1961,3 +1961,10 @@ TODO logs the task.
 - **Stage**: implementation
 - **Motivation / Decision**: support Python 3.9 and avoid encoding issues.
 - **Next step**: none.
+
+### 2025-07-24  PR #257
+
+- **Summary**: added test ensuring PoseViewer skips drawing when page hidden.
+- **Stage**: testing
+- **Motivation / Decision**: verify skeleton rendering is paused on hidden tabs.
+- **Next step**: none.
