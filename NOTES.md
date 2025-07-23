@@ -1995,6 +1995,14 @@ TODO logs the task.
 
 ### 2025-07-23  PR #261
 
+- **Summary**: added frontend guidance to start frame loop after `canplay` and
+  WebSocket open, and reset `encodePending` on socket errors.
+- **Stage**: documentation
+- **Motivation / Decision**: document safe capture start and recovery rules to
+  prevent hangs.
+
+### 2025-07-23  PR #262
+
 - **Summary**: ticked the PoseViewer capture TODO and updated README to note
   streaming starts after `canplay`, stops if the socket closes and uses a
   500 ms watchdog to compute median visibility.
@@ -2002,7 +2010,7 @@ TODO logs the task.
 - **Motivation / Decision**: keep docs aligned with the code and record task
   completion.
 
-### 2025-07-23  PR #262
+### 2025-07-23  PR #263
 
 - **Summary**: improved PoseViewer with videoReady flag and watchdog capture.
 - Clamped threshold and reset encode state on disconnect.
