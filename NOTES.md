@@ -1925,3 +1925,13 @@ TODO logs the task.
 - **Stage**: testing
 - **Motivation / Decision**: align test with new getScale design.
 - **Next step**: none.
+
+### 2025-07-26
+
+- **Summary**: simplified drawSkeleton to use canvas size and removed the scale
+  callback. PoseViewer skips drawing when tab hidden and resizes only on events.
+  Updated tests accordingly.
+- **Stage**: implementation
+- **Motivation / Decision**: streamline overlay logic
+  and avoid unnecessary transforms.
+- **Next step**: none.

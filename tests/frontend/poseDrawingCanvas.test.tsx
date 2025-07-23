@@ -1,5 +1,5 @@
 import 'jest-canvas-mock';
-import { drawSkeleton, PoseLandmark } from '../../frontend/src/utils/poseDrawing';
+import { drawSkeleton, PoseLandmark, EDGES } from '../../frontend/src/utils/poseDrawing';
 
 test('drawSkeleton only connects visible landmarks within bounds', () => {
   const canvas = document.createElement('canvas');
@@ -8,19 +8,18 @@ test('drawSkeleton only connects visible landmarks within bounds', () => {
   document.body.appendChild(canvas);
   const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
 
-  const landmarks: PoseLandmark[] = Array.from({ length: 17 }, () => ({
-    x: 0,
-    y: 0,
-    visibility: 0.4,
-  }));
+  const origEdges = [...EDGES];
+  (EDGES as [number, number][]).length = 0;
+  EDGES.push([0, 1]);
 
-  landmarks[5] = { x: 0.2, y: 0.3, visibility: 1 };
-  landmarks[7] = { x: 0.8, y: 0.3, visibility: 1 };
-  landmarks[6] = { x: 0.2, y: 0.6, visibility: 0.4 };
-  landmarks[8] = { x: 0.8, y: 0.6, visibility: 0.4 };
+  const landmarks: PoseLandmark[] = [
+    { x: 0.2, y: 0.3, visibility: 1 },
+    { x: 0.8, y: 0.3, visibility: 1 },
+    { x: 0.2, y: 0.6, visibility: 0.4 },
+    { x: 0.8, y: 0.6, visibility: 0.4 },
+  ];
 
-  const getScale = () => ({ scaleX: canvas.width, scaleY: canvas.height });
-  drawSkeleton(ctx, landmarks, getScale, 0.5);
+  drawSkeleton(ctx, landmarks, 0.5);
 
   expect((ctx.lineTo as jest.Mock).mock.calls).toHaveLength(1);
 
@@ -36,4 +35,7 @@ test('drawSkeleton only connects visible landmarks within bounds', () => {
   });
 
   expect((ctx.arc as jest.Mock).mock.calls).toHaveLength(2);
+
+  (EDGES as [number, number][]).length = 0;
+  origEdges.forEach((e) => EDGES.push(e));
 });

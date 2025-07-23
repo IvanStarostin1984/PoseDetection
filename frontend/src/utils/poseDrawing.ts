@@ -60,42 +60,41 @@ export const { resizeCanvas, getScale } = (() => {
  * Clears the context before drawing.
  * @param ctx Canvas context used for drawing.
  * @param landmarks Normalized landmark array.
- * @param getScale Callback returning the pixel scale factors.
  * @param visibilityMin Visibility threshold for drawing.
  */
 export function drawSkeleton(
   ctx: CanvasRenderingContext2D,
   landmarks: PoseLandmark[],
-  getScale: () => { scaleX: number; scaleY: number },
   visibilityMin = 0.5,
 ): void {
-  const { scaleX, scaleY } = getScale();
   const scale = typeof (ctx as any).getTransform === 'function'
     ? Math.abs((ctx as any).getTransform().a) || 1
     : 1;
-  ctx.strokeStyle = 'lime';
-  ctx.lineWidth = 2 / scale;
   const pixels = landmarks.map((lm) => ({
-    x: lm.x * scaleX,
-    y: lm.y * scaleY,
+    x: lm.x * ctx.canvas.width,
+    y: lm.y * ctx.canvas.height,
     visibility: lm.visibility,
   }));
+  ctx.fillStyle = 'red';
+  const radius = 4 / scale;
+  const visible = new Set<number>();
+  pixels.forEach((p, idx) => {
+    if (p.visibility < visibilityMin) return;
+    visible.add(idx);
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
+    ctx.fill();
+  });
+  ctx.strokeStyle = 'lime';
+  ctx.lineWidth = 2 / scale;
   for (const [a, b] of EDGES) {
+    if (!visible.has(a) || !visible.has(b)) continue;
     const pa = pixels[a];
     const pb = pixels[b];
     if (!pa || !pb) continue;
-    if (pa.visibility < visibilityMin || pb.visibility < visibilityMin) continue;
     ctx.beginPath();
     ctx.moveTo(pa.x, pa.y);
     ctx.lineTo(pb.x, pb.y);
     ctx.stroke();
-  }
-  ctx.fillStyle = 'red';
-  const radius = 4 / scale;
-  for (const p of pixels) {
-    if (p.visibility < visibilityMin) continue;
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
-    ctx.fill();
   }
 }
