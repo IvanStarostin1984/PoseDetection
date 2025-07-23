@@ -1992,3 +1992,11 @@ TODO logs the task.
 - **Motivation / Decision**: reduce dropped frames when backend is slow and
   make visibility threshold adaptive.
 - **Next step**: none.
+
+### 2025-07-23  PR #???
+
+- **Summary**: added canplay handler and watchdog timer in PoseViewer with new tests.
+- **Stage**: implementation
+- **Motivation / Decision**: ensure first frame is captured once the video is
+  ready and resend frames when the backend is idle.
+- **Next step**: none.

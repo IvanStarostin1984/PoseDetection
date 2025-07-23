@@ -25,12 +25,14 @@ const PoseViewer: React.FC = () => {
   const [drawMs, setDrawMs] = useState(0);
   const [downlinkMs, setDownlinkMs] = useState(0);
   const [latencyMs, setLatencyMs] = useState(0);
+  const [videoReady, setVideoReady] = useState(false);
   const streamRef = useRef<MediaStream | null>(null);
   const offscreenRef = useRef<HTMLCanvasElement>(document.createElement('canvas'));
   const encodePending = useRef(false);
   const frameTimes = useRef<number[]>([]);
   const tsSendRef = useRef(0);
   const maxVisHistory = useRef<{ ts: number; v: number }[]>([]);
+  const watchdogRef = useRef<number>();
 
   const captureAndSend = () => {
     const video = videoRef.current;
@@ -86,16 +88,28 @@ const PoseViewer: React.FC = () => {
         } else {
           setClientFps(0);
         }
+        scheduleWatchdog();
       },
       'image/jpeg',
     );
   };
 
+  const scheduleWatchdog = () => {
+    clearTimeout(watchdogRef.current);
+    watchdogRef.current = window.setTimeout(() => {
+      if (streaming && status === 'open' && videoReady) {
+        captureAndSend();
+      }
+    }, 500);
+  };
+
   useEffect(() => {
-    if (streaming && status === 'open') {
+    if (streaming && status === 'open' && videoReady) {
       requestAnimationFrame(captureAndSend);
+    } else {
+      clearTimeout(watchdogRef.current);
     }
-  }, [streaming, status]);
+  }, [streaming, status, videoReady]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -107,6 +121,16 @@ const PoseViewer: React.FC = () => {
     return () => {
       video.removeEventListener('loadedmetadata', resize);
       window.removeEventListener('resize', resize);
+    };
+  }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    const ready = () => setVideoReady(true);
+    video.addEventListener('canplay', ready);
+    return () => {
+      video.removeEventListener('canplay', ready);
     };
   }, []);
 

@@ -375,10 +375,12 @@ test('sends frames over WebSocket', async () => {
   Object.defineProperty(video, 'videoHeight', { value: 1 });
   fireEvent(video, new Event('loadedmetadata'));
   window.dispatchEvent(new Event('resize'));
+  fireEvent(video, new Event('canplay'));
+  await waitFor(() => expect(send).toHaveBeenCalledTimes(1));
   require('@testing-library/react').act(() => {
     setPose({ landmarks: [], metrics: { balance: 0, pose_class: '', knee_angle: 0, posture_angle: 0, fps: 0 } });
   });
-  await waitFor(() => expect(send).toHaveBeenCalled());
+  await waitFor(() => expect(send).toHaveBeenCalledTimes(2));
   expect(ctx.save).toHaveBeenCalled();
   expect(canvas.width).toBe(2);
   expect(canvas.height).toBe(2);
@@ -388,10 +390,10 @@ test('sends frames over WebSocket', async () => {
   require('@testing-library/react').act(() => {
     setPose({ landmarks: [], metrics: { balance: 0, pose_class: '', knee_angle: 0, posture_angle: 0, fps: 0 } });
   });
-  await waitFor(() => expect(send).toHaveBeenCalledTimes(2));
+  await waitFor(() => expect(send).toHaveBeenCalledTimes(3));
   expect(canvas.width).toBe(4);
   expect(canvas.height).toBe(4);
-  expect(send).toHaveBeenCalled();
+  expect(send).toHaveBeenCalledTimes(3);
   Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
     configurable: true,
     value: origGetContext,
@@ -518,12 +520,41 @@ test('drops frames during backend delay', async () => {
   Object.defineProperty(video, 'videoHeight', { value: 1 });
   fireEvent(video, new Event('loadedmetadata'));
   window.dispatchEvent(new Event('resize'));
+  fireEvent(video, new Event('canplay'));
   await waitFor(() => expect(send).toHaveBeenCalledTimes(1));
   jest.advanceTimersByTime(200);
   expect(send).toHaveBeenCalledTimes(1);
   require('@testing-library/react').act(() => {
     setPose({ landmarks: [], metrics: { balance: 0, pose_class: '', knee_angle: 0, posture_angle: 0, fps: 0 } });
   });
+  await waitFor(() => expect(send).toHaveBeenCalledTimes(2));
+  jest.useRealTimers();
+});
+
+test('sends frame when no message received within 500ms', async () => {
+  jest.useFakeTimers();
+  const { stream } = mockMedia();
+  const send = jest.fn();
+  mockWS.mockReturnValue({
+    poseData: null,
+    status: 'open',
+    error: null,
+    close: jest.fn(),
+    send,
+  });
+  const PoseViewer = require('../components/PoseViewer').default;
+  const { container } = render(<PoseViewer />);
+  const video = container.querySelector('video') as HTMLVideoElement;
+  await waitFor(() => {
+    expect(video.srcObject).toBe(stream);
+  });
+  Object.defineProperty(video, 'videoWidth', { value: 1 });
+  Object.defineProperty(video, 'videoHeight', { value: 1 });
+  fireEvent(video, new Event('loadedmetadata'));
+  window.dispatchEvent(new Event('resize'));
+  fireEvent(video, new Event('canplay'));
+  await waitFor(() => expect(send).toHaveBeenCalledTimes(1));
+  jest.advanceTimersByTime(600);
   await waitFor(() => expect(send).toHaveBeenCalledTimes(2));
   jest.useRealTimers();
 });
