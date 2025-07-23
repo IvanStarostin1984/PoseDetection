@@ -188,8 +188,8 @@ test('mirrors context when video transform flips horizontally', async () => {
     expect(ctx.scale).toHaveBeenCalledWith(-1, 1);
     expect(mockDraw).toHaveBeenCalled();
     const call = mockDraw.mock.calls[0];
-    expect(call[2]).toBe(100);
-    expect(call[3]).toBe(50);
+    const scale = call[2]();
+    expect(scale).toEqual({ scaleX: 100, scaleY: 50 });
   });
   spy.mockRestore();
   Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {

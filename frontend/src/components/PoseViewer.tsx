@@ -164,7 +164,11 @@ const PoseViewer: React.FC = () => {
       ctx.translate(video.videoWidth, 0);
       ctx.scale(-1, 1);
     }
-    drawSkeleton(ctx, poseData.landmarks, video.videoWidth, video.videoHeight);
+    drawSkeleton(
+      ctx,
+      poseData.landmarks,
+      () => ({ scaleX: video.videoWidth, scaleY: video.videoHeight }),
+    );
     ctx.restore();
     const end = performance.now();
     setDrawMs(end - start);
