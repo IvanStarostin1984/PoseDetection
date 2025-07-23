@@ -19,12 +19,8 @@ test('drawSkeleton only connects visible landmarks within bounds', () => {
   landmarks[6] = { x: 0.2, y: 0.6, visibility: 0.4 };
   landmarks[8] = { x: 0.8, y: 0.6, visibility: 0.4 };
 
-  drawSkeleton(
-    ctx,
-    landmarks,
-    () => ({ scaleX: 100, scaleY: 50 }),
-    0.5,
-  );
+  const getScale = () => ({ scaleX: canvas.width, scaleY: canvas.height });
+  drawSkeleton(ctx, landmarks, getScale, 0.5);
 
   expect((ctx.lineTo as jest.Mock).mock.calls).toHaveLength(1);
 

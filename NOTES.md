@@ -1911,7 +1911,15 @@ TODO logs the task.
   transforms.
 - **Next step**: none.
 
-### 2025-07-25  PR #250
+### 2025-07-24  PR #250
+
+- **Summary**: Windows CI installs Python 3.11 and Node 20 before setup and
+  linting uses `python -m black` to avoid PATH issues.
+- **Stage**: implementation
+- **Motivation / Decision**: ensure consistent tool versions and reliable
+  invocation on Windows runners.
+
+### 2025-07-25  PR #251
 
 - **Summary**: updated canvas test to use drawSkeleton callback API.
 - **Stage**: testing

@@ -266,11 +266,19 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
       - name: Bootstrap
         run: ./scripts/setup.ps1
         shell: pwsh
         env:
           SKIP_PRECOMMIT: '1'
+          PYTHON_VERSION: '3.11'
+          NODE_VERSION: '20'
       - run: scripts\lint.ps1
         shell: pwsh
       - run: python pymake.py lint
