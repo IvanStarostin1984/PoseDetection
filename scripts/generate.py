@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import sys
 from pathlib import Path
 
@@ -26,7 +28,7 @@ def generate() -> int:
     try:
         out_path = Path(__file__).resolve().parents[1] / "generated" / "example.txt"
         out_path.parent.mkdir(parents=True, exist_ok=True)
-        out_path.write_text("placeholder output\n")
+        out_path.write_text("placeholder output\n", encoding="utf-8")
     except Exception as exc:  # defensive coding
         print(f"error: {exc}", file=sys.stderr)
         return 1

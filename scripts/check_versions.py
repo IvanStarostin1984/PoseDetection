@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import json
 import sys
 from pathlib import Path
@@ -11,7 +13,7 @@ NPM_URL = "https://registry.npmjs.org/{name}/{version}"
 def parse_requirements(req_path: Path) -> dict[str, str]:
     """Return package versions from requirements.txt."""
     packages: dict[str, str] = {}
-    for line in req_path.read_text().splitlines():
+    for line in req_path.read_text(encoding="utf-8").splitlines():
         line = line.strip()
         if not line or line.startswith("#"):
             continue
@@ -26,7 +28,7 @@ def parse_requirements(req_path: Path) -> dict[str, str]:
 
 def parse_package_json(json_path: Path) -> dict[str, str]:
     """Return dependencies from package.json."""
-    data = json.loads(json_path.read_text())
+    data = json.loads(json_path.read_text(encoding="utf-8"))
     packages: dict[str, str] = {}
     for section in ("dependencies", "devDependencies"):
         for name, version in data.get(section, {}).items():
@@ -36,7 +38,7 @@ def parse_package_json(json_path: Path) -> dict[str, str]:
 
 def parse_package_lock(lock_path: Path) -> dict[str, str]:
     """Return dependencies from package-lock.json."""
-    data = json.loads(lock_path.read_text())
+    data = json.loads(lock_path.read_text(encoding="utf-8"))
     root = data.get("packages", {}).get("", {})
     packages: dict[str, str] = {}
     for section in ("dependencies", "devDependencies"):
