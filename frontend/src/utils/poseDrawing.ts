@@ -22,6 +22,39 @@ export const EDGES: [number, number][] = [
   [14, 16],
 ];
 
+interface Scale {
+  scaleX: number;
+  scaleY: number;
+}
+
+/**
+ * Keep the canvas size in sync with the video element and cache the scaling
+ * factors used when drawing. Call `getScale()` to retrieve the latest values.
+ */
+export const { resizeCanvas, getScale } = (() => {
+  let scaleX = 1;
+  let scaleY = 1;
+
+  function resizeCanvas(video: HTMLVideoElement, canvas: HTMLCanvasElement): void {
+    const rect = video.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    canvas.style.width = `${rect.width}px`;
+    canvas.style.height = `${rect.height}px`;
+    if (video.videoWidth && video.videoHeight) {
+      scaleX = canvas.width / video.videoWidth;
+      scaleY = canvas.height / video.videoHeight;
+    }
+  }
+
+  function getScale(): Scale {
+    return { scaleX, scaleY };
+  }
+
+  return { resizeCanvas, getScale };
+})();
+
 /**
  * Draw pose landmarks and edges on a canvas.
  * Clears the context before drawing.

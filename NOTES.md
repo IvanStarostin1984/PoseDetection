@@ -1849,3 +1849,13 @@ TODO logs the task.
 - **Stage**: documentation
 - **Motivation / Decision**: align contributor guide with user request.
 - **Next step**: none.
+
+### 2025-07-23  PR #-1
+
+- **Summary**: updated overlay scaling; PoseViewer now listens for video
+  metadata and window resize events. A closure stores the scale values and
+  exposes `getScale`. Removed the alignCanvas module.
+- **Stage**: implementation
+- **Motivation / Decision**: keep overlay scaling stable and simplify context
+  transforms.
+- **Next step**: none.
