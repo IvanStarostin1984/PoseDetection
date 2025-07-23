@@ -180,8 +180,7 @@ test('mirrors context when video transform flips horizontally', async () => {
     expect(ctx.scale).toHaveBeenCalledWith(-1, 1);
     expect(mockDraw).toHaveBeenCalled();
     const call = mockDraw.mock.calls[0];
-    const scale = call[2]();
-    expect(scale).toEqual({ scaleX: 100, scaleY: 50 });
+    expect(call[2]).toBe(0.5);
   });
   spy.mockRestore();
   Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
@@ -248,7 +247,7 @@ test('scales context when rect size differs from video size', async () => {
     expect(canvas.width).toBe(200);
     expect(canvas.height).toBe(100);
     expect(ctx.save).toHaveBeenCalled();
-    expect(ctx.scale).toHaveBeenCalledWith(0.5, 0.5);
+    expect(ctx.scale).not.toHaveBeenCalled();
   });
   Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
     configurable: true,
@@ -378,7 +377,7 @@ test('sends frames over WebSocket', async () => {
     await Promise.resolve();
   });
   expect(ctx.save).toHaveBeenCalled();
-  expect(ctx.scale).toHaveBeenCalledWith(2, 2);
+  expect(ctx.scale).not.toHaveBeenCalled();
   expect(canvas.width).toBe(2);
   expect(canvas.height).toBe(2);
   rect.width = 2;
@@ -393,7 +392,7 @@ test('sends frames over WebSocket', async () => {
   });
   expect(canvas.width).toBe(4);
   expect(canvas.height).toBe(4);
-  expect(ctx.scale).toHaveBeenLastCalledWith(4, 4);
+  expect(ctx.scale).not.toHaveBeenCalled();
   expect(send).toHaveBeenCalled();
   Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
     configurable: true,

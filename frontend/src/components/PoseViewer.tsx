@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import useWebSocket from '../hooks/useWebSocket';
-import { drawSkeleton, PoseLandmark, resizeCanvas, getScale } from '../utils/poseDrawing';
+import { drawSkeleton, PoseLandmark, resizeCanvas } from '../utils/poseDrawing';
 import MetricsPanel, { PoseMetrics } from './MetricsPanel';
 
 interface PoseData {
@@ -99,7 +99,6 @@ const PoseViewer: React.FC = () => {
     const resize = () => resizeCanvas(video, canvas);
     video.addEventListener('loadedmetadata', resize);
     window.addEventListener('resize', resize);
-    resize();
     return () => {
       video.removeEventListener('loadedmetadata', resize);
       window.removeEventListener('resize', resize);
@@ -145,7 +144,7 @@ const PoseViewer: React.FC = () => {
   useEffect(() => {
     const canvas = canvasRef.current;
     const video = videoRef.current;
-    if (!canvas || !video || !poseData) return;
+    if (!canvas || !video || !poseData || document.hidden) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
     const recv = Date.now();
@@ -155,18 +154,12 @@ const PoseViewer: React.FC = () => {
     ctx.save();
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    const { scaleX, scaleY } = getScale();
-    ctx.scale(scaleX, scaleY);
     const transform = getComputedStyle(video).transform;
     if (transform.startsWith('matrix(-1')) {
       ctx.translate(video.videoWidth, 0);
       ctx.scale(-1, 1);
     }
-    drawSkeleton(
-      ctx,
-      poseData.landmarks,
-      () => ({ scaleX: video.videoWidth, scaleY: video.videoHeight }),
-    );
+    drawSkeleton(ctx, poseData.landmarks, 0.5);
     ctx.restore();
     const end = performance.now();
     setDrawMs(end - start);
