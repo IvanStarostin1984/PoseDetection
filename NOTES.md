@@ -41,6 +41,12 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Motivation / Decision**: explain quick start and link to tech challenge.
 - **Next step**: none.
 
+### 2025-07-23  npm security fix
+
+- **Summary**: updated form-data to 4.0.4 via npm audit fix.
+- **Stage**: maintenance
+- **Motivation / Decision**: address security advisory and keep dependencies patched.
+
 - **Summary**: Metrics panel now wraps each metric in its own
   paragraph; tests updated and README clarified vertical display.
 - **Stage**: implementation
@@ -1850,13 +1856,19 @@ TODO logs the task.
 - **Motivation / Decision**: align contributor guide with user request.
 - **Next step**: none.
 
-### 2025-07-24  PR #242
+### 2025-07-23  PR #242
+
+- **Summary**: updated form-data to 4.0.4 via npm audit fix.
+- **Stage**: maintenance
+- **Motivation / Decision**: address security advisory and keep dependencies patched.
+
+### 2025-07-24  PR #243
 
 - **Summary**: setup script installs OpenCV runtime libs and docs updated.
 - **Stage**: implementation
 - **Motivation / Decision**: OpenCV needed system libs; devs must rerun setup.
 
-### 2025-07-23  PR #243
+### 2025-07-23  PR #244
 
 - **Summary**: updated drawSkeleton to use getScale callback and skip invisible
   landmarks. Updated PoseViewer and tests.
@@ -1864,7 +1876,7 @@ TODO logs the task.
 - **Motivation / Decision**: unify scaling logic.
   Respect visibility threshold.
 
-### 2025-07-23  PR #244
+### 2025-07-23  PR #245
 
 - **Summary**: updated overlay scaling; PoseViewer now listens for video
   metadata and window resize events. A closure stores the scale values and

@@ -97,6 +97,9 @@ prevents GitHub prompts.
 13. Windows users without `make` can still run the wrappers via
     `npm run win:lint` or directly from `scripts/<name>.ps1` (for example
     `scripts/lint.ps1`).
+14. Install system libraries for OpenCV when tests error with `libGL.so.1`
+    missing. On Debian-based systems run `sudo apt-get update && sudo apt-get
+    install -y libgl1`.
 
 ---
 
