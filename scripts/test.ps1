@@ -8,7 +8,8 @@ if (Test-Path 'tests') {
 } else {
     Write-Host 'No tests yet'
 }
-if (Test-Path 'frontend/src/__tests__') {
+$hasFrontendTests = Get-ChildItem 'frontend/src','tests/frontend' -Recurse -Filter '*.test.tsx' -ErrorAction SilentlyContinue | Select-Object -First 1
+if ($hasFrontendTests) {
     npx --yes jest
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }

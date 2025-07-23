@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.52 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.53 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -142,6 +142,8 @@ prevents GitHub prompts.
     - `make test` expects dependencies from `.codex/setup.sh`.
     - Performance tests reside in `tests/performance` and run as part of
       `make test`. Execute them alone with `pytest tests/performance`.
+    - Frontend Jest tests may live in `frontend/src` or `tests/frontend`.
+      `make test` runs `npx jest` when any `*.test.tsx` file exists.
 3. **Style rules** – keep code formatted (`black`, `prettier`,
    `dart format`, etc.) and Markdown lines ≤ 80 chars;
    avoid multiple consecutive blank lines (markdownlint MD012);

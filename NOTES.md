@@ -1830,3 +1830,10 @@ TODO logs the task.
 - **Stage**: implementation
 - **Motivation / Decision**: maintain correct mapping when some landmarks are hidden.
 - **Next step**: none.
+
+### 2025-07-23  PR #239
+
+- **Summary**: jest config checks tests/frontend; Makefile auto-runs jest.
+- **Stage**: implementation
+- **Motivation / Decision**: unify test paths so CI finds them.
+- **Next step**: none.
