@@ -4,24 +4,17 @@ import useWebSocket from '../hooks/useWebSocket';
 import { drawSkeleton } from '../utils/poseDrawing';
 
 jest.mock('../hooks/useWebSocket');
-jest.mock('../utils/poseDrawing');
+jest.mock('../utils/poseDrawing', () => {
+  const actual = jest.requireActual('../utils/poseDrawing');
+  return { ...actual, drawSkeleton: jest.fn() };
+});
 const mockWS = useWebSocket as jest.Mock;
 const mockDraw = drawSkeleton as jest.Mock;
-
-let resizeCb: ResizeObserverCallback;
-class MockRO {
-  observe = jest.fn();
-  disconnect = jest.fn();
-  constructor(cb: ResizeObserverCallback) {
-    resizeCb = cb;
-  }
-}
 
 let origDevicePixelRatio: number | undefined;
 
 
 beforeEach(() => {
-  (global as any).ResizeObserver = MockRO as unknown as typeof ResizeObserver;
   mockWS.mockReturnValue({
     poseData: null,
     status: 'open',
@@ -66,7 +59,6 @@ beforeEach(() => {
 afterEach(() => {
   delete (HTMLCanvasElement.prototype as any).getContext;
   delete (HTMLCanvasElement.prototype as any).toBlob;
-  delete (global as any).ResizeObserver;
   mockDraw.mockReset();
   if (origDevicePixelRatio === undefined) {
     delete (window as any).devicePixelRatio;
@@ -120,7 +112,7 @@ test('canvas matches video dimensions after metadata loads', async () => {
     expect(video.srcObject).toBe(stream);
   });
   fireEvent(video, new Event('loadedmetadata'));
-  resizeCb([] as any, {} as ResizeObserver);
+  window.dispatchEvent(new Event('resize'));
   await waitFor(() => {
     expect(canvas.width).toBe(640);
     expect(canvas.height).toBe(480);
@@ -179,7 +171,7 @@ test('mirrors context when video transform flips horizontally', async () => {
   Object.defineProperty(video, 'videoWidth', { value: 100 });
   Object.defineProperty(video, 'videoHeight', { value: 50 });
   fireEvent(video, new Event('loadedmetadata'));
-  resizeCb([] as any, {} as ResizeObserver);
+  window.dispatchEvent(new Event('resize'));
   require('@testing-library/react').act(() => {
     setPose({ landmarks: [], metrics: { balance: 0, pose_class: '', knee_angle: 0, posture_angle: 0, fps: 0 } });
   });
@@ -248,7 +240,7 @@ test('scales context when rect size differs from video size', async () => {
   Object.defineProperty(video, 'videoWidth', { value: 400 });
   Object.defineProperty(video, 'videoHeight', { value: 200 });
   fireEvent(video, new Event('loadedmetadata'));
-  resizeCb([] as any, {} as ResizeObserver);
+  window.dispatchEvent(new Event('resize'));
   require('@testing-library/react').act(() => {
     setPose({ landmarks: [], metrics: { balance: 0, pose_class: '', knee_angle: 0, posture_angle: 0, fps: 0 } });
   });
@@ -377,7 +369,7 @@ test('sends frames over WebSocket', async () => {
   Object.defineProperty(video, 'videoWidth', { value: 1 });
   Object.defineProperty(video, 'videoHeight', { value: 1 });
   fireEvent(video, new Event('loadedmetadata'));
-  resizeCb([] as any, {} as ResizeObserver);
+  window.dispatchEvent(new Event('resize'));
   require('@testing-library/react').act(() => {
     setPose({ landmarks: [], metrics: { balance: 0, pose_class: '', knee_angle: 0, posture_angle: 0, fps: 0 } });
   });
@@ -391,7 +383,7 @@ test('sends frames over WebSocket', async () => {
   expect(canvas.height).toBe(2);
   rect.width = 2;
   rect.height = 2;
-  resizeCb([] as any, {} as ResizeObserver);
+  window.dispatchEvent(new Event('resize'));
   require('@testing-library/react').act(() => {
     setPose({ landmarks: [], metrics: { balance: 0, pose_class: '', knee_angle: 0, posture_angle: 0, fps: 0 } });
   });
@@ -435,7 +427,7 @@ test('drawMs is non-negative after rendering a frame', async () => {
   Object.defineProperty(video, 'videoWidth', { value: 100 });
   Object.defineProperty(video, 'videoHeight', { value: 50 });
   fireEvent(video, new Event('loadedmetadata'));
-  resizeCb([] as any, {} as ResizeObserver);
+  window.dispatchEvent(new Event('resize'));
   require('@testing-library/react').act(() => {
     setPose({ landmarks: [], metrics: { balance: 0, pose_class: '', knee_angle: 0, posture_angle: 0, fps: 0 } });
   });
