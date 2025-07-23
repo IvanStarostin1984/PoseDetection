@@ -38,10 +38,16 @@ export const { resizeCanvas, getScale } = (() => {
   function resizeCanvas(video: HTMLVideoElement, canvas: HTMLCanvasElement): void {
     const rect = video.getBoundingClientRect();
     const dpr = window.devicePixelRatio || 1;
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
-    canvas.style.width = `${rect.width}px`;
-    canvas.style.height = `${rect.height}px`;
+    const nextW = rect.width * dpr;
+    const nextH = rect.height * dpr;
+    if (canvas.width !== nextW) {
+      canvas.width = nextW;
+      canvas.style.width = `${rect.width}px`;
+    }
+    if (canvas.height !== nextH) {
+      canvas.height = nextH;
+      canvas.style.height = `${rect.height}px`;
+    }
     if (video.videoWidth && video.videoHeight) {
       scaleX = canvas.width / video.videoWidth;
       scaleY = canvas.height / video.videoHeight;
