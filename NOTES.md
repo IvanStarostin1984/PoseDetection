@@ -1992,3 +1992,12 @@ TODO logs the task.
 - **Motivation / Decision**: reduce dropped frames when backend is slow and
   make visibility threshold adaptive.
 - **Next step**: none.
+
+### 2025-07-23
+
+- **Summary**: improved PoseViewer with videoReady flag and watchdog capture.
+- Clamped threshold and reset encode state on disconnect.
+- **Stage**: implementation
+- **Motivation / Decision**: ensure frames capture only when video is ready
+  and avoid stalls when no pose data arrives.
+- **Next step**: none.

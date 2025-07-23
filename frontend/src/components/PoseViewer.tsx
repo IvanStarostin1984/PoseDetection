@@ -17,6 +17,7 @@ const PoseViewer: React.FC = () => {
     `/pose?c=${wsKey}`,
   );
   const [streaming, setStreaming] = useState(true);
+  const [videoReady, setVideoReady] = useState(false);
   const [cameraError, setCameraError] = useState<string | null>(null);
   const [encodeMs, setEncodeMs] = useState(0);
   const [sizeKB, setSizeKB] = useState(0);
@@ -31,6 +32,7 @@ const PoseViewer: React.FC = () => {
   const frameTimes = useRef<number[]>([]);
   const tsSendRef = useRef(0);
   const maxVisHistory = useRef<{ ts: number; v: number }[]>([]);
+  const lastPoseRef = useRef(Date.now());
 
   const captureAndSend = () => {
     const video = videoRef.current;
@@ -92,10 +94,11 @@ const PoseViewer: React.FC = () => {
   };
 
   useEffect(() => {
-    if (streaming && status === 'open') {
-      requestAnimationFrame(captureAndSend);
+    if (streaming && status === 'open' && videoReady) {
+      const id = requestAnimationFrame(captureAndSend);
+      return () => cancelAnimationFrame(id);
     }
-  }, [streaming, status]);
+  }, [streaming, status, videoReady]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -107,6 +110,23 @@ const PoseViewer: React.FC = () => {
     return () => {
       video.removeEventListener('loadedmetadata', resize);
       window.removeEventListener('resize', resize);
+    };
+  }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    const onReady = () => {
+      if (video.readyState >= 2) {
+        setVideoReady(true);
+      }
+    };
+    video.addEventListener('loadedmetadata', onReady);
+    video.addEventListener('canplay', onReady);
+    onReady();
+    return () => {
+      video.removeEventListener('loadedmetadata', onReady);
+      video.removeEventListener('canplay', onReady);
     };
   }, []);
 
@@ -147,9 +167,26 @@ const PoseViewer: React.FC = () => {
   }, [streaming]);
 
   useEffect(() => {
+    if (status !== 'open') {
+      encodePending.current = false;
+    }
+  }, [status]);
+
+  useEffect(() => {
+    if (!(streaming && status === 'open' && videoReady)) return;
+    const id = setInterval(() => {
+      if (Date.now() - lastPoseRef.current > 500) {
+        captureAndSend();
+      }
+    }, 500);
+    return () => clearInterval(id);
+  }, [streaming, status, videoReady]);
+
+  useEffect(() => {
     const canvas = canvasRef.current;
     const video = videoRef.current;
     if (!canvas || !video || !poseData || document.hidden) return;
+    lastPoseRef.current = Date.now();
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
     const recv = Date.now();
@@ -171,7 +208,8 @@ const PoseViewer: React.FC = () => {
     const median = sorted.length
       ? sorted[Math.floor(sorted.length / 2)]
       : 0;
-    const threshold = Math.max(0.3, 0.6 * median);
+    let threshold = Math.max(0.3, 0.6 * median);
+    threshold = Math.min(1, Math.max(0, threshold));
     const start = performance.now();
     ctx.save();
     ctx.setTransform(1, 0, 0, 1, 0, 0);
