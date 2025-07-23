@@ -41,6 +41,12 @@ Keep lines ≤ 80 chars and leave exactly **one blank line** between secti
 - **Motivation / Decision**: explain quick start and link to tech challenge.
 - **Next step**: none.
 
+### 2025-07-23  npm security fix
+
+- **Summary**: updated form-data to 4.0.4 via npm audit fix.
+- **Stage**: maintenance
+- **Motivation / Decision**: address security advisory and keep dependencies patched.
+
 - **Summary**: Metrics panel now wraps each metric in its own
   paragraph; tests updated and README clarified vertical display.
 - **Stage**: implementation
@@ -1849,3 +1855,9 @@ TODO logs the task.
 - **Stage**: documentation
 - **Motivation / Decision**: align contributor guide with user request.
 - **Next step**: none.
+
+### 2025-07-23  npm audit fix
+
+- **Summary**: updated form-data to 4.0.4 via npm audit fix.
+- **Stage**: maintenance
+- **Motivation / Decision**: address security advisory and keep dependencies patched.
