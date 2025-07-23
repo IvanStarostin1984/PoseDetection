@@ -1855,4 +1855,21 @@ TODO logs the task.
 - **Summary**: setup script installs OpenCV runtime libs and docs updated.
 - **Stage**: implementation
 - **Motivation / Decision**: OpenCV needed system libs; devs must rerun setup.
+
+### 2025-07-23  PR #243
+
+- **Summary**: updated drawSkeleton to use getScale callback and skip invisible
+  landmarks. Updated PoseViewer and tests.
+- **Stage**: implementation
+- **Motivation / Decision**: unify scaling logic.
+  Respect visibility threshold.
+
+### 2025-07-23  PR #244
+
+- **Summary**: updated overlay scaling; PoseViewer now listens for video
+  metadata and window resize events. A closure stores the scale values and
+  exposes `getScale`. Removed the alignCanvas module.
+- **Stage**: implementation
+- **Motivation / Decision**: keep overlay scaling stable and simplify context
+  transforms.
 - **Next step**: none.

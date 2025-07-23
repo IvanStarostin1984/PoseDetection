@@ -213,3 +213,4 @@
 
 - [x] Skip drawing skeleton when visibility low; update PoseLandmark type.
 - [x] Install minimal OpenCV runtime libs via setup script.
+- [x] Refactor drawSkeleton to accept a getScale callback and skip invisible landmarks.
