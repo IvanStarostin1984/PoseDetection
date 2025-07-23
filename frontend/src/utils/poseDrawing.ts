@@ -1,7 +1,10 @@
 export interface Point {
   x: number;
   y: number;
+  visibility?: number;
 }
+
+const VISIBILITY_MIN = 0.5;
 
 /**
  * Index pairs describing how to connect the pose landmarks.
@@ -44,6 +47,8 @@ export function drawSkeleton(
     const pa = landmarks[a];
     const pb = landmarks[b];
     if (!pa || !pb) continue;
+    if ((pa.visibility ?? 1) < VISIBILITY_MIN) continue;
+    if ((pb.visibility ?? 1) < VISIBILITY_MIN) continue;
     ctx.beginPath();
     ctx.moveTo(pa.x * videoWidth, pa.y * videoHeight);
     ctx.lineTo(pb.x * videoWidth, pb.y * videoHeight);
@@ -52,6 +57,9 @@ export function drawSkeleton(
   ctx.fillStyle = 'red';
   const radius = 4 / scale;
   for (const p of landmarks) {
+    if ((p.visibility ?? 1) < VISIBILITY_MIN) {
+      continue;
+    }
     ctx.beginPath();
     ctx.arc(p.x * videoWidth, p.y * videoHeight, radius, 0, Math.PI * 2);
     ctx.fill();

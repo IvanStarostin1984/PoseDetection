@@ -210,3 +210,4 @@
       moving docs.
 - [x] Add tests for filter_visible with out-of-range threshold raising ValueError.
 - [x] Preserve landmark names when filtering low visibility points.
+- [x] Skip drawing landmarks with visibility below threshold in frontend.

@@ -1830,3 +1830,11 @@ TODO logs the task.
 - **Stage**: implementation
 - **Motivation / Decision**: maintain correct mapping when some landmarks are hidden.
 - **Next step**: none.
+
+### 2025-07-23  PR #\<number>
+
+- **Summary**: skip drawing hidden landmarks below visibility threshold.
+- **Summary**: jest config now searches tests/frontend.
+- **Stage**: implementation
+- **Motivation / Decision**: front-end now skips hidden points; new tests root.
+- **Next step**: none.
