@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.52 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.53 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -140,6 +140,8 @@ prevents GitHub prompts.
     - GitHub Actions workflows are linted with
       `actionlint` pinned at v1.7.7 via pre-commit.
     - `make test` expects dependencies from `.codex/setup.sh`.
+    - Jest picks up tests in `frontend/src/__tests__` and `tests/frontend`.
+      Run `npm test` after `.codex/setup.sh` to execute them.
     - Performance tests reside in `tests/performance` and run as part of
       `make test`. Execute them alone with `pytest tests/performance`.
 3. **Style rules** – keep code formatted (`black`, `prettier`,
