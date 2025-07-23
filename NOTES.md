@@ -1818,7 +1818,13 @@ TODO logs the task.
 - **Motivation / Decision**: discard unreliable points using VISIBILITY_MIN.
 - **Next step**: none.
 
-### 2025-07-23  PR #NNN
+### 2025-07-21  PR #237
+
+- **Summary**: added ValueError checks in filter_visible tests for invalid threshold.
+- **Stage**: implementation
+- **Motivation / Decision**: validate threshold range per TODO and keep coverage.
+
+### 2025-07-23  PR #238
 
 - **Summary**: preserved landmark names by moving visibility checks into _to_named.
 - **Stage**: implementation
