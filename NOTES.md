@@ -1961,3 +1961,9 @@ TODO logs the task.
 - **Stage**: implementation
 - **Motivation / Decision**: support Python 3.9 and avoid encoding issues.
 - **Next step**: none.
+
+### 2025-07-23
+
+- **Summary**: removed getScale and scale variables, simplified resizeCanvas.
+- **Stage**: implementation
+- **Motivation / Decision**: cleanup as scale values unused.
