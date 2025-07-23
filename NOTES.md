@@ -1918,4 +1918,10 @@ TODO logs the task.
 - **Stage**: implementation
 - **Motivation / Decision**: ensure consistent tool versions and reliable
   invocation on Windows runners.
+
+### 2025-07-25  PR #251
+
+- **Summary**: updated canvas test to use drawSkeleton callback API.
+- **Stage**: testing
+- **Motivation / Decision**: align test with new getScale design.
 - **Next step**: none.
