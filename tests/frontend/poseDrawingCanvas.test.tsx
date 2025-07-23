@@ -1,5 +1,5 @@
 import 'jest-canvas-mock';
-import { drawSkeleton, PoseLandmark, EDGES } from '../../frontend/src/utils/poseDrawing';
+import { drawSkeleton, resizeCanvas, PoseLandmark, EDGES } from '../../frontend/src/utils/poseDrawing';
 
 test('drawSkeleton only connects visible landmarks within bounds', () => {
   const canvas = document.createElement('canvas');
@@ -38,4 +38,28 @@ test('drawSkeleton only connects visible landmarks within bounds', () => {
 
   (EDGES as [number, number][]).length = 0;
   origEdges.forEach((e) => EDGES.push(e));
+});
+
+test('resizeCanvas is idempotent for identical sizes', () => {
+  const video = document.createElement('video');
+  Object.defineProperty(video, 'getBoundingClientRect', {
+    value: () => ({
+      width: 80,
+      height: 60,
+      top: 0,
+      left: 0,
+      right: 80,
+      bottom: 60,
+      x: 0,
+      y: 0,
+      toJSON: () => '{}',
+    }),
+  });
+  const canvas = document.createElement('canvas');
+  resizeCanvas(video, canvas);
+  const w = canvas.width;
+  const h = canvas.height;
+  resizeCanvas(video, canvas);
+  expect(canvas.width).toBe(w);
+  expect(canvas.height).toBe(h);
 });
