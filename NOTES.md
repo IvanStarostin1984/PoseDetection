@@ -1850,7 +1850,15 @@ TODO logs the task.
 - **Motivation / Decision**: align contributor guide with user request.
 - **Next step**: none.
 
-### 2025-07-23  PR #-1
+### 2025-07-23  PR #242
+
+- **Summary**: updated drawSkeleton to use getScale callback and skip invisible
+  landmarks. Updated PoseViewer and tests.
+- **Stage**: implementation
+- **Motivation / Decision**: unify scaling logic.
+  Respect visibility threshold.
+
+### 2025-07-23  PR #243
 
 - **Summary**: updated overlay scaling; PoseViewer now listens for video
   metadata and window resize events. A closure stores the scale values and
