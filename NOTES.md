@@ -1969,3 +1969,11 @@ TODO logs the task.
 - **Stage**: implementation
 - **Motivation / Decision**: prevent unnecessary canvas updates causing flicker.
 - **Next step**: none.
+
+### 2025-07-24  PR #257
+
+- **Summary**: replaced FastAPI on_event hooks with lifespan context manager.
+- **Stage**: implementation
+- **Motivation / Decision**: align with FastAPI recommendation and avoid
+  deprecation warnings.
+- **Next step**: none.
