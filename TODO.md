@@ -1,4 +1,4 @@
-# TODO – Road‑map (last updated: 2025-07-26)
+# TODO – Road‑map (last updated: 2025-07-23)
 
 > *Record only high‑level milestones here; break micro‑tasks out into Issues.*
 > **When you finish a task, tick it and append a short NOTE entry
@@ -219,3 +219,4 @@
 - [x] Update canvas test to call drawSkeleton with the getScale callback.
 - [x] Make the TODO date updater cross-platform.
 - [x] Add future imports and UTF-8 encoding to helper scripts.
+- [x] Replace FastAPI on_event decorators with lifespan context manager.

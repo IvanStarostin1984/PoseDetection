@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import contextlib
+from contextlib import asynccontextmanager
 import cv2
 import numpy as np
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
@@ -25,7 +26,23 @@ except Exception:  # pragma: no cover - optional dependency
 
 import uvicorn
 
-app = FastAPI()
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Start and stop optional CPU sampler."""
+    global SAMPLER_TASK
+    if PROC is not None:
+        SAMPLER_TASK = asyncio.create_task(_sample_proc())
+    try:
+        yield
+    finally:
+        if SAMPLER_TASK:
+            SAMPLER_TASK.cancel()
+            with contextlib.suppress(asyncio.CancelledError):
+                await SAMPLER_TASK
+
+
+app = FastAPI(lifespan=lifespan)
 
 # optional CPU/memory sampling
 PROC = psutil.Process() if psutil else None
@@ -54,21 +71,6 @@ async def _sample_proc() -> None:
         CPU_HISTORY.append(PROC.cpu_percent(interval=None))
         RSS_HISTORY.append(PROC.memory_info().rss)
         await asyncio.sleep(1)
-
-
-@app.on_event("startup")
-async def _start_sampler() -> None:
-    global SAMPLER_TASK
-    if PROC is not None:
-        SAMPLER_TASK = asyncio.create_task(_sample_proc())
-
-
-@app.on_event("shutdown")
-async def _stop_sampler() -> None:
-    if SAMPLER_TASK:
-        SAMPLER_TASK.cancel()
-        with contextlib.suppress(asyncio.CancelledError):
-            await SAMPLER_TASK
 
 
 def build_payload(
