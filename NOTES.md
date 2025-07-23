@@ -1836,4 +1836,16 @@ TODO logs the task.
 - **Summary**: jest config checks tests/frontend; Makefile auto-runs jest.
 - **Stage**: implementation
 - **Motivation / Decision**: unify test paths so CI finds them.
+
+### 2025-07-23  PR #240
+
+- **Summary**: skip low-confidence points via visibility; update types.
+- **Stage**: implementation
+- **Motivation / Decision**: draw code uses visibility filtering to cut noise.
+
+### 2025-07-23  PR #241
+
+- **Summary**: documented Jest test paths and `npm test` step in AGENTS.
+- **Stage**: documentation
+- **Motivation / Decision**: align contributor guide with user request.
 - **Next step**: none.

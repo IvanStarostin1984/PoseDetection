@@ -140,6 +140,8 @@ prevents GitHub prompts.
     - GitHub Actions workflows are linted with
       `actionlint` pinned at v1.7.7 via pre-commit.
     - `make test` expects dependencies from `.codex/setup.sh`.
+    - Jest picks up tests in `frontend/src/__tests__` and `tests/frontend`.
+      Run `npm test` after `.codex/setup.sh` to execute them.
     - Performance tests reside in `tests/performance` and run as part of
       `make test`. Execute them alone with `pytest tests/performance`.
     - Frontend Jest tests may live in `frontend/src` or `tests/frontend`.

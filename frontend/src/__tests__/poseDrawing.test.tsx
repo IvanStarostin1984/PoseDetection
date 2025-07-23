@@ -1,4 +1,4 @@
-import { drawSkeleton, EDGES, Point } from '../utils/poseDrawing';
+import { drawSkeleton, EDGES, PoseLandmark } from '../utils/poseDrawing';
 
 const makeCtx = () => {
   return {
@@ -19,9 +19,10 @@ const makeCtx = () => {
 
 test('drawSkeleton connects edge landmarks', () => {
   const ctx = makeCtx();
-  const landmarks: Point[] = Array.from({ length: 17 }, (_, i) => ({
+  const landmarks: PoseLandmark[] = Array.from({ length: 17 }, (_, i) => ({
     x: i / 100,
     y: i / 100,
+    visibility: 1,
   }));
   drawSkeleton(ctx, landmarks, 100, 100);
   expect(ctx.lineTo).toHaveBeenCalledTimes(EDGES.length);
@@ -70,6 +71,17 @@ test('lineWidth remains positive when context is mirrored', () => {
     transform = { a: transform.a * x };
   };
   (ctx as any).scale(-1, 1);
-  drawSkeleton(ctx, [{ x: 0, y: 0 }], 100, 100);
+  drawSkeleton(ctx, [{ x: 0, y: 0, visibility: 1 }], 100, 100);
   expect(ctx.lineWidth).toBeGreaterThan(0);
+});
+
+test('landmarks below visibility threshold are skipped', () => {
+  const ctx = makeCtx();
+  const landmarks: PoseLandmark[] = [
+    { x: 0, y: 0, visibility: 0.4 },
+    { x: 1, y: 1, visibility: 0.4 },
+  ];
+  drawSkeleton(ctx, landmarks, 100, 100, 0.5);
+  expect(ctx.moveTo).not.toHaveBeenCalled();
+  expect(ctx.arc).not.toHaveBeenCalled();
 });
