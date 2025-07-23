@@ -1960,17 +1960,16 @@ TODO logs the task.
 - **Summary**: added future imports to scripts and forced UTF-8 for text IO.
 - **Stage**: implementation
 - **Motivation / Decision**: support Python 3.9 and avoid encoding issues.
-
 - **Next step**: none.
 
-### 2025-07-23
+### 2025-07-23  PR #257
 
 - **Summary**: made resizeCanvas idempotent, updated docs and added a Jest test.
 - **Stage**: implementation
 - **Motivation / Decision**: prevent unnecessary canvas updates causing flicker.
 - **Next step**: none.
 
-### 2025-07-24  PR #257
+### 2025-07-24  PR #258
 
 - **Summary**: replaced FastAPI on_event hooks with lifespan context manager.
 - **Stage**: implementation
@@ -1978,7 +1977,7 @@ TODO logs the task.
   deprecation warnings.
 - **Next step**: none.
 
-### 2025-07-24  PR #257
+### 2025-07-24  PR #259
 
 - **Summary**: added test ensuring PoseViewer skips drawing when page hidden.
 - **Stage**: testing
