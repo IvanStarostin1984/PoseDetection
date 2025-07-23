@@ -1941,3 +1941,11 @@ TODO logs the task.
 - **Stage**: documentation
 - **Motivation / Decision**: roadmap updated because setup script installs libgl1.
 - **Next step**: none.
+
+### 2025-07-26  PR #254
+
+- **Summary**: updated update_todo_date script to use explicit UTF-8 encoding
+  and future import.
+- **Stage**: implementation
+- **Motivation / Decision**: ensure cross-platform TODO date updates.
+- **Next step**: none.
