@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import useWebSocket from '../hooks/useWebSocket';
-import { drawSkeleton, Point } from '../utils/poseDrawing';
+import { drawSkeleton, PoseLandmark } from '../utils/poseDrawing';
 import alignCanvasToVideo from '../utils/alignCanvas';
 import MetricsPanel, { PoseMetrics } from './MetricsPanel';
 
 interface PoseData {
-  landmarks: Point[];
+  landmarks: PoseLandmark[];
   metrics: PoseMetrics;
   model: string;
 }

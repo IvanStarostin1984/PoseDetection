@@ -1830,3 +1830,10 @@ TODO logs the task.
 - **Stage**: implementation
 - **Motivation / Decision**: maintain correct mapping when some landmarks are hidden.
 - **Next step**: none.
+
+### 2025-07-23  PR #239
+
+- **Summary**: skip low-confidence points via visibility; update types.
+- **Stage**: implementation
+- **Motivation / Decision**: draw code uses visibility filtering to cut noise.
+- **Next step**: none.

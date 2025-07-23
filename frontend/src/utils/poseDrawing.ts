@@ -1,6 +1,7 @@
-export interface Point {
+export interface PoseLandmark {
   x: number;
   y: number;
+  visibility: number;
 }
 
 /**
@@ -31,9 +32,10 @@ export const EDGES: [number, number][] = [
  */
 export function drawSkeleton(
   ctx: CanvasRenderingContext2D,
-  landmarks: Point[],
+  landmarks: PoseLandmark[],
   videoWidth: number,
   videoHeight: number,
+  visibilityMin = 0.5,
 ): void {
   const scale = typeof (ctx as any).getTransform === 'function'
     ? Math.abs((ctx as any).getTransform().a) || 1
@@ -44,6 +46,7 @@ export function drawSkeleton(
     const pa = landmarks[a];
     const pb = landmarks[b];
     if (!pa || !pb) continue;
+    if (pa.visibility < visibilityMin || pb.visibility < visibilityMin) continue;
     ctx.beginPath();
     ctx.moveTo(pa.x * videoWidth, pa.y * videoHeight);
     ctx.lineTo(pb.x * videoWidth, pb.y * videoHeight);
@@ -52,6 +55,7 @@ export function drawSkeleton(
   ctx.fillStyle = 'red';
   const radius = 4 / scale;
   for (const p of landmarks) {
+    if (p.visibility < visibilityMin) continue;
     ctx.beginPath();
     ctx.arc(p.x * videoWidth, p.y * videoHeight, radius, 0, Math.PI * 2);
     ctx.fill();
