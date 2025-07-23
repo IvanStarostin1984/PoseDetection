@@ -440,3 +440,32 @@ test('drawMs is non-negative after rendering a frame', async () => {
     expect(value).toBeGreaterThanOrEqual(0);
   });
 });
+
+test('skips drawing when page is hidden', async () => {
+  const { stream } = mockMedia();
+  let setPose: (p: any) => void = () => {};
+  mockWS.mockImplementation(() => {
+    const [poseData, setData] = require('react').useState(null);
+    setPose = setData;
+    return { poseData, status: 'open', error: null, close: jest.fn(), send: jest.fn() };
+  });
+  const origHidden = document.hidden;
+  Object.defineProperty(document, 'hidden', { configurable: true, value: true });
+  const PoseViewer = require('../components/PoseViewer').default;
+  const { container } = render(<PoseViewer />);
+  const video = container.querySelector('video') as HTMLVideoElement;
+  await waitFor(() => {
+    expect(video.srcObject).toBe(stream);
+  });
+  Object.defineProperty(video, 'videoWidth', { value: 100 });
+  Object.defineProperty(video, 'videoHeight', { value: 50 });
+  fireEvent(video, new Event('loadedmetadata'));
+  window.dispatchEvent(new Event('resize'));
+  require('@testing-library/react').act(() => {
+    setPose({ landmarks: [], metrics: { balance: 0, pose_class: '', knee_angle: 0, posture_angle: 0, fps: 0 } });
+  });
+  await waitFor(() => {
+    expect(mockDraw).not.toHaveBeenCalled();
+  });
+  Object.defineProperty(document, 'hidden', { configurable: true, value: origHidden });
+});

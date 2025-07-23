@@ -219,6 +219,7 @@
 - [x] Update canvas test to call drawSkeleton with the getScale callback.
 - [x] Make the TODO date updater cross-platform.
 - [x] Add future imports and UTF-8 encoding to helper scripts.
+- [x] Add test verifying drawSkeleton is skipped when page hidden.
 - [x] Replace FastAPI on_event decorators with lifespan context manager.
 - [x] Avoid unnecessary canvas resizing; make `resizeCanvas` idempotent
   and add a unit test.

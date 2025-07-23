@@ -1977,3 +1977,10 @@ TODO logs the task.
 - **Motivation / Decision**: align with FastAPI recommendation and avoid
   deprecation warnings.
 - **Next step**: none.
+
+### 2025-07-24  PR #257
+
+- **Summary**: added test ensuring PoseViewer skips drawing when page hidden.
+- **Stage**: testing
+- **Motivation / Decision**: verify skeleton rendering is paused on hidden tabs.
+- **Next step**: none.
