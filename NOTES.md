@@ -1849,3 +1849,10 @@ TODO logs the task.
 - **Stage**: documentation
 - **Motivation / Decision**: align contributor guide with user request.
 - **Next step**: none.
+
+### 2025-07-24  PR #242
+
+- **Summary**: setup script installs OpenCV runtime libs and docs updated.
+- **Stage**: implementation
+- **Motivation / Decision**: OpenCV needed system libs; devs must rerun setup.
+- **Next step**: none.

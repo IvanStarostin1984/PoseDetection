@@ -1,4 +1,4 @@
-# Contributor & CI Guide <!-- AGENTS.md v1.53 -->
+# Contributor & CI Guide <!-- AGENTS.md v1.54 -->
 
 > **Read this file first** before opening a pull‑request.
 > It defines the ground rules that keep humans, autonomous agents and CI
@@ -61,9 +61,11 @@ prevents GitHub prompts.
 1. Run `.codex/setup.sh` (or `./setup.sh`) once after cloning & whenever
    dependencies change. Windows users can run `scripts/setup.ps1` in
    PowerShell. *The script installs Python, Node and all packages needed for
-   tests, running `npm install` so `make typecheck-ts` works.* Set
-   `PYTHON_VERSION` or `NODE_VERSION` to override the defaults (3.11 and 20).
-   Always complete this step before running any test or build.
+   tests, running `npm install` so `make typecheck-ts` works.* It also installs
+   OpenCV runtime libraries like `libgl1-mesa-glx`.
+   Set `PYTHON_VERSION` or `NODE_VERSION` to override the defaults (3.11 and 20).
+   Always complete this step before running any test or build. Rerun the script
+   if you cloned the repo before these libs were added.
 2. Run the setup script inside your active Python environment. IDEs may
    create a new `.venv`, so rerun it there (or `pip install -r requirements.txt`)
    before starting the backend.

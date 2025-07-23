@@ -212,3 +212,4 @@
 - [x] Preserve landmark names when filtering low visibility points.
 
 - [x] Skip drawing skeleton when visibility low; update PoseLandmark type.
+- [x] Install minimal OpenCV runtime libs via setup script.
