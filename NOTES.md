@@ -2001,4 +2001,12 @@ TODO logs the task.
 - **Stage**: documentation
 - **Motivation / Decision**: keep docs aligned with the code and record task
   completion.
+
+### 2025-07-23  PR #262
+
+- **Summary**: improved PoseViewer with videoReady flag and watchdog capture.
+- Clamped threshold and reset encode state on disconnect.
+- **Stage**: implementation
+- **Motivation / Decision**: ensure frames capture only when video is ready
+  and avoid stalls when no pose data arrives.
 - **Next step**: none.
