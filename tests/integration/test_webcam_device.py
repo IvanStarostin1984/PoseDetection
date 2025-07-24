@@ -3,6 +3,7 @@ from typing import Any
 
 import numpy as np
 
+import json
 import backend.server as server
 
 
@@ -50,4 +51,22 @@ def test_pose_endpoint_reads_frame(monkeypatch: Any) -> None:
     asyncio.run(server.pose_endpoint(ws))
 
     assert ws.sent
+    msg = json.loads(ws.sent[0])
+    assert "metrics" in msg
     assert pose.closed is True
+
+
+def test_pose_endpoint_sanitizes_missing_data(monkeypatch: Any) -> None:
+    class Pose(DummyPose):
+        def process(self, frame: Any) -> list[dict[str, float]]:
+            return [{"x": 0.0, "y": 0.0, "visibility": 0.0}] * 17
+
+    pose = Pose()
+    monkeypatch.setattr(server, "PoseDetector", lambda *_a, **_k: pose)
+    frame = np.zeros((1, 1, 3), dtype=np.uint8)
+    _, buf = server.cv2.imencode(".jpg", frame)
+    ws = DummyWS([buf.tobytes()])
+    asyncio.run(server.pose_endpoint(ws))
+
+    data = json.loads(ws.sent[0])
+    assert data["metrics"]["knee_angle"] is None

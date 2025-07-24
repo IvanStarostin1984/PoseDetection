@@ -225,3 +225,4 @@
   and add a unit test.
 - [x] Capture frames on demand in PoseViewer; track dropped frames and
       use a median visibility threshold.
+- [x] Replace NaN metrics with null when serializing WebSocket payloads.
