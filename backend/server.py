@@ -16,7 +16,7 @@ from typing import Any, Dict, List, Deque
 
 from .config import VISIBILITY_MIN
 
-from .analytics import extract_pose_metrics
+from .analytics import extract_pose_metrics, replace_nan
 from .pose_detector import PoseDetector
 
 try:
@@ -84,6 +84,7 @@ def build_payload(
     rss = int(sum(RSS_HISTORY) / len(RSS_HISTORY)) if RSS_HISTORY else 0
     metrics["cpu_percent"] = cpu
     metrics["rss_bytes"] = rss
+    metrics = {k: replace_nan(v) for k, v in metrics.items()}
     complexity = getattr(PoseDetector, "MODEL_COMPLEXITY", 1)
     model = "lite" if complexity == 0 else "full"
     return {"landmarks": points, "metrics": metrics, "model": model}
@@ -149,11 +150,11 @@ async def pose_endpoint(ws: WebSocket) -> None:
             json_ms = (time.perf_counter() - start_json) * 1000.0
             payload["metrics"].update(
                 {
-                    "infer_ms": infer_ms,
-                    "json_ms": json_ms,
-                    "uplink_ms": uplink_ms,
-                    "wait_ms": wait_ms,
-                    "ts_out": time.time(),
+                    "infer_ms": replace_nan(infer_ms),
+                    "json_ms": replace_nan(json_ms),
+                    "uplink_ms": replace_nan(uplink_ms),
+                    "wait_ms": replace_nan(wait_ms),
+                    "ts_out": replace_nan(time.time()),
                 }
             )
             try:

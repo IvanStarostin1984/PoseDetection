@@ -1,10 +1,15 @@
 from __future__ import annotations
 
-from math import atan2, degrees, sqrt
-from typing import Dict, Mapping
+from math import atan2, degrees, sqrt, isnan
+from typing import Dict, Mapping, Any
 
 
 Point = Mapping[str, float]
+
+
+def replace_nan(value: Any) -> Any:
+    """Return ``None`` if ``value`` is ``NaN``."""
+    return None if isinstance(value, float) and isnan(value) else value
 
 
 def _validate_point(pt: Mapping[str, float] | None) -> None:

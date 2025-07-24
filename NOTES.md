@@ -2018,3 +2018,11 @@ TODO logs the task.
 - **Motivation / Decision**: ensure frames capture only when video is ready
   and avoid stalls when no pose data arrives.
 - **Next step**: none.
+
+### 2025-07-24  PR #264
+
+- **Summary**: sanitized NaN metrics to null and updated tests/docs.
+- **Stage**: implementation
+- **Motivation / Decision**: ensure WebSocket payloads parse in browsers when
+landmarks are missing.
+- **Next step**: none.
