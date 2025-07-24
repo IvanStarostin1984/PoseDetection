@@ -3,6 +3,9 @@ import useWebSocket from '../hooks/useWebSocket';
 import { drawSkeleton, PoseLandmark, resizeCanvas } from '../utils/poseDrawing';
 import MetricsPanel, { PoseMetrics } from './MetricsPanel';
 
+const MAX_SIDE = 480;
+const JPEG_QUALITY = 0.55;
+
 interface PoseData {
   landmarks: PoseLandmark[];
   metrics: PoseMetrics;
@@ -47,8 +50,12 @@ const PoseViewer: React.FC = () => {
     if (!ctx) return;
     encodePending.current = true;
     const start = performance.now();
-    off.width = video.videoWidth;
-    off.height = video.videoHeight;
+    const scale = Math.min(
+      1,
+      MAX_SIDE / Math.max(video.videoWidth, video.videoHeight),
+    );
+    off.width = Math.round(video.videoWidth * scale);
+    off.height = Math.round(video.videoHeight * scale);
     ctx.drawImage(video, 0, 0, off.width, off.height);
     off.toBlob(
       async (b) => {
@@ -90,6 +97,7 @@ const PoseViewer: React.FC = () => {
         }
       },
       'image/jpeg',
+      JPEG_QUALITY,
     );
   };
 

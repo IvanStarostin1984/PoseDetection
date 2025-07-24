@@ -2026,3 +2026,12 @@ TODO logs the task.
 - **Motivation / Decision**: ensure WebSocket payloads parse in browsers when
 landmarks are missing.
 - **Next step**: none.
+
+### 2025-07-24  PR #265
+
+- **Summary**: scaled captured frames before encoding and added JPEG quality
+  constant. Updated corresponding tests and documentation.
+- **Stage**: implementation
+- **Motivation / Decision**: reduce bandwidth usage while maintaining image
+  quality.
+- **Next step**: none.
