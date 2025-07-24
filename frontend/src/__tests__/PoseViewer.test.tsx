@@ -13,6 +13,7 @@ const mockDraw = drawSkeleton as jest.Mock;
 
 let origDevicePixelRatio: number | undefined;
 let origRAF: typeof requestAnimationFrame;
+let mockToBlob: jest.Mock;
 
 
 beforeEach(() => {
@@ -51,9 +52,14 @@ beforeEach(() => {
       } as unknown as CanvasRenderingContext2D;
     },
   });
+  mockToBlob = jest.fn();
   Object.defineProperty(HTMLCanvasElement.prototype, 'toBlob', {
     configurable: true,
-    value: (cb: (b: Blob) => void) => cb(new Blob()),
+    value: (...args: unknown[]) => {
+      const [cb] = args as [(b: Blob) => void];
+      mockToBlob(...args);
+      cb(new Blob());
+    },
   });
   origRAF = window.requestAnimationFrame;
   window.requestAnimationFrame = (cb: FrameRequestCallback) => {
@@ -66,6 +72,7 @@ afterEach(() => {
   delete (HTMLCanvasElement.prototype as any).getContext;
   delete (HTMLCanvasElement.prototype as any).toBlob;
   mockDraw.mockReset();
+  mockToBlob.mockReset();
   if (origDevicePixelRatio === undefined) {
     delete (window as any).devicePixelRatio;
   } else {
@@ -361,7 +368,11 @@ test('sends frames over WebSocket', async () => {
   });
   Object.defineProperty(HTMLCanvasElement.prototype, 'toBlob', {
     configurable: true,
-    value: (cb: (b: Blob) => void) => cb(new Blob()),
+    value: (...args: unknown[]) => {
+      const [cb] = args as [(b: Blob) => void];
+      mockToBlob(...args);
+      cb(new Blob());
+    },
   });
 
   const PoseViewer = require('../components/PoseViewer').default;
@@ -380,6 +391,11 @@ test('sends frames over WebSocket', async () => {
     setPose({ landmarks: [], metrics: { balance: 0, pose_class: '', knee_angle: 0, posture_angle: 0, fps: 0 } });
   });
   await waitFor(() => expect(send).toHaveBeenCalled());
+  expect(mockToBlob).toHaveBeenCalledWith(
+    expect.any(Function),
+    'image/jpeg',
+    expect.any(Number),
+  );
   expect(ctx.save).toHaveBeenCalled();
   expect(canvas.width).toBe(2);
   expect(canvas.height).toBe(2);
@@ -390,6 +406,7 @@ test('sends frames over WebSocket', async () => {
     setPose({ landmarks: [], metrics: { balance: 0, pose_class: '', knee_angle: 0, posture_angle: 0, fps: 0 } });
   });
   await waitFor(() => expect(send).toHaveBeenCalledTimes(2));
+  expect(mockToBlob).toHaveBeenCalledTimes(2);
   expect(canvas.width).toBe(4);
   expect(canvas.height).toBe(4);
   expect(send).toHaveBeenCalled();

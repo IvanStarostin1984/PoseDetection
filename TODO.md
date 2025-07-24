@@ -226,3 +226,4 @@
 - [x] Capture frames on demand in PoseViewer; track dropped frames and
       use a median visibility threshold.
 - [x] Replace NaN metrics with null when serializing WebSocket payloads.
+- [ ] Scale captured frames before encoding and compress with JPEG quality 0.55.

@@ -19,7 +19,9 @@ obtain pixel positions.
 ## Backend analytics
 
 The backend exposes a WebSocket endpoint at `/pose`. The browser captures
-webcam frames, encodes each one as a JPEG and sends it to this endpoint. The
+webcam frames, scales them so neither side exceeds `MAX_SIDE` pixels, encodes
+each one as a JPEG with a quality around `0.55` and sends it to this endpoint.
+The
 server decodes these bytes, runs `PoseDetector`, and streams pose metrics as
 JSON. The metrics are calculated in `backend/analytics.py`:
 
