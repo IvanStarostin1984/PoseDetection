@@ -2078,3 +2078,10 @@ landmarks are missing.
 - **Motivation / Decision**: adapt capture rate to inference latency
   to stabilize FPS.
 - **Next step**: none.
+
+### 2025-07-28  PR #272
+
+- **Summary**: metrics panel now shows camera width and height with tests.
+- **Stage**: implementation
+- **Motivation / Decision**: expose camera resolution in UI; tests added.
+- **Next step**: none.
