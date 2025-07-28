@@ -84,9 +84,22 @@ afterEach(() => {
   window.requestAnimationFrame = origRAF;
 });
 
+class FakeVideoTrack {
+  getSettings() {
+    return { width: 640, height: 360 };
+  }
+  stop() {
+    return undefined;
+  }
+}
+
 class FakeStream {
+  tracks = [new FakeVideoTrack()];
   getTracks() {
-    return [];
+    return this.tracks;
+  }
+  getVideoTracks() {
+    return this.tracks;
   }
 }
 
@@ -108,7 +121,9 @@ test('assigns webcam stream to video element', async () => {
     const video = container.querySelector('video') as HTMLVideoElement;
     expect(video.srcObject).toBe(stream);
   });
-  expect(getUserMedia).toHaveBeenCalled();
+  expect(getUserMedia).toHaveBeenCalledWith({
+    video: { width: { ideal: 640 }, height: { ideal: 360 } },
+  });
 });
 
 test('canvas matches video dimensions after metadata loads', async () => {
@@ -130,6 +145,8 @@ test('canvas matches video dimensions after metadata loads', async () => {
   await waitFor(() => {
     expect(canvas.width).toBe(640);
     expect(canvas.height).toBe(480);
+    const panel = container.querySelector('.metrics-panel');
+    expect(panel?.textContent).toContain('Camera input: 640×360');
   });
   HTMLVideoElement.prototype.getBoundingClientRect = origRect;
 });

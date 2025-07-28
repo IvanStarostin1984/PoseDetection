@@ -22,6 +22,8 @@ test('displays all metrics', () => {
         latencyMs: 9,
         clientFps: 15,
         droppedFrames: 2,
+        cameraWidth: 640,
+        cameraHeight: 360,
         model: 'lite',
         cpu_percent: 80,
         rss_bytes: 125829120,
@@ -44,6 +46,7 @@ test('displays all metrics', () => {
   expect(screen.getByText(/Latency: 9\.00 ms/)).toBeInTheDocument();
   expect(screen.getByText(/Client FPS: 15\.00/)).toBeInTheDocument();
   expect(screen.getByText(/Dropped Frames: 2/)).toBeInTheDocument();
+  expect(screen.getByText(/Camera input: 640×360/)).toBeInTheDocument();
   expect(screen.getByText(/Model: lite/)).toBeInTheDocument();
   expect(screen.getByText(/CPU: 80 %/)).toBeInTheDocument();
   expect(screen.getByText(/Mem: 120 MB/)).toBeInTheDocument();

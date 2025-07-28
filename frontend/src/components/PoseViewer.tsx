@@ -29,6 +29,8 @@ const PoseViewer: React.FC = () => {
   const [drawMs, setDrawMs] = useState(0);
   const [downlinkMs, setDownlinkMs] = useState(0);
   const [latencyMs, setLatencyMs] = useState(0);
+  const [cameraWidth, setCameraWidth] = useState<number | null>(null);
+  const [cameraHeight, setCameraHeight] = useState<number | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
   const offscreenRef = useRef<HTMLCanvasElement>(document.createElement('canvas'));
   const encodePending = useRef(false);
@@ -145,7 +147,9 @@ const PoseViewer: React.FC = () => {
     if (streaming) {
       setCameraError(null);
       navigator.mediaDevices
-        .getUserMedia({ video: true })
+        .getUserMedia({
+          video: { width: { ideal: 640 }, height: { ideal: 360 } },
+        })
         .then((stream) => {
           if (cancel) {
             stream.getTracks().forEach((t) => t.stop());
@@ -153,6 +157,18 @@ const PoseViewer: React.FC = () => {
           }
           video.srcObject = stream;
           streamRef.current = stream;
+          const track = stream.getVideoTracks()[0];
+          const settings = track.getSettings();
+          console.log(
+            'Using camera resolution',
+            settings.width,
+            'x',
+            settings.height,
+          );
+          setCameraWidth(typeof settings.width === 'number' ? settings.width : null);
+          setCameraHeight(
+            typeof settings.height === 'number' ? settings.height : null,
+          );
         })
         .catch(() => {
           setCameraError('Webcam access denied');
@@ -162,6 +178,8 @@ const PoseViewer: React.FC = () => {
       streamRef.current = null;
       video.srcObject = null;
       setCameraError(null);
+      setCameraWidth(null);
+      setCameraHeight(null);
     }
     return () => {
       cancel = true;
@@ -171,6 +189,8 @@ const PoseViewer: React.FC = () => {
         streamRef.current = null;
       }
       setCameraError(null);
+      setCameraWidth(null);
+      setCameraHeight(null);
     };
   }, [streaming]);
 
@@ -235,7 +255,17 @@ const PoseViewer: React.FC = () => {
     requestAnimationFrame(captureAndSend);
   }, [poseData]);
 
-  const metrics: PoseMetrics | undefined = poseData
+  const baseMetrics: PoseMetrics = {
+    balance: 0,
+    pose_class: '',
+    knee_angle: 0,
+    posture_angle: 0,
+    fps: 0,
+    cameraWidth: cameraWidth ?? undefined,
+    cameraHeight: cameraHeight ?? undefined,
+  };
+
+  const metrics: PoseMetrics = poseData
     ? {
         ...poseData.metrics,
         fps: Number((poseData.metrics as any).fps ?? 0),
@@ -248,9 +278,11 @@ const PoseViewer: React.FC = () => {
         latencyMs,
         clientFps,
         droppedFrames,
+        cameraWidth: cameraWidth ?? undefined,
+        cameraHeight: cameraHeight ?? undefined,
         model: poseData.model,
       }
-    : undefined;
+    : baseMetrics;
 
   return (
     <>

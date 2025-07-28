@@ -2035,3 +2035,8 @@ landmarks are missing.
 - **Motivation / Decision**: reduce bandwidth usage while maintaining image
   quality.
 - **Next step**: none.
+\n### 2025-07-28  PR #???
+- **Summary**: added camera resolution hints and displayed active resolution.
+- **Stage**: implementation
+- **Motivation / Decision**: ensure consistent camera size and show settings in UI.
+- **Next step**: none.
