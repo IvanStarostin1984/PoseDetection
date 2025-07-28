@@ -2038,11 +2038,17 @@ landmarks are missing.
 
 ### 2025-07-28  PR #266
 
+- **Summary**: added Jest test capturing encode time for dummy frame.
+- **Stage**: testing
+- **Motivation / Decision**: verify JPEG encoding stays under 7ms.
+
+### 2025-07-28  PR #267
+
 - **Summary**: added camera resolution hints and displayed active resolution.
 - **Stage**: implementation
 - **Motivation / Decision**: ensure consistent camera size and show settings in UI.
 
-### 2025-07-28  PR #267
+### 2025-07-28  PR #268
 
 - **Summary**: added width and height to WebSocket frame header and stored them
   in the backend. Updated tests and capture logic.
