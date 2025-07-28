@@ -65,8 +65,11 @@ const PoseViewer: React.FC = () => {
           setSizeKB(b.size / 1024);
           const ts = Date.now();
           tsSendRef.current = ts;
-          const buf = new ArrayBuffer(8 + b.size);
-          new DataView(buf).setFloat64(0, ts, true);
+          const buf = new ArrayBuffer(12 + b.size);
+          const view = new DataView(buf);
+          view.setFloat64(0, ts, true);
+          view.setUint16(8, off.width, true);
+          view.setUint16(10, off.height, true);
           let arrayBuf: ArrayBuffer;
           if ('arrayBuffer' in b) {
             arrayBuf = await (b as any).arrayBuffer();
@@ -77,7 +80,7 @@ const PoseViewer: React.FC = () => {
               fr.readAsArrayBuffer(b);
             });
           }
-          new Uint8Array(buf, 8).set(new Uint8Array(arrayBuf));
+          new Uint8Array(buf, 12).set(new Uint8Array(arrayBuf));
           send(buf);
         }
         encodePending.current = false;
