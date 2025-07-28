@@ -2059,12 +2059,18 @@ landmarks are missing.
 
 ### 2025-07-28  PR #269
 
+- documented webcam capture defaults and backend resize
+  behaviour in README and docs. Reason: clarify default settings for
+  future users.
+
+### 2025-07-28  PR #270
+
 - **Summary**: resized frames to 256 px longer side before inference and updated
   tests. Average `infer_ms` improved by about 1.8 ms.
 - **Stage**: implementation
 - **Motivation / Decision**: smaller frames speed up MediaPipe processing.
 
-### 2025-07-28  PR #270
+### 2025-07-28  PR #271
 
 - **Summary**: delay frame capture using infer_ms and encodeMs. Added a
   performance test.

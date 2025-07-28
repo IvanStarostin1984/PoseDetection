@@ -186,6 +186,11 @@ threshold)`. The threshold is the median landmark visibility from the last
 500&nbsp;ms so skeleton drawing adapts when points are lost. The
 surrounding
 
+Webcam capture defaults to **640×360** to keep bandwidth low. Before
+running inference the backend resizes each frame so its larger side is
+`256` px. This value comes from the `CAM_TARGET_RES` constant which can
+be increased for higher accuracy at the cost of speed.
+
 `.pose-container` is styled so the canvas and video stack on top of each other.
 `MetricsPanel` is rendered as a sibling after this container so the metrics list
 appears below the video overlay.
