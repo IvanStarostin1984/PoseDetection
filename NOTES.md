@@ -2056,3 +2056,6 @@ landmarks are missing.
 - **Motivation / Decision**: aid debugging and future features relying on
   frame dimensions.
 - **Next step**: none.
+- 2025-07-28: documented webcam capture defaults and backend resize
+  behaviour in README and docs. Reason: clarify default settings for
+  future users.
