@@ -2035,3 +2035,12 @@ landmarks are missing.
 - **Motivation / Decision**: reduce bandwidth usage while maintaining image
   quality.
 - **Next step**: none.
+
+### 2025-07-24  PR #266
+
+- **Summary**: added width and height to WebSocket frame header and stored them
+  in the backend. Updated tests and capture logic.
+- **Stage**: implementation
+- **Motivation / Decision**: aid debugging and future features relying on
+  frame dimensions.
+- **Next step**: none.

@@ -3,6 +3,7 @@ import time
 from typing import Any
 import numpy as np
 import json
+import struct
 
 import backend.server as server
 
@@ -60,7 +61,8 @@ def test_pose_endpoint_performance(monkeypatch: Any) -> None:
 
     frame = np.zeros((1, 1, 3), dtype=np.uint8)
     _, buf = server.cv2.imencode(".jpg", frame)
-    frames = [buf.tobytes()] * frame_count
+    header = struct.pack("<dHH", 0.0, 1, 1)
+    frames = [header + buf.tobytes()] * frame_count
 
     ws = DummyWS(frames, recv_times, send_times)
     asyncio.run(server.pose_endpoint(ws))
