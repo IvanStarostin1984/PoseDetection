@@ -2085,3 +2085,10 @@ landmarks are missing.
 - **Stage**: implementation
 - **Motivation / Decision**: expose camera resolution in UI; tests added.
 - **Next step**: none.
+
+### 2025-07-28  PR #273
+
+- **Summary**: centralised frame resize constant as
+  backend.config.CAM_TARGET_RES and updated tests/docs.
+- **Stage**: implementation
+- **Motivation / Decision**: avoid magic number, clarify docs.
