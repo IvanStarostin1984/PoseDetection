@@ -27,8 +27,8 @@ JSON. The metrics are calculated in `backend/analytics.py`:
 
 Webcam capture defaults to **640×360** so images stay small. Before
 running inference the backend resizes each frame to `256` px using the
-`CAM_TARGET_RES` constant. Increase this value for higher accuracy if the
-extra processing time is acceptable.
+`backend.config.CAM_TARGET_RES` constant. Increase this value for higher
+accuracy if the extra processing time is acceptable.
 
 ```python
 from backend.analytics import extract_pose_metrics

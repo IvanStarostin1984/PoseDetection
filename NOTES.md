@@ -2078,3 +2078,8 @@ landmarks are missing.
 - **Motivation / Decision**: adapt capture rate to inference latency
   to stabilize FPS.
 - **Next step**: none.
+\n### 2025-07-28  PR #NOTSET
+- **Summary**: centralised frame resize constant as
+  backend.config.CAM_TARGET_RES and updated tests/docs.
+- **Stage**: implementation
+- **Motivation / Decision**: avoid magic number, clarify docs.
