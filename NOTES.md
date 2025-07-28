@@ -2035,3 +2035,10 @@ landmarks are missing.
 - **Motivation / Decision**: reduce bandwidth usage while maintaining image
   quality.
 - **Next step**: none.
+
+### 2025-07-24  PR #266
+
+- **Summary**: added Jest test capturing encode time for dummy frame.
+- **Stage**: testing
+- **Motivation / Decision**: verify JPEG encoding stays under 7ms.
+- **Next step**: none.
