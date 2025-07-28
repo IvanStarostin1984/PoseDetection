@@ -139,7 +139,8 @@ def test_pose_endpoint_closes_pose(monkeypatch):
     monkeypatch.setattr(server, "PoseDetector", lambda *_a, **_k: pose)
     frame = np.zeros((1, 1, 3), dtype=np.uint8)
     _, buf = server.cv2.imencode(".jpg", frame)
-    ws = DummyWS([buf.tobytes()])
+    header = struct.pack("<dHH", 0.0, 1, 1)
+    ws = DummyWS([header + buf.tobytes()])
 
     asyncio.run(server.pose_endpoint(ws))
 
@@ -156,12 +157,13 @@ def test_pose_endpoint_allows_second_connection(monkeypatch):
     monkeypatch.setattr(server, "PoseDetector", make_pose)
     frame = np.zeros((1, 1, 3), dtype=np.uint8)
     _, buf = server.cv2.imencode(".jpg", frame)
+    header = struct.pack("<dHH", 0.0, 1, 1)
 
-    ws = DummyWS([buf.tobytes()])
+    ws = DummyWS([header + buf.tobytes()])
     asyncio.run(server.pose_endpoint(ws))
     assert first_pose.closed is True
 
-    ws = DummyWS([buf.tobytes()])
+    ws = DummyWS([header + buf.tobytes()])
     asyncio.run(server.pose_endpoint(ws))
     assert second_pose.closed is True
 
@@ -176,9 +178,10 @@ def test_pose_endpoint_allows_concurrent_connections(monkeypatch):
     monkeypatch.setattr(server, "PoseDetector", make_pose)
     frame = np.zeros((1, 1, 3), dtype=np.uint8)
     _, buf = server.cv2.imencode(".jpg", frame)
+    header = struct.pack("<dHH", 0.0, 1, 1)
 
-    ws1 = DummyWS([buf.tobytes()])
-    ws2 = DummyWS([buf.tobytes()])
+    ws1 = DummyWS([header + buf.tobytes()])
+    ws2 = DummyWS([header + buf.tobytes()])
 
     async def run() -> None:
         await asyncio.wait_for(
@@ -200,7 +203,8 @@ def test_pose_endpoint_handles_process_exception(monkeypatch):
     monkeypatch.setattr(server, "PoseDetector", lambda *_a, **_k: pose)
     frame = np.zeros((1, 1, 3), dtype=np.uint8)
     _, buf = server.cv2.imencode(".jpg", frame)
-    ws = DummyWS([buf.tobytes()])
+    header = struct.pack("<dHH", 0.0, 1, 1)
+    ws = DummyWS([header + buf.tobytes()])
 
     asyncio.run(server.pose_endpoint(ws))
     assert ws.sent == ['{"error": "process failed"}']
@@ -215,7 +219,8 @@ def test_pose_endpoint_reports_no_landmarks(monkeypatch):
     monkeypatch.setattr(server, "PoseDetector", lambda *_a, **_k: pose)
     frame = np.zeros((1, 1, 3), dtype=np.uint8)
     _, buf = server.cv2.imencode(".jpg", frame)
-    ws = DummyWS([buf.tobytes()])
+    header = struct.pack("<dHH", 0.0, 1, 1)
+    ws = DummyWS([header + buf.tobytes()])
 
     asyncio.run(server.pose_endpoint(ws))
     assert ws.sent == ['{"error": "no landmarks"}']
@@ -234,7 +239,8 @@ def test_pose_endpoint_handles_client_disconnect(monkeypatch):
     monkeypatch.setattr(server, "PoseDetector", lambda *_a, **_k: pose)
     frame = np.zeros((1, 1, 3), dtype=np.uint8)
     _, buf = server.cv2.imencode(".jpg", frame)
-    ws = DisconnectWS([buf.tobytes()])
+    header = struct.pack("<dHH", 0.0, 1, 1)
+    ws = DisconnectWS([header + buf.tobytes()])
 
     asyncio.run(server.pose_endpoint(ws))
     assert pose.closed is True
@@ -268,7 +274,8 @@ def test_fps_metric_updates(monkeypatch):
     monkeypatch.setattr(server, "PoseDetector", lambda *_a, **_k: Pose())
     frame = np.zeros((1, 1, 3), dtype=np.uint8)
     _, buf = server.cv2.imencode(".jpg", frame)
-    ws = DummyWS([buf.tobytes(), buf.tobytes()])
+    header = struct.pack("<dHH", 0.0, 1, 1)
+    ws = DummyWS([header + buf.tobytes(), header + buf.tobytes()])
 
     asyncio.run(server.pose_endpoint(ws))
 
@@ -320,8 +327,8 @@ def test_timestamp_metrics(monkeypatch):
     frame = np.zeros((1, 1, 3), dtype=np.uint8)
     _, buf = server.cv2.imencode(".jpg", frame)
     ts_send = 999000.0
-    data = struct.pack("<d", ts_send) + buf.tobytes()
-    ws = DummyWS([data])
+    header = struct.pack("<dHH", ts_send, 1, 1)
+    ws = DummyWS([header + buf.tobytes()])
 
     asyncio.run(server.pose_endpoint(ws))
 

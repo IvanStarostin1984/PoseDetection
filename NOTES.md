@@ -2027,7 +2027,7 @@ TODO logs the task.
 landmarks are missing.
 - **Next step**: none.
 
-### 2025-07-24  PR #265
+### 2025-07-28  PR #265
 
 - **Summary**: scaled captured frames before encoding and added JPEG quality
   constant. Updated corresponding tests and documentation.
@@ -2036,9 +2036,23 @@ landmarks are missing.
   quality.
 - **Next step**: none.
 
-### 2025-07-24  PR #266
+### 2025-07-28  PR #266
 
 - **Summary**: added Jest test capturing encode time for dummy frame.
 - **Stage**: testing
 - **Motivation / Decision**: verify JPEG encoding stays under 7ms.
+
+### 2025-07-28  PR #267
+
+- **Summary**: added camera resolution hints and displayed active resolution.
+- **Stage**: implementation
+- **Motivation / Decision**: ensure consistent camera size and show settings in UI.
+
+### 2025-07-28  PR #268
+
+- **Summary**: added width and height to WebSocket frame header and stored them
+  in the backend. Updated tests and capture logic.
+- **Stage**: implementation
+- **Motivation / Decision**: aid debugging and future features relying on
+  frame dimensions.
 - **Next step**: none.

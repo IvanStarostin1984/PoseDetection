@@ -2,6 +2,7 @@ import asyncio
 from typing import Any
 
 import numpy as np
+import struct
 
 import json
 import backend.server as server
@@ -47,7 +48,8 @@ def test_pose_endpoint_reads_frame(monkeypatch: Any) -> None:
     monkeypatch.setattr(server, "PoseDetector", lambda *_a, **_k: pose)
     frame = np.zeros((1, 1, 3), dtype=np.uint8)
     _, buf = server.cv2.imencode(".jpg", frame)
-    ws = DummyWS([buf.tobytes()])
+    header = struct.pack("<dHH", 0.0, 1, 1)
+    ws = DummyWS([header + buf.tobytes()])
     asyncio.run(server.pose_endpoint(ws))
 
     assert ws.sent
@@ -65,7 +67,8 @@ def test_pose_endpoint_sanitizes_missing_data(monkeypatch: Any) -> None:
     monkeypatch.setattr(server, "PoseDetector", lambda *_a, **_k: pose)
     frame = np.zeros((1, 1, 3), dtype=np.uint8)
     _, buf = server.cv2.imencode(".jpg", frame)
-    ws = DummyWS([buf.tobytes()])
+    header = struct.pack("<dHH", 0.0, 1, 1)
+    ws = DummyWS([header + buf.tobytes()])
     asyncio.run(server.pose_endpoint(ws))
 
     data = json.loads(ws.sent[0])

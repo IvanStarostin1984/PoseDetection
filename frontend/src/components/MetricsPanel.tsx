@@ -15,6 +15,8 @@ export interface PoseMetrics {
   latencyMs?: number;
   clientFps?: number;
   droppedFrames?: number;
+  cameraWidth?: number;
+  cameraHeight?: number;
   model?: string;
   cpu_percent?: number;
   rss_bytes?: number;
@@ -42,6 +44,8 @@ const MetricsPanel: React.FC<MetricsPanelProps> = ({ data }) => {
   const latencyMs = Number(data?.latencyMs ?? 0);
   const clientFps = Number(data?.clientFps ?? 0);
   const droppedFrames = Number(data?.droppedFrames ?? 0);
+  const camW = Number(data?.cameraWidth ?? 0);
+  const camH = Number(data?.cameraHeight ?? 0);
   const model = data?.model ?? '';
   const cpu = Number((data as any)?.cpu_percent ?? 0);
   const rssMB = Number((data as any)?.rss_bytes ?? 0) / (1024 * 1024);
@@ -63,6 +67,7 @@ const MetricsPanel: React.FC<MetricsPanelProps> = ({ data }) => {
       <p>Latency: {latencyMs.toFixed(2)} ms</p>
       <p>Client FPS: {clientFps.toFixed(2)}</p>
       <p>Dropped Frames: {droppedFrames}</p>
+      <p>Camera input: {camW}×{camH}</p>
       <p>Model: {model}</p>
       <p>CPU: {cpu.toFixed(0)} %</p>
       <p>Mem: {rssMB.toFixed(0)} MB</p>
