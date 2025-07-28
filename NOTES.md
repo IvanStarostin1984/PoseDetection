@@ -2063,4 +2063,12 @@ landmarks are missing.
   tests. Average `infer_ms` improved by about 1.8 ms.
 - **Stage**: implementation
 - **Motivation / Decision**: smaller frames speed up MediaPipe processing.
+
+### 2025-07-28  PR #270
+
+- **Summary**: delay frame capture using infer_ms and encodeMs. Added a
+  performance test.
+- **Stage**: implementation
+- **Motivation / Decision**: adapt capture rate to inference latency
+  to stabilize FPS.
 - **Next step**: none.
