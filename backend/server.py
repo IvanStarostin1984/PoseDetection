@@ -49,6 +49,7 @@ PROC = psutil.Process() if psutil else None
 CPU_HISTORY: Deque[float] = deque(maxlen=5)
 RSS_HISTORY: Deque[int] = deque(maxlen=5)
 SAMPLER_TASK: asyncio.Task[None] | None = None
+LAST_FRAME_SIZE: Dict[str, int] = {"width": 0, "height": 0}
 
 # names for the 17-landmark subset used by PoseDetector
 _NAMES = [lm.name.lower() for lm in PoseDetector.LANDMARKS]
@@ -111,7 +112,10 @@ async def pose_endpoint(ws: WebSocket) -> None:
                 break
 
             ts_send = struct.unpack("<d", data[:8])[0]
-            frame_bytes = data[8:]
+            width, height = struct.unpack("<HH", data[8:12])
+            LAST_FRAME_SIZE["width"] = int(width)
+            LAST_FRAME_SIZE["height"] = int(height)
+            frame_bytes = data[12:]
             ts_recv_ms = time.time() * 1000.0
             ts_recv_perf = time.perf_counter()
             try:

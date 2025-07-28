@@ -29,6 +29,8 @@ const PoseViewer: React.FC = () => {
   const [drawMs, setDrawMs] = useState(0);
   const [downlinkMs, setDownlinkMs] = useState(0);
   const [latencyMs, setLatencyMs] = useState(0);
+  const [cameraWidth, setCameraWidth] = useState<number | null>(null);
+  const [cameraHeight, setCameraHeight] = useState<number | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
   const offscreenRef = useRef<HTMLCanvasElement>(document.createElement('canvas'));
   const encodePending = useRef(false);
@@ -65,8 +67,11 @@ const PoseViewer: React.FC = () => {
           setSizeKB(b.size / 1024);
           const ts = Date.now();
           tsSendRef.current = ts;
-          const buf = new ArrayBuffer(8 + b.size);
-          new DataView(buf).setFloat64(0, ts, true);
+          const buf = new ArrayBuffer(12 + b.size);
+          const view = new DataView(buf);
+          view.setFloat64(0, ts, true);
+          view.setUint16(8, off.width, true);
+          view.setUint16(10, off.height, true);
           let arrayBuf: ArrayBuffer;
           if ('arrayBuffer' in b) {
             arrayBuf = await (b as any).arrayBuffer();
@@ -77,7 +82,7 @@ const PoseViewer: React.FC = () => {
               fr.readAsArrayBuffer(b);
             });
           }
-          new Uint8Array(buf, 8).set(new Uint8Array(arrayBuf));
+          new Uint8Array(buf, 12).set(new Uint8Array(arrayBuf));
           send(buf);
         }
         encodePending.current = false;
@@ -145,7 +150,9 @@ const PoseViewer: React.FC = () => {
     if (streaming) {
       setCameraError(null);
       navigator.mediaDevices
-        .getUserMedia({ video: true })
+        .getUserMedia({
+          video: { width: { ideal: 640 }, height: { ideal: 360 } },
+        })
         .then((stream) => {
           if (cancel) {
             stream.getTracks().forEach((t) => t.stop());
@@ -153,6 +160,18 @@ const PoseViewer: React.FC = () => {
           }
           video.srcObject = stream;
           streamRef.current = stream;
+          const track = stream.getVideoTracks()[0];
+          const settings = track.getSettings();
+          console.log(
+            'Using camera resolution',
+            settings.width,
+            'x',
+            settings.height,
+          );
+          setCameraWidth(typeof settings.width === 'number' ? settings.width : null);
+          setCameraHeight(
+            typeof settings.height === 'number' ? settings.height : null,
+          );
         })
         .catch(() => {
           setCameraError('Webcam access denied');
@@ -162,6 +181,8 @@ const PoseViewer: React.FC = () => {
       streamRef.current = null;
       video.srcObject = null;
       setCameraError(null);
+      setCameraWidth(null);
+      setCameraHeight(null);
     }
     return () => {
       cancel = true;
@@ -171,6 +192,8 @@ const PoseViewer: React.FC = () => {
         streamRef.current = null;
       }
       setCameraError(null);
+      setCameraWidth(null);
+      setCameraHeight(null);
     };
   }, [streaming]);
 
@@ -235,7 +258,17 @@ const PoseViewer: React.FC = () => {
     requestAnimationFrame(captureAndSend);
   }, [poseData]);
 
-  const metrics: PoseMetrics | undefined = poseData
+  const baseMetrics: PoseMetrics = {
+    balance: 0,
+    pose_class: '',
+    knee_angle: 0,
+    posture_angle: 0,
+    fps: 0,
+    cameraWidth: cameraWidth ?? undefined,
+    cameraHeight: cameraHeight ?? undefined,
+  };
+
+  const metrics: PoseMetrics = poseData
     ? {
         ...poseData.metrics,
         fps: Number((poseData.metrics as any).fps ?? 0),
@@ -248,9 +281,11 @@ const PoseViewer: React.FC = () => {
         latencyMs,
         clientFps,
         droppedFrames,
+        cameraWidth: cameraWidth ?? undefined,
+        cameraHeight: cameraHeight ?? undefined,
         model: poseData.model,
       }
-    : undefined;
+    : baseMetrics;
 
   return (
     <>
