@@ -139,3 +139,24 @@ def test_visibility_filter(monkeypatch):
     named = srv._to_named(result)
     assert srv._NAMES[0] not in named
     assert srv._NAMES[1] in named
+
+
+class CaptureSizePose:
+    def __init__(self, *args, **kwargs) -> None:
+        pass
+
+    def process(self, frame: np.ndarray):
+        CaptureSizePose.shape = frame.shape
+        return types.SimpleNamespace(pose_landmarks=None)
+
+    def close(self) -> None:
+        pass
+
+
+def test_process_resizes_frame(monkeypatch):
+    monkeypatch.setattr(mp.solutions.pose, "Pose", CaptureSizePose)
+    det = pd.PoseDetector()
+    frame = np.zeros((480, 640, 3), dtype=np.uint8)
+    det.process(frame)
+    assert max(CaptureSizePose.shape[:2]) == 256
+    assert CaptureSizePose.shape[2] == 3
