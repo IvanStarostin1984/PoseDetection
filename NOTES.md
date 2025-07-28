@@ -2035,3 +2035,10 @@ landmarks are missing.
 - **Motivation / Decision**: reduce bandwidth usage while maintaining image
   quality.
 - **Next step**: none.
+
+### 2025-07-28  PR #266
+
+- **Summary**: ticked frame scaling and compression item in TODO.
+- **Stage**: maintenance
+- **Motivation / Decision**: align checklist with implemented feature.
+- **Next step**: none.

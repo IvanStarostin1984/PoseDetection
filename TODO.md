@@ -1,4 +1,4 @@
-# TODO – Road‑map (last updated: 2025-07-23)
+# TODO – Road‑map (last updated: 2025-07-28)
 
 > *Record only high‑level milestones here; break micro‑tasks out into Issues.*
 > **When you finish a task, tick it and append a short NOTE entry
@@ -226,4 +226,4 @@
 - [x] Capture frames on demand in PoseViewer; track dropped frames and
       use a median visibility threshold.
 - [x] Replace NaN metrics with null when serializing WebSocket payloads.
-- [ ] Scale captured frames before encoding and compress with JPEG quality 0.55.
+- [x] Scale captured frames before encoding and compress with JPEG quality 0.55.
