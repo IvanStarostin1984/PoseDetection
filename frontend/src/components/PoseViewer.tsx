@@ -63,6 +63,7 @@ const PoseViewer: React.FC = () => {
       async (b) => {
         const end = performance.now();
         setEncodeMs(end - start);
+        encodePending.current = false;
         if (b) {
           setSizeKB(b.size / 1024);
           const ts = Date.now();
@@ -85,7 +86,6 @@ const PoseViewer: React.FC = () => {
           new Uint8Array(buf, 12).set(new Uint8Array(arrayBuf));
           send(buf);
         }
-        encodePending.current = false;
         const now = end;
         frameTimes.current.push(now);
         while (frameTimes.current.length > 0 && now - frameTimes.current[0] > 1000) {
@@ -259,10 +259,11 @@ const PoseViewer: React.FC = () => {
     const targetDelay = inferMs + encodeMs + 5;
     const elapsed = Date.now() - tsSendRef.current;
     const waitMs = Math.max(0, targetDelay - elapsed);
-    const id = window.setTimeout(() => {
-      requestAnimationFrame(captureAndSend);
-    }, waitMs);
-    return () => clearTimeout(id);
+    if (targetDelay >= 16) {
+      const id = window.setTimeout(captureAndSend, waitMs);
+      return () => clearTimeout(id);
+    }
+    requestAnimationFrame(captureAndSend);
   }, [poseData]);
 
   const baseMetrics: PoseMetrics = {

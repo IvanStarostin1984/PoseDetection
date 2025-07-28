@@ -2092,3 +2092,13 @@ landmarks are missing.
   backend.config.CAM_TARGET_RES and updated tests/docs.
 - **Stage**: implementation
 - **Motivation / Decision**: avoid magic number, clarify docs.
+
+-### 2025-07-28
+
+- **Summary**: revised frame capture timing in PoseViewer. Use rAF for short
+  delays and update encodePending logic. Performance test now expects at least
+  22fps.
+- **Stage**: implementation
+- **Motivation / Decision**: prevent rAF nesting overhead and stabilise FPS when
+  infer_ms and encode_ms are small.
+- **Next step**: none.

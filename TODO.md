@@ -230,3 +230,4 @@
 - [x] Show camera input resolution in the Metrics panel.
 - [x] Prepend width and height to WebSocket frame header for debugging.
 - [x] Delay next frame capture by infer_ms + encodeMs + 5 ms.
+- [x] Capture scheduling uses setTimeout when delay >= 16ms and rAF otherwise.
