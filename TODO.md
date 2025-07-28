@@ -229,3 +229,4 @@
 - [x] Scale captured frames before encoding and compress with JPEG quality 0.55.
 - [ ] Show camera input resolution in the Metrics panel.
 - [x] Prepend width and height to WebSocket frame header for debugging.
+- [x] Delay next frame capture by infer_ms + encodeMs + 5 ms.

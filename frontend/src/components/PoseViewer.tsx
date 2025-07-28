@@ -255,7 +255,14 @@ const PoseViewer: React.FC = () => {
     const end = performance.now();
     setDrawMs(end - start);
     setLatencyMs(Date.now() - tsSendRef.current);
-    requestAnimationFrame(captureAndSend);
+    const inferMs = Number((poseData.metrics as any).infer_ms ?? 0);
+    const targetDelay = inferMs + encodeMs + 5;
+    const elapsed = Date.now() - tsSendRef.current;
+    const waitMs = Math.max(0, targetDelay - elapsed);
+    const id = window.setTimeout(() => {
+      requestAnimationFrame(captureAndSend);
+    }, waitMs);
+    return () => clearTimeout(id);
   }, [poseData]);
 
   const baseMetrics: PoseMetrics = {

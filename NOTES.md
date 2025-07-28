@@ -2056,3 +2056,11 @@ landmarks are missing.
 - **Motivation / Decision**: aid debugging and future features relying on
   frame dimensions.
 - **Next step**: none.
+\n### 2025-07-28
+
+- **Summary**: delay frame capture using infer_ms and encodeMs. Added a
+  performance test.
+- **Stage**: implementation
+- **Motivation / Decision**: adapt capture rate to inference latency
+  to stabilize FPS.
+- **Next step**: none.
