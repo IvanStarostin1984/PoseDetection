@@ -4,7 +4,7 @@ import types
 import numpy as np
 import backend.pose_detector as pd
 import backend.server as srv
-from backend.config import VISIBILITY_MIN
+from backend.config import CAM_TARGET_RES, VISIBILITY_MIN
 import mediapipe as mp
 
 
@@ -158,5 +158,5 @@ def test_process_resizes_frame(monkeypatch):
     det = pd.PoseDetector()
     frame = np.zeros((480, 640, 3), dtype=np.uint8)
     det.process(frame)
-    assert max(CaptureSizePose.shape[:2]) == 256
+    assert max(CaptureSizePose.shape[:2]) == CAM_TARGET_RES
     assert CaptureSizePose.shape[2] == 3

@@ -3,6 +3,7 @@ from __future__ import annotations
 import cv2
 import mediapipe as mp
 import numpy as np
+from backend.config import CAM_TARGET_RES
 
 
 class PoseDetector:
@@ -44,7 +45,7 @@ class PoseDetector:
             raise ValueError("frame is None")
         rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         h, w = rgb.shape[:2]
-        scale = 256 / max(h, w)
+        scale = CAM_TARGET_RES / max(h, w)
         size = (int(round(w * scale)), int(round(h * scale)))
         resized = cv2.resize(rgb, size, interpolation=cv2.INTER_AREA)
         results = self._pose.process(resized)
