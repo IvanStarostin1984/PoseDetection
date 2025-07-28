@@ -90,10 +90,25 @@ def build_payload(
     return {"landmarks": points, "metrics": metrics, "model": model}
 
 
-async def _process(det: PoseDetector, data: bytes) -> list[dict[str, float]]:
+async def _process(
+    det: PoseDetector, data: bytes
+) -> tuple[list[dict[str, float]], float]:
+    """Decode JPEG bytes, resize and run pose detection."""
     arr = np.frombuffer(data, dtype=np.uint8)
     frame = cv2.imdecode(arr, cv2.IMREAD_COLOR)
-    return await asyncio.to_thread(det.process, frame)
+    if frame is None:
+        raise ValueError("decode failed")
+    height, width = frame.shape[:2]
+    long_side = max(height, width)
+    if long_side > 0 and long_side != 256:
+        scale = 256 / float(long_side)
+        w = int(round(width * scale))
+        h = int(round(height * scale))
+        frame = cv2.resize(frame, (w, h), interpolation=cv2.INTER_AREA)
+    start = time.perf_counter()
+    points = await asyncio.to_thread(det.process, frame)
+    infer_ms = (time.perf_counter() - start) * 1000.0
+    return points, infer_ms
 
 
 @app.websocket("/pose")
@@ -117,8 +132,7 @@ async def pose_endpoint(ws: WebSocket) -> None:
             try:
                 start_infer = time.perf_counter()
                 wait_ms = (start_infer - ts_recv_perf) * 1000.0
-                points = await _process(detector, frame_bytes)
-                infer_ms = (time.perf_counter() - start_infer) * 1000.0
+                points, infer_ms = await _process(detector, frame_bytes)
                 uplink_ms = ts_recv_ms - ts_send
             except Exception:
                 try:

@@ -139,7 +139,8 @@ def test_pose_endpoint_closes_pose(monkeypatch):
     monkeypatch.setattr(server, "PoseDetector", lambda *_a, **_k: pose)
     frame = np.zeros((1, 1, 3), dtype=np.uint8)
     _, buf = server.cv2.imencode(".jpg", frame)
-    ws = DummyWS([buf.tobytes()])
+    data = struct.pack("<d", 0.0) + buf.tobytes()
+    ws = DummyWS([data])
 
     asyncio.run(server.pose_endpoint(ws))
 
@@ -157,11 +158,13 @@ def test_pose_endpoint_allows_second_connection(monkeypatch):
     frame = np.zeros((1, 1, 3), dtype=np.uint8)
     _, buf = server.cv2.imencode(".jpg", frame)
 
-    ws = DummyWS([buf.tobytes()])
+    data = struct.pack("<d", 0.0) + buf.tobytes()
+    ws = DummyWS([data])
     asyncio.run(server.pose_endpoint(ws))
     assert first_pose.closed is True
 
-    ws = DummyWS([buf.tobytes()])
+    data = struct.pack("<d", 0.0) + buf.tobytes()
+    ws = DummyWS([data])
     asyncio.run(server.pose_endpoint(ws))
     assert second_pose.closed is True
 
@@ -177,8 +180,9 @@ def test_pose_endpoint_allows_concurrent_connections(monkeypatch):
     frame = np.zeros((1, 1, 3), dtype=np.uint8)
     _, buf = server.cv2.imencode(".jpg", frame)
 
-    ws1 = DummyWS([buf.tobytes()])
-    ws2 = DummyWS([buf.tobytes()])
+    data = struct.pack("<d", 0.0) + buf.tobytes()
+    ws1 = DummyWS([data])
+    ws2 = DummyWS([data])
 
     async def run() -> None:
         await asyncio.wait_for(
@@ -200,7 +204,8 @@ def test_pose_endpoint_handles_process_exception(monkeypatch):
     monkeypatch.setattr(server, "PoseDetector", lambda *_a, **_k: pose)
     frame = np.zeros((1, 1, 3), dtype=np.uint8)
     _, buf = server.cv2.imencode(".jpg", frame)
-    ws = DummyWS([buf.tobytes()])
+    data = struct.pack("<d", 0.0) + buf.tobytes()
+    ws = DummyWS([data])
 
     asyncio.run(server.pose_endpoint(ws))
     assert ws.sent == ['{"error": "process failed"}']
@@ -215,7 +220,8 @@ def test_pose_endpoint_reports_no_landmarks(monkeypatch):
     monkeypatch.setattr(server, "PoseDetector", lambda *_a, **_k: pose)
     frame = np.zeros((1, 1, 3), dtype=np.uint8)
     _, buf = server.cv2.imencode(".jpg", frame)
-    ws = DummyWS([buf.tobytes()])
+    data = struct.pack("<d", 0.0) + buf.tobytes()
+    ws = DummyWS([data])
 
     asyncio.run(server.pose_endpoint(ws))
     assert ws.sent == ['{"error": "no landmarks"}']
@@ -234,7 +240,8 @@ def test_pose_endpoint_handles_client_disconnect(monkeypatch):
     monkeypatch.setattr(server, "PoseDetector", lambda *_a, **_k: pose)
     frame = np.zeros((1, 1, 3), dtype=np.uint8)
     _, buf = server.cv2.imencode(".jpg", frame)
-    ws = DisconnectWS([buf.tobytes()])
+    data = struct.pack("<d", 0.0) + buf.tobytes()
+    ws = DisconnectWS([data])
 
     asyncio.run(server.pose_endpoint(ws))
     assert pose.closed is True
@@ -249,13 +256,15 @@ def test_fps_metric_updates(monkeypatch):
         1.0,  # initial last_time
         1.01,  # ts_recv 1
         1.02,  # start_infer 1
-        1.04,  # end_infer 1
+        1.03,  # start_process 1
+        1.04,  # end_process 1
         1.10,  # now 1
         1.12,  # start_json 1
         1.14,  # end_json 1
         1.20,  # ts_recv 2
         1.22,  # start_infer 2
-        1.24,  # end_infer 2
+        1.23,  # start_process 2
+        1.24,  # end_process 2
         1.30,  # now 2
         1.32,  # start_json 2
         1.34,  # end_json 2
@@ -268,7 +277,8 @@ def test_fps_metric_updates(monkeypatch):
     monkeypatch.setattr(server, "PoseDetector", lambda *_a, **_k: Pose())
     frame = np.zeros((1, 1, 3), dtype=np.uint8)
     _, buf = server.cv2.imencode(".jpg", frame)
-    ws = DummyWS([buf.tobytes(), buf.tobytes()])
+    data = struct.pack("<d", 0.0) + buf.tobytes()
+    ws = DummyWS([data, data])
 
     asyncio.run(server.pose_endpoint(ws))
 
@@ -298,7 +308,8 @@ def test_timestamp_metrics(monkeypatch):
         0.0,  # initial last_time
         1.0,  # ts_recv_perf
         1.05,  # start_infer
-        1.10,  # end_infer
+        1.06,  # start_process
+        1.10,  # end_process
         1.20,  # now
         1.25,  # start_json
         1.26,  # end_json

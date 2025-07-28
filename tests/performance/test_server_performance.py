@@ -3,6 +3,7 @@ import time
 from typing import Any
 import numpy as np
 import json
+import struct
 
 import backend.server as server
 
@@ -46,8 +47,10 @@ class DummyWS:
         self.closed = True
 
 
-async def _dummy_process(det: DummyDetector, frame: Any) -> list[dict[str, float]]:
-    return det.process(frame)
+async def _dummy_process(
+    det: DummyDetector, frame: Any
+) -> tuple[list[dict[str, float]], float]:
+    return det.process(frame), 0.0
 
 
 def test_pose_endpoint_performance(monkeypatch: Any) -> None:
@@ -60,7 +63,8 @@ def test_pose_endpoint_performance(monkeypatch: Any) -> None:
 
     frame = np.zeros((1, 1, 3), dtype=np.uint8)
     _, buf = server.cv2.imencode(".jpg", frame)
-    frames = [buf.tobytes()] * frame_count
+    data = struct.pack("<d", 0.0) + buf.tobytes()
+    frames = [data] * frame_count
 
     ws = DummyWS(frames, recv_times, send_times)
     asyncio.run(server.pose_endpoint(ws))

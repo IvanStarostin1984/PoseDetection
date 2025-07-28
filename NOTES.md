@@ -2035,3 +2035,12 @@ landmarks are missing.
 - **Motivation / Decision**: reduce bandwidth usage while maintaining image
   quality.
 - **Next step**: none.
+
+### 2025-07-28  PR #266
+
+- **Summary**: resized decoded frames before inference, timed pose.process
+  separately and exposed it as infer_ms. Added inference speed test and updated
+  existing tests.
+- **Stage**: implementation
+- **Motivation / Decision**: align metrics with performance spec.
+- **Next step**: none.
