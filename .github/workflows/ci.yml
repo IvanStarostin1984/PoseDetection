@@ -9,7 +9,7 @@ jobs:
       md_only: ${{ steps.filter.outputs.md_only }}
       deps: ${{ steps.filter.outputs.deps }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - id: filter
         uses: dorny/paths-filter@v3
         with:
@@ -34,7 +34,7 @@ jobs:
     if: needs.changes.outputs.md_only == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - run: |
           npx --yes markdownlint-cli '**/*.md'
           grep -R --line-number -E '<{7}|={7}|>{7}' --exclude=ci.yml \
@@ -47,7 +47,7 @@ jobs:
     if: needs.changes.outputs.md_only == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: lycheeverse/lychee-action@v2.4.1
         with:
           args: --no-progress --verbose './**/*.md'
@@ -57,14 +57,14 @@ jobs:
     if: needs.changes.outputs.deps == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - run: make check-versions
 
   actionlint:
     needs: [changes]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: rhysd/actionlint@v1.7.7
 
   test:
@@ -76,7 +76,7 @@ jobs:
         python: ['3.11', '3.12']
         node: ['20']
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
@@ -97,7 +97,7 @@ jobs:
     if: needs.changes.outputs.md_only != 'true'
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
