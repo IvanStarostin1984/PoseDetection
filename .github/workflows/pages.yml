@@ -22,7 +22,7 @@ jobs:
       - name: Setup
         run: ./.codex/setup.sh
       - run: make docs
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v4
         with:
           path: docs/_build/html
 
