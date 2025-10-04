@@ -24,6 +24,7 @@ COMMANDS = {
     "typecheck-ts",
     "update-todo-date",
     "check-versions",
+    "show-date",
 }
 
 

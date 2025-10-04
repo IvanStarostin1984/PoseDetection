@@ -66,7 +66,7 @@ simple analytics like knee angle, balance, a posture angle, ``fps`` and
 Run `make lint` to check Markdown and Python code style (ruff).
 On Windows you can run `npm run win:lint` instead. Similar wrappers exist for
 `typecheck`, `typecheck-ts`, `test`, `docs`, `generate`, `lint-docs`,
-`update-todo-date` and `check-versions`.
+`update-todo-date`, `check-versions` and `show-date`.
 Run `make typecheck` to check Python types with mypy.
 Run `make typecheck-ts` to compile the frontend TypeScript.
 Run `make test` to execute the test-suite. Performance tests live in
@@ -89,6 +89,7 @@ equivalents:
 | `make lint-docs`       | `npm run win:lint-docs` or `scripts/lint-docs.ps1` |
 | `make update-todo-date`| `npm run win:update-todo-date` or `scripts/update_todo_date.ps1` |
 | `make check-versions`  | `npm run win:check-versions` or `scripts/check_versions.ps1` |
+| `make show-date`       | `npm run win:show-date` or `scripts/show_date.ps1` |
 <!-- markdownlint-enable MD013 -->
 
 CI runs `make check-versions` whenever dependency files change to

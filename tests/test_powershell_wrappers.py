@@ -17,6 +17,7 @@ WRAPPERS = [
     ("typecheck-ts.ps1", "npx"),
     ("typecheck.ps1", "mypy"),
     ("update_todo_date.ps1", "python"),
+    ("show_date.ps1", "python"),
 ]
 
 

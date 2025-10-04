@@ -14,7 +14,8 @@
     "win:generate": "powershell -ExecutionPolicy Bypass -File scripts/generate.ps1",
     "win:lint-docs": "powershell -ExecutionPolicy Bypass -File scripts/lint-docs.ps1",
     "win:update-todo-date": "powershell -ExecutionPolicy Bypass -File scripts/update_todo_date.ps1",
-    "win:check-versions": "powershell -ExecutionPolicy Bypass -File scripts/check_versions.ps1"
+    "win:check-versions": "powershell -ExecutionPolicy Bypass -File scripts/check_versions.ps1",
+    "win:show-date": "powershell -ExecutionPolicy Bypass -File scripts/show_date.ps1"
   },
   "dependencies": {
     "react": "18.2.0",

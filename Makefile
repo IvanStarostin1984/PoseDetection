@@ -1,4 +1,4 @@
-.PHONY: lint lint-docs test generate docs typecheck typecheck-ts
+.PHONY: lint lint-docs test generate docs typecheck typecheck-ts show-date
 
 lint:
 	npx --yes markdownlint-cli '**/*.md' --ignore node_modules --ignore .pre-commit-cache --ignore frontend/dist --ignore docs/_build
@@ -44,6 +44,9 @@ update-todo-date:
 
 check-versions:
 	python scripts/check_versions.py
+
+show-date:
+	python scripts/show_date.py
 
 docs:
 	$(MAKE) -C docs html
